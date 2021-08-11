@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++17
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/antonov548/jpeg-xl-wasm/../jpeg-xl/lib/include 
+CXX_INCLUDES = -I/home/antonov548/jxl/../jpeg-xl/lib/include 
 

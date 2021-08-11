@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/antonov548/jpeg-xl-wasm
+CMAKE_SOURCE_DIR = /home/antonov548/jxl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/antonov548/jpeg-xl-wasm/build
+CMAKE_BINARY_DIR = /home/antonov548/jxl/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/antonov548/jpeg-xl-wasm/build/CMakeFiles /home/antonov548/jpeg-xl-wasm/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/antonov548/jxl/build/CMakeFiles /home/antonov548/jxl/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/antonov548/jpeg-xl-wasm/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/antonov548/jxl/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -163,33 +163,6 @@ src/bind.cpp.s:
 	$(MAKE) -f CMakeFiles/wjpegxl.dir/build.make CMakeFiles/wjpegxl.dir/src/bind.cpp.s
 .PHONY : src/bind.cpp.s
 
-src/tests/jxl_test.o: src/tests/jxl_test.cpp.o
-
-.PHONY : src/tests/jxl_test.o
-
-# target to build an object file
-src/tests/jxl_test.cpp.o:
-	$(MAKE) -f CMakeFiles/wjpegxl-tests.dir/build.make CMakeFiles/wjpegxl-tests.dir/src/tests/jxl_test.cpp.o
-.PHONY : src/tests/jxl_test.cpp.o
-
-src/tests/jxl_test.i: src/tests/jxl_test.cpp.i
-
-.PHONY : src/tests/jxl_test.i
-
-# target to preprocess a source file
-src/tests/jxl_test.cpp.i:
-	$(MAKE) -f CMakeFiles/wjpegxl-tests.dir/build.make CMakeFiles/wjpegxl-tests.dir/src/tests/jxl_test.cpp.i
-.PHONY : src/tests/jxl_test.cpp.i
-
-src/tests/jxl_test.s: src/tests/jxl_test.cpp.s
-
-.PHONY : src/tests/jxl_test.s
-
-# target to generate assembly for a file
-src/tests/jxl_test.cpp.s:
-	$(MAKE) -f CMakeFiles/wjpegxl-tests.dir/build.make CMakeFiles/wjpegxl-tests.dir/src/tests/jxl_test.cpp.s
-.PHONY : src/tests/jxl_test.cpp.s
-
 test/bind.o: test/bind.cpp.o
 
 .PHONY : test/bind.o
@@ -230,9 +203,6 @@ help:
 	@echo "... src/bind.o"
 	@echo "... src/bind.i"
 	@echo "... src/bind.s"
-	@echo "... src/tests/jxl_test.o"
-	@echo "... src/tests/jxl_test.i"
-	@echo "... src/tests/jxl_test.s"
 	@echo "... test/bind.o"
 	@echo "... test/bind.i"
 	@echo "... test/bind.s"

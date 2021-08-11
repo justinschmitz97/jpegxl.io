@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++17
 
 CXX_DEFINES = -DTEST_DATA_PATH=\"/home/antonov548/jpeg-xl/third_party/testdata\"
 
-CXX_INCLUDES = -I/home/antonov548/jpeg-xl-wasm/../jpeg-xl/lib/include -I/home/antonov548/jpeg-xl -I/home/antonov548/jpeg-xl/third_party/googletest/googletest/include -I/home/antonov548/jpeg-xl/third_party/googletest/googlemock/include -I/home/antonov548/jpeg-xl/third_party/highway 
+CXX_INCLUDES = -I/home/antonov548/jxl/../jpeg-xl/lib/include -I/home/antonov548/jpeg-xl -I/home/antonov548/jpeg-xl/third_party/googletest/googletest/include -I/home/antonov548/jpeg-xl/third_party/googletest/googlemock/include -I/home/antonov548/jpeg-xl/third_party/highway 
 

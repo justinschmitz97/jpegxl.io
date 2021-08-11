@@ -4,10 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/antonov548/jpeg-xl-wasm/src/tests/jxl_test.cpp" "/home/antonov548/jpeg-xl-wasm/build/CMakeFiles/wjpegxl-tests.dir/src/tests/jxl_test.cpp.o"
-  "/home/antonov548/jpeg-xl-wasm/test/bind.cpp" "/home/antonov548/jpeg-xl-wasm/build/CMakeFiles/wjpegxl-tests.dir/test/bind.cpp.o"
+  "/home/antonov548/jxl/test/bind.cpp" "/home/antonov548/jxl/build/CMakeFiles/wjpegxl-tests.dir/test/bind.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "Clang")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX

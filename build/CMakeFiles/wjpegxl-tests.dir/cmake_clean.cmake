@@ -1,5 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/wjpegxl-tests.dir/src/tests/jxl_test.cpp.o"
   "CMakeFiles/wjpegxl-tests.dir/test/bind.cpp.o"
   "wjpegxl-tests"
   "wjpegxl-tests.pdb"

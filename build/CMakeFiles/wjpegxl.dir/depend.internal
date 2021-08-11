@@ -14,4 +14,4 @@ CMakeFiles/wjpegxl.dir/src/bind.cpp.o
  ../../jpeg-xl/lib/include/jxl/thread_parallel_runner.h
  ../../jpeg-xl/lib/include/jxl/thread_parallel_runner_cxx.h
  ../../jpeg-xl/lib/include/jxl/types.h
- /home/antonov548/jpeg-xl-wasm/src/bind.cpp
+ /home/antonov548/jxl/src/bind.cpp

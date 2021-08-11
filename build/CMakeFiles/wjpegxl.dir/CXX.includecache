@@ -98,7 +98,7 @@ stddef.h
 stdint.h
 -
 
-/home/antonov548/jpeg-xl-wasm/src/bind.cpp
+/home/antonov548/jxl/src/bind.cpp
 emscripten/bind.h
 -
 iostream
