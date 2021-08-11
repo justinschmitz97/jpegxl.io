@@ -1,0 +1,4 @@
+/home/antonov548/jpeg-xl-wasm/build/CMakeFiles/rebuild_cache.dir
+/home/antonov548/jpeg-xl-wasm/build/CMakeFiles/edit_cache.dir
+/home/antonov548/jpeg-xl-wasm/build/CMakeFiles/wjpegxl-tests.dir
+/home/antonov548/jpeg-xl-wasm/build/CMakeFiles/wjpegxl.dir
