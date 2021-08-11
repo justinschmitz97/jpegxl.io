@@ -20,7 +20,7 @@ set_target_properties(wjpegxl PROPERTIES LINK_FLAGS "--bind -s ALLOW_MEMORY_GROW
 
 add_executable(wjpegxl-tests 
     test/bind.cpp
-    #src/tests/jxl_test.cpp
+    src/tests/jxl_test.cpp
 )
 
 target_compile_definitions(wjpegxl-tests PUBLIC -DTEST_DATA_PATH="/home/antonov548/jpeg-xl/third_party/testdata")

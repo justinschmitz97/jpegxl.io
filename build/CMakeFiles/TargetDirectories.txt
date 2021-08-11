@@ -1,4 +1,0 @@
-/home/antonov548/jxl/build/CMakeFiles/rebuild_cache.dir
-/home/antonov548/jxl/build/CMakeFiles/edit_cache.dir
-/home/antonov548/jxl/build/CMakeFiles/wjpegxl-tests.dir
-/home/antonov548/jxl/build/CMakeFiles/wjpegxl.dir

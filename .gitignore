@@ -1,1 +1,5 @@
 /build
+/server/static/wjpegxl
+/server/static/wjpegxl.wasm
+/test/static/wjpegxl-tests
+/test/static/wjpegxl-tests.wasm
