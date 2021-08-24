@@ -447,3 +447,151 @@ TEST(EncodeTest, SingleFrameBoundedJXLCTest) {
   EXPECT_EQ(true, container.boxes[0].data_size_given);
 }
 
+TEST(EncodeTest, JXL_TRANSCODE_JPEG_TEST(JPEGReconstructionTest)) {
+  const std::string jpeg_path =
+      "imagecompression.info/flower_foveon.png.im_q85_420.jpg";
+  const jxl::PaddedBytes orig = jxl::ReadTestData(jpeg_path);
+  jxl::CodecInOut orig_io;
+  ASSERT_TRUE(
+      SetFromBytes(jxl::Span<const uint8_t>(orig), &orig_io, /*pool=*/nullptr));
+
+  JxlEncoderPtr enc = JxlEncoderMake(nullptr);
+  JxlEncoderOptions* options = JxlEncoderOptionsCreate(enc.get(), NULL);
+
+  EXPECT_EQ(JXL_ENC_SUCCESS, JxlEncoderUseContainer(enc.get(), JXL_TRUE));
+  EXPECT_EQ(JXL_ENC_SUCCESS, JxlEncoderStoreJPEGMetadata(enc.get(), JXL_TRUE));
+  EXPECT_EQ(JXL_ENC_SUCCESS,
+            JxlEncoderAddJPEGFrame(options, orig.data(), orig.size()));
+  JxlEncoderCloseInput(enc.get());
+
+  std::vector<uint8_t> compressed = std::vector<uint8_t>(64);
+  uint8_t* next_out = compressed.data();
+  size_t avail_out = compressed.size() - (next_out - compressed.data());
+  JxlEncoderStatus process_result = JXL_ENC_NEED_MORE_OUTPUT;
+  while (process_result == JXL_ENC_NEED_MORE_OUTPUT) {
+    process_result = JxlEncoderProcessOutput(enc.get(), &next_out, &avail_out);
+    if (process_result == JXL_ENC_NEED_MORE_OUTPUT) {
+      size_t offset = next_out - compressed.data();
+      compressed.resize(compressed.size() * 2);
+      next_out = compressed.data() + offset;
+      avail_out = compressed.size() - offset;
+    }
+  }
+  compressed.resize(next_out - compressed.data());
+  EXPECT_EQ(JXL_ENC_SUCCESS, process_result);
+
+  Container container = {};
+  jxl::Span<const uint8_t> encoded_span =
+      jxl::Span<const uint8_t>(compressed.data(), compressed.size());
+  EXPECT_TRUE(container.Decode(&encoded_span));
+  EXPECT_EQ(0, encoded_span.size());
+  EXPECT_EQ(0, memcmp("jbrd", container.boxes[0].type, 4));
+  EXPECT_EQ(0, memcmp("jxlc", container.boxes[1].type, 4));
+
+  jxl::CodecInOut decoded_io;
+  decoded_io.Main().jpeg_data = jxl::make_unique<jxl::jpeg::JPEGData>();
+  EXPECT_TRUE(jxl::jpeg::DecodeJPEGData(container.boxes[0].data,
+                                        decoded_io.Main().jpeg_data.get()));
+
+  jxl::DecompressParams dparams;
+  dparams.keep_dct = true;
+  EXPECT_TRUE(
+      jxl::DecodeFile(dparams, container.boxes[1].data, &decoded_io, nullptr));
+
+  std::vector<uint8_t> decoded_jpeg_bytes;
+  auto write = [&decoded_jpeg_bytes](const uint8_t* buf, size_t len) {
+    decoded_jpeg_bytes.insert(decoded_jpeg_bytes.end(), buf, buf + len);
+    return len;
+  };
+  EXPECT_TRUE(jxl::jpeg::WriteJpeg(*decoded_io.Main().jpeg_data, write));
+
+  EXPECT_EQ(decoded_jpeg_bytes.size(), orig.size());
+  EXPECT_EQ(0, memcmp(decoded_jpeg_bytes.data(), orig.data(), orig.size()));
+}
+
+TEST(EncodeTest, JXL_TRANSCODE_JPEG_TEST(JPEGFrameTest)) {
+  for (int skip_basic_info = 0; skip_basic_info < 2; skip_basic_info++) {
+    for (int skip_color_encoding = 0; skip_color_encoding < 2;
+         skip_color_encoding++) {
+      const std::string jpeg_path =
+          "imagecompression.info/flower_foveon.png.im_q85_420.jpg";
+      const jxl::PaddedBytes orig = jxl::ReadTestData(jpeg_path);
+      jxl::CodecInOut orig_io;
+      ASSERT_TRUE(SetFromBytes(jxl::Span<const uint8_t>(orig), &orig_io,
+                               /*pool=*/nullptr));
+
+      JxlEncoderPtr enc = JxlEncoderMake(nullptr);
+      JxlEncoderOptions* options = JxlEncoderOptionsCreate(enc.get(), NULL);
+
+      if (!skip_basic_info) {
+        JxlBasicInfo basic_info;
+        basic_info.exponent_bits_per_sample = 0;
+        basic_info.bits_per_sample = 8;
+        basic_info.alpha_bits = 0;
+        basic_info.alpha_exponent_bits = 0;
+        basic_info.xsize = orig_io.xsize();
+        basic_info.ysize = orig_io.ysize();
+        basic_info.uses_original_profile = true;
+        EXPECT_EQ(JXL_ENC_SUCCESS,
+                  JxlEncoderSetBasicInfo(enc.get(), &basic_info));
+      }
+      if (!skip_color_encoding) {
+        JxlColorEncoding color_encoding;
+        JxlColorEncodingSetToSRGB(&color_encoding, /*is_gray=*/false);
+        EXPECT_EQ(JXL_ENC_SUCCESS,
+                  JxlEncoderSetColorEncoding(enc.get(), &color_encoding));
+      }
+      EXPECT_EQ(JXL_ENC_SUCCESS,
+                JxlEncoderAddJPEGFrame(options, orig.data(), orig.size()));
+      JxlEncoderCloseInput(enc.get());
+
+      std::vector<uint8_t> compressed = std::vector<uint8_t>(64);
+      uint8_t* next_out = compressed.data();
+      size_t avail_out = compressed.size() - (next_out - compressed.data());
+      JxlEncoderStatus process_result = JXL_ENC_NEED_MORE_OUTPUT;
+      while (process_result == JXL_ENC_NEED_MORE_OUTPUT) {
+        process_result =
+            JxlEncoderProcessOutput(enc.get(), &next_out, &avail_out);
+        if (process_result == JXL_ENC_NEED_MORE_OUTPUT) {
+          size_t offset = next_out - compressed.data();
+          compressed.resize(compressed.size() * 2);
+          next_out = compressed.data() + offset;
+          avail_out = compressed.size() - offset;
+        }
+      }
+      compressed.resize(next_out - compressed.data());
+      EXPECT_EQ(JXL_ENC_SUCCESS, process_result);
+
+      jxl::DecompressParams dparams;
+      jxl::CodecInOut decoded_io;
+      EXPECT_TRUE(jxl::DecodeFile(
+          dparams,
+          jxl::Span<const uint8_t>(compressed.data(), compressed.size()),
+          &decoded_io, /*pool=*/nullptr));
+
+      jxl::ButteraugliParams ba;
+      EXPECT_LE(ButteraugliDistance(orig_io, decoded_io, ba,
+                                    /*distmap=*/nullptr, nullptr),
+                2.5f);
+    }
+  }
+}
+
+TEST(EncodeTest, AddJPEGAfterCloseTest) {
+  JxlEncoderPtr enc = JxlEncoderMake(nullptr);
+  EXPECT_NE(nullptr, enc.get());
+
+  JxlEncoderCloseInput(enc.get());
+
+  const std::string jpeg_path =
+      "imagecompression.info/flower_foveon.png.im_q85_420.jpg";
+  const jxl::PaddedBytes orig = jxl::ReadTestData(jpeg_path);
+  jxl::CodecInOut orig_io;
+  ASSERT_TRUE(
+      SetFromBytes(jxl::Span<const uint8_t>(orig), &orig_io, /*pool=*/nullptr));
+
+  JxlEncoderOptions* options = JxlEncoderOptionsCreate(enc.get(), NULL);
+
+  EXPECT_EQ(JXL_ENC_ERROR,
+            JxlEncoderAddJPEGFrame(options, orig.data(), orig.size()));
+}

@@ -2969,3 +2969,36 @@ TEST(DecodeTest, JXL_TRANSCODE_JPEG_TEST(JPEGReconstructTestCodestream)) {
   VerifyJPEGReconstruction(compressed, jpeg_codestream);
 }
 #endif  // JPEGXL_ENABLE_JPEG
+
+TEST(DecodeTest, JXL_TRANSCODE_JPEG_TEST(JPEGReconstructionTest)) {
+  const std::string jpeg_path =
+      "imagecompression.info/flower_foveon.png.im_q85_420.jpg";
+  const jxl::PaddedBytes orig = jxl::ReadTestData(jpeg_path);
+  jxl::CodecInOut orig_io;
+  ASSERT_TRUE(
+      jxl::jpeg::DecodeImageJPG(jxl::Span<const uint8_t>(orig), &orig_io));
+  orig_io.metadata.m.xyb_encoded = false;
+  jxl::BitWriter writer;
+  ASSERT_TRUE(WriteHeaders(&orig_io.metadata, &writer, nullptr));
+  writer.ZeroPadToByte();
+  jxl::PassesEncoderState enc_state;
+  jxl::CompressParams cparams;
+  cparams.color_transform = jxl::ColorTransform::kNone;
+  ASSERT_TRUE(jxl::EncodeFrame(cparams, jxl::FrameInfo{}, &orig_io.metadata,
+                               orig_io.Main(), &enc_state,
+                               /*pool=*/nullptr, &writer,
+                               /*aux_out=*/nullptr));
+
+  jxl::PaddedBytes jpeg_data;
+  ASSERT_TRUE(EncodeJPEGData(*orig_io.Main().jpeg_data.get(), &jpeg_data));
+  jxl::PaddedBytes container;
+  container.append(jxl::kContainerHeader,
+                   jxl::kContainerHeader + sizeof(jxl::kContainerHeader));
+  jxl::AppendBoxHeader(jxl::MakeBoxType("jbrd"), jpeg_data.size(), false,
+                       &container);
+  container.append(jpeg_data.data(), jpeg_data.data() + jpeg_data.size());
+  jxl::AppendBoxHeader(jxl::MakeBoxType("jxlc"), 0, true, &container);
+  jxl::PaddedBytes codestream = std::move(writer).TakeBytes();
+  container.append(codestream.data(), codestream.data() + codestream.size());
+  VerifyJPEGReconstruction(container, orig);
+}

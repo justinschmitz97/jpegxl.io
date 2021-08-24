@@ -161,26 +161,6 @@ void TestRoundTrip(Codec codec, const size_t xsize, const size_t ysize,
   VerifyRelativeError(ib1.color(), *ib2.color(), max_l1, max_rel);
 }
 
-#if 0
-TEST(CodecTest, TestRoundTrip) {
-  ThreadPoolInternal pool(12);
-
-  const size_t xsize = 7;
-  const size_t ysize = 4;
-
-  for (Codec codec : Values<Codec>()) {
-    for (int bits_per_sample : {8, 10, 12, 16, 32}) {
-      for (bool is_gray : {false, true}) {
-        for (bool add_alpha : {false, true}) {
-          TestRoundTrip(codec, xsize, ysize, is_gray, add_alpha,
-                        static_cast<size_t>(bits_per_sample), &pool);
-        }
-      }
-    }
-  }
-}
-#endif
-
 CodecInOut DecodeRoundtrip(const std::string& pathname, Codec expected_codec,
                            ThreadPool* pool,
                            const DecoderHints& dec_hints = DecoderHints()) {
@@ -226,120 +206,6 @@ CodecInOut DecodeRoundtrip(const std::string& pathname, Codec expected_codec,
   return io2;
 }
 
-#if 0
-TEST(CodecTest, TestMetadataSRGB) {
-  ThreadPoolInternal pool(12);
-
-  const char* paths[] = {"raw.pixls/DJI-FC6310-16bit_srgb8_v4_krita.png",
-                         "raw.pixls/Google-Pixel2XL-16bit_srgb8_v4_krita.png",
-                         "raw.pixls/HUAWEI-EVA-L09-16bit_srgb8_dt.png",
-                         "raw.pixls/Nikon-D300-12bit_srgb8_dt.png",
-                         "raw.pixls/Sony-DSC-RX1RM2-14bit_srgb8_v4_krita.png"};
-  for (const char* relative_pathname : paths) {
-    const CodecInOut io =
-        DecodeRoundtrip(relative_pathname, Codec::kPNG, &pool);
-    EXPECT_EQ(8, io.metadata.m.bit_depth.bits_per_sample);
-    EXPECT_FALSE(io.metadata.m.bit_depth.floating_point_sample);
-    EXPECT_EQ(0, io.metadata.m.bit_depth.exponent_bits_per_sample);
-
-    EXPECT_EQ(64, io.xsize());
-    EXPECT_EQ(64, io.ysize());
-    EXPECT_FALSE(io.metadata.m.HasAlpha());
-
-    const ColorEncoding& c_original = io.metadata.m.color_encoding;
-    EXPECT_FALSE(c_original.ICC().empty());
-    EXPECT_EQ(ColorSpace::kRGB, c_original.GetColorSpace());
-    EXPECT_EQ(WhitePoint::kD65, c_original.white_point);
-    EXPECT_EQ(Primaries::kSRGB, c_original.primaries);
-    EXPECT_TRUE(c_original.tf.IsSRGB());
-  }
-}
-
-TEST(CodecTest, TestMetadataLinear) {
-  ThreadPoolInternal pool(12);
-
-  const char* paths[3] = {
-      "raw.pixls/Google-Pixel2XL-16bit_acescg_g1_v4_krita.png",
-      "raw.pixls/HUAWEI-EVA-L09-16bit_709_g1_dt.png",
-      "raw.pixls/Nikon-D300-12bit_2020_g1_dt.png",
-  };
-  const WhitePoint white_points[3] = {WhitePoint::kCustom, WhitePoint::kD65,
-                                      WhitePoint::kD65};
-  const Primaries primaries[3] = {Primaries::kCustom, Primaries::kSRGB,
-                                  Primaries::k2100};
-
-  for (size_t i = 0; i < 3; ++i) {
-    const CodecInOut io = DecodeRoundtrip(paths[i], Codec::kPNG, &pool);
-    EXPECT_EQ(16, io.metadata.m.bit_depth.bits_per_sample);
-    EXPECT_FALSE(io.metadata.m.bit_depth.floating_point_sample);
-    EXPECT_EQ(0, io.metadata.m.bit_depth.exponent_bits_per_sample);
-
-    EXPECT_EQ(64, io.xsize());
-    EXPECT_EQ(64, io.ysize());
-    EXPECT_FALSE(io.metadata.m.HasAlpha());
-
-    const ColorEncoding& c_original = io.metadata.m.color_encoding;
-    EXPECT_FALSE(c_original.ICC().empty());
-    EXPECT_EQ(ColorSpace::kRGB, c_original.GetColorSpace());
-    EXPECT_EQ(white_points[i], c_original.white_point);
-    EXPECT_EQ(primaries[i], c_original.primaries);
-    EXPECT_TRUE(c_original.tf.IsLinear());
-  }
-}
-
-TEST(CodecTest, TestMetadataICC) {
-  ThreadPoolInternal pool(12);
-
-  const char* paths[] = {
-      "raw.pixls/DJI-FC6310-16bit_709_v4_krita.png",
-      "raw.pixls/Sony-DSC-RX1RM2-14bit_709_v4_krita.png",
-  };
-  for (const char* relative_pathname : paths) {
-    const CodecInOut io =
-        DecodeRoundtrip(relative_pathname, Codec::kPNG, &pool);
-    EXPECT_GE(16, io.metadata.m.bit_depth.bits_per_sample);
-    EXPECT_LE(14, io.metadata.m.bit_depth.bits_per_sample);
-
-    EXPECT_EQ(64, io.xsize());
-    EXPECT_EQ(64, io.ysize());
-    EXPECT_FALSE(io.metadata.m.HasAlpha());
-
-    const ColorEncoding& c_original = io.metadata.m.color_encoding;
-    EXPECT_FALSE(c_original.ICC().empty());
-    EXPECT_EQ(RenderingIntent::kPerceptual, c_original.rendering_intent);
-    EXPECT_EQ(ColorSpace::kRGB, c_original.GetColorSpace());
-    EXPECT_EQ(WhitePoint::kD65, c_original.white_point);
-    EXPECT_EQ(Primaries::kSRGB, c_original.primaries);
-    EXPECT_EQ(TransferFunction::k709, c_original.tf.GetTransferFunction());
-  }
-}
-
-TEST(CodecTest, TestPNGSuite) {
-  ThreadPoolInternal pool(12);
-
-  // Ensure we can load PNG with text, japanese UTF-8, compressed text.
-  (void)DecodeRoundtrip("pngsuite/ct1n0g04.png", Codec::kPNG, &pool);
-  (void)DecodeRoundtrip("pngsuite/ctjn0g04.png", Codec::kPNG, &pool);
-  (void)DecodeRoundtrip("pngsuite/ctzn0g04.png", Codec::kPNG, &pool);
-
-  // Extract gAMA
-  const CodecInOut b1 =
-      DecodeRoundtrip("pngsuite/g10n3p04.png", Codec::kPNG, &pool);
-  EXPECT_TRUE(b1.metadata.color_encoding.tf.IsLinear());
-
-  // Extract cHRM
-  const CodecInOut b_p =
-      DecodeRoundtrip("pngsuite/ccwn2c08.png", Codec::kPNG, &pool);
-  EXPECT_EQ(Primaries::kSRGB, b_p.metadata.color_encoding.primaries);
-  EXPECT_EQ(WhitePoint::kD65, b_p.metadata.color_encoding.white_point);
-
-  // Extract EXIF from (new-style) dedicated chunk
-  const CodecInOut b_exif =
-      DecodeRoundtrip("pngsuite/exif2c08.png", Codec::kPNG, &pool);
-  EXPECT_EQ(978, b_exif.blobs.exif.size());
-}
-#endif
-
 void VerifyWideGamutMetadata(const std::string& relative_pathname,
                              const Primaries primaries, ThreadPool* pool) {
   const CodecInOut io = DecodeRoundtrip(relative_pathname, Codec::kPNG, pool);
@@ -354,18 +220,6 @@ void VerifyWideGamutMetadata(const std::string& relative_pathname,
   EXPECT_EQ(ColorSpace::kRGB, c_original.GetColorSpace());
   EXPECT_EQ(WhitePoint::kD65, c_original.white_point);
   EXPECT_EQ(primaries, c_original.primaries);
-}
-
-TEST(CodecTest, TestWideGamut) {
-  ThreadPoolInternal pool(12);
-  // VerifyWideGamutMetadata("wide-gamut-tests/P3-sRGB-color-bars.png",
-  //                        Primaries::kP3, &pool);
-  VerifyWideGamutMetadata("wide-gamut-tests/P3-sRGB-color-ring.png",
-                          Primaries::kP3, &pool);
-  // VerifyWideGamutMetadata("wide-gamut-tests/R2020-sRGB-color-bars.png",
-  //                        Primaries::k2100, &pool);
-  // VerifyWideGamutMetadata("wide-gamut-tests/R2020-sRGB-color-ring.png",
-  //                        Primaries::k2100, &pool);
 }
 
 TEST(CodecTest, TestPNM) { TestCodecPNM(); }

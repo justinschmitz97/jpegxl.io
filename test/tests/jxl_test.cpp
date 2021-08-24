@@ -411,5 +411,226 @@ TEST(JxlTest, RoundtripLossless16AlphaNotMisdetectedAs8Bit) {
   EXPECT_TRUE(SamePixels(*io.Main().alpha(), *io2.Main().alpha()));
 }
 
+TEST(JxlTest, RoundtripUnalignedD2) {
+  ThreadPool* pool = nullptr;
+  const PaddedBytes orig =
+      ReadTestData("wesaturate/500px/u76c0g_bliznaca_srgb8.png");
+  CodecInOut io;
+  ASSERT_TRUE(SetFromBytes(Span<const uint8_t>(orig), &io, pool));
+  io.ShrinkTo(io.xsize() / 12, io.ysize() / 7);
+
+  CompressParams cparams;
+  cparams.butteraugli_distance = 2.0;
+  DecompressParams dparams;
+
+  CodecInOut io2;
+  EXPECT_LE(Roundtrip(&io, cparams, dparams, pool, &io2), 700);
+  EXPECT_LE(ButteraugliDistance(io, io2, cparams.ba_params,
+                                /*distmap=*/nullptr, pool),
+            3.2);
+}
+
+namespace {
+
+jxl::Status DecompressJxlToJPEGForTest(
+    const jpegxl::tools::JpegXlContainer& container, jxl::ThreadPool* pool,
+    jxl::PaddedBytes* output) {
+  output->clear();
+  jxl::Span<const uint8_t> compressed(container.codestream,
+                                      container.codestream_size);
+
+  JXL_RETURN_IF_ERROR(compressed.size() >= 2);
+
+  // JXL case
+  // Decode to DCT when possible and generate a JPG file.
+  jxl::CodecInOut io;
+  jxl::DecompressParams params;
+  params.keep_dct = true;
+  if (!jpegxl::tools::DecodeJpegXlToJpeg(params, container, &io, pool)) {
+    return JXL_FAILURE("Failed to decode JXL to JPEG");
+  }
+  io.jpeg_quality = 95;
+  if (!EncodeImageJPG(&io, jxl::JpegEncoder::kLibJpeg, io.jpeg_quality,
+                      jxl::YCbCrChromaSubsampling(), pool, output,
+                      jxl::DecodeTarget::kQuantizedCoeffs)) {
+    return JXL_FAILURE("Failed to generate JPEG");
+  }
+  return true;
+}
+
+}  // namespace
+
+size_t RoundtripJpeg(const PaddedBytes& jpeg_in, ThreadPool* pool) {
+  CodecInOut io;
+  io.dec_target = jxl::DecodeTarget::kQuantizedCoeffs;
+  EXPECT_TRUE(SetFromBytes(Span<const uint8_t>(jpeg_in), &io, pool));
+  CompressParams cparams;
+  cparams.color_transform = jxl::ColorTransform::kYCbCr;
+
+  PassesEncoderState passes_enc_state;
+  PaddedBytes compressed, codestream;
+
+  EXPECT_TRUE(EncodeFile(cparams, &io, &passes_enc_state, &codestream,
+                         /*aux_out=*/nullptr, pool));
+  jpegxl::tools::JpegXlContainer enc_container;
+  enc_container.codestream = codestream.data();
+  enc_container.codestream_size = codestream.size();
+  jpeg::JPEGData data_in = *io.Main().jpeg_data;
+  jxl::PaddedBytes jpeg_data;
+  EXPECT_TRUE(EncodeJPEGData(data_in, &jpeg_data));
+  enc_container.jpeg_reconstruction = jpeg_data.data();
+  enc_container.jpeg_reconstruction_size = jpeg_data.size();
+  EXPECT_TRUE(EncodeJpegXlContainerOneShot(enc_container, &compressed));
+
+  jpegxl::tools::JpegXlContainer container;
+  EXPECT_TRUE(DecodeJpegXlContainerOneShot(compressed.data(), compressed.size(),
+                                           &container));
+  PaddedBytes out;
+  EXPECT_TRUE(DecompressJxlToJPEGForTest(container, pool, &out));
+  EXPECT_EQ(out.size(), jpeg_in.size());
+  size_t failures = 0;
+  for (size_t i = 0; i < std::min(out.size(), jpeg_in.size()); i++) {
+    if (out[i] != jpeg_in[i]) {
+      EXPECT_EQ(out[i], jpeg_in[i])
+          << "byte mismatch " << i << " " << out[i] << " != " << jpeg_in[i];
+      if (++failures > 4) {
+        return compressed.size();
+      }
+    }
+  }
+  return compressed.size();
+}
+
+TEST(JxlTest, JXL_TRANSCODE_JPEG_TEST(RoundtripJpegRecompression444)) {
+  ThreadPoolInternal pool(8);
+  const PaddedBytes orig =
+      ReadTestData("imagecompression.info/flower_foveon.png.im_q85_444.jpg");
+  // JPEG size is 326'916 bytes.
+  EXPECT_LE(RoundtripJpeg(orig, &pool), 256000);
+}
+
+TEST(JxlTest, JXL_TRANSCODE_JPEG_TEST(RoundtripJpegRecompressionToPixels)) {
+  ThreadPoolInternal pool(8);
+  const PaddedBytes orig =
+      ReadTestData("imagecompression.info/flower_foveon.png.im_q85_444.jpg");
+  CodecInOut io;
+  io.dec_target = jxl::DecodeTarget::kQuantizedCoeffs;
+  ASSERT_TRUE(SetFromBytes(Span<const uint8_t>(orig), &io, &pool));
+
+  CodecInOut io2;
+  ASSERT_TRUE(SetFromBytes(Span<const uint8_t>(orig), &io2, &pool));
+
+  CompressParams cparams;
+  cparams.color_transform = jxl::ColorTransform::kYCbCr;
+
+  DecompressParams dparams;
+
+  CodecInOut io3;
+  Roundtrip(&io, cparams, dparams, &pool, &io3);
+
+  // TODO(eustas): investigate, why SJPEG and JpegRecompression pixels are
+  // different.
+  EXPECT_GE(1.8, ButteraugliDistance(io2, io3, cparams.ba_params,
+                                     /*distmap=*/nullptr, &pool));
+}
+
+TEST(JxlTest, JXL_TRANSCODE_JPEG_TEST(RoundtripJpegRecompressionGray)) {
+  ThreadPoolInternal pool(8);
+  const PaddedBytes orig =
+      ReadTestData("imagecompression.info/flower_foveon.png.im_q85_gray.jpg");
+  // JPEG size is 167'025 bytes.
+  EXPECT_LE(RoundtripJpeg(orig, &pool), 140000);
+}
+
+TEST(JxlTest, JXL_TRANSCODE_JPEG_TEST(RoundtripJpegRecompression420)) {
+  ThreadPoolInternal pool(8);
+  const PaddedBytes orig =
+      ReadTestData("imagecompression.info/flower_foveon.png.im_q85_420.jpg");
+  // JPEG size is 226'018 bytes.
+  EXPECT_LE(RoundtripJpeg(orig, &pool), 181050);
+}
+
+TEST(JxlTest,
+     JXL_TRANSCODE_JPEG_TEST(RoundtripJpegRecompression_luma_subsample)) {
+  ThreadPoolInternal pool(8);
+  const PaddedBytes orig = ReadTestData(
+      "imagecompression.info/flower_foveon.png.im_q85_luma_subsample.jpg");
+  // JPEG size is 216'069 bytes.
+  EXPECT_LE(RoundtripJpeg(orig, &pool), 181000);
+}
+
+TEST(JxlTest, JXL_TRANSCODE_JPEG_TEST(RoundtripJpegRecompression444_12)) {
+  // 444 JPEG that has an interesting sampling-factor (1x2, 1x2, 1x2).
+  ThreadPoolInternal pool(8);
+  const PaddedBytes orig = ReadTestData(
+      "imagecompression.info/flower_foveon.png.im_q85_444_1x2.jpg");
+  // JPEG size is 329'942 bytes.
+  EXPECT_LE(RoundtripJpeg(orig, &pool), 256000);
+}
+
+TEST(JxlTest, JXL_TRANSCODE_JPEG_TEST(RoundtripJpegRecompression422)) {
+  ThreadPoolInternal pool(8);
+  const PaddedBytes orig =
+      ReadTestData("imagecompression.info/flower_foveon.png.im_q85_422.jpg");
+  // JPEG size is 265'590 bytes.
+  EXPECT_LE(RoundtripJpeg(orig, &pool), 209000);
+}
+
+TEST(JxlTest, JXL_TRANSCODE_JPEG_TEST(RoundtripJpegRecompression440)) {
+  ThreadPoolInternal pool(8);
+  const PaddedBytes orig =
+      ReadTestData("imagecompression.info/flower_foveon.png.im_q85_440.jpg");
+  // JPEG size is 262'249 bytes.
+  EXPECT_LE(RoundtripJpeg(orig, &pool), 209000);
+}
+
+TEST(JxlTest, JXL_TRANSCODE_JPEG_TEST(RoundtripJpegRecompression_asymmetric)) {
+  // 2x vertical downsample of one chroma channel, 2x horizontal downsample of
+  // the other.
+  ThreadPoolInternal pool(8);
+  const PaddedBytes orig = ReadTestData(
+      "imagecompression.info/flower_foveon.png.im_q85_asymmetric.jpg");
+  // JPEG size is 262'249 bytes.
+  EXPECT_LE(RoundtripJpeg(orig, &pool), 209000);
+}
+
+TEST(JxlTest, JXL_TRANSCODE_JPEG_TEST(RoundtripJpegRecompression420Progr)) {
+  ThreadPoolInternal pool(8);
+  const PaddedBytes orig = ReadTestData(
+      "imagecompression.info/flower_foveon.png.im_q85_420_progr.jpg");
+  EXPECT_LE(RoundtripJpeg(orig, &pool), 181000);
+}
+
+TEST(JxlTest,
+     JXL_TRANSCODE_JPEG_TEST(RoundtripJpegRecompressionToPixels420Mul16)) {
+  ThreadPoolInternal pool(8);
+  const PaddedBytes orig =
+      ReadTestData("imagecompression.info/flower_foveon_cropped.jpg");
+
+  for (auto c  : orig)
+  {
+    std::cout << (int)c;
+  }
+  std::cout << std::endl;
+
+  CodecInOut io;
+  io.dec_target = jxl::DecodeTarget::kQuantizedCoeffs;
+  ASSERT_TRUE(SetFromBytes(Span<const uint8_t>(orig), &io, &pool));
+
+  CodecInOut io2;
+  ASSERT_TRUE(SetFromBytes(Span<const uint8_t>(orig), &io2, &pool));
+
+  CompressParams cparams;
+  cparams.color_transform = jxl::ColorTransform::kYCbCr;
+
+  DecompressParams dparams;
+
+  CodecInOut io3;
+  Roundtrip(&io, cparams, dparams, &pool, &io3);
+
+  EXPECT_GE(1.5, ButteraugliDistance(io2, io3, cparams.ba_params,
+                                     /*distmap=*/nullptr, &pool));
+}
+
 }  // namespace
 }  // namespace jxl
