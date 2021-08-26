@@ -14,21 +14,18 @@
 
 using namespace emscripten;
 
-val jxlCompress(const uintptr_t i_data, const size_t i_size)
+val jxlCompress(const uintptr_t data, const size_t size)
 {
-  const auto* data = reinterpret_cast<const uint8_t*>(i_data);
 
   jxl::ThreadPoolInternal pool;
-  jxl::PaddedBytes compressed;
   jxl::CodecInOut io;
-  jxl::Codec input_codec;
-  if (!jxl::SetFromBytes(jxl::Span<const uint8_t>(data, i_size), &io, &pool, &input_codec))
+  const auto encoder = create_encoder(data, size, &io, &pool);
+
+  if (!encoder)
     return val::null();
 
-  const auto encoder = create_encoder();
-
+  jxl::PaddedBytes compressed;
   jxl::CompressParams params;
-  jxl::PassesEncoderState passes_encoder_state;
   if (!encoder->encode(params, &io, &compressed, &pool))
     return val::null();
 

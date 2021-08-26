@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     JXL().then(function(JXL){
         JXL = JXL;
         
-        let url = "image/tmshre_riaphotographs_alpha.png"
+        let url = "image/test-avif.avif"
 
         let xhr = new XMLHttpRequest();
         xhr.open("GET", url, true);
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     };
                     }());
 
-                saveByteArray([result], 'test-png-alpha.jxl');
+                saveByteArray([result], 'test-avif.jxl');
 
             }
 
