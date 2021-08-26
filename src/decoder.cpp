@@ -27,10 +27,8 @@ decode_data decode_avif(const uint8_t* avif_image, const size_t size, uint32_t& 
             height = rgb.height;
             avif_size = rgb.rowBytes * rgb.height;
 
-            pixels = std::make_unique<uint8_t[]>(avif_size);
-
-            for (uint32_t i = 0; i < avif_size; ++i)
-                pixels[i] = rgb.pixels[i];
+            pixels.reset(rgb.pixels);
+            rgb.pixels = nullptr;
         }
         avifRGBImageFreePixels(&rgb);
     }
