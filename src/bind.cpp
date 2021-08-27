@@ -38,17 +38,6 @@ val jxlCompress(const uintptr_t data, const size_t size, const CompressOptions& 
 EMSCRIPTEN_BINDINGS(JPEGXL)
 {
     function("jxlCompress", &jxlCompress);
-
-    enum_<jxl::SpeedTier>("SpeedTier")
-        .value("Tortoise", jxl::SpeedTier::kTortoise)
-        .value("Kitten", jxl::SpeedTier::kKitten)
-        .value("Squirrel", jxl::SpeedTier::kSquirrel)
-        .value("Wombat", jxl::SpeedTier::kWombat)
-        .value("Hare", jxl::SpeedTier::kHare)
-        .value("Cheetah", jxl::SpeedTier::kCheetah)
-        .value("Falcon", jxl::SpeedTier::kFalcon)
-        .value("Thunder", jxl::SpeedTier::kThunder)
-        .value("Lightning", jxl::SpeedTier::kLightning);
     
     enum_<jxl::ColorTransform>("ColorTransform")
         .value("XYB", jxl::ColorTransform::kXYB)
