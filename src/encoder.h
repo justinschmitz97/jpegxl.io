@@ -39,10 +39,10 @@ public:
                         jxl::ThreadPool* pool) const final;
 };
 
-class JXLAvifExternalEncoder final : public IEncoder
+class JXLExternalEncoder final : public IEncoder
 {
 public:
-    JXLAvifExternalEncoder(decode_data data, uint32_t size, uint32_t width, uint32_t height);
+    JXLExternalEncoder(decode_data data, uint32_t size, uint32_t width, uint32_t height);
 
     virtual bool encode(const jxl::CompressParams& params, 
                         jxl::CodecInOut* io, 

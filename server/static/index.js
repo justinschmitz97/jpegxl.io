@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     JXL().then(function(JXL){
         JXL = JXL;
         
-        let url = "image/test-avif.avif"
+        let url = "image/test-webp.webp"
 
         let xhr = new XMLHttpRequest();
         xhr.open("GET", url, true);
@@ -24,7 +24,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     buffer_array[i] = byteArray[i];
                 }
                   
-                let result = JXL.jxlCompress(buffer, buffer_size);
+                let options = JXL.createOptions();
+                console.log(options)
+
+                let result = JXL.jxlCompress(buffer, buffer_size, options);
                 console.log(result);
                 
                 var saveByteArray = (function () {
@@ -41,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     };
                     }());
 
-                saveByteArray([result], 'test-avif.jxl');
+                saveByteArray([result], 'test-webp.jxl');
 
             }
 
