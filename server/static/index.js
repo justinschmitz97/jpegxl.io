@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     JXL().then(function(JXL){
         JXL = JXL;
         
-        let url = "image/test-webp.webp"
+        let url = "image/flower_foveon.png.im_q85_420_progr.jpg"
 
         let xhr = new XMLHttpRequest();
         xhr.open("GET", url, true);
@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var arrayBuffer = xhr.response; 
             if (arrayBuffer) {
                 var byteArray = new Uint8Array(arrayBuffer);
+                console.log(byteArray);
 
                 let buffer_size = byteArray.length
                 let buffer = JXL._malloc(buffer_size);
@@ -44,51 +45,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     };
                     }());
 
-                saveByteArray([result], 'test-webp.jxl');
-
+                saveByteArray([result], 'test-jpeg.jxl');
             }
-
         };
 
         xhr.send();
-
-        // try {
-        //     xhr.send();
-        //     if (xhr.status !== 200) {
-        //         console.log(xhr.response);
-        //         console.log(`Error ${xhr.status}: ${xhr.statusText}`);
-        //     } else {
-        //         console.log("Okey");
-
-        //         var arrayBuffer = xhr.response; // Note: not oReq.responseText
-        //         if (arrayBuffer) {
-        //             var byteArray = new Uint8Array(arrayBuffer);
-        //             let st = byteArray.join('');
-        //             console.log(st);
-        //         }
-
-        //         // let buffer_size = xhr.response.length;
-        //         // let buffer = JXL._malloc(buffer_size);
-        
-        //         // // data for process should be filled
-        //         // let buffer_array = new Uint8ClampedArray(JXL.HEAPU8.buffer, buffer, buffer_size);
-
-        //         // for (let i = 0; i < buffer_size; i++) {
-        //         //     buffer_array[i] = xhr.response[i].charCodeAt(0);
-        //         // }
-
-        //         // console.log(buffer_array);
-                
-        //         // let result = JXL.jxlCompress(buffer, buffer_size);
-
-        //         // let buffer_r_array = new Uint8ClampedArray(JXL.HEAPU8.buffer, result.data, result.size);
-        //         // console.log("Status: ", result.status);
-                
-        //     }
-        // } catch(err) {
-        //     console.log("Bad request. Error: ", err);
-        // }
-
-        //JXL.jxlCompress();
     })
 });

@@ -11,6 +11,8 @@
 #include "encoder.h"
 #include "params.h"
 
+#include <iostream>
+
 using namespace emscripten;
 
 val jxlCompress(const uintptr_t data, const size_t size, const CompressOptions& options)
@@ -35,6 +37,11 @@ val jxlCompress(const uintptr_t data, const size_t size, const CompressOptions& 
     return Uint8ClampedArray.new_(typed_memory_view(compressed.size(), compressed.data()));
 }
 
+void test()
+{
+    std::cout << "Hello from C++" << std::endl;
+}
+
 EMSCRIPTEN_BINDINGS(JPEGXL)
 {
     function("jxlCompress", &jxlCompress);
@@ -55,4 +62,5 @@ EMSCRIPTEN_BINDINGS(JPEGXL)
         .field("colortransform", &CompressOptions::colortransform);
 
     function("createOptions", &create_options);
+    function("test", &test);
 }
