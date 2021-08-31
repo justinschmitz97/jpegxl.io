@@ -9,11 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
         xhr.responseType = "arraybuffer";
 
         xhr.onload = function (e) {
-            console.log("loaded");
             var arrayBuffer = xhr.response; 
             if (arrayBuffer) {
                 var byteArray = new Uint8Array(arrayBuffer);
-                console.log(byteArray);
 
                 let buffer_size = byteArray.length
                 let buffer = JXL._malloc(buffer_size);
@@ -26,10 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                   
                 let options = JXL.createOptions();
-                console.log(options)
 
                 let result = JXL.jxlCompress(buffer, buffer_size, options);
-                console.log(result);
                 
                 var saveByteArray = (function () {
                     var a = document.createElement("a");

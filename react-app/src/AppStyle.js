@@ -32,8 +32,10 @@ export const BoxesContainerStyle = {
 
 export const OptionsStyle = {
     width: "20vw",
-    height: "36vh",
+    height: "42vh",
     backgroundColor: "rgba(255, 255, 255, 0.2)",
     borderRadius: "30px",
     margin: "calc(70px + 2.5vh) 0 0 0",
+    display: "flex",
+    flexDirection: "column",
 };

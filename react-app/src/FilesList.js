@@ -43,8 +43,7 @@ export default function FilesList(props) {
                 };
             }());
             
-            console.log(file.buffer);
-            saveByteArray([file.buffer], file.name.split('.').slice(0, -1).join('.') + '.jxl');
+            saveByteArray([file.converted], file.name.split('.').slice(0, -1).join('.') + '.jxl');
         }
     };
 
@@ -75,15 +74,21 @@ export default function FilesList(props) {
 
     const [files, setFiles] = useState([]);
 
+    useEffect( () => {
+        for (let i = 0; i < files.length; i++){
+            if (files[i].converted === null){
+                files[i].converted = props.convertFileToJXL(files[i].buffer, i);
+            }
+        }
+    }, [files]);
+
     const addFileToList = (name, buffer) => {
-        setFiles( prevState => {
+        setFiles( (prevState) => {
             let arr = [...prevState];
-            let converterd = props.convertFileToJXL(buffer, files.length);
-            console.log(converterd);
-            arr.push({name: name, buffer: converterd, isConverted: true});
-            console.log(arr[arr.length - 1].buffer);
+            console.log("add to list");
+            arr.push({name: name, buffer: buffer, converted: null, isConverted: true});
             return arr;
-        }); 
+        });
     };
 
     useEffect(() => {
