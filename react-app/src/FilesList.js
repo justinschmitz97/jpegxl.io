@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react'
 
 import { Scrollbars } from "react-custom-scrollbars";
+import JSZip from 'jszip'
 
 const BoxContainerStyle = {
     width: "20vw",
     height: "36vh",
-    margin: "calc(70px + 2.5vh) 0 0 0",
+    margin: "calc(2.5vh) 0 0 0",
     overflow: "hidden",
 };
 
@@ -27,6 +28,10 @@ const CustomScrollbars = (props) => (
 
 export default function FilesList(props) {
 
+    const getJxlFileName = (fileName) => {
+        return fileName.split('.').slice(0, -1).join('.') + '.jxl';
+    }
+
     const downloadFile = (file) => {
         if (file.isConverted) {
             var saveByteArray = (function () {
@@ -43,7 +48,7 @@ export default function FilesList(props) {
                 };
             }());
             
-            saveByteArray([file.converted], file.name.split('.').slice(0, -1).join('.') + '.jxl');
+            saveByteArray([file.converted], getJxlFileName(file.name));
         }
     };
 
@@ -85,9 +90,33 @@ export default function FilesList(props) {
     const addFileToList = (name, buffer) => {
         setFiles( (prevState) => {
             let arr = [...prevState];
-            console.log("add to list");
             arr.push({name: name, buffer: buffer, converted: null, isConverted: true});
             return arr;
+        });
+    };
+
+    const downloadZip = () => {
+        var zip = new JSZip();
+
+        for (let i = 0; i < files.length; i++) {
+            zip.file(getJxlFileName(files[i].name), new Blob([files[i].converted], {type: "octet/stream"}), {binary: true});
+        }
+
+        zip.generateAsync({type:"blob"}).then(function(content) {
+            var saveByteArray = (function () {
+                var a = document.createElement("a");
+                document.body.appendChild(a);
+                a.style = "display: none";
+                return function (blob, name) {
+                    let url = window.URL.createObjectURL(blob);
+                    a.href = url;
+                    a.download = name;
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                };
+            }());
+            
+            saveByteArray(content, "images.zip");
         });
     };
 
@@ -96,10 +125,14 @@ export default function FilesList(props) {
     });
 
     return (
-        <div style={BoxContainerStyle}>
-            <CustomScrollbars>
-                { files.map((e, index) => {return createItem(e, index)}) }
-            </CustomScrollbars>
-        </div>  
+        <div>
+            <button onClick={downloadZip} className="btn" style= {{width:"100%", fontSize: 18, cursor: "pointer",
+                visibility: files.length === 0 ? 'hidden' : 'visible', color: "white", border: "none", outline: "none", }} ><i className="fa fa-download"></i> Download zip</button>
+            <div style={BoxContainerStyle}>
+                <CustomScrollbars>
+                    { files.map((e, index) => {return createItem(e, index)}) }
+                </CustomScrollbars>
+            </div>  
+        </div>
     );
 }

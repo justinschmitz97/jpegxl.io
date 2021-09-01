@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "jszip": "^3.7.1",
     "path": "^0.12.7",
     "react": "^17.0.2",
     "react-custom-scrollbars": "^4.2.1",
