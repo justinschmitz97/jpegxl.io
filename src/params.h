@@ -12,7 +12,7 @@ struct CompressOptions
     bool progressive = false;
     size_t override_bitdepth = 0; 
     size_t resampling = 1; 
-    std::string effort;
+    int effort;
     jxl::ColorTransform colortransform = jxl::ColorTransform::kXYB;
 };
 

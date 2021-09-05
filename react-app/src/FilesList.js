@@ -89,9 +89,19 @@ export default function FilesList(props) {
 
     const addFileToList = (name, buffer) => {
         setFiles( (prevState) => {
-            let arr = [...prevState];
-            arr.push({name: name, buffer: buffer, converted: null, isConverted: true});
-            return arr;
+            let index = prevState.findIndex((e) => {
+                if (e.name === name)
+                    return true;
+                return false;
+            });
+            let result = [...prevState];
+            if (index !== -1) {
+                result[index].converted = null;
+                result[index].buffer = buffer;
+            } else {
+                result.push({name: name, buffer: buffer, converted: null, isConverted: true});
+            }
+            return result;
         });
     };
 
@@ -99,7 +109,7 @@ export default function FilesList(props) {
         var zip = new JSZip();
 
         for (let i = 0; i < files.length; i++) {
-            zip.file(getJxlFileName(files[i].name), new Blob([files[i].converted], {type: "octet/stream"}), {binary: true});
+            zip.file(files[i].name + '.jxl', new Blob([files[i].converted], {type: "octet/stream"}), {binary: true});
         }
 
         zip.generateAsync({type:"blob"}).then(function(content) {

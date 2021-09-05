@@ -47,7 +47,7 @@ export default function App() {
 
     const [progressive, setProgressive] = useState(false);
     const [quality, setQuality] = useState(0);
-    const [effort, setEffort] = useState('squirrel');
+    const [effort, setEffort] = useState(1);
     const [epf, setEpf] = useState('1');
     const [resampling, setResampling] = useState('1');
     const [bitdepth, setBitdepth] = useState(0);
@@ -91,21 +91,9 @@ export default function App() {
                                 <label style={{ margin: "0 10 0 30", fontSize: "1.2rem" }} htmlFor="quality">Quality</label>
                                 <input value={quality} onChange={(e) => {setQuality(e.target.value)}} style={{ padding: "10 0 0 0", width: 150 }} type="range" className="custom-range" min="0" max="100" step="1" id="quality"/>
                             </div>
-                            <div style={{ textAlign: "left", margin: "10 0 0 30" }}>
-                                <select value={effort} onChange={(e) => {setEffort(e.target.value)}} id="effort" style={{ margin: "0 10 0 0", fontSize: "1.2rem" }} className="form-select form-select-sm" aria-label=".form-select-sm example">
-                                    <option value="squirrel">squirrel</option>
-                                    <option value="lightning">lightning</option>
-                                    <option value="thunder">thunder</option>
-                                    <option value="falcon">falcon</option>
-                                    <option value="cheetah">cheetah</option>
-                                    <option value="hare">hare</option>
-                                    <option value="fast">fast</option>
-                                    <option value="kitten">kitten</option>
-                                    <option value="guetzli">guetzli</option>
-                                </select>
-                                <label style={{ fontSize: "1.2rem"}} className="form-check-label" htmlFor="effort">
-                                    Effort
-                                </label>
+                            <div style={{ textAlign: "left", margin: "10 0 0 0" }}>
+                                <label style={{ margin: "0 10 0 30", fontSize: "1.2rem" }} htmlFor="effort">Effort</label>
+                                <input value={effort} onChange={(e) => {setEffort(e.target.value)}} style={{ padding: "10 0 0 0", width: 150 }} type="range" className="custom-range" min="1" max="9" step="1" id="effort"/>
                             </div>
                             <div style={{ textAlign: "left", margin: "10 0 0 30" }}>
                                 <select value={epf} onChange={(e) => {setEpf(e.target.value)}} id="epf" style={{ margin: "0 10 0 0", fontSize: "1.2rem" }} className="form-select form-select-sm" aria-label=".form-select-sm example">

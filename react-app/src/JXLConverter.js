@@ -27,7 +27,7 @@ export default function JXLConverter(props) {
         options.resampling = +props.options.resampling;
         options.epf = +props.options.epf;
         options.quality = +props.options.quality;
-        options.effort = props.options.effort;
+        options.effort = +props.options.effort;
 
         let colortrnf = +props.options.colortransform;
         if (colortrnf === 0) {
@@ -41,8 +41,6 @@ export default function JXLConverter(props) {
         }
 
         console.log(options);
-        console.log(props.options);
-
         let result = jxlModule.jxlCompress(buffer, buffer_size, options);
         return result;
     };

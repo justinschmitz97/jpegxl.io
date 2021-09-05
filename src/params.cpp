@@ -1,16 +1,32 @@
 #include "params.h"
 
-//quality
-
 bool parse_options(const CompressOptions& options, jxl::CompressParams& params, jxl::CodecInOut& io)
 {
     params.colorspace = options.colorspace;
     params.color_transform = options.colortransform;
     params.resampling = options.resampling;
 
-    const auto valid_speed_tier = jxl::ParseSpeedTier(options.effort, &params.speed_tier);
-    if (!valid_speed_tier && !options.effort.empty())
+    if (options.quality < 7 || options.quality == 100) 
+    {
+        if (options.quality < 100) 
+            params.modular_mode = true;
+        params.quality_pair.first = params.quality_pair.second =
+            std::min(35 + (options.quality - 7) * 3.0f, 100.0f);
+    }
+
+    if (params.modular_mode) 
+    {
+        if (params.quality_pair.first != 100 || params.quality_pair.second != 100) 
+            params.color_transform = jxl::ColorTransform::kXYB;
+        else
+            params.color_transform = jxl::ColorTransform::kNone;
+    }
+
+    if (options.effort < 1 || options.effort > 9)
         return false;
+
+    const auto speed_tier_number = 10 - options.effort;
+    params.speed_tier = jxl::SpeedTier(speed_tier_number);
 
     if (options.progressive)
     {

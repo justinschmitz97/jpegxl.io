@@ -81,12 +81,12 @@ export default function FileDropArea(props) {
     }
 
     const filesChoosed = (e) => {
-        debugger;
         for (let i = 0; i < e.target.files.length; i++)
         {
             const file = e.target.files[i]; 
             loadFile(file);
         }
+        e.target.value = "";
     };
 
     const loadFile = (file) => {
