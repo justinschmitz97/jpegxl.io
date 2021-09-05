@@ -14,14 +14,6 @@ bool parse_options(const CompressOptions& options, jxl::CompressParams& params, 
             std::min(35 + (options.quality - 7) * 3.0f, 100.0f);
     }
 
-    if (params.modular_mode) 
-    {
-        if (params.quality_pair.first != 100 || params.quality_pair.second != 100) 
-            params.color_transform = jxl::ColorTransform::kXYB;
-        else
-            params.color_transform = jxl::ColorTransform::kNone;
-    }
-
     if (options.effort < 1 || options.effort > 9)
         return false;
 
