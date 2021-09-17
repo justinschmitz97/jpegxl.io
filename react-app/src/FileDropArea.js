@@ -100,7 +100,7 @@ export default function FileDropArea(props) {
 
     return (
         <div style={DropAreaBackgroundStyle} >
-            <a role="button" style={DropAreaStyle} onClick={openFilesChoose} onDrop={filesDroped} onDragOver={preventDefaultDrop} onDragEnter={preventDefaultDrop} href="#"> 
+            <a role="button" style={DropAreaStyle} onClick={openFilesChoose} onDrop={filesDroped} onDragOver={preventDefaultDrop} onDragEnter={preventDefaultDrop} href=""> 
                 <div style={ArrowButtonStyle} >
                     <i className='fas fa-arrow-up' style={ArrowIconStyle} ></i>
                 </div>

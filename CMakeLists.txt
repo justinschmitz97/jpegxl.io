@@ -18,4 +18,4 @@ target_include_directories(wjpegxl PUBLIC ${JPEGXL_PATH} "../jpeg-xl/lib" "/home
 target_link_directories(wjpegxl PRIVATE libs/ /home/antonov548/zlib/build/ /home/antonov548/jpeg-9c/.libs/ /home/antonov548/giflib-5.1.9/)
 target_link_libraries(wjpegxl jxl jxl_threads hwy skcms jxl_extras-static lodepng jpeg sjpeg z gif avif yuv gav1 webp)
 target_compile_definitions(wjpegxl PUBLIC -DJPEGXL_ENABLE_JPEG=1 -DJPEGXL_ENABLE_SJPEG=1 -DJPEGXL_ENABLE_GIF=1)
-set_target_properties(wjpegxl PROPERTIES LINK_FLAGS "--bind -s ALLOW_MEMORY_GROWTH=1 -s WASM=1 -s EXIT_RUNTIME=0 -s INVOKE_RUN=0 -s MODULARIZE=1 -s FETCH=1 -s EXPORT_NAME=JXL -flto -O3 -ASSERTION=1 -g")
+set_target_properties(wjpegxl PROPERTIES LINK_FLAGS "--bind -s ALLOW_MEMORY_GROWTH=1 -s WASM=1 -s EXIT_RUNTIME=0 -s INVOKE_RUN=0 -s MODULARIZE=1 -s EXPORT_NAME=JXL -flto -O3")

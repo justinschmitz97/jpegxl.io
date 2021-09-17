@@ -46,6 +46,7 @@ export default function JXLConverter(props) {
     };
 
     useEffect(() => {
+        console.log("!!!!!!!!!!!!" + wjpegxlWASM);
         const jxlPromise = wjpegxl({
             locateFile: () => {
                 return wjpegxlWASM;

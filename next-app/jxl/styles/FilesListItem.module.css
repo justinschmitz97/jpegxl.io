@@ -1,0 +1,72 @@
+.listItem {
+    text-align: center;
+    border-radius: 15px;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(198,240,255,0.06) 0%, rgba(255,255,255,0) 50%);
+    width: 40vh;
+}
+
+.spinnerContainer {
+    margin: 0 10px 0 10px;
+    color: rgba(235, 235, 235, 0.493);
+    width: 70px;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.convertedBack {
+    background-color: rgba(0, 130, 219, 1);
+    cursor: pointer;
+}
+
+.loadingBack {
+    background-color: rgba(139, 139, 139, 0.25);
+    cursor: default
+}
+
+.itemLabel {
+    text-align: left;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 21px;
+    margin: 0;
+}
+
+.downloadButton {
+    margin: 0;
+    border: none;
+    color: white;
+    margin: 0 0 0 10px;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.downloadButton:focus {
+    outline: none;
+}
+
+.convertedDownloadBackground {
+    background-color: rgba(0, 130, 219, 1);
+    cursor: pointer;
+}
+
+.convertedDownloadBackground:hover {
+    background-color: rgb(0, 142, 236);
+    cursor: pointer;
+}
+
+.loadingDownloadBackground {
+    background-color: rgba(139, 139, 139, 0.25);
+}
+
+.loadingDownloadBackground:hover {
+    cursor: default;
+}

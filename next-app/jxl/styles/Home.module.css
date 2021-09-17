@@ -1,0 +1,30 @@
+.app {
+  text-align: center
+}
+
+.header {
+  background: rgb(1,57,88);
+  background: linear-gradient(142deg, rgba(1,57,88,1) 0%, rgba(11,23,71,1) 50%, rgba(8,103,156,1) 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(26px + 2vmin);
+  color: white;
+}
+
+.boxContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.topInfoLabel {
+  margin: 120px 0 0 0;
+}
+
+.infoLabel {
+  font-size: calc(1px + 2vmin);
+  font-style: normal;
+  font-weight: normal;
+  margin: 2px;
+}
