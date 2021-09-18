@@ -1,7 +1,6 @@
 importScripts("wjpegxl.js")
 
 onmessage = function(e) {
-    console.log(e.data.buffer);
     JXL().then(function(jxlModule){
         jxlModule.test();
 
@@ -15,8 +14,17 @@ onmessage = function(e) {
             bufferArray[i] = e.data.buffer[i];
         }
 
+        const getColorTransform = (colortransform) => {
+            if (colortransform === 0) 
+                return jxlModule.ColorTransform.XYB;
+            if (colortransform === 1) 
+                return jxlModule.ColorTransform.None;
+            if (colortransform === 2) 
+                return jxlModule.ColorTransform.YCbCr;
+        }
+
         let options = jxlModule.createOptions();
-        options.effort = 1;
+        options = {...e.data.options, colortransform: getColorTransform(e.data.options.colortransform)};
 
         let result = jxlModule.jxlCompress(buffer, bufferSize, options);
 

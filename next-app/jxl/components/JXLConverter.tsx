@@ -1,9 +1,11 @@
 import type { FileInfo } from '../pages/index'
 import { useState, useEffect } from 'react';
+import { Options } from './OptionsBox'
 
 let JXLModule: any = null;
 
 export interface JXLConverterProps {
+    options: Options | null
     files: FileInfo[]
     onFileConverted(name: string, buffer: any): void
 }
@@ -31,7 +33,7 @@ const JXLConverter = (props: JXLConverterProps) => {
                     props.onFileConverted(fileName, e.data.buffer);
                 }
 
-                worker.postMessage({buffer: props.files[i].buffer});
+                worker.postMessage({buffer: props.files[i].buffer, options: props.options});
 
                 setWorkers((prev) => {
                     return [...prev, {worker: worker, name: fileName}];

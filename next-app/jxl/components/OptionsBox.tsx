@@ -1,12 +1,58 @@
 import Popover from '@mui/material/Popover';
 import styles from '../styles/OptionsBox.module.css'
+import { useEffect, useState } from 'react'
+
+export interface Options {
+  progressive: boolean
+  quality: number
+  effort: number
+  override_bitdepth: number 
+  epf: number
+  resampling: number
+  colorspace: number
+  colortransform: number
+}
 
 export interface OptionsBoxProps {
   anchorElement: HTMLButtonElement | null
+  onOptionsChanged(options: Options): void
   onClose(): void
 }
 
 const OptionsBox = (props: OptionsBoxProps) => {
+
+  const [progressive, setProgressive] = useState(false);
+  const [quality, setQuality] = useState(0);
+  const [effort, setEffort] = useState(1);
+  const [bitdepth, setBitdepth] = useState(0);
+  const [epf, setEpf] = useState('1');
+  const [resampling, setResampling] = useState('1');
+  const [colorspace, setColorspace] = useState('0');
+  const [colortransform, setColortransform] = useState('0');
+
+  useEffect(() => {
+    let options: Options = {
+      progressive: progressive,
+      quality: quality,
+      effort: effort,
+      override_bitdepth: bitdepth,
+      epf: +epf,
+      resampling: +resampling,
+      colorspace: +colorspace,
+      colortransform: +colortransform,
+    };
+
+    props.onOptionsChanged(options);
+  }, [
+    progressive,
+    quality,
+    effort,
+    bitdepth,
+    epf,
+    resampling,
+    colorspace,
+    colortransform
+  ]);
 
   const open = Boolean(props.anchorElement);
   const id = open ? 'simple-popover' : undefined;
@@ -30,11 +76,54 @@ const OptionsBox = (props: OptionsBoxProps) => {
         <div className={styles.optionsContainer}>
           <h4 className={styles.topLabel} >Conversion settings</h4>
           <div className={styles.inputRow}>
-            <input checked={true}
-              style={{ background: "rbg(0, 212, 255)"}} type="checkbox" id="flexCheckDefault" />
-            <label style={{ fontSize: "1.2rem" }} className="form-check-label" htmlFor="flexCheckDefault">
+            <input checked={progressive} onChange={(e) => { setProgressive(e.target.checked) }} className={styles.checkBoxOption} type="checkbox" id="flexCheckDefault" />
+            <label htmlFor="flexCheckDefault">
               Progressive
             </label>
+          </div>
+          <div className={styles.inputRow}>
+            <label htmlFor="quality">Quality</label>
+            <input value={quality} onChange={(e) => { setQuality(+e.target.value) }} className={styles.rangeOption} type="range" min="0" max="100" step="1" id="quality" />
+          </div>
+          <div className={styles.inputRow}>
+            <label htmlFor="effort">Effort</label>
+            <input value={effort} onChange={(e) => { setEffort(+e.target.value) }} className={styles.rangeOption} type="range" min="1" max="9" step="1" id="effort" />
+          </div>
+          <div className={styles.inputRow}>
+            <label htmlFor="override_bitdepth">Override bitdepth</label>
+            <input value={bitdepth} onChange={(e) => { setBitdepth(+e.target.value) }} className={styles.rangeOption} type="range" min="0" max="32" step="1" id="override_bitdepth" />
+          </div>
+          <div className={styles.inputRow}>
+            <label htmlFor="epf">Epf</label>
+            <select value={epf} onChange={(e) => { setEpf(e.target.value) }} id="epf" className={styles.selectOption}>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+          <div className={styles.inputRow}>
+            <label htmlFor="resampling">Resampling</label>
+            <select value={resampling} onChange={(e) => { setResampling(e.target.value) }} id="resampling" className={styles.selectOption}>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="4">4</option>
+              <option value="8">8</option>
+            </select>
+          </div>
+          <div className={styles.inputRow}>
+            <label htmlFor="colorspace">Colorspace</label>
+            <select value={colorspace} onChange={(e) => { setColorspace(e.target.value) }} id="colorspace" className={styles.selectOption}>
+              <option value="0">RGB</option>
+              <option value="1">YCoCg</option>
+            </select>
+          </div>
+          <div className={styles.inputRow}>
+            <label htmlFor="colortransform">Colortransform</label>
+            <select value={colortransform} onChange={(e) => { setColortransform(e.target.value) }} id="colortransform" className={styles.selectOption}>
+              <option value="0">XYB</option>
+              <option value="1">None</option>
+              <option value="2">YCbCr</option>
+            </select>
           </div>
         </div>
       </Popover>

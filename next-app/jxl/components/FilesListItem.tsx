@@ -40,7 +40,7 @@ const FilesListItem = (props: FilesListItemProps) => {
             <p className={styles.itemLabel} >
                 {props.file.name}
             </p>
-            <button onClick={() => downloadFile(props.file.buffer, props.file.name)} className={[styles.downloadButton, 
+            <button onClick={() => downloadFile(props.file.converted, props.file.name)} className={[styles.downloadButton, 
                 props.file.converted !== null ? styles.convertedDownloadBackground : styles.loadingDownloadBackground].join(" ")} >
                 <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon>
             </button>

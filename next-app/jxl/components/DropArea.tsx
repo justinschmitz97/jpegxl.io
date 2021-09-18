@@ -1,5 +1,5 @@
 import styles from '../styles/DropArea.module.css'
-import OptionsBox from './OptionsBox'
+import OptionsBox, {Options} from './OptionsBox'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons"
 import Button from '@mui/material/Button';
@@ -7,10 +7,10 @@ import { useState} from 'react'
 
 export interface DropAreaProps {
     onDrop(files: File[]): void
+    onOptionsChanged(options: Options): void
 }
 
 const DropArea = (props: DropAreaProps) => {
-    
     const [optionsButton, setOptionsButton] = useState<HTMLButtonElement | null>(null)
 
     const openOptions = (e: any) => {
@@ -54,7 +54,7 @@ const DropArea = (props: DropAreaProps) => {
                 </Button>
             </a>
             <input id="file-choose" onChange={filesChoosed} type="file" className={styles.fileInput} multiple autoComplete="off"/>
-            <OptionsBox anchorElement={optionsButton} onClose={ () => setOptionsButton(null) } />
+            <OptionsBox anchorElement={optionsButton} onOptionsChanged={(options: Options) => { props.onOptionsChanged(options) }} onClose={() => setOptionsButton(null)} />
         </div>
     );
 }

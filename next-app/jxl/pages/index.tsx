@@ -5,6 +5,7 @@ import DropArea from '../components/DropArea'
 import Head from 'next/head'
 import FilesList from '../components/FilesList'
 import JXLConverter from '../components/JXLConverter'
+import { Options } from '../components/OptionsBox'
 
 export interface FileInfo {
     name: string
@@ -14,8 +15,7 @@ export interface FileInfo {
 
 const Home: NextPage = () => {
   let [files, setFiles] = useState<FileInfo[]>([]);
-
-  let [optionsButton, setOptionsButton] = useState<HTMLButtonElement | null>(null);
+  const [options, setOptions] = useState<Options | null>(null);
 
   const fileConverted = (name: string, buffer: any) => {
     setFiles( (prev) => {
@@ -66,8 +66,8 @@ const Home: NextPage = () => {
         <h1 className={styles.topInfoLabel}>Convert images to JXL</h1>
         <h5 className={styles.infoLabel}>No data is sent. The magic happens in your browser</h5>
         <div className={styles.boxContainer}>
-          <DropArea onDrop={addFiles.bind(this)} />
-          <JXLConverter files={files} onFileConverted={fileConverted.bind(this)}/>
+          <DropArea onDrop={addFiles.bind(this)} onOptionsChanged={ (options: Options) => setOptions(options) } />
+          <JXLConverter options={options} files={files} onFileConverted={fileConverted.bind(this)}/>
           <FilesList files={files} />
         </div>
       </header>
