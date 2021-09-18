@@ -37,15 +37,9 @@ val jxlCompress(const uintptr_t data, const size_t size, const CompressOptions& 
     return Uint8ClampedArray.new_(typed_memory_view(compressed.size(), compressed.data()));
 }
 
-void test() 
-{
-    std::cout << "hello world" << std::endl;
-}
-
 EMSCRIPTEN_BINDINGS(JPEGXL)
 {
     function("jxlCompress", &jxlCompress);
-    function("test", &test);
     
     enum_<jxl::ColorTransform>("ColorTransform")
         .value("XYB", jxl::ColorTransform::kXYB)

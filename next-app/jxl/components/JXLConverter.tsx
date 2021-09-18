@@ -30,6 +30,16 @@ const JXLConverter = (props: JXLConverterProps) => {
                 let worker = new Worker('worker.js');
 
                 worker.onmessage = (e) => {
+                    setWorkers( (prev) => {
+                        const index = prev.findIndex( (e) => {
+                            return e.name === fileName;
+                        });
+                        let result = [...prev];
+                        if (index !== -1) {
+                            result.splice(index, 1);
+                        }
+                        return result;
+                    })
                     props.onFileConverted(fileName, e.data.buffer);
                 }
 
