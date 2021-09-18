@@ -2,8 +2,6 @@ importScripts("wjpegxl.js")
 
 onmessage = function(e) {
     JXL().then(function(jxlModule){
-        jxlModule.test();
-
         let bufferSize = e.data.buffer.length
         let buffer = jxlModule._malloc(bufferSize);
           
