@@ -13,6 +13,7 @@ struct CompressOptions
     size_t override_bitdepth = 0; 
     size_t resampling = 1; 
     int effort;
+    size_t faster_decoding = 0;
     jxl::ColorTransform colortransform = jxl::ColorTransform::kXYB;
 };
 

@@ -54,6 +54,7 @@ EMSCRIPTEN_BINDINGS(JPEGXL)
         .field("override_bitdepth", &CompressOptions::override_bitdepth)
         .field("resampling", &CompressOptions::resampling)
         .field("effort", &CompressOptions::effort)
+        .field("faster_decoding", &CompressOptions::faster_decoding)
         .field("colortransform", &CompressOptions::colortransform);
 
     function("createOptions", &create_options);

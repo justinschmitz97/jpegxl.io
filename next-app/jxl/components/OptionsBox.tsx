@@ -11,6 +11,7 @@ export interface Options {
   resampling: number
   colorspace: number
   colortransform: number
+  faster_decoding: number
 }
 
 export interface OptionsBoxProps {
@@ -25,6 +26,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
   const [quality, setQuality] = useState(0);
   const [effort, setEffort] = useState(1);
   const [bitdepth, setBitdepth] = useState(0);
+  const [fasterDecoding, setFasterDecoding] = useState(0);
   const [epf, setEpf] = useState('1');
   const [resampling, setResampling] = useState('1');
   const [colorspace, setColorspace] = useState('0');
@@ -36,6 +38,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
       quality: quality,
       effort: effort,
       override_bitdepth: bitdepth,
+      faster_decoding: fasterDecoding,
       epf: +epf,
       resampling: +resampling,
       colorspace: +colorspace,
@@ -92,6 +95,10 @@ const OptionsBox = (props: OptionsBoxProps) => {
           <div className={styles.inputRow}>
             <label htmlFor="override_bitdepth">Override bitdepth</label>
             <input value={bitdepth} onChange={(e) => { setBitdepth(+e.target.value) }} className={styles.rangeOption} type="range" min="0" max="32" step="1" id="override_bitdepth" />
+          </div>
+          <div className={styles.inputRow}>
+            <label htmlFor="faster_decoding">Faster decoding</label>
+            <input value={fasterDecoding} onChange={(e) => { setFasterDecoding(+e.target.value) }} className={styles.rangeOption} type="range" min="0" max="4" step="1" id="faster_decoding" />
           </div>
           <div className={styles.inputRow}>
             <label htmlFor="epf">Epf</label>

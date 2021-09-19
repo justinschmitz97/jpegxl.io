@@ -5,3 +5,11 @@
     align-items: center;
     justify-content: center;
 }
+
+.downloadZipButton {
+    margin: 0 0 10px 0;
+}
+
+.downloadZipButton:focus {
+    outline: none;
+}

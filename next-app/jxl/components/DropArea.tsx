@@ -2,7 +2,7 @@ import styles from '../styles/DropArea.module.css'
 import OptionsBox, {Options} from './OptionsBox'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons"
-import Button from '@mui/material/Button';
+import Button from '@mui/material/Button'
 import { useState} from 'react'
 
 export interface DropAreaProps {

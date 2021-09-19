@@ -6,6 +6,11 @@ bool parse_options(const CompressOptions& options, jxl::CompressParams& params, 
     params.color_transform = options.colortransform;
     params.resampling = options.resampling;
 
+    if (options.faster_decoding < 0 || options.faster_decoding > 4)
+        return false;
+
+    params.decoding_speed_tier = options.faster_decoding;
+
     if (options.quality < 7 || options.quality == 100) 
     {
         if (options.quality < 100) 
