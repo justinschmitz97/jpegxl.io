@@ -11,7 +11,7 @@ add_executable(wjpegxl
     src/bind.cpp
     src/encoder.cpp
     src/decoder.cpp
-    src/params.cpp
+    src/compression_params.cpp
 )
 
 target_include_directories(wjpegxl PUBLIC ${JPEGXL_PATH} "../jpeg-xl/lib" "/home/antonov548/jpeg-xl" "/home/antonov548/jpeg-xl/third_party/highway" "/home/antonov548/libavif-0.9.0/include" "/home/antonov548/libwebp-1.2.1")

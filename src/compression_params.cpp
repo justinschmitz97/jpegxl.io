@@ -1,4 +1,4 @@
-#include "params.h"
+#include "compression_params.h"
 
 bool parse_options(const CompressOptions& options, jxl::CompressParams& params, jxl::CodecInOut& io)
 {
