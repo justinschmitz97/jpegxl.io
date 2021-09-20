@@ -9,7 +9,7 @@
 #include <vector>
 
 #include "encoder.h"
-#include "params.h"
+#include "compression_params.h"
 
 #include <iostream>
 
@@ -46,16 +46,22 @@ EMSCRIPTEN_BINDINGS(JPEGXL)
         .value("None", jxl::ColorTransform::kNone)
         .value("YCbCr", jxl::ColorTransform::kYCbCr);
 
+    enum_<QualityMode>("QualityMode")
+        .value("Distance", QualityMode::Distance)
+        .value("Quality", QualityMode::Quality);
+
     value_object<CompressOptions>("CompressOptions")
         .field("epf", &CompressOptions::epf)
         .field("colorspace", &CompressOptions::colorspace)
         .field("quality", &CompressOptions::quality)
+        .field("distance", &CompressOptions::distance)
         .field("progressive", &CompressOptions::progressive)
         .field("override_bitdepth", &CompressOptions::override_bitdepth)
         .field("resampling", &CompressOptions::resampling)
         .field("effort", &CompressOptions::effort)
         .field("faster_decoding", &CompressOptions::faster_decoding)
-        .field("colortransform", &CompressOptions::colortransform);
+        .field("colortransform", &CompressOptions::colortransform)
+        .field("quality_mode", &CompressOptions::quality_mode);
 
     function("createOptions", &create_options);
 }

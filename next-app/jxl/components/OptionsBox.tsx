@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 export interface Options {
   progressive: boolean
   quality: number
+  distance: number
   effort: number
   override_bitdepth: number 
   epf: number
@@ -12,6 +13,12 @@ export interface Options {
   colorspace: number
   colortransform: number
   faster_decoding: number
+  quality_mode: string
+}
+
+enum QualityMode {
+  Quality = "quality",
+  Distance = "distance"
 }
 
 export interface OptionsBoxProps {
@@ -21,9 +28,9 @@ export interface OptionsBoxProps {
 }
 
 const OptionsBox = (props: OptionsBoxProps) => {
-
   const [progressive, setProgressive] = useState(false);
   const [quality, setQuality] = useState(0);
+  const [distance, setDistance] = useState(0);
   const [effort, setEffort] = useState(1);
   const [bitdepth, setBitdepth] = useState(0);
   const [fasterDecoding, setFasterDecoding] = useState(0);
@@ -31,11 +38,21 @@ const OptionsBox = (props: OptionsBoxProps) => {
   const [resampling, setResampling] = useState('1');
   const [colorspace, setColorspace] = useState('0');
   const [colortransform, setColortransform] = useState('0');
+  const [qualityMode, setQualityMode] = useState(QualityMode.Quality);
+
+  const useQuality = (qualityMode === QualityMode.Quality);
+  const useDistance = (qualityMode === QualityMode.Distance);
+
+  const setQualityModeCheck = (checked: boolean, mode: string) => {
+    if (checked)  
+      setQualityMode(mode as QualityMode);
+  }
 
   useEffect(() => {
     let options: Options = {
       progressive: progressive,
       quality: quality,
+      distance: distance,
       effort: effort,
       override_bitdepth: bitdepth,
       faster_decoding: fasterDecoding,
@@ -43,18 +60,21 @@ const OptionsBox = (props: OptionsBoxProps) => {
       resampling: +resampling,
       colorspace: +colorspace,
       colortransform: +colortransform,
+      quality_mode: qualityMode,
     };
 
     props.onOptionsChanged(options);
   }, [
     progressive,
     quality,
+    distance,
     effort,
     bitdepth,
     epf,
     resampling,
     colorspace,
-    colortransform
+    colortransform,
+    qualityMode
   ]);
 
   const open = Boolean(props.anchorElement);
@@ -77,16 +97,24 @@ const OptionsBox = (props: OptionsBoxProps) => {
         }}
       >
         <div className={styles.optionsContainer}>
-          <h4 className={styles.topLabel} >Conversion settings</h4>
+          <h4 className={styles.topLabel}>Conversion settings</h4>
           <div className={styles.inputRow}>
             <input checked={progressive} onChange={(e) => { setProgressive(e.target.checked) }} className={styles.checkBoxOption} type="checkbox" id="flexCheckDefault" />
-            <label htmlFor="flexCheckDefault">
-              Progressive
-            </label>
+            <label htmlFor="flexCheckDefault">Progressive</label>
           </div>
           <div className={styles.inputRow}>
-            <label htmlFor="quality">Quality</label>
-            <input value={quality} onChange={(e) => { setQuality(+e.target.value) }} className={styles.rangeOption} type="range" min="0" max="100" step="1" id="quality" />
+            <input checked={useQuality} onChange={ (e) => setQualityModeCheck(e.target.checked, e.target.value) } type="radio" value={QualityMode.Quality} name="options" className={styles.radioOption} id="quality_radio"/>
+            <label htmlFor="quality_radio">Quality</label>
+          </div>
+          <div className={[styles.inputRow, useQuality ? "" : styles.hideOption].join(' ')}>
+            <input value={quality} onChange={(e) => { setQuality(+e.target.value) }} type="range" min="0" max="100" step="1" id="quality" />
+          </div>
+          <div className={styles.inputRow}>
+            <input checked={useDistance} onChange={ (e) => setQualityModeCheck(e.target.checked, e.target.value) } type="radio" value={QualityMode.Distance} name="options" className={styles.radioOption} id="distance_radio"/>
+            <label htmlFor="distance_radio">Distance</label>
+          </div>
+          <div className={[styles.inputRow, useDistance ? "" : styles.hideOption].join(' ')}>
+            <input value={distance} onChange={(e) => { setDistance(+e.target.value) }} type="range" min="0" max="25" step="0.1" id="distance" />
           </div>
           <div className={styles.inputRow}>
             <label htmlFor="effort">Effort</label>

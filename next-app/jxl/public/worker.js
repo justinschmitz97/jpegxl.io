@@ -5,11 +5,17 @@ onmessage = function(e) {
         let bufferSize = e.data.buffer.length
         let buffer = jxlModule._malloc(bufferSize);
           
-        // data for process should be filled
         let bufferArray = new Uint8ClampedArray(jxlModule.HEAPU8.buffer, buffer, bufferSize);
   
         for (let i = 0; i < bufferSize; i++) {
             bufferArray[i] = e.data.buffer[i];
+        }
+
+        const getQualityMode = (qualityMode) => {
+            if (qualityMode === "quality")
+                return jxlModule.QualityMode.Quality;
+            if (qualityMode === "distance")
+                return jxlModule.QualityMode.Distance; 
         }
 
         const getColorTransform = (colortransform) => {
@@ -22,7 +28,10 @@ onmessage = function(e) {
         }
 
         let options = jxlModule.createOptions();
-        options = {...e.data.options, colortransform: getColorTransform(e.data.options.colortransform)};
+        options = {...e.data.options, 
+            colortransform: getColorTransform(e.data.options.colortransform),
+            quality_mode: getQualityMode(e.data.options.quality_mode)
+        };
 
         let result = jxlModule.jxlCompress(buffer, bufferSize, options);
 

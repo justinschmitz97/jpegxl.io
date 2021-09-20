@@ -1,6 +1,6 @@
 #include "compression_params.h"
 
-bool parse_options(const CompressOptions& options, jxl::CompressParams& params, jxl::CodecInOut& io)
+bool parse_options(const CompressOptions &options, jxl::CompressParams &params, jxl::CodecInOut &io)
 {
     params.colorspace = options.colorspace;
     params.color_transform = options.colortransform;
@@ -11,12 +11,32 @@ bool parse_options(const CompressOptions& options, jxl::CompressParams& params, 
 
     params.decoding_speed_tier = options.faster_decoding;
 
-    if (options.quality < 7 || options.quality == 100) 
+    if (options.quality_mode == QualityMode::Quality)
     {
-        if (options.quality < 100) 
+        if (options.quality < 0.f || options.quality > 100.f)
+            return false;
+
+        if (options.quality < 7.f || options.quality == 100.f)
+        {
             params.modular_mode = true;
-        params.quality_pair.first = params.quality_pair.second =
-            std::min(35 + (options.quality - 7) * 3.0f, 100.0f);
+            params.quality_pair.first = params.quality_pair.second =
+                std::min(35 + (options.quality - 7.f) * 3.0f, 100.0f);
+        }
+        else
+        {
+            params.modular_mode = false;
+            if (options.quality >= 30.f)
+                params.butteraugli_distance = 0.1f + (100.f - options.quality) * 0.09f;
+            else
+                params.butteraugli_distance = 6.4f + pow(2.5f, (30.f - options.quality) / 5.0f) / 6.25f;
+        }
+    }
+    else if (options.quality_mode == QualityMode::Distance)
+    {
+        if (options.distance < 0.f || options.distance > 25.0f)
+            return false;
+
+        params.butteraugli_distance = options.distance;
     }
 
     if (options.effort < 1 || options.effort > 9)
@@ -40,7 +60,7 @@ bool parse_options(const CompressOptions& options, jxl::CompressParams& params, 
         else
             io.metadata.m.SetUintSamples(options.override_bitdepth);
     }
-    
+
     if (options.epf > 3)
         return false;
     params.epf = options.epf;
