@@ -35,6 +35,8 @@ onmessage = function(e) {
 
         let result = jxlModule.jxlCompress(buffer, bufferSize, options);
 
+        jxlModule._free(buffer);
+
         postMessage({buffer: result});
     })
 }

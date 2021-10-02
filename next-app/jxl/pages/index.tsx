@@ -17,7 +17,7 @@ const Home: NextPage = () => {
   let [files, setFiles] = useState<FileInfo[]>([]);
   const [options, setOptions] = useState<Options | null>(null);
 
-  const fileConverted = (name: string, buffer: any) => {
+  const fileConverted = (name: string, converted: any) => {
     setFiles( (prev) => {
 
       const index = prev.findIndex( (e) => {
@@ -25,8 +25,10 @@ const Home: NextPage = () => {
       });
 
       let result = [...prev];
-      if (index !== -1) 
-        result[index].converted = buffer;
+      if (index !== -1) {
+        result[index].buffer = null;
+        result[index].converted = converted;
+      }
     
       return result;
     });
