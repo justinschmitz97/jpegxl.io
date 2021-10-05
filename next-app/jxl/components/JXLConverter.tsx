@@ -20,7 +20,7 @@ const JXLConverter = (props: JXLConverterProps) => {
         const sizeLimit = 4; // limit of megabytes for image per worker
         const bytesInMb = 1048576; // bytes in megabyte to convert
         let imagesSize = 0;
-        let imageWorkers: ConvertWorker[] = workers;
+        let convertWorkers = workers;
 
         for (let i = 0; i < props.files.length; i++) {
             const fileName = props.files[i].name;
@@ -31,7 +31,7 @@ const JXLConverter = (props: JXLConverterProps) => {
 
             if (props.files[i].converted === null && index === -1) {
                 const currImageSize = props.files[i].buffer.length / bytesInMb;
-                if (imagesSize + currImageSize > sizeLimit && imageWorkers.length !== 0)
+                if (imagesSize + currImageSize > sizeLimit && convertWorkers.length !== 0)
                     break;
 
                 let worker = new Worker('worker.js');
@@ -52,12 +52,10 @@ const JXLConverter = (props: JXLConverterProps) => {
                 }
 
                 worker.postMessage({buffer: props.files[i].buffer, options: props.options});
-                imageWorkers.push({worker: worker, name: fileName});
+                convertWorkers.push({worker: worker, name: fileName});
             }
         }
-        setWorkers((prev) => {
-            return [...imageWorkers];
-        });
+        setWorkers(convertWorkers);
 
     }, [props.files]);
 
