@@ -53,7 +53,7 @@ const DropArea = (props: DropAreaProps) => {
         <div className={styles.arrowButton}>BROWSE</div>
         <p className={styles.dropInfoLabel}>Drop images or browse</p>
         <p className={styles.formatsLabel}>
-          supports png • jpg • webp • and more
+          supports png • jpg • webp • avif and more
         </p>
         <button onClick={openOptions} className={styles.optionsButton}>
           Options
