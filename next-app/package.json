@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "commit": "cd ../ && git add . && git commit -m '.' && git push && cd next-app"
   },
   "dependencies": {
     "@mui/material": "^5.0.0",
