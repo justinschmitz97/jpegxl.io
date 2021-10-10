@@ -10,6 +10,8 @@
     "commit": "cd ../ && git add . && git commit -m '.' && git push && cd next-app"
   },
   "dependencies": {
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
     "@mui/material": "^5.0.0",
     "jszip": "^3.7.1",
     "next": "11.1.2",

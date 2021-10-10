@@ -1,5 +1,4 @@
 import type { FileInfo } from "../pages/index";
-import styles from "../styles/FilesListItem.module.css";
 export interface FilesListItemProps {
   file: FileInfo;
 }
@@ -29,9 +28,9 @@ const FilesListItem = (props: FilesListItemProps) => {
   };
 
   return (
-    <div className={styles.listItem}>
+    <div className="listItem">
       <div
-        className={styles.spinnerContainer}
+        className="spinnerContainer"
         style={{
           visibility: `${props.file.converted === null ? "visible" : "hidden"}`,
         }}
@@ -40,15 +39,14 @@ const FilesListItem = (props: FilesListItemProps) => {
           <span className="sr-only">Loading...</span>
         </div>
       </div>
-      <p className={styles.itemLabel}>{props.file.name}</p>
+      <p className="itemLabel">{props.file.name}</p>
       <button
         onClick={() => downloadFile(props.file.converted, props.file.name)}
-        className={[
-          styles.downloadButton,
+        className={`downloadButton ${
           props.file.converted !== null
-            ? styles.convertedDownloadBackground
-            : styles.loadingDownloadBackground,
-        ].join(" ")}
+            ? "convertedDownloadBackground"
+            : "loadingDownloadBackground"
+        }`}
       >
         Download
       </button>

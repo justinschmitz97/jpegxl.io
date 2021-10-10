@@ -1,5 +1,4 @@
 import Popover from "@mui/material/Popover";
-import styles from "../styles/OptionsBox.module.css";
 import { useEffect, useState } from "react";
 
 export interface Options {
@@ -7,7 +6,7 @@ export interface Options {
   quality: number;
   distance: number;
   effort: number;
-  override_bitdepth: number;
+  /*override_bitdepth: number*/
   epf: number;
   resampling: number;
   colorspace: number;
@@ -32,7 +31,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
   const [quality, setQuality] = useState(0);
   const [distance, setDistance] = useState(0);
   const [effort, setEffort] = useState(1);
-  const [bitdepth, setBitdepth] = useState(0);
+  /*const [bitdepth, setBitdepth] = useState(0);*/
   const [fasterDecoding, setFasterDecoding] = useState(0);
   const [epf, setEpf] = useState("1");
   const [resampling, setResampling] = useState("1");
@@ -53,7 +52,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
       quality: quality,
       distance: distance,
       effort: effort,
-      override_bitdepth: bitdepth,
+      /*override_bitdepth: bitdepth,*/
       faster_decoding: fasterDecoding,
       epf: +epf,
       resampling: +resampling,
@@ -68,8 +67,8 @@ const OptionsBox = (props: OptionsBoxProps) => {
     quality,
     distance,
     effort,
-    bitdepth,
-    epf,
+    ,
+    /*bitdepth*/ epf,
     resampling,
     colorspace,
     colortransform,
@@ -95,21 +94,21 @@ const OptionsBox = (props: OptionsBoxProps) => {
           horizontal: "left",
         }}
       >
-        <div className={styles.optionsContainer}>
-          <h4 className={styles.topLabel}>Conversion settings</h4>
-          <div className={styles.inputRow}>
+        <div className="optionsContainer">
+          <h4 className="topLabel">Conversion settings</h4>
+          <div className="inputRow">
             <input
               checked={progressive}
               onChange={(e) => {
                 setProgressive(e.target.checked);
               }}
-              className={styles.checkBoxOption}
+              className="checkBoxOption"
               type="checkbox"
               id="flexCheckDefault"
             />
             <label htmlFor="flexCheckDefault">Progressive</label>
           </div>
-          <div className={styles.inputRow}>
+          <div className="inputRow">
             <input
               checked={useQuality}
               onChange={(e) =>
@@ -118,17 +117,12 @@ const OptionsBox = (props: OptionsBoxProps) => {
               type="radio"
               value={QualityMode.Quality}
               name="options"
-              className={styles.radioOption}
+              className="radioOption"
               id="quality_radio"
             />
             <label htmlFor="quality_radio">Quality</label>
           </div>
-          <div
-            className={[
-              styles.inputRow,
-              useQuality ? "" : styles.hideOption,
-            ].join(" ")}
-          >
+          <div className={`inputRow ${useQuality ? "" : " hideOption"}`}>
             <input
               value={quality}
               onChange={(e) => {
@@ -141,7 +135,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
               id="quality"
             />
           </div>
-          <div className={styles.inputRow}>
+          <div className="inputRow">
             <input
               checked={useDistance}
               onChange={(e) =>
@@ -150,17 +144,12 @@ const OptionsBox = (props: OptionsBoxProps) => {
               type="radio"
               value={QualityMode.Distance}
               name="options"
-              className={styles.radioOption}
+              className="radioOption"
               id="distance_radio"
             />
             <label htmlFor="distance_radio">Distance</label>
           </div>
-          <div
-            className={[
-              styles.inputRow,
-              useDistance ? "" : styles.hideOption,
-            ].join(" ")}
-          >
+          <div className={`inputRow ${useDistance ? "" : " hideOption"}`}>
             <input
               value={distance}
               onChange={(e) => {
@@ -173,14 +162,14 @@ const OptionsBox = (props: OptionsBoxProps) => {
               id="distance"
             />
           </div>
-          <div className={styles.inputRow}>
+          <div className="inputRow">
             <label htmlFor="effort">Effort</label>
             <input
               value={effort}
               onChange={(e) => {
                 setEffort(+e.target.value);
               }}
-              className={styles.rangeOption}
+              className="rangeOption"
               type="range"
               min="1"
               max="9"
@@ -188,29 +177,29 @@ const OptionsBox = (props: OptionsBoxProps) => {
               id="effort"
             />
           </div>
-          <div className={styles.inputRow}>
+          {/*<div className="inputRow">
             <label htmlFor="override_bitdepth">Override bitdepth</label>
             <input
               value={bitdepth}
               onChange={(e) => {
                 setBitdepth(+e.target.value);
               }}
-              className={styles.rangeOption}
+              className="rangeOption"
               type="range"
               min="0"
               max="32"
               step="1"
               id="override_bitdepth"
             />
-          </div>
-          <div className={styles.inputRow}>
+            </div>*/}
+          <div className="inputRow">
             <label htmlFor="faster_decoding">Faster decoding</label>
             <input
               value={fasterDecoding}
               onChange={(e) => {
                 setFasterDecoding(+e.target.value);
               }}
-              className={styles.rangeOption}
+              className="rangeOption"
               type="range"
               min="0"
               max="4"
@@ -218,7 +207,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
               id="faster_decoding"
             />
           </div>
-          <div className={styles.inputRow}>
+          <div className="inputRow">
             <label htmlFor="epf">Epf</label>
             <select
               value={epf}
@@ -226,14 +215,14 @@ const OptionsBox = (props: OptionsBoxProps) => {
                 setEpf(e.target.value);
               }}
               id="epf"
-              className={styles.selectOption}
+              className="selectOption"
             >
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
             </select>
           </div>
-          <div className={styles.inputRow}>
+          <div className="inputRow">
             <label htmlFor="resampling">Resampling</label>
             <select
               value={resampling}
@@ -241,7 +230,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                 setResampling(e.target.value);
               }}
               id="resampling"
-              className={styles.selectOption}
+              className="selectOption"
             >
               <option value="1">1</option>
               <option value="2">2</option>
@@ -249,7 +238,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
               <option value="8">8</option>
             </select>
           </div>
-          <div className={styles.inputRow}>
+          <div className="inputRow">
             <label htmlFor="colorspace">Colorspace</label>
             <select
               value={colorspace}
@@ -257,13 +246,13 @@ const OptionsBox = (props: OptionsBoxProps) => {
                 setColorspace(e.target.value);
               }}
               id="colorspace"
-              className={styles.selectOption}
+              className="selectOption"
             >
               <option value="0">RGB</option>
               <option value="1">YCoCg</option>
             </select>
           </div>
-          <div className={styles.inputRow}>
+          <div className="inputRow">
             <label htmlFor="colortransform">Colortransform</label>
             <select
               value={colortransform}
@@ -271,7 +260,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                 setColortransform(e.target.value);
               }}
               id="colortransform"
-              className={styles.selectOption}
+              className="selectOption"
             >
               <option value="0">XYB</option>
               <option value="1">None</option>

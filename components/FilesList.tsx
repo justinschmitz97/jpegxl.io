@@ -1,5 +1,4 @@
 import type { FileInfo } from "../pages/index";
-import styles from "../styles/FilesList.module.css";
 import FilesListItem from "./FilesListItem";
 import JSZip from "jszip";
 
@@ -40,11 +39,11 @@ const FilesList = (props: FilesListProps) => {
 
   return (
     <div>
-      <div className={styles.listContainer}>
+      <div className="listContainer">
         <button
           onClick={downloadZip}
           style={{ visibility: zipButtonVisibility }}
-          className={styles.downloadZipButton}
+          className="downloadZipButton"
         >
           Download zip
         </button>

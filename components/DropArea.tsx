@@ -1,4 +1,3 @@
-import styles from "../styles/DropArea.module.css";
 import OptionsBox, { Options } from "./OptionsBox";
 import { useState } from "react";
 
@@ -40,22 +39,22 @@ const DropArea = (props: DropAreaProps) => {
   };
 
   return (
-    <div className={styles.dropBackground}>
+    <div className="dropBackground">
       <a
         onClick={openFileDialog}
         onDrop={filesDroped}
         onDragOver={preventDefault}
         onDragEnter={preventDefault}
         role="button"
-        className={styles.dropArea}
+        className="dropArea"
         href=""
       >
-        <div className={styles.arrowButton}>BROWSE</div>
-        <p className={styles.dropInfoLabel}>Drop images or browse</p>
-        <p className={styles.formatsLabel}>
+        <div className="arrowButton">BROWSE</div>
+        <p className="dropInfoLabel">Drop images or browse</p>
+        <p className="formatsLabel">
           supports png • jpg • webp • avif and more
         </p>
-        <button onClick={openOptions} className={styles.optionsButton}>
+        <button onClick={openOptions} className="optionsButton">
           Options
         </button>
       </a>
@@ -63,7 +62,7 @@ const DropArea = (props: DropAreaProps) => {
         id="file-choose"
         onChange={filesChoosed}
         type="file"
-        className={styles.fileInput}
+        className="fileInput"
         multiple
         autoComplete="off"
       />
