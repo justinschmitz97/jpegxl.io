@@ -60,35 +60,38 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div className="app">
-      <Head>
-        <title>JXL Converter</title>
-        <link
-          rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-          crossOrigin="anonymous"
-        />
-      </Head>
-      <header className="header">
-        <h1 className="topInfoLabel">Convert images to JXL</h1>
-        <h5 className="infoLabel">
-          No data is sent. The magic happens in your browser
-        </h5>
-        <div className="boxContainer">
-          <DropArea
-            onDrop={addFiles.bind(this)}
-            onOptionsChanged={(options: Options) => setOptions(options)}
+    <>
+      <div className="app">
+        <Head>
+          <title>JXL Converter</title>
+          <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossOrigin="anonymous"
           />
-          <JXLConverter
-            options={options}
-            files={files}
-            onFileConverted={fileConverted.bind(this)}
-          />
-          <FilesList files={files} />
-        </div>
-      </header>
-    </div>
+        </Head>
+        <header className="header">
+          <h1 className="topInfoLabel">Convert images to JXL</h1>
+          <h5 className="infoLabel">
+            No data is sent. The magic happens in your browser
+          </h5>
+          <div className="boxContainer">
+            <DropArea
+              onDrop={addFiles.bind(this)}
+              onOptionsChanged={(options: Options) => setOptions(options)}
+            />
+            <JXLConverter
+              options={options}
+              files={files}
+              onFileConverted={fileConverted.bind(this)}
+            />
+            <FilesList files={files} />
+          </div>
+        </header>
+      </div>
+      <div className="gradient"></div>
+    </>
   );
 };
 
