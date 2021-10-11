@@ -73,6 +73,7 @@ module.exports = {
       200: "200%",
       50: "50%",
       100: "100%",
+      300: "300%",
     },
     borderRadius: {
       none: "0",
@@ -177,7 +178,7 @@ module.exports = {
 
     extend: {
       backgroundImage: () => ({
-        gradient: `radial-gradient(at 50% 16%, hsla(168, 53%, 54%, 1) 0, transparent 50%), radial-gradient(at 80% 0%, hsla(150, 58%, 63%, 1) 0, transparent 40%), radial-gradient(at 80% 50%, hsla(116, 62%, 73%, 1) 0, transparent 40%), radial-gradient(at 0% 100%, hsla(83, 80%, 72%, 1) 0, transparent 40%), radial-gradient(at 80% 100%, hsla(150, 58%, 63%, 1) 0, transparent 40%), radial-gradient(at 0% 0%, hsla(60, 92%, 71%, 1) 0, transparent 40%);`,
+        gradient: `radial-gradient(at 23% 56%, #37aaa8 0, transparent 44%), radial-gradient(at 24% 2%, hsl(168, 53.40%, 43.97%) 0, transparent 47%), radial-gradient(at 38% 88%, hsl(150, 58.30%, 43.36%) 0, transparent 57%), radial-gradient(at 63% 52%, #9f9f07 0, transparent 53%), radial-gradient(at 26% 87%, #37aaa8 0, transparent 52%), radial-gradient(at 13% 0%, hsl(168, 53.40%, 43.97%) 0, transparent 48%), radial-gradient(at 4% 19%, hsl(150, 58.30%, 43.36%) 0, transparent 56%), radial-gradient(circle, #37aaa8 0%, #37aaa8 100%)`,
       }),
       transitionTimingFunction: {
         cog: "cubic-bezier(0.175, 0.885, 0.32, 1.275)",

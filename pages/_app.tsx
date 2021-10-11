@@ -6,14 +6,13 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAnyQzUmFahQiH8XBsJfCJY8ogZvUT8o8E",
-  authDomain: "avif-a6e25.firebaseapp.com",
-  databaseURL: "https://avif-a6e25.firebaseio.com",
-  projectId: "avif-a6e25",
-  storageBucket: "avif-a6e25.appspot.com",
-  messagingSenderId: "1077707178739",
-  appId: "1:1077707178739:web:c98c39aae900425defad86",
-  measurementId: "G-Z25VRG05C4",
+  apiKey: "AIzaSyChFA56DSf3-p_4NoViFaQkMr8T8Q0UJyU",
+  authDomain: "jpegxl-8164f.firebaseapp.com",
+  projectId: "jpegxl-8164f",
+  storageBucket: "jpegxl-8164f.appspot.com",
+  messagingSenderId: "1054719837554",
+  appId: "1:1054719837554:web:5c5d13fdb02436b217c9eb",
+  measurementId: "G-12SZR00CGD",
 };
 
 export default function AvifIo({ Component, pageProps }: any) {
@@ -29,7 +28,7 @@ export default function AvifIo({ Component, pageProps }: any) {
 
   return (
     <>
-      <Script strategy="beforeInteractive" src="/avif.js" />
+      <Script strategy="beforeInteractive" src="/detectSupport.js" />
       {/*<Script strategy="afterInteractive" src="/hotjar.js" />*/}
       <div className="overflow-x-hidden page">
         <Component {...pageProps} />
@@ -42,7 +41,6 @@ export default function AvifIo({ Component, pageProps }: any) {
 function arrayBufferPolyfill() {
   File.prototype.arrayBuffer = File.prototype.arrayBuffer || myArrayBuffer;
   Blob.prototype.arrayBuffer = Blob.prototype.arrayBuffer || myArrayBuffer;
-
   function myArrayBuffer(this: File | Blob): Promise<ArrayBuffer> {
     return new Promise((resolve) => {
       const fr = new FileReader();

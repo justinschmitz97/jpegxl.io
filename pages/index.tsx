@@ -1,12 +1,10 @@
 import Layout from "@components/Layout";
 import Tooltip from "@components/Home/Tooltip";
 import ReactCompareImage from "react-compare-image";
-import TutorialBoxes from "@components/Home/TutorialBoxes";
 import Advantages from "@components/Home/Advantages";
 import type { NextPage } from "next";
 import { useState } from "react";
 import DropArea from "../components/DropArea";
-import Head from "next/head";
 import FilesList from "../components/FilesList";
 import JXLConverter from "../components/JXLConverter";
 import { Options } from "../components/OptionsBox";
@@ -55,7 +53,7 @@ function ImageSlider() {
           className="absolute top-4 right-4 py-2 px-3 rounded-md bg-bg-400"
           id="avif"
         >
-          avif · 18kB
+          jxl · 18kB
         </p>
       </div>
     </section>
@@ -158,39 +156,6 @@ const Home: NextPage = () => {
       <Glow />
       <Advantages />
       <ImageSlider />
-      <TutorialBoxes />
-      <div className="container px-2 my-12 max-w-screen-md text-left md:text-center">
-        In the last ten years,{" "}
-        <b>
-          the size of an average web page has increased from 500 kb to 2000 kb
-        </b>
-        . Images always take up half the amount. A new image format is needed to
-        stop the increasing size of images on the web. JPEG has been the most
-        popular image format for years due to its high compatibility.
-        <br /> <b>AVIF is the modern solution</b>. It was developed by the
-        Alliance for Open Media, a collaboration of Google, Apple, Mozilla,
-        Intel and other tech giants. AVIF is a codec for highly compressed
-        images of acceptable quality and is constantly improving.{" "}
-        <b>
-          AVIF offers a significant reduction in file size compared to the
-          current JPEG or WebP codecs
-        </b>
-        .<br /> You can reduce file sizes by 20-90%, even for images with
-        transparency and animated frames. Currently supported by Chrome, Opera
-        and Firefox, you can expect it to get more support soon.
-        <br /> AVIF is being
-        <b> developed by the most influential technology companies</b>. Netflix
-        has already considered AVIF superior to JPEG and even newer WebP image
-        formats in terms of image quality to compressed file size ratio. AV1 has
-        been developed by industry leaders and technological innovators from all
-        reputable companies. They licensed their codec patents royalty-free to
-        create an ecosystem that would last. <br />{" "}
-        <b>There is no other codec that seems as promising as AVIF</b>. With its
-        widespread support, current feature rate, royalty-free usage and highest
-        compression rate achieved, we are only a few steps away from creating a
-        truly modern web. avif.io helps to strengthen the support of AVIF by
-        providing information, news, resources and an image converter.
-      </div>
     </Layout>
   );
 };

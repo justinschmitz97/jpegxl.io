@@ -12,7 +12,7 @@
     "develop": "npm run build && next export && cd ../ && npm run dev",
     "release": "npm run build && next export && next-sitemap --config next-sitemap.config.js && cd utils && node rss",
     "prepare": "husky install",
-    "commit": "cd ../ && git add . && git commit -m '.' && git push && cd next-app"
+    "commit": "git add . && git commit -m '.' && git push && cd next-app"
   },
   "dependencies": {
     "@emotion/react": "^11.4.1",

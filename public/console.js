@@ -1,5 +1,4 @@
-{
-  /* Turn off for now.
+/* Logs Console Errors to Firebase. 60 Days after release to track errors. */
 const log = console.log.bind(console);
 const warn = console.warn.bind(console);
 const error = console.error.bind(console);
@@ -32,5 +31,3 @@ console.error = (...args) => {
     error: args,
   });
 };
-*/
-}
