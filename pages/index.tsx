@@ -115,13 +115,13 @@ const Home: NextPage = () => {
 
   const meta = {
     index: {
-      title: "AVIF Converter - unlimited free conversions",
+      title: "JPEG XL Converter - unlimited free conversions",
       description:
-        "Fastest converter online. Supports bulk. Privacy protected. Convert all image types to AVIF for free.🚀 Compress your images now!⏱",
+        "Fastest converter online. Supports bulk. Privacy protected. Convert all image types to Jpeg XL for free.🚀 Compress your images now!⏱",
       url: "",
       image: "/logo_draft.png",
-      datePublished: "01.09.20",
-      dateModified: "30.05.21",
+      datePublished: "31.10.21",
+      dateModified: "31.10.21",
     },
   };
 

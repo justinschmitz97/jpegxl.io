@@ -10,10 +10,10 @@ const releases = path.resolve(__dirname, "../data", "blog", "releases");
 const tutorials = path.resolve(__dirname, "../data", "blog", "tutorials");
 
 const feed = new RSS({
-  title: `avif.io RSS Feed`,
+  title: `jpegxl.io RSS Feed`,
   description: "Your description",
-  feed_url: `https://avif.io/rss.xml`,
-  site_url: `https://avif.io`,
+  feed_url: `https://jpegxl.io/rss.xml`,
+  site_url: `https://jpegxl.io`,
   managingEditor: "justin@justinschmitz.de (Justin Schmitz)",
   webMaster: "justin@justinschmitz.de (Justin Schmitz)",
   copyright: `2021 Justin Schmitz`,
@@ -37,7 +37,7 @@ fs.readdirSync(articles)
     feed.item({
       title,
       description,
-      url: `https://avif.io/blog/articles/${fileName.replace(".mdx", "")}/`,
+      url: `https://jpegxl.io/blog/articles/${fileName.replace(".mdx", "")}/`,
       date: datePublished,
     });
   });
@@ -57,7 +57,10 @@ fs.readdirSync(comparisons)
     feed.item({
       title,
       description,
-      url: `https://avif.io/blog/comparisons/${fileName.replace(".mdx", "")}/`,
+      url: `https://jpegxl.io/blog/comparisons/${fileName.replace(
+        ".mdx",
+        ""
+      )}/`,
       date: datePublished,
     });
   });
@@ -77,7 +80,7 @@ fs.readdirSync(releases)
     feed.item({
       title,
       description,
-      url: `https://avif.io/blog/releases/${fileName.replace(".mdx", "")}/`,
+      url: `https://jpegxl.io/blog/releases/${fileName.replace(".mdx", "")}/`,
       date: datePublished,
     });
   });
@@ -97,7 +100,7 @@ fs.readdirSync(tutorials)
     feed.item({
       title,
       description,
-      url: `https://avif.io/blog/tutorials/${fileName.replace(".mdx", "")}/`,
+      url: `https://jpegxl.io/blog/tutorials/${fileName.replace(".mdx", "")}/`,
       date: datePublished,
     });
   });

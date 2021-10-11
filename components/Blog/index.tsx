@@ -102,17 +102,6 @@ export default function Blog(props: {
           </>
         )}
       </div>
-      <a
-        className="fixed bottom-2 left-2 invisible z-50 py-1 px-2 w-auto rounded-sm md:visible bg-bg-300 text-tiny"
-        href={`https://github.com/justinschmitz97/avif.io/blob/master/data/${props.postMeta.url.slice(
-          0,
-          -1
-        )}.mdx`}
-        target="_blank"
-        rel="noreferrer"
-      >
-        Help improve this article
-      </a>
     </Layout>
   );
 }

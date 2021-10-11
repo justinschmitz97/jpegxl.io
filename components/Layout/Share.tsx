@@ -24,7 +24,7 @@ export default function Blog() {
     navigator.share({ url: url });
   }
 
-  const url = "https://avif.io";
+  const url = "https://jpegxl.io";
   return (
     <div className="flex fixed right-4 bottom-4 z-50 justify-items-center content-center p-1 rounded-lg bg-bg-500">
       <ShareButton

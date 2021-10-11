@@ -28,7 +28,7 @@ export default function Meta(props: MetaProps) {
 
   return (
     <Head>
-      <link rel="canonical" href={`https://avif.io/${props.url}`} />
+      <link rel="canonical" href={`https://jpegxl.io/${props.url}`} />
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link
@@ -37,15 +37,18 @@ export default function Meta(props: MetaProps) {
         href="/apple-touch-icon.png"
       />
 
-      <title>{props.title} | avif.io ✨</title>
+      <title>{props.title} | jpegxl.io ✨</title>
 
       <meta name="description" content={props.description} />
       <meta name="author" content="Justin Schmitz" />
 
-      <meta property="og:site_name" content="AVIF Converter | avif.io ✨" />
+      <meta
+        property="og:site_name"
+        content="Jpeg XL Converter | jpegxl.io ✨"
+      />
       <meta property="og:type" content={props.blog ? "article" : "website"} />
-      <meta property="og:url" content={`https://avif.io/${props.url}`} />
-      <meta property="og:title" content={props.title + " | " + "avif.io"} />
+      <meta property="og:url" content={`https://jpegxl.io/${props.url}`} />
+      <meta property="og:title" content={props.title + " | " + "jpegxl.io"} />
       <meta property="og:description" content={props.description} />
       {props.image && <meta property="og:image" content={`${props.image}`} />}
 
@@ -55,24 +58,23 @@ export default function Meta(props: MetaProps) {
       <meta property="twitter:url" content="https://twitter.com/jschmitz97" />
       <meta
         property="twitter:title"
-        content={props.title + " | " + "avif.io ✨"}
+        content={props.title + " | " + "jpegxl.io ✨"}
       />
       <meta property="twitter:description" content={props.description} />
       {props.image && (
-        <meta name="twitter:image" content="https://avif.io/twitter.png" />
+        <meta name="twitter:image" content="https://jpegxl.io/twitter.png" />
       )}
 
       <script
         {...jsonLdScriptProps<Organization>({
           "@context": "https://schema.org",
           "@type": "Organization",
-          "name": "avif.io",
-          "url": "https://avif.io",
-          "logo": "https://avif.io/json-logo.png",
+          "name": "jpegxl.io",
+          "url": "https://jpegxl.io",
+          "logo": "https://jpegxl.io/json-logo.png",
           "sameAs": [
-            "https://github.com/justinschmitz97/avif.io/",
             "https://discord.com/invite/6w42YpF5hm",
-            "https://www.producthunt.com/posts/avif-io-avif-image-converter",
+            "https://www.producthunt.com/",
           ],
         })}
       />
@@ -84,7 +86,7 @@ export default function Meta(props: MetaProps) {
             "@type": "BlogPosting",
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": "https://avif.io/" + props.url,
+              "@id": "https://jpegxl.io/" + props.url,
             },
             "headline": props.title,
             "description": props.description,
@@ -103,10 +105,10 @@ export default function Meta(props: MetaProps) {
             },
             "publisher": {
               "@type": "Organization",
-              "name": "avif.io",
+              "name": "jpegxl.io",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://avif.io/json-logo.png",
+                "url": "https://jpegxl.io/json-logo.png",
               },
             },
             "datePublished": publishedDate,

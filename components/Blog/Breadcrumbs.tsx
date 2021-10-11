@@ -17,13 +17,13 @@ export default function Breadcrumbs(props: any) {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "blog",
-                "item": "https://avif.io/blog/",
+                "item": "https://jpegxl.io/blog/",
               },
               urlSplit[2] && {
                 "@type": "ListItem",
                 "position": 2,
                 "name": urlSplit[1],
-                "item": "https://avif.io/blog/#" + urlSplit[1],
+                "item": "https://jpegxl.io/blog/#" + urlSplit[1],
               },
             ],
           })}

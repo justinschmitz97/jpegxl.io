@@ -18,12 +18,12 @@ export default function Footer() {
           <div className="flex flex-col px-4 mt-6 w-full md:w-1/2 lg:w-1/4">
             <Link
               className="flex justify-start items-center text-xl font-bold text-white font-display"
-              text="avif.io"
+              text="jpegxl.io"
               href="/"
             />
-
             <div className="my-4 text-gray-400">
-              A tool by Justin Schmitz and Niksa Sporin that is now open-source.
+              A tool by Justin Schmitz to convert JPG, PNG, WebP and AVIF to
+              JPEG XL.
               <Link text="- @jschmitz97" href="twitter.com/jschmitz97" />
             </div>
           </div>
@@ -32,8 +32,6 @@ export default function Footer() {
             <nav className="list-none">
               <FooterLink text="Blog" href="/blog/" />
               <FooterLink text="Tutorials" href="/blog/#tutorials" />
-              <FooterLink text="Articles" href="/blog/#articles" />
-              <FooterLink text="Comparisons" href="/blog/#comparisons" />
               <FooterLink text="Release Notes" href="/blog/#releasenotes" />
             </nav>
           </div>
@@ -41,40 +39,28 @@ export default function Footer() {
             <h6 className="mt-6 mb-3 font-bold text-white">Most viewed</h6>
             <nav className="list-none">
               <FooterLink
-                text="AVIF in Wordpress"
-                href="/blog/tutorials/wordpress/"
+                text="JpegXL in Chrome"
+                href="/blog/tutorials/chrome/"
               />
               <FooterLink
-                text="AVIF in Safari"
-                href="/blog/tutorials/safari/"
+                text="JpegXL in Firefox"
+                href="/blog/tutorials/firefox/"
               />
+              <FooterLink text="JpegXL in Edge" href="/blog/tutorials/edge/" />
               <FooterLink
-                text="AVIF in JS Frameworks"
-                href="/blog/tutorials/frameworks/"
+                text="JpegXL in opera"
+                href="/blog/tutorials/opera/"
               />
-              <FooterLink text="AVIF in CSS" href="/blog/tutorials/css/" />
-              <FooterLink
-                text="Image Web Perf"
-                href="/blog/articles/optimize-images-for-web-performance/"
-              />
+              <FooterLink text="JpegXL in CSS" href="/blog/tutorials/css/" />
             </nav>
           </div>
           <div className="px-4 w-full md:w-1/2 lg:w-1/4">
             <h6 className="mt-6 mb-3 font-bold text-white">Other Pages</h6>
             <nav className="list-none">
-              <FooterLink
-                text="ProductHunt"
-                href="www.producthunt.com/posts/avif-io-avif-image-converter"
-                ext
-              />
+              <FooterLink text="ProductHunt" href="www.producthunt.com/" ext />
               <FooterLink
                 text="Discord"
                 href="discord.com/invite/6w42YpF5hm"
-                ext
-              />
-              <FooterLink
-                text="Github"
-                href="github.com/justinschmitz97/avif.io/issues"
                 ext
               />
               <FooterLink text="Sitemap" href="/sitemap.xml" />

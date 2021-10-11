@@ -1,6 +1,6 @@
 {
-  "name": "avif.io",
-  "version": "0.5.0",
+  "name": "jpegxl.io",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,7 +9,7 @@
     "bundle": "ANALYZE=true npm run build",
     "convert": "cd utils && node sharp && cd ../",
     "lint": "rustywind . --write && prettier --write . && next lint --fix --dir pages --dir components",
-    "develop": "npm run build && next export && cd ../ && npm run dev",
+    "develop": "npm run build && npm run dev",
     "release": "npm run build && next export && next-sitemap --config next-sitemap.config.js && cd utils && node rss",
     "prepare": "husky install",
     "commit": "git add . && git commit -m '.' && git push && cd next-app"
