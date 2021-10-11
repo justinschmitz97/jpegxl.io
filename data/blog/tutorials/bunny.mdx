@@ -1,0 +1,57 @@
+---
+blog: true
+title: Bunny AVIF support
+description: Image CDNs help you serve the best image to users. Find out how you can use AVIF images in Bunny.
+keyword: Bunny
+category: tutorials
+subcategory: cdn
+support: no support
+url: blog/tutorials/bunny/
+image: "/logo_draft.png"
+datePublished: 08.10.20
+dateModified: 08.10.20
+sources:
+  - twitter.com/bunnycdn/status/1314121746363019264
+  - de.wordpress.org/plugins/bunnycdn/
+  - bunny.net/blog/lets-talk-avif-and-why-we-are-not-adding-support-just-yet/
+  - bunny.net/blog/tag/performance/page/2/
+  - support.bunny.net/hc/en-us/articles/360027448392-Bunny-Optimizer-Engine-Documentation
+tags:
+  - avif
+  - image format
+  - av1 image file format
+  - cdn
+  - content delivery network
+  - bunny
+  - bunny avif support
+  - plugin
+  - image cdn
+  - file size
+  - optimized image
+  - cache
+  - optimization
+  - storage
+  - cdn provider
+questions:
+  - Does Bunny support AVIF?
+  - Which CDN supports AVIF?
+relatedPosts:
+  - imagekit
+  - cloudinary
+  - keycdn
+---
+
+## What is AVIF
+
+Google, Mozilla, Cisco, and many other companies have created the AOMedia foundation that has developed the AVIF image format. It is based on the AV1 video format, which was developed originally for storing keyframes. Integrating modern features such as HDR and 12-bit color was designed to replace dated image formats such as JPEG and WebP. AVIF typically outperforms JPG by 40-60% and WebP by 10-30% while maintaining the same level of perceived quality.
+
+## What is Bunny
+
+Bunny describes itself as the content delivery platform that truly hops. What a clever pun! The company offers a next-generation CDN, edge storage, and optimization service. Among their most popular products is Bunny Optimizer, which detects the user's device type to automatically resize and compress the images in the optimal way possible using WebP. It is only $10 per month for unlimited requests, optimizations, and image processing.
+
+## Bunny AVIF support
+
+As of yet, Bunny does not allow images to be converted to AVIF. A blog post from October 2020 provides detailed information about their decision not to support it.
+A primary reason is that keeping three versions of each file (jpg, webp, avif) due to the lack of support for devices and browsers is anything but optimal. Taking this approach may do more harm than good since the cache will constantly be cleared for images that have not been used for some time. The next major obstacle is the performance of the encoding process. AVIF encoding is not as efficient as JPEG and WebP, which are handled in a few milliseconds. They found that WebP outperformed AVIF, with some images taking as long as 60 seconds to process. The encoding and decoding performance is crucial because they optimize and process images on the fly. Despite multi-threading acceleration, this is still far from an acceptable level.
+
+As of this writing, it has been one year since the blog post was published. Even in the article, they mention the possibility of adding AVIF support once more browser support is added for those eager to give it a try.

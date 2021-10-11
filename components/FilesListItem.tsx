@@ -1,4 +1,4 @@
-import type { FileInfo } from "../pages/index";
+import type { FileInfo } from "@pages/index";
 export interface FilesListItemProps {
   file: FileInfo;
 }

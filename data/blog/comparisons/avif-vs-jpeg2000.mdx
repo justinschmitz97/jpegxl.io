@@ -1,0 +1,129 @@
+---
+blog: true
+title: AVIF vs JPEG2000
+description:
+  An in-depth guide on how the brand-new file format AVIF stacks up against
+  its competitor JPEG2000.
+keyword: JPEG2000
+category: comparisons
+url: blog/comparisons/avif-vs-jpeg2000/
+image: "/logo_draft.png"
+datePublished: 03.08.21
+dateModified: 03.08.21
+questions:
+  - Which is better quality JPEG or JPEG2000
+  - Which is better JPEG2000 or AVIF
+  - Do browsers support AVIF and JPEG2000
+  - Do browsers support JPEG2000
+tags:
+  - image formats
+  - visual quality
+  - lossless images
+  - browser support
+  - Lossless compression
+  - next-gen image formats
+  - image types
+  - original image
+  - original source image
+  - image coding formats
+  - Color mode Bits
+  - color with alpha
+  - browser support tables
+sources:
+  - css-tricks.com/three-things-you-didnt-know-about-avif/
+  - cloudinary.com/blog/time_for_next_gen_codecs_to_dethrone_jpeg
+  - github.com/nomacs/nomacs/pull/585
+  - blog.greggant.com/posts/2017/07/26/getting-started-with-jpeg2000-jpeg-xr-webp-on-macos-osx.html
+  - securityboulevard.com/2020/12/understanding-new-image-formats/
+  - wyohknott.github.io/image-formats-comparison/
+  - socialcompare.com/en/comparison/image-file-formats
+  - github.com/Netflix/image_compression_comparison
+  - jpeg.org/jpeg2000/index.html
+  - www.itu.int/rec/T-REC-H.265
+relatedPosts:
+  - avif-vs-jpg
+  - avif-vs-jpegxl
+  - avif-vs-webp
+---
+
+## Introduction
+
+Two key competitors have broken out from the pack to fight for image format dominancy in the battle to replace the aging JPEG standard. In one corner, we have the spiritual successor JPEG 2000, and in the other, we have the relatively new AVIF standard.
+
+**JPEG 2000 was developed between 1997 and 2000** and released at the turn of the millennium by the **same Joint Photographic Experts Group committee** that developed the **original 1992 JPEG file format**. Designed to solve some of the limitations of the aging format and replace its older brother, JPEG 2000 struggled with market adoption, and 21 years on, the JP2 file format has little use on the web.
+
+**AVIF,** developed by the Alliance for Open Media in 2019, is an open and royalty-free **image file format derived from the AV1 video codec.** Despite its relatively young age as a released format, it has seen some impressive market adoption – most notably with Netflix transitioning to AVIF for their promotional images thanks to its overlay support.
+
+Here's how the two standards stack up against each other, and ultimately which is more likely to dethrone JPEG as the dominant image format.
+
+## Quality and limits
+
+As a format that finds its roots in frames of AV1 video, AVIF **has an image resolution limitof 65536 x 65536 pixels**. Still, there tend to be artifacts at the tile boundaries of 8K frames if you use this method. This makes large-resolution AVIF images generally undesirable.
+
+This issue is not present in **JPEG 2000, with theoretical maximum image dimensions of 4,294,967,296 x 4,294,967,296.**
+
+JPEG 2000 also pulls ahead in precision or more commonly known as max bit depth. **JPEG 2000 supports a bit depth of up to 38 bits**, as compared to **AVIF 12-bit limits.** This may seem like a dramatic jump, but 12-bit precision is usually good enough for images in practice.
+
+Both **AVIF and JPEG 2000 supports 4:4:4, wide gamut support with HDR images and in standard dynamic range with Rec 709.**
+
+In most aspects, JPEG 2000 pulls ahead of AVIF when it comes to its limitations. However, this broad support for data limits comes at a cost we'll cover later on.
+
+## Compression
+
+**AVIF performs exceptionally well in low-fidelity, high-appeal situations** , providing similar file sizes to JPEG while dramatically increasing the image's overall appeal and visual quality.
+
+JPEG 2000 also represents a jump over its predecessor JPEG. However, the **JP2 focus on higher-fidelity photos allows AVIF to pull ahead in low-fidelity scenarios.** For example, a low-fidelity AVIF photo has a similar file size to a JPEG 2000 photo. Still, it lacks the same high appeal as AVIF.
+
+An appeal is the absence of compression artifacts like color banding and blockiness that makes a photo look bad. Highly compressed AVIF images look better with minor color banding than JPEG 2000 photos of the same file size.
+
+**JPEG 2000 performs better with high-fidelity and lossless images,** with file sizes generally smaller than AVIF's lossless efforts. However, **the vast majority of pictures on the web are the low-fidelity, high-appeal files that AVIF loves so much.**
+
+## Speed
+
+JPEG 2000, like its predecessor, is a reasonably fast format to work with. **Single-core encode and decode speeds beat out the somewhat sluggish AVIF, allowing JPEG 2000 to impress even on unpowered machines.**
+
+**JPEG 2000 also supports parallelization**, which allows the image coder to take advantage of multiple cores and threads to improve decoding and encoding speeds. **AVIF can also take advantage of multi-core processors in this way**. Still, the good single-core speeds make JPEG 2000 faster to work with, even on powerful multi-core processors.
+
+**JPEG 2000 also supports progressive image decoding**, allowing lower-quality previews to be displayed while the image is still being decoded, improving page load times. This is a feature that is missing on AVIF.
+
+**Overall, JPEG 2000 benefits from better encode and decode speeds than AVIF.**
+
+## Other Features
+
+**In general, JPEG 2000 doesn't support animation**. **A separate related file format for motion sequences called Motion JPEG 2000** is based on the MP4 and QuickTime format. However, this is closure to a video codec than an efficient means for an animated photo.
+
+**Motion JPEG 2000 (MJP2) does not use the inter-frame compression** found in most video codecs, including AVIF sequences. This means **MJP2 animations** are more scalable but have **vastly greater file sizes** and can stretch visitor bandwidth.
+
+AVIF is derived from a video codec, and as you can expect, animation works flawlessly with this format. Using intra-frame compression adds greater file efficiency. Sequenced **AVIF pulls ahead of MJP2 or web delivery of sequenced images.**
+
+**Both AVIF and JPEG 2000 supports alpha transparency**, unlike the original 1992 JPEG standard.
+
+However, **AVIF boasts some impressive modern features like depth maps and overlays.** Depth maps allow effects to be added to an AVIF image. In contrast, overlays allow for independently encoding layers to be contained on one image, improving the appeal of pictures like text on photo backgrounds.
+
+## Support
+
+JPEG 2000 has had a tough 21 years attempting to gain mainstream support from web browsers. Apart from **full support from Safari** since Safari 5 in 2010, **no other major web browser supports JPEG 2000\.** This is a reasonably damaging statistic, given Safari has a market share of only 9.7% on desktop.
+
+However, **AVIF has gained full support from Chrome and Opera on the desktop and Samsung Internet on mobile**. Firefox users can enable AVIF support in the about:config page. However, this won't allow Firefox users to view sequenced AVIFs. Safari and Microsoft Edge do not support any aspect of AVIF.
+
+## Conclusion for Nerds
+
+In many aspects, JPEG 2000 was a very forward-thinking image format. With its support for high-bit depth photos and astronomical image dimension limits, **JPEG 2000 is a truly impressive format on the spec sheet.**
+
+However, some may argue that JPEG 2000 was ahead of its time. Bloated by a less than adequate compression algorithm, ** JP2 struggled with market adoption at its release and boasted a woeful browser support record.**
+
+AVIF is a more suitable image format for the modern web **. With greater low-fidelity, high-appeal compression, and excellent animation support, AVIF has a real shot at becoming the following dominant image format.** It still has some leaps to make regarding browser support with Safari and Edge yet to adopt. However, with a comprehensive feature set and significant momentum around the format, we expect AVIF to overcome any support difficulties to break through into the mainstream.
+
+Our outlook for JPEG 2000 is nowhere near as optimistic.
+
+## Conclusion for Marketeers
+
+JPEG 2000 is, to most marketers, a file format lost to time. It struggled to make a market impact when it was released at the turn of the millennium, and the story stays true right now.
+
+AVIF brings efficient animated images, excellent compression, and modern features like overlays to its fight against JPEG 2000\. However, the knock-out blow comes in the form of browser support.
+
+**JPEG 2000 is supported by no major browser barring Safari.** For most market users, that's enough for them never to use the image format.
+
+AVIF offers an exciting future for image delivery. Visitors **can look forward to better-looking photos** while reducing the load on their data caps and bandwidth. AVIF hasn't got a clean sweep of browser support, with Firefox (sort of), Edge, and Safari still to go.
+
+**But, AVIF is the best all-rounder image format**. Its open and royalty-free nature gives us the confidence to predict **it will go all the way and be crowned king as the dominant image format for web delivery.**

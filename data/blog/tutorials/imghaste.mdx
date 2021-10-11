@@ -1,0 +1,60 @@
+---
+blog: true
+title: ImgHaste AVIF support
+description: ImgHaste is a blazing fast image CDN. Find out how you can use AVIF images in ImgHaste.
+keyword: ImgHaste
+category: tutorials
+subcategory: cdn
+support: full support
+url: blog/tutorials/imghaste/
+image: "/logo_draft.png"
+datePublished: 06.10.20
+dateModified: 06.10.20
+sources:
+  - www.imghaste.com/
+  - www.imghaste.com/blog/concerns-raised-about-avif-early-adopters
+  - startuptalky.com/imghaste-image-optimize-tool/
+  - wordpress.org/plugins/imghaste/
+  - www.facebook.com/imghaste/posts/
+tags:
+  - avif
+  - image format
+  - av1 image file format
+  - cdn
+  - content delivery network
+  - imghaste
+questions:
+  - Does ImgHaste support AVIF?
+  - Which CDN supports AVIF?
+relatedPosts:
+  - twicpics
+  - gumlet
+  - cloudinary
+---
+
+## What is AVIF
+
+An AV1 image format (AVIF) is an exciting new open-source and royalty free multi-channel image format. AVIF images offer significant file size reductions over JPEG, PNG, and WebP images, and are currently compatible with Google Chrome, Firefox, and Android devices. This format is derived from the keyframes of the video format AV1, which has been developed by Alliance for Open Media (AOMedia) in collaboration with Google, Cisco, and Xiph.org. The AVIF format is already receiving significant attention with Netflix already stating that it is superior to JPEG, PNG, and even the newer WebP formats in terms of image quality and compressed file size. JPEG has been around for decades and it is certainly time to have a new advanced alternative, making AVIF a very exciting development with the potential of being widely adopted.
+
+## What is ImgHaste
+
+The goal of IMGaste is to dynamically resize images and then serve them in the appropriate format so that your website loads faster and your images look fantastic. By using the PWA technology, it will automatically determine the best image for your website. IMGWaste utilizes server-side image rendering and proprietary technologies to match the visitor's screen size. Moreover, the images are provided via a global CDN to ensure blazing-fast delivery. The approach employed by IMGhaste does not rewrite URLs but uses Client Hints instead. By registering a Service Worker, your website can take advantage of the capabilities of Progressive Web Apps to intercept images. The 708 gzipped bytes script automatically determines the best possible image to deliver to your end-user. IMGhaste offers a free tier with 1000 credits and paid plans starting at 20 dollars per month.
+
+Some advantages are:
+
+<Checklist
+  items={[
+    "Effective Connection Type Detection.",
+    "Quality drop on slow 3g or Save Data on.",
+    "Search Engines will grab the origin images.",
+    "Works with images coming from Ajax requests.",
+    "Automatic AVIF Conversion based on browser support.",
+    "Automatic WebP Conversion based on browser support.",
+    "Progressive JPEGs & Interlaced PNGs as Net Gen fallback.",
+  ]}
+  checked={true}
+/>
+
+## ImgHaste supports AVIF
+
+ImgHaste automatically converts images to AVIF as needed.

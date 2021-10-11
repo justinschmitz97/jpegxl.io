@@ -1,0 +1,62 @@
+---
+blog: true
+title: Pixboost AVIF support
+description: Image CDNs help you serve the best image to users. Find out how you can use AVIF images in Pixboost.
+keyword: Pixboost
+category: tutorials
+subcategory: cdn
+support: full support
+url: blog/tutorials/pixboost/
+image: "/logo_draft.png"
+datePublished: 08.11.20
+dateModified: 08.11.20
+sources:
+  - pixboost.com/blog/next-gen-avif-format/
+  - pixboost.com/
+  - github.com/Pixboost/transformimgs
+  - medium.com/@pixboost
+  - medium.com/pixboost/load-your-images-faster-with-the-next-gen-avif-format-3a0a6d2936eb
+  - hub.docker.com/r/pixboost/transformimgs/
+  - www.reddit.com/r/Frontend/comments/k58o18/load_your_images_faster_with_the_nextgen_avif/
+tags:
+  - avif
+  - image format
+  - av1 image file format
+  - cdn
+  - content delivery network
+  - pixboost
+questions:
+  - Does Pixboost support AVIF?
+  - Which CDN supports AVIF?
+relatedPosts:
+  - gumlet
+  - imagekit
+  - imageengine
+---
+
+## What is AVIF
+
+An AVIF file is a compressed image stored in the HEIF format and represents a still image compressed with AV1. The AV1 video coding format represents the next step in media compression, according to most tech experts.
+
+As a contemporary image format, AVIF offers high compression rates with a wide range of features. It is possible to compress data either losslessly or lossily. Alpha channels, as well as other graphic formats, store additional information concerning transparent image areas. Transparency data is used to release objects, such as user interfaces, collages, and company logos.
+
+Furthermore, AVIF includes extended color spaces (Wide Color Gamut, WCG) and additional graininess, color undersampling, and HDR (High Dynamic Range). HDR is a technology that enables uniform brightness and solid colors and contrasts in images. HDR can be easily achieved with AVIF since it can go beyond the usual 8-bit color depth of standard dynamic range (SDR) images (up to 12-bit and higher color depths are possible). The metadata can be used to share not only HDR information but also information concerning the color gamut. Animation sequences - similar to GIF animations (Animated GIFs) - are also possible (support for multi-layer images in image elements and sequences).
+
+## What is Pixboost
+
+Pixboost is a cloud Image CDN service designed to reduce the file size of raster images (such as JPG, PNG, etc.) and decrease loading times. The file of an optimized image is cached on the Content Delivery Network (CDN) of Google, which increases the speed at which images can be retrieved in the future. As well as resizing and cropping photos, the service also makes it simple to produce responsive images, which respect the screen size of the device on which they will be displayed. The URL of the image must be modified to utilize the service. You can find the source code of Pixboost's image manipulation service on GitHub.
+
+## Pixboost supports AVIF
+
+Pixboost was among the first image CDNs to introduce AVIF. The API does not require you to manually select the target format for an image, but rather, determines the best format for a particular image on a case-by-case basis. Consequently, if a client (web browser) supports AVIF, then an AVIF will generally be served. Pixboost determines the supported formats based on the Accept HTTP header.
+
+Assume that you have an image on your website, AVIF and Pixboost can be used together by simply wrapping the URL as follows:
+
+<Syntax language="html">{`<img
+src="image.jpg?optimise?auth=api-key"
+alt="test image"
+/>`}</Syntax>
+
+### Docker
+
+Pixboost also offers their service to be used though an own infrastructure using a <Link href="github.com/Pixboost/transformimgs" text="docker image"/>.

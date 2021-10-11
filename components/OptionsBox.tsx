@@ -6,7 +6,7 @@ export interface Options {
   quality: number;
   distance: number;
   effort: number;
-  /*override_bitdepth: number*/
+  override_bitdepth: number;
   epf: number;
   resampling: number;
   colorspace: number;
@@ -31,7 +31,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
   const [quality, setQuality] = useState(0);
   const [distance, setDistance] = useState(0);
   const [effort, setEffort] = useState(1);
-  /*const [bitdepth, setBitdepth] = useState(0);*/
+  const [bitdepth, setBitdepth] = useState(0);
   const [fasterDecoding, setFasterDecoding] = useState(0);
   const [epf, setEpf] = useState("1");
   const [resampling, setResampling] = useState("1");
@@ -47,12 +47,12 @@ const OptionsBox = (props: OptionsBoxProps) => {
   };
 
   useEffect(() => {
-    let options: Options = {
+    const options: Options = {
       progressive: progressive,
       quality: quality,
       distance: distance,
       effort: effort,
-      /*override_bitdepth: bitdepth,*/
+      override_bitdepth: bitdepth,
       faster_decoding: fasterDecoding,
       epf: +epf,
       resampling: +resampling,
@@ -67,8 +67,8 @@ const OptionsBox = (props: OptionsBoxProps) => {
     quality,
     distance,
     effort,
-    ,
-    /*bitdepth*/ epf,
+    bitdepth,
+    epf,
     resampling,
     colorspace,
     colortransform,

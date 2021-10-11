@@ -1,0 +1,315 @@
+---
+blog: true
+title: How To Use AVIF Images In WordPress
+description:
+  WordPress doesn't allow uploading AVIF files. Learn how to still use
+  AVIF images on your website today.
+keyword: WordPress
+category: tutorials
+subcategory: cms
+support: partial support
+url: blog/tutorials/wordpress/
+image: "/logo_draft.png"
+datePublished: 02.12.20
+dateModified: 02.12.20
+sources:
+  - blog.shortpixel.com/what-is-avif-and-why-is-it-good/
+  - chrisyee.ca/blog/uploading-avif-images-in-wordpress/
+  - dev.to/iamrajeev/why-avif-support-in-wordpress-is-important-3g5e
+  - en.wikipedia.org/wiki/Media_type
+  - github.com/wp-media/imagify-plugin/issues/504
+  - libre-software.net/avif-test/
+  - wpmudev.com/forums/topic/smush-pro-avif-next-gen-image-format-support/
+  - publishing-project.rivendellweb.net/supporting-aadditional-content-types-in-wordpress/
+  - wordpress.org/support/topic/consider-adding-avif-support-in-the-future/
+  - wordpress.org/support/topic/generating-images-in-avif-format-3/
+  - wordpress.org/support/topic/generating-images-in-avif-format-5/
+  - wordpress.org/support/topic/will-the-avif-image-format-be-support-in-the-future/
+  - wordpress.stackexchange.com/questions/379114/workaround-to-upload-avif-files
+  - www.wpbeginner.com/glossary/functions-php
+  - wpengine.com/support/mime-types-wordpress/
+tags:
+  - image format
+  - wordpress
+  - avif images
+  - file size
+  - mime type
+  - image avif
+  - image optimization
+  - firefox
+  - file format
+  - avif image format
+  - image file
+  - google chrome
+  - avif wordpress plugin
+  - wordpress avif support
+  - image compression
+  - avif file
+  - compression
+  - avif format
+  - browser support
+questions:
+  - Why AVIF Support in WordPress is Important
+  - Why Does a WordPress Site Needs AVIF?
+  - How to Enable AVIF in WordPress?
+  - Using the AVIF Next-Generation Image Format on your Sites for Faster Loading Images
+  - Insert AVIF files in WordPress pages or posts
+  - Supporting additional mime types in WordPress
+  - Uploading AVIF images in WordPress
+  - Include support for the AVIF image format
+  - Optimizing your images as a way to speed up your WordPress site
+  - Upload AVIF to WordPress
+relatedPosts:
+  - blogger
+  - craftcms
+  - drupal
+---
+
+## No official support
+
+There is no official AVIF support. **WordPress recently started to support WebP files with the 5.8 update called Tatum**, released to the public on July 20, 2021. This update is a good indication that WordPress maybe keeps other file formats in mind. However, since it took more than a decade to support WebP, we don't expect support for AVIF to be implemented soon.
+
+**WordPress needs AVIF support for two reasons:**
+
+1. Technicians and end-users often have to deal with page load speed problems with this CMS. Thus, AVIF can contribute to faster loading without causing any quality loss due to its minimal file size.
+
+2. WordPress is the world's most dominant CMS, with over 455 million websites in 2020. This means that WordPress powers about 35% of the web. Further statistics of WordPress show that in November 2020, over 409 million people view more than 20 billion pages every month.
+
+<Image url="wordpress-usage" alt="graph showcasing how popular WordPress is" />
+
+## Security check
+
+"Sorry, this file type is not permitted for security reasons."
+
+Since version 4.7, the WordPress core has implemented a security check for uploading files. WordPress checks the file extension of your uploaded files and rejects files that do not match their pattern. You experience the same behavior when trying to upload SVGs.
+
+The same applies to modern image formats. **To date, WordPress does not support viewing or uploading AVIF images or other modern formats natively.**
+
+We could argue that AVIF is a new extension. Considering that WebP is more than ten years old and was just recently adopted, the question arises whether WordPress will ever add support for modern image formats. Fortunately, there are several ways around this security check.
+
+Nowadays, many plugin solutions exist from **image CDN providers to automatically convert your uploaded images to modern formats** on the fly.
+We can also disable the security check for uploading AVIF files if you want to do the manual work.
+
+## Using an image CDN Plugin
+
+Several plugin solutions exist that originate in image CDN providers. Most of them offer a simple setup routine with automatic conversion. You don't have to deal with code or complex settings. Most plugins change the HTML content of your post to replace the base URL with their endpoint so that images are loaded via the CDN.
+
+### Imagekit
+
+Imagekit offers a forever-free plan with unlimited requests and transformations. You have a 20GB media library storage with unlimited transformation storage. They provide a complete set of image-related features and fast email support. No credit card is required.
+
+<Link href="imagekit.io/" text="Homepage" />
+{" · "}
+<Link href="wordpress.org/plugins/imagekit/" text="WP Plugin" />
+{" · "}
+<Link
+  href="docs.imagekit.io/platform-guides/wordpress"
+  text="WP Tutorial"
+  ext
+/>
+{" · "}
+<Link
+  href="imagekit.io/blog/automatic-avif-image-optimization-imagekit/"
+  text="AVIF article"
+  ext
+/>
+
+### Cloudinary
+
+Cloudinary offers a free forever plan with no credit card required. They use credits to track your usage, with a free plan offering 25 credits. You can either spend them on 25k transformations, 25GB of managed storage, or 25GB of net viewing bandwidth. They also provide video transformation and access to an API, remote fetch, auto-backups, and revision tracking. More advanced pricing plans allow for more conversions, backups to your S3 bucket, auto-tagging based search, access to a whole palette of add-ons (e.g., background removing).
+
+<Link href="cloudinary.com/" text="Homepage" />
+{" · "}
+<Link
+  href="wordpress.org/plugins/cloudinary-image-management-and-manipulation-in-the-cloud-cdn/"
+  text="WP Plugin"
+  ext
+/>
+{" · "}
+<Link
+  href="cloudinary.com/documentation/wordpress_integration"
+  text="WP Tutorial"
+  ext
+/>
+{" · "}
+<Link
+  href="cloudinary.com/blog/how_to_adopt_avif_for_images_with_cloudinary"
+  text="AVIF article"
+  ext
+/>
+
+### ImageEngine
+
+ImageEngine offers a free 30 day trial with no credit card required. You can deliver up to 100GB of data through their global CDN. They claim to have a more effective optimization when it comes to mobile devices. They call it 'device-aware optimization'. More advanced plans offer more conversions, in-app optimization, and dedicated edge servers.
+
+<Link href="imageengine.io" text="Homepage" />
+{" · "}
+<Link href="wordpress.org/plugins/image-cdn/" text="WP Plugin" />
+{" · "}
+<Link href="imageengine.io/wordpress-optimizer/" text="WP Tutorial" ext />
+{" · "}
+<Link
+  href="imageengine.io/blog/why-use-an-image-cdn-for-avif/"
+  text="AVIF article"
+/>
+
+### Shortpixel
+
+Shortpixel offers many plans, from a free plan for 150 image conversions per month to a plan that scales up to an unlimited amount. They automatically scale down large images and are compatible with other WordPress plugins like WooCommerce. They also come with a Cloudflare integration and automated backup solutions.
+
+<Link href="shortpixel.com/" text="Homepage" />
+{" · "}
+<Link
+  href="wordpress.org/plugins/shortpixel-image-optimiser/"
+  text="WP Plugin"
+  ext
+/>
+{" · "}
+<Link
+  href="blog.shortpixel.com/shortpixel-image-optimizer-the-only-wp-plugin-that-creates-avif-images/"
+  text="WP Tutorial"
+  ext
+/>
+{" · "}
+<Link
+  href="blog.shortpixel.com/what-is-avif-and-why-is-it-good/"
+  text="AVIF article"
+  ext
+/>
+
+### IMGhaste
+
+IMGhaste uses an approach that does not rewrite URLs but uses Client Hints. This plugin registers a Service Worker, providing Progressive Web App functionalities to your website to intercept your Images. A 708 gzipped bytes script automatically detects the best possible image required by your end-user. IMGhaste offers a free tier with 1000 credits and paid plans starting at 20$ per month.
+
+<Link href="www.imghaste.com/" text="Homepage" />
+{" · "}
+<Link href="wordpress.org/plugins/imghaste/" text="WP Plugin" />
+{" · "}
+<Link
+  href="help.imghaste.com/show/can-i-integrate-my-wordpress-website"
+  text="WP Tutorial"
+  ext
+/>
+{" · "}
+<Link
+  href="www.imghaste.com/blog/concerns-raised-about-avif-early-adopters"
+  text="AVIF article"
+  ext
+/>
+
+### TwicPics
+
+TwicPics comes with a lightweight, unobtrusive JavaScript helper. This script analyzes the browsing context and automatically detects when to load your media and which transformations it should apply to them. They offer a free plan for 3GB of CDN bandwidth, with just 50ct per additional GB. You can upload unlimited master & tailored images with infinite transformations. Priced plans allow for better organization, multiple websites, subdomains, and premium support.
+
+<Link href="www.twicpics.com/" text="Homepage" />
+{" · "}
+<Link href="wordpress.org/plugins/twicpics/" text="WP Plugin" />
+{" · "}
+<Link
+  href="www.twicpics.com/docs/guides/wordpress-plugin"
+  text="WP Tutorial"
+  ext
+/>
+{" · "}
+<Link
+  href="www.twicpics.com/docs/api/transformations#output"
+  text="AVIF article"
+  ext
+/>
+
+### Gumlet
+
+Gumlet auto-resizes and compresses images. They offer multiple plans, including unlimited master images and image optimizations, no limit on cache storage, and detailed usage analytics. Their free plan provides usage of one website, 1GB of bandwidth per month with $1 per extra GB. More advanced plans offer unlimited websites, priority support, custom domains, complete reports and alerts, and fallback mechanisms.
+
+<Link href="www.gumlet.com" text="Homepage" />
+{" · "}
+<Link href="wordpress.org/plugins/gumlet/" text="WP Plugin" />
+{" · "}
+<Link href="www.gumlet.com/wordpress" text="WP Tutorial" />
+{" · "}
+<Link
+  href="www.gumlet.com/blog/worlds-first-service-to-provide-avif-support/"
+  text="AVIF article"
+  ext
+/>
+
+### Cloudimage
+
+By automating the delivery process, Cloudimage makes your images look high-quality and load rapidly regardless of bandwidth by delivering them in the best possible format (WebP, AVIF, optimized JPEG), resolution, and quality. Plans start at a free price and scale as demand goes higher.
+
+Update: The plugin hasn't been testet with the latest 3 major releases of WordPress. It may have compatibility issues.
+
+<Link href="www.cloudimage.io/en/home" text="Homepage" />
+{" · "}
+<Link href="wordpress.org/plugins/cloudimage/" text="WP Plugin" />
+{" · "}
+<Link
+  href="docs.cloudimage.io/go/cloudimage-documentation-v7/en/dev-implementation/wordpress-plugin"
+  text="WP Tutorial"
+/>
+
+### Modern Images WP
+
+Adam Silverstein, a Developer Relations Engineer at Google who regularly contributes to the WordPress core, has developed this plugin to specify the default image format used for sub-sized images generated by WordPress.
+
+<Link href="wordpress.org/plugins/modern-images-wp/" text="WP Plugin" />
+{" · "}
+<Link
+  href="github.com/adamsilverstein/modern-images-wp"
+  text="WP Tutorial"
+  ext
+/>
+
+## Manually uploading
+
+WordPress restricts files that do not match its list of Internet media types, also known as content types or mime-types. The MIME type is a two-part identifier for file formats and format content transferred on the Internet. It is pretty simple to explain: A media file consists of a type and a subtype that defines content and file extension. An HTML file has the mime-type text/html, and a jpg has the mime-type image/jpeg.
+
+<Image url="mimetype" alt="example showing mime types" />
+WordPress uses these mime types. They have a list of files they allow and a list
+of files they disallow. There are several methods to change this behavior and add
+mime types.
+
+### Solution 1: Funtions.php
+
+Functions.php is a file that appears on every theme in WordPress and contains basic functionalities. You can open it by going to Appearance and choosing the Theme Editor. If a warning appears, confirm you know what you are doing. Select your active theme in the right sidebar, and below you will find all theme files listed, including functions.php.
+
+<Image url="functionsphp" alt="place where the functions.php is located" />
+Click to open the file and scroll down to the bottom. Create a new line after the
+end of the file, and add the following. This code will allow you to upload AVIF files
+just like you upload any other image. If you wish to add more support for all the
+new image formats, copy the code below.
+<Syntax language="php">
+  {`function allow_modern_images( $mime_types ) {
+  $mime_types['webp'] = 'image/webp';
+  $mime_types['heic'] = 'image/heic';
+  $mime_types['heif'] = 'image/heif';
+  $mime_types['heics'] = 'image/heic-sequence';
+  $mime_types['heifs'] = 'image/heif-sequence';
+  $mime_types['avif'] = 'image/avif';
+  $mime_types['avis'] = 'image/avif-sequence';
+  return $mime_types
+}
+add_filter( 'upload_mimes', 'allow_modern_images', 1, 1 );`}
+</Syntax>
+
+### Solution 2: FTP Upload
+
+Another way to bypass the restriction is to upload your files via FTP. Connect to your server and drop your images in the upload folder, where most of your current photos should be saved. If you don't know how to access your files directly, please ask your web host. Most providers offer great tutorials.
+
+### Solution 3: Mime-Type Plugins
+
+There's a considerable disadvantage when modifying the functions.php. It's theme-related. Whenever you switch a theme or update your current one, the shortcode snippet will be gone. Multiple plugin solutions exist for this issue:
+
+<Checklist items={["WP Add Mime Types", "Lord of the Files"]} checked={true} />
+
+To quote: WordPress relies primarily on name-based validation when deciding whether or not to allow a particular file, leaving the door open for various kinds of attacks. Lord of the Files (previously known as "blob mimes") adds to this content-based validation and sanitizing, ensuring that files are what they say they are and safe for inclusion on your site.
+
+<Image url="mimetype-plugin" alt="screenshot of the mime type plugin website" />
+
+### No automatic conversion
+
+Uploading images is an excellent thing, but a colossal problem remains. For every image you want to serve to your users, you need to convert it manually. Bulk converters like avif.io offer a solution to convert multiple files. However, using the HTML picture tag remains. A more straightforward idea would be an image plugin that automatically converts images to modern formats and offers the best solution based on your user's browser.
+
+## Summary
+
+WordPress does not support AVIF and most likely won't support it shortly. Use a CDN plugin to enable support today.

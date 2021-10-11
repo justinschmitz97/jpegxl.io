@@ -1,0 +1,112 @@
+---
+blog: true
+title: AVIF vs JPEG XR
+description: An in-depth guide on how the brand-new file format AVIF stacks up against its competitor JPEG XR.
+keyword: JPEGXR
+category: comparisons
+url: blog/comparisons/avif-vs-jpegxr/
+image: "/logo_draft.png"
+datePublished: 13.08.21
+dateModified: 13.08.21
+questions:
+  - How does JPEG XR compare to other image codecs
+  - Does AVIF support transparency
+  - Is AVIF better than JPEG XR?
+  - Where is JPEG XR supported?
+  - Why is AVIF better than other compression codecs?
+  - Why is AVIF better than its competitors?
+tags:
+  - image formats
+  - image file format
+  - image codec
+  - color accuracy
+  - color subsampling
+  - JPEG XR
+  - browser compatibility
+  - major browsers
+  - modern browsers
+  - lossy encoding
+  - video codecs
+  - video formats
+  - container format
+  - visual quality
+  - image codecs
+  - chroma
+sources:
+  - netflixtechblog.com/avif-for-next-generation-image-coding-b1d75675fe4
+  - cloudinary.com/blog/time_for_next_gen_codecs_to_dethrone_jpeg
+  - www.lambdatest.com/blog/avif-image-format/
+  - chipsandcheese.com/2021/02/28/modern-data-compression-in-2021-part-2-the-battle-to-dethrone-jpeg-with-jpeg-xl-avif-and-webp/
+  - css-tricks.com/time-for-next-gen-codecs-to-dethrone-jpeg/
+  - en.wikipedia.org/wiki/High_Efficiency_Image_File_Format
+  - medium.com/swlh/the-future-of-image-formats-on-the-web-55749553c5ca
+  - caniuse.com/jpegxr
+  - en.wikipedia.org/wiki/JPEG_XR
+  - developer.mozilla.org/en-US/docs/Learn/Performance/Multimedia
+  - en.wikipedia.org/wiki/Chroma_subsampling
+  - en.wikipedia.org/wiki/VP8
+relatedPosts:
+  - avif-vs-jpg
+  - avif-vs-jpegxl
+  - avif-vs-jpeg2000
+---
+
+## Introduction
+
+After 28 years of being the most popular and most widely used image format, many image professionals predict that the end for the aging JPEG image file format is nigh. **There are several competitors in the battle to replace JPEG: In this article, we will talk about AVIF and JPEG XR (also known by its file extension JXR).**  
+JPEG XR was first developed in 2009 by the same Joint Photographic Experts Group that created the original 1992 JPEG format. It is based on Microsoft’s Windows Media Photo specifications (later renamed HD Photo) from 2006.  
+JPEG XR, standing for Extended Range, aims to solve some fundamental limitations and issues with JPEG while also improving the JPEG 2000 (JP2) format released by the same group in 2000.  
+AVIF was released in 2019 and is derived from the AV1 video codec. It was developed by the Alliance for Open Media (AOM). AVIF aims to bring the efficiency gains made by modern video codecs like AV1 and HVEC to the image world.  
+Here’s how these two emerging image file formats compare, and ultimately which you should use for image delivery.
+
+## Limits and Quality
+
+AVIF is derived from a video codec. Therefore, many video professionals will recognize some of its limitations of 8K. Still, **AVIF has a maximum resolution of 65536 x 65536 pixels.**  
+This is because it is possible to produce larger AVIF images by independently encoding tiles and tiling them to create a larger image. However, using this method introduces some artifacts at the borders of these individual frames. This format is therefore unsuitable for pictures with large dimensions.  
+JPEG XR follows the improvements JPEG 2000 made in its maximum image dimensions, **boasting a max resolution of 4,294,967,295 x 4,294,967,295 pixels.**  
+Both AVIF and JPEG XR support wide color gamuts and HDR images. JPEG XR supports a max bit depth of 32-bits (or deep color), whereas AVIF has a max precision of 12-bits. This may seem like a significant distance, but we have found that 12-bit precision is usually good enough for image delivery. Only those with authoring workflows can generally benefit from higher bit depths. Both formats can also do 4:4:4.
+
+## Compression
+
+JPEG XR was released to improve upon the compression ratios of both JPEG and JPEG 2000\. JPEG XR uses a similar compression algorithm to JPEG but offers smaller file sizes and better quality. JXR supports both lossy and lossless compressions.  
+**With low-fidelity, highly compressed photos, AVIF outshines most of its competition.** It provides some excellent file size efficiency when compared to JPEG and retains a high level of appeal. The appeal is how good a photo looks and can be measured by the absence of compression artifacts like nasty color banding or blockiness.  
+JPEG XR’s file sizes are generally similar to AVIF files. However, the newer file format retains more detail and appeal. AVIF images can therefore be smaller and still match the quality of JPEG XR.  
+AVIF also pulls ahead JPEG XR with its more modern compression engine with lossless compression, leading to smaller file sizes.
+
+## Speed
+
+JPEG XR is renowned for its low computational and memory resource requirements. Therefore JXR encodes and decodes speeds are generally quite fast on even underpowered hardware.  
+AVIF, on the other hand, suffers from less-than-ideal speeds due to its relative complexity. Encode and decode speeds are slow, and therefore underpowered machines may struggle to handle AVIF files.  
+Both formats do, however, support parallelization. This method of processing an encode or decode workload allows an image coder to take advantage of multi-threaded hardware and utilize more than one CPU core.  
+AVIF is generally more parallelizable than JPEG XR. Therefore we expect the gulf between AVIF and JXR’s speeds to shrink as computer hardware tends towards higher core counts.
+
+## Other Features
+
+**Both AVIF and JPEG XR support alpha transparency, unlike JPEG, making it more suitable with graphics and text images.** AVIF also includes support for animations. This is a task it succeeds in due to its relation to the AV1 video codec.  
+JPEG XR doesn’t support animated images, although the Motion JPEG XR standard was released in March 2010 as a separate format for videos and animations.  
+AVIF supports overlays and depth maps. Overlays allow for layers to help maintain the clarity of text and graphics over highly compressed photo backgrounds. Depth maps enable effects to be added to foregrounds and backgrounds. **JPEG XR doesn’t support these features.**  
+**We’re particularly impressed by JPEG XR’s progressive resolution refinement feature** , allowing for the use of embedded thumbnail images and low-resolution preview images while an image is being decoded.  
+**AVIF, overall, has a more extensive feature set.** However, with support for alpha transparency and HDR support, JXR marks a vast improvement over JPEG.
+
+## Support
+
+Since its release in 2009, JPEG XR has suffered from low uptake and insufficient momentum throughout its lifetime. As the spiritual successor to the Windows Media Photo file format, JPEG XR was supported by Internet Explorer upon the release of IE9 in 2011\. This support followed through to IE11 and eventually the initial release of Microsoft Edge. However, support for JXR was dropped when Microsoft released the Chromium version of Edge in 2020.  
+**In 2021, no major web browser supports JPEG XR.**  
+The story is thankfully different for AVIF. Despite its youth, AVIF has enjoyed an impressive rise in market uptake and has been fully supported by the world’s most popular browser Google Chrome since version 93\. Opera also fully supports AVIF.  
+In July 2021, Firefox included full support for AVIF images both still and sequenced in their Firefox 92 update. Safari and Microsoft Edge are yet to support the format, but we expect them to follow suit soon.  
+The future is looking bright for AVIF’s browser support. JPEG XR never enjoyed any browser success outside of Internet Explorer and the initial builds of Edge, and now it has been replaced by JPEG XL. It’s hard to see this situation improving for JXR in any way.
+
+## Conclusion for Nerds
+
+JPEG XR was an impressive step-up from JPEG and was the Joint Photographic Experts Group’s second attempt at replacing their original hit standard after the failed attempt with JPEG 2000.  
+Although it offered some great leaps in compression performance and features like alpha transparency, browsers were unwilling to support the format. Unfortunately, it has faded into obscurity.  
+Fifteen years later and the search for a JPEG replacement continues. AVIF is an overall more modern and feature-rich format than JPEG XR. It even beats out newer standards like JPEG XL in compression ratios and uptake on several occasions.  
+AVIF also has the momentum to demand support from major browsers. The recent full support from Firefox is an excellent indicator that AVIF’s browser arsenal can continue to grow – and we expect AVIF will become the following dominant image format for all purposes.
+
+## Conclusion for Marketeers
+
+Most people wouldn’t have heard of JPEG XR before, and for a good reason. JPEG XR has, over its 15-year existence, failed to capture the hearts of photo professionals and therefore has seen minimal use over the years.  
+With no major browser supporting the standard, we doubt this will ever change for JPEG XR.  
+The average user instead will benefit from AVIF’s greater file size efficiency, compression quality ratios, and wide-reaching features.  
+AVIF is a powerful image file format. We think its low-fidelity high-appeal performance will make it a popular and valuable format for web images. Users should be glad to see away entirely obsolete formats like GIF for animated images and enjoy the excellent quality of highly compressed AVIF images and animations.  
+Simply put, **AVIF is ideally placed to become the standard image format for image delivery.**

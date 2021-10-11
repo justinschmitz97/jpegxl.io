@@ -1,0 +1,70 @@
+---
+blog: true
+title: Cloudinary AVIF support
+description: Image CDNs help you serve the best image to users. Find out how you can use AVIF images in Cloudinary.
+keyword: Cloudinary
+category: tutorials
+subcategory: cdn
+support: full support
+url: blog/tutorials/cloudinary/
+image: "/logo_draft.png"
+datePublished: 18.02.21
+dateModified: 18.02.21
+sources:
+  - cloudinary.com/
+  - en.wikipedia.org/wiki/Cloudinary
+  - stackshare.io/cloudinary
+  - cloudinary.com/blog/how_to_adopt_avif_for_images_with_cloudinary
+  - cloudinary.com/blog/tag/AVIF
+  - cloudinary.com/blog/image_formats_getting_it_right
+  - cloudinary.com/blog/how_jpeg_xl_compares_to_other_image_codecs
+  - cloudinary.com/blog/time_for_next_gen_codecs_to_dethrone_jpeg
+  - cloudinary.com/documentation/image_transformations
+  - cloudinary.com/blog/fuif_why_do_we_need_a_new_image_file_format
+  - cloudinary.com/documentation/image_optimization
+  - sia.codes/posts/avif-on-cloudinary/
+  - www.businesswire.com/news/home/20210713005626/en/Cloudinary-Labs-Launches-to-Fuel-Innovation-and-the-Future-of-Visual-Media
+tags:
+  - avif
+  - image format
+  - av1 image file format
+  - cdn
+  - content delivery network
+  - cloudinary
+questions:
+  - Does Cloudinary support AVIF?
+  - Which CDN supports AVIF?
+relatedPosts:
+  - imagekit
+  - imageengine
+  - shortpixel
+---
+
+## What is AVIF
+
+Digitalization needs to compress files, so that network infrastructure is relieved of resources sustainably. AVIF aims to improve data traffic efficiency and replace the widely used JPEG format in the long term. As compared with JPEG, AVIF offers better quality and compression. There is interest in implementing the new image format among companies in the digital industry. As a combination of excellent reduction and a wide range of options, AVIF is a viral image format. Data can be compressed losslessly as well as lossily. Alpha channels are used to indicate where areas of transparent images appear. Transparency is exposed as an object in interfaces such as user interfaces, collages, and company logos. Additionally, AVIF supports extended color spaces (Wide Color Gamut, WCG) and functions such as graininess, color undersampling, and HDR (High Dynamic Range).
+
+Chrome, Opera, Firefox, Samsung Internet, and a few others all support AVIF. AVIF's latest numbers can be found on caniuse.
+
+## What is Cloudinary
+
+Cloudinary is a cloud computing company headquartered in Santa Clara, California, with offices in Israel, England, Poland, and Singapore. The firm offers cloud-based services for managing images and videos. With it, users can upload, store, manage, manipulate, and deliver images and videos for use in websites and apps. More than 1 million web and mobile application developers use Cloudinary, including Condé Nast, Dropbox, Forbes, Outbrain, Taboola, and Answers.com. Cloudinary has been hailed as the "gold standard" of image management on the web by Inc Magazine. Cloudinary offers a free plan for life without requiring a credit card. Credits are used to track your usage, with the free plan providing 25 credits. Either you can use them to purchase 25k transformations, 25GB of managed storage, or 25GB of bandwidth for net viewing. Additionally, they offer video transformation, API access, auto backups, and video revision tracking. In addition to more conversions, backups to your S3 bucket, auto-tagging-based search, and access to a wide range of add-ons (e.g., background removing), more advanced pricing plans are also available.
+
+## Cloudinary supports AVIF
+
+Cloudinary can be used to convert AVIF files either using the f_avif format transformation or the f_auto auto format transformation after you have registered for the beta test. With f_auto, Cloudinary will pick the best file format based on the user's browser.
+
+By using AVIF, you are increasing your transformation usage since AVIF is intensive to encode. Consequently, it takes longer for the transformation to take place. The problem is noticeable with delays of a few seconds. With the API, eager transformations can be used to transform data on upload.
+
+Cloudinary counts AVIF transformations as follows: Images between 2MP and 2MP are counted as one transformation. Each additional 1MP above 2MP is counted as 0.5 transformations. This may appear to be a high cost on the surface. Still, it is a good deal when considering how long AVIF conversions take compared to other formats. If you are interested in participating in the f_auto beta, don't hesitate to contact Cloudinary.
+
+Example code
+
+<Syntax language="html">
+  {`<img
+  src="img.jpg/q_auto,f_auto,w_680/file.jpg"
+  srcset="img.jpg/q_auto,f_auto,w_1536/file.jpg 1536w, img.jpg/q_auto,f_auto,w_768/file.jpg 768w, img.jpg/q_auto,f_auto,w_576/file.jpg 576w, img.jpg/q_auto,f_auto,w_384/file.jpg 384w"
+  sizes="(max-width: 768px) 100vw, 768px"
+  alt="cloudinary example" width="1920" height="1080" loading="lazy" decoding="async"
+  />`}
+</Syntax>

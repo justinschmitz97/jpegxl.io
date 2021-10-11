@@ -1,0 +1,68 @@
+---
+blog: true
+title: Changelog for March 2021
+description: This release focuses on improving accessibility drastically.
+keyword: Changelog March 2021
+category: releases
+url: blog/releases/2021-03/
+image: "/logo_draft.png"
+datePublished: 04.04.21
+dateModified: 04.04.21
+sources:
+  - github.com/strukturag/libheif
+  - bugzilla.mozilla.org/show_bug.cgi?id=1700723
+  - bugzilla.mozilla.org/show_bug.cgi?id=1689806
+  - bugzilla.mozilla.org/show_bug.cgi?id=1696056
+  - bugzilla.mozilla.org/show_bug.cgi?id=1687443
+  - bugzilla.mozilla.org/show_bug.cgi?id=1700723
+  - aomediacodec.github.io/av1-avif/
+  - github.com/mozilla/mp4parse-rust/issues/236
+  - github.com/AOMediaCodec/libavif/issues/480
+  - github.com/MPEGGroup/MIAF/issues/5
+  - github.com/MPEGGroup/FileFormat/issues/23
+  - github.com/kornelski/avif-serialize/issues
+  - github.com/kornelski/cavif-rs
+  - github.com/kornelski/cavif-rs/issues/13
+relatedPosts:
+  - 2021-01
+  - 2021-02
+  - 2021-07
+---
+
+## Accessibility
+
+One would think a website that heavily focuses on images wouldn't care about accessibility, right? Wrong! There are a lot of people with physical disabilities that affect how they perceive colors, images, and websites. We've been spending days and weeks learning how to design websites for a good accessibility, especially when using screenreaders or being unable to use a pointer like a mouse but only rely on the keyboard.
+
+<Checklist
+  items={[
+    "Navigation through the website is possible without the mouse",
+    "More semantic HTML elements",
+    "Improved markup for screenreaders",
+    "Conversion settings now completely adjustable and explained for keyboard users",
+    "Conversion can now be cancelled with the keyboard",
+    "Download button won't appear before conversion finished for keyboard users",
+    "You can easily skip through all blog posts now",
+  ]}
+  checked={true}
+/>
+
+We realize these changes may not seem like a big deal, but they're just a huge step towards making our website accessible to everyone and we're happy to be able to offer everyone a chance to experience AVIF.
+
+## API
+
+As part of our service, we would also like to provide a Web API. We are currently working on a REST API for avif.io and we're happy to announce that our version 0.0.1 is working beautifully! We are making sure things go smooth before we release it to the public. The server is written in Rust, heavily relying on the asynchronous features of the language and the Tokio runtime. It uses the actix_web actor framework for concurrent messaging and websocket support. We are planning to offer an automatic method for determining best image quality using an SSIM measure, as well as training an AI model on our data in the future. All of course, while keeping your privacy. Your images will not be analyzed, viewed or stored. We are super excited for all the upcoming steps.
+
+<Link text="Join our Discord" href="discord.com/invite/6w42YpF5hm" />
+for staying up to date on latest changes and being part of the development.
+
+## Conversion issues
+
+These past few weeks, we've gotten a lot of correspondence from the Firefox developers, specifically Jon Bauman, the guy who is responsible for the AVIF implementation, especially the recent upcoming full public release, without AVIF support hidden behind a developer flag. Long story short, they (or well, a user) <Link
+  text="experienced a few bugs when it comes to our converter."
+  href="bugzilla.mozilla.org/show_bug.cgi?id=1700723"
+  ext
+/> It seems like our AVIF serialization <Link
+  text="is running with a third party dependency"
+  href="github.com/mozilla/mp4parse-rust/issues/236"
+  ext
+/> that does not comply with the official AVIF spec. In order to work around this and also give us more flexibility in the future, we are currently looking into the <Link text="inclusion of libheif" href="github.com/strukturag/libheif" /> in our conversion process.

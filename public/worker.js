@@ -1,42 +1,42 @@
-importScripts("wjpegxl.js")
+importScripts("wjpegxl.js");
 
-onmessage = function(e) {
-    JXL().then(function(jxlModule){
-        let bufferSize = e.data.buffer.length
-        let buffer = jxlModule._malloc(bufferSize);
-          
-        let bufferArray = new Uint8ClampedArray(jxlModule.HEAPU8.buffer, buffer, bufferSize);
-  
-        for (let i = 0; i < bufferSize; i++) {
-            bufferArray[i] = e.data.buffer[i];
-        }
+onmessage = function (e) {
+  JXL().then(function (jxlModule) {
+    let bufferSize = e.data.buffer.length;
+    let buffer = jxlModule._malloc(bufferSize);
 
-        const getQualityMode = (qualityMode) => {
-            if (qualityMode === "quality")
-                return jxlModule.QualityMode.Quality;
-            if (qualityMode === "distance")
-                return jxlModule.QualityMode.Distance; 
-        }
+    let bufferArray = new Uint8ClampedArray(
+      jxlModule.HEAPU8.buffer,
+      buffer,
+      bufferSize
+    );
 
-        const getColorTransform = (colortransform) => {
-            if (colortransform === 0) 
-                return jxlModule.ColorTransform.XYB;
-            if (colortransform === 1) 
-                return jxlModule.ColorTransform.None;
-            if (colortransform === 2) 
-                return jxlModule.ColorTransform.YCbCr;
-        }
+    for (let i = 0; i < bufferSize; i++) {
+      bufferArray[i] = e.data.buffer[i];
+    }
 
-        let options = jxlModule.createOptions();
-        options = {...e.data.options, 
-            colortransform: getColorTransform(e.data.options.colortransform),
-            quality_mode: getQualityMode(e.data.options.quality_mode)
-        };
+    const getQualityMode = (qualityMode) => {
+      if (qualityMode === "quality") return jxlModule.QualityMode.Quality;
+      if (qualityMode === "distance") return jxlModule.QualityMode.Distance;
+    };
 
-        let result = jxlModule.jxlCompress(buffer, bufferSize, options);
+    const getColorTransform = (colortransform) => {
+      if (colortransform === 0) return jxlModule.ColorTransform.XYB;
+      if (colortransform === 1) return jxlModule.ColorTransform.None;
+      if (colortransform === 2) return jxlModule.ColorTransform.YCbCr;
+    };
 
-        jxlModule._free(buffer);
+    let options = jxlModule.createOptions();
+    options = {
+      ...e.data.options,
+      colortransform: getColorTransform(e.data.options.colortransform),
+      quality_mode: getQualityMode(e.data.options.quality_mode),
+    };
 
-        postMessage({buffer: result});
-    })
-}
+    let result = jxlModule.jxlCompress(buffer, bufferSize, options);
+
+    jxlModule._free(buffer);
+
+    postMessage({ buffer: result });
+  });
+};

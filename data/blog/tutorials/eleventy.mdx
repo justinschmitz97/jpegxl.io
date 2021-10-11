@@ -1,0 +1,103 @@
+---
+blog: true
+title: Eleventy AVIF support
+description: Eleventy is a Flat-File-CMS that supports AVIF. Learn more here.
+keyword: Eleventy
+category: tutorials
+subcategory: coding
+support: full support
+url: blog/tutorials/eleventy/
+image: "/logo_draft.png"
+datePublished: 30.07.21
+dateModified: 08.10.21
+sources:
+  - www.11ty.dev/
+  - github.com/11ty/eleventy
+  - github.com/saneef/eleventy-plugin-img2picture
+  - github.com/chromeos/static-site-scaffold-modules/tree/main/modules/eleventy-plugin-local-respimg
+  - www.11ty.dev/docs/plugins/image/
+  - www.smashingmagazine.com/2021/03/eleventy-static-site-generator/
+  - www.youtube.com/watch?v=-dM6AmNmMFA
+  - www.digitalocean.com/community/tutorials/js-eleventy
+  - github.com/11ty/eleventy-img
+tags:
+  - image format
+  - eleventy
+  - avif images
+  - file size
+  - mime type
+  - image avif
+  - eleventy-img
+  - file format
+  - avif image format
+  - image file
+  - avif eleventy plugin
+  - eleventy avif support
+  - image compression
+  - avif file
+  - cms
+questions:
+  - How to Enable AVIF in Eleventy?
+  - Insert AVIF files in Eleventy
+  - Uploading AVIF images in Eleventy
+  - Upload AVIF to Eleventy
+relatedPosts:
+  - etsy
+  - joomla
+  - kirby
+---
+
+## What is Eleventy?
+
+Among static site generators, Eleventy (aka 11ty) is gaining popularity. This Node-based builder is unique because it has a zero-config starting point, a purely static output, and the ability to achieve a top Lighthouse performance score.
+
+Using JavaScript, Eleventy is a static site generator. It was created as a JavaScript replacement for Jekyll. By default, it's zero-configuration but can be configured according to your needs. Eleventy respects the directory structure of your project. Both during builds and in the browser, Eleventy is extremely fast. Compared to something like Gatsby, serving content does not require loading a JavaScript bundle client-side. In this case, server-side rendering is not even an issue since filesystem pages are created from static HTML. Since Eleventy isn't a JavaScript framework, it has no client-side boilerplate. Instead of chasing frameworks, Eleventy is thinking long-term. Your front-end stack is decoupled from the toolchain, code conventions, and modules you use.
+
+Eleventy is unique in that it allows the user to select and mix up to ten different templating languages. These can be mixed or used individually. The mixing of languages can occur within the same file or between layouts. By combining languages, you can design a write-and-build workflow tailored to your needs and that of your project.
+
+## AVIF Support
+
+Eleventy offers plugins that provide additional functionality. One such plugin is the Image Plugin, which is based on the node.js sharp image processing module. Image Plugin is a low-level tool for performing both vector and raster image transformations at build-time. It offers multiple output sizes and formats, as well as local caching of remote images.
+
+A wide range of image formats is supported as inputs, including JPEG, PNG, WebP, GIF, TIFF, AVIF, and SVG. It outputs the same formats in multiple sizes while maintaining the original aspect ratio.
+
+The plugin can be installed by running the following command:
+
+<Syntax language="javascript">{`npm install --save-dev @11ty/eleventy-img`}</Syntax>
+
+Shortcodes, filters, and async-friendly functions can benefit from this utility. AVIF images can be created in several ways. The user can either use the generateHTML function, create a component to produce an img tag output, or produce a picture tag output.
+
+We recommend generateHTML since it is more maintainable and enables all necessary image optimizations. A code example is shown below that generates AVIF and WebP alternative images of different sizes.
+
+<Syntax language="javascript">{`const Image = require("@11ty/eleventy-img");
+async function imageShortcode(src, alt, sizes) {
+let metadata = await Image(src, {
+widths: [360, 720, 1080, 1440],
+formats: ["avif", "webp", "jpeg"]
+});
+let imageAttributes = {
+alt, sizes, loading: "lazy", decoding: "async",
+};
+return Image.generateHTML(metadata, imageAttributes);
+}
+module.exports = function(eleventyConfig) {
+eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);
+eleventyConfig.addLiquidShortcode("image", imageShortcode);
+eleventyConfig.addJavaScriptFunction("image", imageShortcode);
+}`}
+
+</Syntax>
+
+You can then use this information in your templates. You will automatically generate the corresponding HTML based upon the Image options you specify. See the following example code:
+
+<Syntax language="javascript">{`module.exports = function() {
+  return \`<h1>\${await this.image(
+    "./src/images/cat.jpg",
+    "photo of my cat",
+    "(min-width: 30em) 50vw, 100vw"
+  )}</h1>\`;
+};`}</Syntax>
+
+## Summary
+
+With its Image Plugin, Eleventy has amazing AVIF support out of the box. Plus, there is much more to the Image Plugin! Synchronous usage, custom filenames, in-memory cache, caching images remotely, etc. We strongly recommend you review the complete documentation on <Link href="www.11ty.dev/docs/plugins/image/" text="11ty.dev"/>.

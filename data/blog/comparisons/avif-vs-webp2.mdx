@@ -1,0 +1,101 @@
+---
+blog: true
+title: AVIF vs WEBP2
+description:
+  An in-depth guide on how the brand-new file format AVIF stacks up against
+  its competitor WebP2.
+keyword: WebP2
+category: comparisons
+url: blog/comparisons/avif-vs-webp2/
+image: "/logo_draft.png"
+datePublished: 03.08.21
+dateModified: 03.08.21
+questions:
+  - Is AVIF better than WebP2
+  - When will WebP2 come out?
+  - Is WebP2 going to be better than AVIF?
+  - Is AVIF the future of image formats?
+tags:
+  - image formats
+  - image quality
+  - modern image codecs
+  - color subsampling
+  - color depth
+  - color gamut
+  - 12-bit color depth
+  - color accuracy
+  - Browser compatibility
+  - lossless encoding
+  - encoding efficiency
+  - encoding resolution
+  - dynamic rang
+  - compression time
+sources:
+  - www.reddit.com/r/AV1/comments/l491is/webp2_vs_avif_and_more_image_comparison/
+  - phoronix.com/scan.php?page=news_item&px=Google-Experimental-WebP2
+  - www.reddit.com/r/AV1/comments/k9kq5t/updated_my_image_formats_comparison_including/
+  - www.ctrl.blog/entry/webp-avif-comparison.html
+  - encode.su/threads/3520-WebP-2-experimental-successor-of-the-WebP-image-format
+  - chipsandcheese.com/2021/02/28/modern-data-compression-in-2021-part-2-the-battle-to-dethrone-jpeg-with-jpeg-xl-avif-and-webp/
+  - bugs.chromium.org/p/webp2
+  - bugs.chromium.org/p/chromium/issues/detail?id=1121579
+  - siipo.la/blog/is-webp-really-better-than-jpeg
+  - chromium.googlesource.com/codecs/libwebp2/
+relatedPosts:
+  - avif-vs-heif
+  - avif-vs-webp
+  - avif-vs-jpegxl
+---
+
+## Introduction
+
+Google is currently developing the successor to the somewhat unpopular WEBP format first released in 2010\. It's called WEBP2, and it aims to solve many of the users' issues with Google's initial image file format. **WebP2 is a highly experimental format, and its feature-set and performance are likely to change significantly as development continues.**  
+Compared to AVIF, another up-and-coming image file format, we found that the original WEBP standard couldn't perform nearly as well in compression, performance, and market adoption as AVIF.  
+**Can WEBP2 build on any of WEBP's past failures, and how does it compare to the coveted AVIF image format?** Here's how AVIF and WEBP2 compare, and ultimately which you should use for image delivery.
+
+## Quality and limits
+
+AVIF is derived from the AV1 codec and so possesses many of AV1's limitations. AVIF has a maximum image dimension size of 8193 x 4320 pixels. This is roughly the size of an 8K video frame. It is possible to circumvent this limit by independently encoding tiles to make up larger images. However, this introduces some artifacts at the edges of these tiles that affect the overall appeal of larger images. Google hasn't currently finalized the WEBP2 standard, but we expect it to exceed AVIF in its dimension limits. The original WebP format had an image dimension of 16,383 x 16,383\. We don't currently know whether Google plans to increase this, but it will exceed AVIF's in any event. Google says the use case for WEBP2 includes "medium-range dimension" images, which match where WEBP is currently placed with its dimension limits. Google plan on including full 10-bit color support along with support for HDR10 images. AVIF already provides support for 12-bit precision and also supports wide color gamuts like Rec. 709\. We expect WEBP2 to match these precision specifications.
+
+## Compression
+
+The original WEBP format suffered when compared to AVIF in compression – especially with lossy compression. WEBP2 plans to improve on its predecessor, **pledging to deliver more efficient lossy compression with a 30% improvement over its predecessor.**  
+**With low-fidelity, small photos, AVIF outshines most of its competition**. It provides some excellent file size efficiency when compared to JPEG and retains a high level of appeal. An appeal is how good a photo looks, measured by the absence of compression artifacts like nasty color banding or blockiness.  
+Google's sample image comparisons show how an 87.8kb WEBP2 image can be produced as an 86.6kb AVIF file. These sample images show how WEBP2 marks a massive improvement in appeal over WEBP and how AVIF can still retain more detail and overall appeal than WEBP2 in its current form.  
+**WEBP2 has, however, shown some serious gains when it comes to high-fidelity photos.** The same image compressed with a higher fidelity renders a 248kb AVIF photo compared to a 246kb WEBP2 image. It isn't easy to pick out which performs better with the appeal. However, we still believe AVIF holds slightly better details in photos.  
+**The experimental format handles lossless images efficiently**. An AVIF lossless image of 1844kb is a 1646kb WEBP2 image. Considering the format hasn't been fully optimized yet, we're seriously impressed with how well WEBP2 handles lossless scenarios.
+
+## Speed
+
+**In its development** , Google claims the format is **currently five times slower than the preceding WEBP standard for encoding** when using lossy compression. There isn't too much data yet on its decode speed. Still, we expect the story to be similar, given its lack of optimization.  
+**This, however, doesn't stop it from already overtaking the notoriously slow AVIF file format in single-core encode speeds.** AVIF boasts slow single-core compression speeds. WEBP2 is still 2-times slower for decoding than AVIF, although Google plans to reach parity with decompressing speeds.  
+**AVIF supports parallelization**, which allows the image coder to take advantage of multiple cores and threads to improve encode and decode speeds. WebP's parallelization wasn't as efficient as AVIF's, so we expect that WebP2's gains in performance will be down to better use of multi-threaded hardware.  
+By parallelizing compression and decompression, AVIF can help offset its poor single-core performance. As CPUs trend towards higher core counts, we expect good parallelizing performance to become more critical in the coming years.
+
+## Other Features
+
+**AVIF supports alpha transparency**, unlike JPEG, allowing it to be more suitable with graphics and text images. **AVIF also includes support for animations**. This is a task it succeeds in due to its relation to the AV1 video codec.  
+**WEBP2 will also support these features, with alpha transparency essential for the preceding WEBP format**. Animation with WEBP2 is primarily tuned towards short animations and will improve upon WEBP's implementation.  
+**AVIF supports overlays and depth maps**. Overlays enable layers to help maintain the clarity of text and graphics over highly compressed photo backgrounds. Depth maps allow users to add effect to foregrounds and backgrounds.  
+**These features were missing from the original WEBP**. At this stage in its successor's development cycle, **we don't know whether Google includes this.**  
+Google tells us to expect **lightweight incremental decoding** and **ultra-light previews** as crucial features of WEBP2\. We're incredibly excited for these, as AVIF's **lack of progressive rendering** doesn't allow the format to render low-resolution previews. At the same time, the rest of the image is decoded. This is a method that JPEG uses to speed up page loads, and it would be nice to see this included with WEBP2.  
+Overall, Google is experimenting with some exciting features for WEBP2. However, there is no guarantee that they will make it into the final implementation of the format. **AVIF, therefore, holds the edge with the feature-set currently available for the image format.**
+
+## Support
+
+Despite its young age, being released in 2019, **AVIF has enjoyed a surprisingly sharp market uptake.** **Google Chrome introduced full support** for the image format in 2020, with Opera following swiftly after.  
+**Safari and Microsoft Edge are yet to support the standard**. Firefox users can only display AVIF images (though Firefox doesn't support animated AVIFs) if they enable it in their browser config. Although, with this moment, we do expect AVIF to reach universal support eventually.  
+**WEBP2 is entirely experimental** and is not available to the public yet. **Understandably, no browser supports the image format.** It is only made available for testing purposes. Google doesn't recommend it for any continued or heavy use yet due to its instability.
+
+## Conclusion for Nerds
+
+WEBP2 is an entirely experimental image format. We shouldn't expect it to be released to the public in quite some time, let alone see universal adoption. It includes some exciting features, and we're particularly excited about the improved lightweight incremental decoding.  
+WEBP2 will inevitably be a significant upgrade over the WEBP standard when it is released. It will include features like better animation support, more excellent lossy compression, and ultra-light previews.  
+However, we don't expect a massive improvement over AVIF. Moreover, it will take WEBP2 quite a while after its release to achieve the same browser support AVIF enjoys.  
+**AVIF offers a rich feature set, significant low-fidelity compression, and good lossless compression to become a catch-all image format for the future.** WEBP2 does position itself to compete with AVIF when released. Still, we anticipate AVIF will already be dominant when Google completes the development of WEBP2, and it will be far too late.
+
+## Conclusion for Marketeers
+
+**Most people will not be able to use WEBP2 for a long while.** It is highly experimental and won't be used for severe image delivery for quite some time. With no browser currently supporting the in-development image format, marketeers will not benefit from any experimental features Google is cooking up.  
+**WEBP2 will significantly improve over its predecessor**, and when the format is released, we expect its features to impress. For lossless image delivery, marketers can benefit from much smaller file sizes than AVIF. However, for web delivery, AVIF will still hold the edge with low-fidelity lossy compression.  
+Users don't have to wait to enjoy the benefits of AVIF. With features like overlays currently being used masterfully by services like Netflix, **AVIF is distinguishing itself as a fantastic replacement for JPEG** with its significant lossy compression. **We think AVIF has the spec sheet and the momentum** to become **the dominant image file format** for web delivery.
