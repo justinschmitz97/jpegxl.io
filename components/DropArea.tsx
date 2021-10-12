@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 
 import arrow from "@assets/arrow.svg";
-import cog from "@assets/settings.svg";
 
 export interface DropAreaProps {
   onDrop(files: File[]): void;
@@ -14,13 +13,6 @@ const DropArea = (props: DropAreaProps) => {
   const [optionsButton, setOptionsButton] = useState<HTMLButtonElement | null>(
     null
   );
-
-  const openOptions = (e: any) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    setOptionsButton(e.target);
-  };
 
   const openFileDialog = (e: any) => {
     e.preventDefault();
@@ -90,7 +82,10 @@ const DropArea = (props: DropAreaProps) => {
         onDragEnter={preventDefault}
         className={`z-50 order-first h-full bg-white-500 w-full rounded-xl ease-out duration-200 text-center playstate group`}
       >
-        <div className="text-center py-7 px-3 text-blue-400 bg-white rounded-xl group transform">
+        <div
+          className="text-center py-7 px-3 text-blue-400 bg-white rounded-xl group transform"
+          {...getRootProps()}
+        >
           <div
             className={
               "mx-auto relative w-8 h-8 overflow-hidden rounded-full mb-4 playstate"
@@ -111,27 +106,6 @@ const DropArea = (props: DropAreaProps) => {
           <div className="text-gray-500 text-tiny md:text-default">
             supports png · jpg · webp · gif and more
           </div>
-
-          <button onClick={openOptions} className="optionsButton">
-            Options
-          </button>
-
-          <button
-            aria-label="Conversion settings"
-            className={`absolute top-4 right-4 z-50 block w-5 h-5 p-5 cursor-pointer transition-all transform ease-cog duration-300 bg-no-repeat bg-center invisible md:visible ${
-              optionsButton ? " rotate-180" : "rotate-0"
-            }`}
-            style={{
-              backgroundImage: `url(${cog})`,
-              backgroundSize: 24,
-              filter: `${
-                optionsButton
-                  ? "invert(67%) sepia(18%) saturate(1445%) hue-rotate(130deg) brightness(84%) contrast(82%)"
-                  : "none"
-              }`,
-            }}
-            onClick={openOptions}
-          ></button>
         </div>
       </a>
       <input
@@ -141,6 +115,7 @@ const DropArea = (props: DropAreaProps) => {
         className="fileInput"
         multiple
         autoComplete="off"
+        {...getInputProps()}
       />
       <OptionsBox
         anchorElement={optionsButton}

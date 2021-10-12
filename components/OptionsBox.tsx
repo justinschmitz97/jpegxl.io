@@ -1,4 +1,3 @@
-import Popover from "@mui/material/Popover";
 import { useEffect, useState } from "react";
 
 export interface Options {
@@ -76,28 +75,15 @@ const OptionsBox = (props: OptionsBoxProps) => {
   ]);
 
   const open = Boolean(props.anchorElement);
-  const id = open ? "simple-popover" : undefined;
 
   return (
-    <div>
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={props.anchorElement}
-        onClose={() => props.onClose()}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "right",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "left",
-        }}
-      >
-        <div className="optionsContainer">
-          <h4 className="topLabel">Conversion settings</h4>
-
-          <div className="inputRow">
+    <>
+      <div className={"text-left" + " " + (open ? "open" : "closed")}>
+        <h2 className="mb-1">Conversion settings</h2>
+        <div className="mb-4">Settings don't change a running conversion.</div>
+        <div className="my-4"></div>
+        <div>
+          <div>
             <input
               checked={useQuality}
               onChange={(e) =>
@@ -124,7 +110,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
               id="quality"
             />
           </div>
-          <div className="inputRow">
+          <div>
             <input
               checked={useDistance}
               onChange={(e) =>
@@ -151,7 +137,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
               id="distance"
             />
           </div>
-          <div className="inputRow">
+          <div>
             <label htmlFor="effort">Effort</label>
             <input
               value={effort}
@@ -167,7 +153,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
             />
           </div>
 
-          {/*<div className="inputRow">
+          {/*<div>
             <label htmlFor="override_bitdepth">Override bitdepth</label>
             <input
               value={bitdepth}
@@ -182,7 +168,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
               id="override_bitdepth"
             />
             </div>*/}
-          <div className="inputRow">
+          <div>
             <label htmlFor="faster_decoding">Faster decoding</label>
             <input
               value={fasterDecoding}
@@ -197,7 +183,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
               id="faster_decoding"
             />
           </div>
-          <div className="inputRow">
+          <div>
             <input
               checked={progressive}
               onChange={(e) => {
@@ -209,7 +195,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
             />
             <label htmlFor="flexCheckDefault">Progressive</label>
           </div>
-          <div className="inputRow">
+          <div>
             <label htmlFor="epf">Epf</label>
             <select
               value={epf}
@@ -224,7 +210,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
               <option value="3">3</option>
             </select>
           </div>
-          <div className="inputRow">
+          <div>
             <label htmlFor="resampling">Resampling</label>
             <select
               value={resampling}
@@ -240,7 +226,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
               <option value="8">8</option>
             </select>
           </div>
-          <div className="inputRow">
+          <div>
             <label htmlFor="colorspace">Colorspace</label>
             <select
               value={colorspace}
@@ -254,7 +240,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
               <option value="1">YCoCg</option>
             </select>
           </div>
-          <div className="inputRow">
+          <div>
             <label htmlFor="colortransform">Colortransform</label>
             <select
               value={colortransform}
@@ -270,8 +256,8 @@ const OptionsBox = (props: OptionsBoxProps) => {
             </select>
           </div>
         </div>
-      </Popover>
-    </div>
+      </div>
+    </>
   );
 };
 

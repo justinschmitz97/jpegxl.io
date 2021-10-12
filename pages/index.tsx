@@ -70,6 +70,8 @@ const Home: NextPage = () => {
   const [files, setFiles] = useState<FileInfo[]>([]);
   const [options, setOptions] = useState<Options | null>(null);
 
+  const [settingsBoxOpen, setSettingsBoxOpen] = useState(false);
+
   const fileConverted = (name: string, converted: any) => {
     setFiles((prev) => {
       const index = prev.findIndex((e) => {
@@ -150,6 +152,22 @@ const Home: NextPage = () => {
               onDrop={addFiles.bind(this)}
               onOptionsChanged={(options: Options) => setOptions(options)}
             />
+            <button
+              aria-label="Conversion settings"
+              className={`absolute top-4 right-4 z-50 block w-5 h-5 p-5 cursor-pointer transition-all transform ease-cog duration-300 bg-no-repeat bg-center invisible md:visible ${
+                settingsBoxOpen ? " rotate-180" : "rotate-0"
+              }`}
+              style={{
+                backgroundImage: `url(${cog})`,
+                backgroundSize: 24,
+                filter: `${
+                  settingsBoxOpen
+                    ? "invert(67%) sepia(18%) saturate(1445%) hue-rotate(130deg) brightness(84%) contrast(82%)"
+                    : "none"
+                }`,
+              }}
+              onClick={() => setSettingsBoxOpen(!settingsBoxOpen)}
+            ></button>
             <JXLConverter
               options={options}
               files={files}
