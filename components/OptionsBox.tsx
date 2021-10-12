@@ -29,12 +29,12 @@ export interface OptionsBoxProps {
 
 const OptionsBox = (props: OptionsBoxProps) => {
   const [progressive, setProgressive] = useState(false);
-  const [quality, setQuality] = useState(0);
-  const [distance, setDistance] = useState(0);
-  const [effort, setEffort] = useState(1);
-  const [bitdepth] = useState(0);
+  const [quality, setQuality] = useState(100);
+  const [distance, setDistance] = useState(1);
+  const [effort, setEffort] = useState(5);
+  const [bitdepth, setBitDepth] = useState(0);
   const [fasterDecoding, setFasterDecoding] = useState(0);
-  const [epf, setEpf] = useState("1");
+  const [epf, setEpf] = useState("-1");
   const [resampling, setResampling] = useState("1");
   const [colorspace, setColorspace] = useState("0");
   const [colortransform, setColortransform] = useState("1");
@@ -75,6 +75,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
     colorspace,
     colortransform,
     qualityMode,
+    fasterDecoding,
   ]);
 
   return (
@@ -87,19 +88,19 @@ const OptionsBox = (props: OptionsBoxProps) => {
       }
     >
       <div className={"text-left" + " " + (props.open ? "open" : "closed")}>
-        <h2 className="mb-1">Conversion settings</h2>
+        <h2 className="mb-1">Settings</h2>
         <div className="mb-4 text-tiny">
           Settings don't change a running conversion.
         </div>
         <div className="my-4"></div>
         <div>
           <div>
-            <p className="font-bold">Conversion Approach</p>
+            <p className="font-bold">Approach</p>
             <div className="mb-4 p-4 rounded-md bg-bg-500">
               <div className="mb-1" id="quality">
                 <div className="flex items-center">
                   <label className="text-none" htmlFor="quality_radio">
-                    Fixed Quality
+                    Quality
                   </label>
                   <input
                     checked={useQuality}
@@ -112,15 +113,18 @@ const OptionsBox = (props: OptionsBoxProps) => {
                     id="quality_radio"
                   />
 
-                  <p>Fixed Quality</p>
-                  <Tooltip text="?">Explanation</Tooltip>
+                  <p>Quality</p>
+                  <Tooltip text="?">
+                    Compressed based on fixed quality parameter. 100 =
+                    mathematically lossless. Higher equals higher quality.
+                  </Tooltip>
                 </div>
               </div>
 
               <div id="distance">
                 <div className="flex items-center mb-2">
                   <label className="text-none" htmlFor="distance_radio">
-                    Structural Similarity
+                    Distance
                   </label>
                   <input
                     checked={useDistance}
@@ -133,14 +137,18 @@ const OptionsBox = (props: OptionsBoxProps) => {
                     id="distance_radio"
                   />
 
-                  <p>Structural Similarity</p>
-                  <Tooltip text="?">Explanation</Tooltip>
+                  <p>Distance</p>
+                  <Tooltip text="?">
+                    Compress image based on psychovisual similarity. 0 equals
+                    mathematically losless. 1 equals visually lossless. Lower
+                    numbers equal higher quality.
+                  </Tooltip>
                 </div>
                 <div className={`flex content-center items-center `}>
-                  {useDistance ? (
+                  {useDistance && (
                     <>
                       <label className="text-none">
-                        Structural Similarity
+                        Distance
                         <input
                           value={distance}
                           onChange={(e) => {
@@ -153,9 +161,10 @@ const OptionsBox = (props: OptionsBoxProps) => {
                           id="distance"
                         />
                       </label>
-                      <b style={{ marginLeft: 10 }}>{distance * 4}%</b>
+                      <b style={{ marginLeft: 10 }}>{distance}</b>
                     </>
-                  ) : (
+                  )}
+                  {useQuality && (
                     <>
                       <label className="text-none">
                         Quality
@@ -178,12 +187,15 @@ const OptionsBox = (props: OptionsBoxProps) => {
               </div>
             </div>
           </div>
-          <p className="font-bold">Conversion Speed</p>
+          <p className="font-bold">Speed</p>
           <div className="mb-4 p-4 rounded-md bg-bg-500">
             <div className="mb-1" id="effort">
               <div className="flex items-center">
                 <p>Effort</p>
-                <Tooltip text="?">Explanation</Tooltip>
+                <Tooltip text="?">
+                  Processing power. More effort equals longer time of
+                  conversion, but better compression.
+                </Tooltip>
               </div>
               <div className={`flex content-center items-center`}>
                 <label className="text-none">
@@ -203,35 +215,14 @@ const OptionsBox = (props: OptionsBoxProps) => {
                 <b style={{ marginLeft: 10 }}>{(effort + -1) * 12.5}%</b>
               </div>
             </div>
-            {/*
-            <div className="mb-3" id="bitdepth">
-              <div className="flex items-center">
-                <p className="font-bold">Bitdepth</p>
-                <Tooltip text="?">Explanation</Tooltip>
-              </div>
-              <div className={`flex content-center items-center`}>
-                <label className="text-none">
-                Bitdepth
-                  <input
-                    value={bitdepth}
-                    onChange={(e) => {
-                      setBitdepth(+e.target.value);
-                    }}
-                    type="range"
-                    min="0"
-                    max="32"
-                    step="1"
-                    id="override_bitdepth"
-                  />
-                </label>
-                <b style={{ marginLeft: 10 }}>{(bitdepth + -1) * 12.5}%</b>
-              </div>
-                  </div>*/}
 
             <div id="fasterdecoding">
               <div className="flex items-center">
                 <p>Faster Decoding</p>
-                <Tooltip text="?">Explanation</Tooltip>
+                <Tooltip text="?">
+                  Favour higher decoding speed. 0 = default, higher values give
+                  higher speed at the expense of quality
+                </Tooltip>
               </div>
               <div className={`flex content-center items-center`}>
                 <label className="text-none">
@@ -253,14 +244,24 @@ const OptionsBox = (props: OptionsBoxProps) => {
             </div>
           </div>
           <div>
-            <div className="flex items-center">
+            <div
+              className="flex items-center"
+              role="button"
+              tabIndex={0}
+              onKeyDown={() => {
+                setExpertFeatures(!expertFeatures);
+              }}
+              onClick={() => {
+                setExpertFeatures(!expertFeatures);
+              }}
+            >
               <input
                 checked={expertFeatures}
                 onChange={(e) => {
                   setExpertFeatures(e.target.checked);
                 }}
                 type="checkbox"
-                id="experFeatures"
+                id="expertFeatures"
               />{" "}
               <span className="font-bold">Expert Settings</span>
             </div>
@@ -269,8 +270,13 @@ const OptionsBox = (props: OptionsBoxProps) => {
                 expertFeatures ? "" : "hidden"
               }`}
             >
-              <div>
-                <label htmlFor="flexCheckDefault">Progressive</label>
+              <div className="flex items-center justify-between">
+                <label htmlFor="flexCheckDefault">
+                  Progressive{" "}
+                  <Tooltip text="?">
+                    Enable progressive / responsive decoding.
+                  </Tooltip>
+                </label>
                 <input
                   checked={progressive}
                   onChange={(e) => {
@@ -280,25 +286,45 @@ const OptionsBox = (props: OptionsBoxProps) => {
                   id="flexCheckDefault"
                 />
               </div>
-              <div>
-                <label htmlFor="epf">Epf</label>
+
+              <div className="flex items-center justify-between">
+                <label htmlFor="epf">
+                  EPF{" "}
+                  <Tooltip text="?">
+                    Edge preserving filter level (-1 = choose based on quality,
+                    default)
+                  </Tooltip>
+                </label>
                 <select
                   value={epf}
                   onChange={(e) => {
                     setEpf(e.target.value);
                   }}
+                  onBlur={(e) => {
+                    setEpf(e.target.value);
+                  }}
                   id="epf"
                 >
+                  <option value="-1">-1</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
                 </select>
               </div>
-              <div>
-                <label htmlFor="resampling">Resampling</label>
+              <div className="flex items-center justify-between">
+                <label htmlFor="resampling">
+                  Resampling{" "}
+                  <Tooltip text="?">
+                    Subsample all color channels by this factor, or use 0 to
+                    choose the resampling factor based on distance.
+                  </Tooltip>
+                </label>
                 <select
                   value={resampling}
                   onChange={(e) => {
+                    setResampling(e.target.value);
+                  }}
+                  onBlur={(e) => {
                     setResampling(e.target.value);
                   }}
                   id="resampling"
@@ -309,11 +335,19 @@ const OptionsBox = (props: OptionsBoxProps) => {
                   <option value="8">8</option>
                 </select>
               </div>
-              <div>
-                <label htmlFor="colorspace">Colorspace</label>
+              <div className="flex items-center justify-between">
+                <label htmlFor="colorspace">
+                  Colorspace{" "}
+                  <Tooltip text="?">
+                    Choose color organization technique.
+                  </Tooltip>
+                </label>
                 <select
                   value={colorspace}
                   onChange={(e) => {
+                    setColorspace(e.target.value);
+                  }}
+                  onBlur={(e) => {
                     setColorspace(e.target.value);
                   }}
                   id="colorspace"
@@ -322,12 +356,20 @@ const OptionsBox = (props: OptionsBoxProps) => {
                   <option value="1">YCoCg</option>
                 </select>
               </div>
-              <div>
-                <label htmlFor="colortransform">Colortransform</label>
+              <div className="flex items-center justify-between">
+                <label htmlFor="colortransform">
+                  Colortransform{" "}
+                  <Tooltip text="?">
+                    Choose old (YCbCr) or new (XYB) color space mode
+                  </Tooltip>
+                </label>
 
                 <select
                   value={colortransform}
                   onChange={(e) => {
+                    setColortransform(e.target.value);
+                  }}
+                  onBlur={(e) => {
                     setColortransform(e.target.value);
                   }}
                   id="colortransform"
@@ -337,6 +379,29 @@ const OptionsBox = (props: OptionsBoxProps) => {
                   <option value="2">YCbCr</option>
                 </select>
               </div>
+              <div className={`flex items-center justify-between`}>
+                <label htmlFor="override_bitdepth">
+                  Bitdepth{" "}
+                  <Tooltip text="?">
+                    If nonzero, store the given bit depth in the JPEG XL file
+                    metadata
+                  </Tooltip>
+                </label>
+                <b style={{ marginLeft: 10 }}>
+                  {bitdepth == 0 ? "original" : bitdepth}
+                </b>
+              </div>
+              <input
+                value={bitdepth}
+                onChange={(e) => {
+                  setBitDepth(+e.target.value);
+                }}
+                type="range"
+                min="0"
+                max="32"
+                step="1"
+                id="override_bitdepth"
+              />
             </div>
           </div>
         </div>

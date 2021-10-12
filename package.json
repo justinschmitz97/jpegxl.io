@@ -10,14 +10,11 @@
     "convert": "cd utils && node sharp && cd ../",
     "lint": "rustywind . --write && prettier --write . && next lint --fix --dir pages --dir components",
     "develop": "npm run build && npm run dev",
-    "release": "npm run build && next export && next-sitemap --config next-sitemap.config.js && cd utils && node rss",
+    "release": "cd utils && node sharp && cd ../ npm run build && next export && next-sitemap --config next-sitemap.config.js && cd utils && node rss",
     "prepare": "husky install",
     "commit": "git add . && git commit -m '.' && git push && cd next-app"
   },
   "dependencies": {
-    "@emotion/react": "^11.4.1",
-    "@emotion/styled": "^11.3.0",
-    "@mui/material": "^5.0.0",
     "@mdx-js/loader": "^1.6.22",
     "@next/bundle-analyzer": "^11.1.2",
     "@next/mdx": "^11.1.2",

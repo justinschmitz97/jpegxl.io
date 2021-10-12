@@ -45,8 +45,18 @@ const FilesListItem = (props: FilesListItemProps) => {
         </p>
       </div>
       {props.file.converted === null ? (
-        <div className="group absolute top-0 right-0 w-auto h-full overflow-hidden cursor-pointer transform">
-          <span>Loading...</span>
+        <div className="group flex items-center w-auto mr-2">
+          <div className="sk-cube-grid">
+            <div className="sk-cube sk-cube1"></div>
+            <div className="sk-cube sk-cube2"></div>
+            <div className="sk-cube sk-cube3"></div>
+            <div className="sk-cube sk-cube4"></div>
+            <div className="sk-cube sk-cube5"></div>
+            <div className="sk-cube sk-cube6"></div>
+            <div className="sk-cube sk-cube7"></div>
+            <div className="sk-cube sk-cube8"></div>
+            <div className="sk-cube sk-cube9"></div>
+          </div>
         </div>
       ) : (
         <button
