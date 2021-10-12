@@ -45,16 +45,8 @@ fs.copyFile(
 );
 
 fs.copyFile(
-  "../images/comparison.avif",
-  "../public/img/comparison.avif",
-  (err) => {
-    if (err) throw err;
-  }
-);
-
-fs.copyFile(
-  "../images/firefox-test.avif",
-  "../public/img/firefox-test.avif",
+  "../images/comparison.jxl",
+  "../public/img/comparison.jxl",
   (err) => {
     if (err) throw err;
   }

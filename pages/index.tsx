@@ -28,9 +28,9 @@ function ImageSlider() {
       <div className="relative">
         <ReactCompareImage
           leftImage={"/img/comparison.jpg"}
-          rightImage={"/img/comparison.avif"}
+          rightImage={"/img/comparison.jxl"}
           leftImageAlt="jpg image"
-          rightImageAlt="avif image"
+          rightImageAlt="jxl image"
           sliderLineWidth={4}
           handle={
             <div
@@ -47,13 +47,13 @@ function ImageSlider() {
           className="absolute top-4 left-4 py-2 px-3 rounded-md bg-bg-400"
           id="jpg"
         >
-          jpg · 18kB
+          jpg · 30kB
         </p>
         <p
           className="absolute top-4 right-4 py-2 px-3 rounded-md bg-bg-400"
           id="avif"
         >
-          jxl · 18kB
+          jxl · 30kB
         </p>
       </div>
     </section>
@@ -67,7 +67,7 @@ export interface FileInfo {
 }
 
 const Home: NextPage = () => {
-  let [files, setFiles] = useState<FileInfo[]>([]);
+  const [files, setFiles] = useState<FileInfo[]>([]);
   const [options, setOptions] = useState<Options | null>(null);
 
   const fileConverted = (name: string, converted: any) => {
@@ -76,7 +76,7 @@ const Home: NextPage = () => {
         return e.name === name;
       });
 
-      let result = [...prev];
+      const result = [...prev];
       if (index !== -1) {
         result[index].buffer = null;
         result[index].converted = converted;
@@ -88,16 +88,16 @@ const Home: NextPage = () => {
 
   const addFiles = (f: File[]) => {
     for (let i = 0; i < f.length; i++) {
-      let reader = new FileReader();
+      const reader = new FileReader();
       reader.onload = (e) => {
-        let data = new Uint8Array(reader.result as ArrayBuffer);
+        const data = new Uint8Array(reader.result as ArrayBuffer);
         setFiles((prev) => {
-          let index = prev.findIndex((e) => {
+          const index = prev.findIndex((e) => {
             return e.name === f[i].name;
           });
 
           if (index !== -1) {
-            let result = [...prev];
+            const result = [...prev];
             result[index].converted = null;
             result[index].buffer = data;
             return result;
@@ -139,7 +139,13 @@ const Home: NextPage = () => {
         </div>
 
         <div className="app">
-          <div className="boxContainer">
+          <div
+            style={{ width: 720 }}
+            data-transition-style="bouncingIn"
+            className={
+              "relative mx-auto flex flex-col items-center justify-center max-w-full rounded-xl p-0 md:p-4 bg-white bg-opacity-5"
+            }
+          >
             <DropArea
               onDrop={addFiles.bind(this)}
               onOptionsChanged={(options: Options) => setOptions(options)}

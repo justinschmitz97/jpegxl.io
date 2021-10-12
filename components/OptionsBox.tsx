@@ -31,12 +31,12 @@ const OptionsBox = (props: OptionsBoxProps) => {
   const [quality, setQuality] = useState(0);
   const [distance, setDistance] = useState(0);
   const [effort, setEffort] = useState(1);
-  const [bitdepth, setBitdepth] = useState(0);
+  const [bitdepth] = useState(0);
   const [fasterDecoding, setFasterDecoding] = useState(0);
   const [epf, setEpf] = useState("1");
   const [resampling, setResampling] = useState("1");
   const [colorspace, setColorspace] = useState("0");
-  const [colortransform, setColortransform] = useState("0");
+  const [colortransform, setColortransform] = useState("1");
   const [qualityMode, setQualityMode] = useState(QualityMode.Quality);
 
   const useQuality = qualityMode === QualityMode.Quality;
@@ -96,18 +96,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
       >
         <div className="optionsContainer">
           <h4 className="topLabel">Conversion settings</h4>
-          <div className="inputRow">
-            <input
-              checked={progressive}
-              onChange={(e) => {
-                setProgressive(e.target.checked);
-              }}
-              className="checkBoxOption"
-              type="checkbox"
-              id="flexCheckDefault"
-            />
-            <label htmlFor="flexCheckDefault">Progressive</label>
-          </div>
+
           <div className="inputRow">
             <input
               checked={useQuality}
@@ -131,7 +120,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
               type="range"
               min="0"
               max="100"
-              step="1"
+              step="5"
               id="quality"
             />
           </div>
@@ -158,7 +147,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
               type="range"
               min="0"
               max="25"
-              step="0.1"
+              step="1"
               id="distance"
             />
           </div>
@@ -177,6 +166,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
               id="effort"
             />
           </div>
+
           {/*<div className="inputRow">
             <label htmlFor="override_bitdepth">Override bitdepth</label>
             <input
@@ -206,6 +196,18 @@ const OptionsBox = (props: OptionsBoxProps) => {
               step="1"
               id="faster_decoding"
             />
+          </div>
+          <div className="inputRow">
+            <input
+              checked={progressive}
+              onChange={(e) => {
+                setProgressive(e.target.checked);
+              }}
+              className="checkBoxOption"
+              type="checkbox"
+              id="flexCheckDefault"
+            />
+            <label htmlFor="flexCheckDefault">Progressive</label>
           </div>
           <div className="inputRow">
             <label htmlFor="epf">Epf</label>
@@ -262,8 +264,8 @@ const OptionsBox = (props: OptionsBoxProps) => {
               id="colortransform"
               className="selectOption"
             >
-              <option value="0">XYB</option>
               <option value="1">None</option>
+              <option value="0">XYB</option>
               <option value="2">YCbCr</option>
             </select>
           </div>

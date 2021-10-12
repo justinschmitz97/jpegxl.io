@@ -1,5 +1,6 @@
 import type { FileInfo } from "@pages/index";
 import FilesListItem from "./FilesListItem";
+import Link from "@components/Link";
 import JSZip from "jszip";
 
 export interface FilesListProps {
@@ -7,10 +8,8 @@ export interface FilesListProps {
 }
 
 const FilesList = (props: FilesListProps) => {
-  const zipButtonVisibility = props.files.length === 0 ? "hidden" : "visible";
-
   const downloadZip = () => {
-    var zip = new JSZip();
+    const zip = new JSZip();
 
     for (let i = 0; i < props.files.length; i++) {
       zip.file(
@@ -22,11 +21,11 @@ const FilesList = (props: FilesListProps) => {
 
     zip.generateAsync({ type: "blob" }).then(function (content: any) {
       const saveByteArray = (function () {
-        let a = document.createElement("a");
+        const a = document.createElement("a");
         document.body.appendChild(a);
         a.style.display = "none";
         return function (blob: any, name: string) {
-          let url = window.URL.createObjectURL(blob);
+          const url = window.URL.createObjectURL(blob);
           a.href = url;
           a.download = name;
           a.click();
@@ -38,20 +37,30 @@ const FilesList = (props: FilesListProps) => {
   };
 
   return (
-    <div>
-      <div className="listContainer">
+    <>
+      {props.files.map((file, index) => {
+        return <FilesListItem key={index} file={file} />;
+      })}
+      <div
+        className={`block h-auto mt-8 ${
+          props.files.length > 1 ? "" : "hidden"
+        }`}
+      >
         <button
+          className="py-3 px-4 mx-auto mb-4 bg-gradient"
           onClick={downloadZip}
-          style={{ visibility: zipButtonVisibility }}
-          className="downloadZipButton"
         >
-          Download zip
+          {" "}
+          Download all images{" "}
         </button>
-        {props.files.map((file, index) => {
-          return <FilesListItem key={index} file={file} />;
-        })}
+        Enjoying jpegxl.io?
+        <Link
+          className="underline"
+          text="Join our Discord!"
+          href="discord.com/invite/6w42YpF5hm"
+        />
       </div>
-    </div>
+    </>
   );
 };
 

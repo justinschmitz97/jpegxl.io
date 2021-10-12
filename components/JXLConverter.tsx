@@ -19,8 +19,8 @@ const JXLConverter = (props: JXLConverterProps) => {
   useEffect(() => {
     const sizeLimit = 4; // limit of megabytes for image per worker
     const bytesInMb = 1048576; // bytes in megabyte to convert
-    let imagesSize = 0;
-    let convertWorkers = workers;
+    const imagesSize = 0;
+    const convertWorkers = workers;
 
     for (let i = 0; i < props.files.length; i++) {
       const fileName = props.files[i].name;
@@ -36,14 +36,14 @@ const JXLConverter = (props: JXLConverterProps) => {
         )
           break;
 
-        let worker = new Worker("worker.js");
+        const worker = new Worker("worker.js");
 
         worker.onmessage = (e) => {
           setWorkers((prev) => {
             const index = prev.findIndex((e) => {
               return e.name === fileName;
             });
-            let result = [...prev];
+            const result = [...prev];
             if (index !== -1) {
               result[index].worker.terminate();
               result.splice(index, 1);
