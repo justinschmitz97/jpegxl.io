@@ -32,9 +32,6 @@ const FilesListItem = (props: FilesListItemProps) => {
 
   return (
     <div
-      tabIndex={0}
-      role="button"
-      onClick={() => downloadFile(props.file.converted, props.file.name)}
       className={`h-7 text-tiny text-white conversion justify-between w-full relative z-10 flex flex-row items-center self-auto mt-3 py-1 bg-bg-600 overflow-hidden rounded-md${
         props.file.converted
           ? " pointer-events-auto bg-bg-600"

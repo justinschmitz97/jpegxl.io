@@ -27,10 +27,10 @@ function ImageSlider() {
     <section className="px-3 mx-auto max-w-screen-xl">
       <div className="relative">
         <ReactCompareImage
-          leftImage={"/img/comparison.jpg"}
-          rightImage={"/img/comparison.jxl"}
-          leftImageAlt="jpg image"
-          rightImageAlt="jxl image"
+          leftImage={"/img/comparison.jxl"}
+          rightImage={"/img/comparison.jpg"}
+          leftImageAlt="jxl image"
+          rightImageAlt="jpg image"
           sliderLineWidth={4}
           handle={
             <div
@@ -45,15 +45,15 @@ function ImageSlider() {
         />
         <p
           className="absolute top-4 left-4 py-2 px-3 rounded-md bg-bg-400"
-          id="jpg"
+          id="jxl"
         >
-          jpg · 30kB
+          jxl · 30kB
         </p>
         <p
           className="absolute top-4 right-4 py-2 px-3 rounded-md bg-bg-400"
-          id="avif"
+          id="jpg"
         >
-          jxl · 30kB
+          jpg · 30kB
         </p>
       </div>
     </section>
@@ -145,10 +145,11 @@ const Home: NextPage = () => {
             style={{ width: 720 }}
             data-transition-style="bouncingIn"
             className={
-              "relative mx-auto flex flex-col items-center justify-center max-w-full rounded-xl p-0 md:p-4 bg-white bg-opacity-5"
+              "relative mx-auto flex flex-col items-center justify-center max-w-full rounded-xl p-0 md:p-4 bg-white bg-opacity-5 z-50"
             }
           >
             <DropArea
+              open={settingsBoxOpen}
               onDrop={addFiles.bind(this)}
               onOptionsChanged={(options: Options) => setOptions(options)}
             />

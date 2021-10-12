@@ -7,6 +7,7 @@ import arrow from "@assets/arrow.svg";
 export interface DropAreaProps {
   onDrop(files: File[]): void;
   onOptionsChanged(options: Options): void;
+  open: boolean;
 }
 
 const DropArea = (props: DropAreaProps) => {
@@ -34,7 +35,7 @@ const DropArea = (props: DropAreaProps) => {
     props.onDrop([...e.dataTransfer.files]);
   };
 
-  const { isDragActive, getRootProps, getInputProps, open } = useDropzone({
+  const { isDragActive, getRootProps, getInputProps } = useDropzone({
     noClick: true,
     noKeyboard: true,
     accept: [
@@ -122,6 +123,7 @@ const DropArea = (props: DropAreaProps) => {
         onOptionsChanged={(options: Options) => {
           props.onOptionsChanged(options);
         }}
+        open={props.open}
         onClose={() => setOptionsButton(null)}
       />
     </>
