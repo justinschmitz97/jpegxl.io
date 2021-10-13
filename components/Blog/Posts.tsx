@@ -5,18 +5,18 @@ export default function BlogPosts(props: any) {
 
   function getDot(support: any) {
     if (support === "full support") {
-      return "bg-teal-400";
-    } else if (support === "partial support") {
       return "bg-yellow-700";
+    } else if (support === "partial support") {
+      return "bg-teal-400";
     } else if (support === "no support") {
       return "bg-red-400";
     }
   }
   function getBackground(support: any) {
     if (support === "full support") {
-      return "bg-green-1000";
-    } else if (support === "partial support") {
       return "bg-yellow-1000";
+    } else if (support === "partial support") {
+      return "bg-green-1000";
     } else if (support === "no support") {
       return "bg-red-1000";
     }

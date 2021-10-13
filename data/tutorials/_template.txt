@@ -8,8 +8,8 @@ subcategory: browser
 support: no support
 url: blog/tutorials/xyz/
 image: "/logo_draft.png"
-datePublished: 08.10.21
-dateModified: 08.10.21
+datePublished: 31.10.21
+dateModified: 31.10.21
 sources:
   - www.google.com
   - www.google.de

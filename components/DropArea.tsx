@@ -105,7 +105,7 @@ const DropArea = (props: DropAreaProps) => {
           </div>
           <b>Drop images or browse</b>
           <div className="text-gray-500 text-tiny md:text-default">
-            supports png · jpg · webp · gif and more
+            supports png · jpg · gif · webp · avif
           </div>
         </div>
       </a>

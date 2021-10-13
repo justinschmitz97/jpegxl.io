@@ -38,11 +38,14 @@ export default function Footer() {
           <div className="px-4 w-full md:w-1/2 lg:w-1/4">
             <h6 className="mt-6 mb-3 font-bold text-white">Most viewed</h6>
             <nav className="list-none">
-              <FooterLink text="JpegXL in Chrome" href="/tutorials/chrome/" />
-              <FooterLink text="JpegXL in Firefox" href="/tutorials/firefox/" />
-              <FooterLink text="JpegXL in Edge" href="/tutorials/edge/" />
-              <FooterLink text="JpegXL in opera" href="/tutorials/opera/" />
-              <FooterLink text="JpegXL in CSS" href="/tutorials/css/" />
+              <FooterLink text="JPEG XL in Chrome" href="/tutorials/chrome/" />
+              <FooterLink
+                text="JPEG XL in Firefox"
+                href="/tutorials/firefox/"
+              />
+              <FooterLink text="JPEG XL in Edge" href="/tutorials/edge/" />
+              <FooterLink text="JPEG XL in Opera" href="/tutorials/opera/" />
+              <FooterLink text="JPEG XL in CSS" href="/tutorials/css/" />
             </nav>
           </div>
           <div className="px-4 w-full md:w-1/2 lg:w-1/4">
