@@ -269,9 +269,9 @@ nav ol li:before {
   display: inline-block;
   width: 20px;
   margin-right: 20px;
-  color: rgb(224 77 85/50%);
+  color: theme("colors.blue[600]");
   font-size: 80%;
-  text-align: left;
+  text-align: right;
   border-radius: 11px;
   content: counter(step-counter);
 }

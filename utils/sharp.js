@@ -43,11 +43,3 @@ fs.copyFile(
     if (err) throw err;
   }
 );
-
-fs.copyFile(
-  "../images/comparison.jxl",
-  "../public/img/comparison.jxl",
-  (err) => {
-    if (err) throw err;
-  }
-);

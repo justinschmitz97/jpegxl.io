@@ -16,14 +16,8 @@ export default function Breadcrumbs(props: any) {
               {
                 "@type": "ListItem",
                 "position": 1,
-                "name": "blog",
-                "item": "https://jpegxl.io/blog/",
-              },
-              urlSplit[2] && {
-                "@type": "ListItem",
-                "position": 2,
                 "name": urlSplit[1],
-                "item": "https://jpegxl.io/blog/#" + urlSplit[1],
+                "item": "https://jpegxl.io/#" + urlSplit[1],
               },
             ],
           })}
@@ -35,15 +29,7 @@ export default function Breadcrumbs(props: any) {
           data-transition-style="in:wipe:right"
           className="animation-delay-3"
         >
-          <Link href={`/${urlSplit[0]}/`} text={`#${urlSplit[0]}`} />
-          {urlSplit[2] && (
-            <div className="inline ml-2">
-              <Link
-                href={`/${urlSplit[0]}/#${urlSplit[1]}`}
-                text={`#${urlSplit[1]}`}
-              />
-            </div>
-          )}
+          <Link href={`/#${urlSplit[0]}`} text={`#${urlSplit[0]}`} />
         </div>
       </div>
     </>

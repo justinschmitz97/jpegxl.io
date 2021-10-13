@@ -11,26 +11,107 @@ image: "/logo_draft.png"
 datePublished: 31.10.21
 dateModified: 31.10.21
 sources:
-  - www.google.com
-  - www.google.de
+  - bugs.chromium.org/p/chromium/issues/detail?id=1178058
+  - github.com/Fyrd/caniuse/issues/5041
+  - www.reddit.com/r/jpegxl/comments/plgych/opening_jxl_directly_in_chrome_on_android_11/
+  - www.chromestatus.com/feature/5188299478007808
+  - www.chromestatus.com/feature/5678152091172864
+  - caniuse.com/jpegxl
+  - itigic.com/activate-support-for-jpeg-xl-in-chrome-firefox-and-edge/
+  - www.ghacks.net/2021/05/11/find-out-if-your-browser-supports-the-new-image-format-jpeg-xl/
+  - groups.google.com/a/chromium.org/g/blink-dev/c/WjCKcBw219k?pli=1
+  - nspeaks.com/jpeg-xl-browser-support/
+  - securitronlinux.com/bejiitaswrath/new-jxl-image-format-to-take-over-the-internet/
+  - geekermag.com/how-to-enable-jpeg-xl-image-format-in-chrome-edge-and-firefox/
+  - www.howtogeek.com/703039/how-to-enable-google-chrome-flags-to-test-beta-features/
+  - nira.com/chrome-flags/
 tags:
   - jpeg xl
   - jxl
   - image format
+  - chrome
+  - flag
+  - jxl support
+  - google chrome
+  - experimental
+  - jpegxl chrome
+  - jpeg xl format
+  - new image format
+  - jxl format
+  - file format
+  - browser support
+  - supported browsers
+  - image codec
 questions:
   - Does Chrome support JXL?
+  - How to enable JXL in Chrome?
+  - Will Chrome feature JXL support?
+  - Which browsers support jpeg xl?
 relatedPosts:
   - chrome
-  - cloudinary
+  - opera
   - edge
 ---
 
 ## What is JPEG XL?
 
+As a professional image delivery format, the JPEG XL image format meets the needs of web photographers and web designers alike. As well as supporting wide color gamut and high dynamic range, it also supports high bit depth images. Additional features of JPEG XL include animation, alpha channels, layers, thumbnails, lossless, and progressive decoding.
+
+JPEG XL provides a significant improvement in image quality and compression ratio compared to legacy JPEG. You can quickly transfer legacy JPEGs to the new format due to the implementation of lossless JPEG recompression.
+
+JPEG XL allows for lossless compression and lossy compression. Typical compression allows between 20-60% reduction in file size. Using software implementations, it is possible to encode and decode in a computationally efficient manner without requiring any hardware acceleration.
+
 ## What is Chrome?
 
-Google Chrome is a closed-source web browser developed and maintained by Google. With its ease-of-use and customization options, Google Chrome makes it easy to access the web from mobile devices and desktop computers. Chrome is renowned for its increased speed and performance compared to similar browsers like Internet Explorer, Microsoft Edge, or Firefox. Chrome was first released in 2008 for Microsoft Windows. Since then, Chrome has been released on macOS, Linux, iOS, and Android. Fans of Google Chrome love its vast library of extensions, excellent performance, and customizability. However, Chrome has received some criticism for its high memory usage and Google’s history of data tracking. According to Statcounter, Chrome is the world’s most popular web browser with a 63.5% market share. Although this is down from Chrome’s all-time peak of 72% in 2018, Google still holds a significant monopoly on the browser market.
+Google develops and maintains its closed-source web browser called Google Chrome. Google Chrome is an excellent web browser that makes it easy to access the web from mobile devices and desktop computers because of its ease of use and flexibility. Chrome is known for its superior speed and performance compared to other browsers such as Internet Explorer, Microsoft Edge, or Firefox. In 2008, Google introduced Chrome for Windows. After that, Chrome has become available on macOS, Linux, iOS, and Android. Chrome's fans enjoy its extensive collection of extensions, its excellent performance, and its customization capabilities.
+Nonetheless, Chrome has received some criticism for its high memory usage and its history of tracking user data. Statcounter reports that Chrome occupies 63.5% of the global market share for web browsers. Despite Chrome's all-time high adoption rate of 72% in 2018, Google still holds a significant monopoly on the browser market.
 
-## Chrome JXL support
+## Check your Chrome Version
 
-behind a flag since version 91.0.4470.0
+Version 91 of Google Chrome already supports JPEG XL experimentally. To follow this tutorial, you must have installed at least version 91. To check and update your version, follow these steps:
+
+<Checklist
+  items={[
+    "Navigate to the Chrome menu.",
+    "Select Help and then 'About Chrome'.",
+    "Review the version number. Chrome will automatically update itself if you do not have the latest version.",
+    "Restart Chrome after updating it.",
+  ]}
+  checked={true}
+/>
+
+<Image
+  url="updating-chrome"
+  alt="screen that shows an automatic chrome update"
+/>
+<Image url="about-chrome" alt="navigation to the about chrome page" />
+
+## What are Chrome Flags?
+
+Since version 91, JPEG XL is available behind a flag, which means the functionality is not enabled by default. The term "flag" refers to features in development for Chrome. They are often found in a hidden settings menu that you can access through the navigation bar. Before reading the following instructions for enabling JPEG XL, we remind you that Google considers flags unstable. There is no information as to when Chrome will support JPEG XL by default. Nevertheless, it is safe to say that your browser or computer will very unlikely be adversely affected once image format support is activated.
+
+## JPEG XL Support Tutorial
+
+<Checklist
+  items={[
+    "Ensure you have at least Chrome version 91 installed.",
+    "Open a new browser tab.",
+    "Type the following: chrome://flags",
+    "A new website with the header Experiments appears.",
+    "In the search bar, type JXL.",
+    'The search results show an entry called "Enable JXL image format" with the description "Adds image decoding support for the JPEG XL image format. – Mac, Windows, Linux, Chrome OS, Android" and the hashtag "#enable-jxl".',
+    'On the right, click the drop-down menu and select "Enable" to enable the support. After completing the process, you will be prompted to restart your web browser in order for the changes to take effect.',
+  ]}
+  checked={true}
+/>
+
+<Image url="chrome-flag" alt="chrome flags" />
+<Image url="jxl-format-enabled" alt="jxl support in flags" />
+<Image url="relaunch" alt="relaunch" />
+
+Upon re-launching the browser, return to this website to see this incredible frog
+image:
+
+![your browser may show this JXL img](/comparison.jxl)
+
+**Congratulations!**
