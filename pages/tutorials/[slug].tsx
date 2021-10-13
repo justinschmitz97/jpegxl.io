@@ -20,8 +20,6 @@ import MDXComponents from "@components/MDXComponents";
 import Blog from "@components/Blog";
 import ContentTable from "@components/Blog/ContentTable";
 
-import Script from "next/script";
-
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const filePath = path.join(
     `${BLOG_POSTS_PATH}/tutorials`,

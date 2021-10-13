@@ -84,7 +84,7 @@ const DropArea = (props: DropAreaProps) => {
         className={`z-50 order-first h-full bg-white-500 w-full rounded-xl ease-out duration-200 text-center playstate group`}
       >
         <div
-          className="text-center py-7 px-3 text-blue-400 bg-white rounded-xl group transform"
+          className="py-7 px-3 text-center text-blue-400 bg-white rounded-xl transform group"
           {...getRootProps()}
         >
           <div

@@ -8,7 +8,6 @@ import visualizer6 from "@assets/visualizer-6.svg";
 import visualizer7 from "@assets/visualizer-7.svg";
 import visualizer8 from "@assets/visualizer-8.svg";
 import visualizer9 from "@assets/visualizer-9.svg";
-import visualizer10 from "@assets/visualizer-10.svg";
 import visualizer11 from "@assets/visualizer-11.svg";
 import visualizer12 from "@assets/visualizer-12.svg";
 

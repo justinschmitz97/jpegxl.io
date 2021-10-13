@@ -96,7 +96,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
         <div>
           <div>
             <p className="font-bold">Approach</p>
-            <div className="mb-4 p-4 rounded-md bg-bg-500">
+            <div className="p-4 mb-4 rounded-md bg-bg-500">
               <div className="mb-1" id="quality">
                 <div className="flex items-center">
                   <label className="text-none" htmlFor="quality_radio">
@@ -188,7 +188,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
             </div>
           </div>
           <p className="font-bold">Speed</p>
-          <div className="mb-4 p-4 rounded-md bg-bg-500">
+          <div className="p-4 mb-4 rounded-md bg-bg-500">
             <div className="mb-1" id="effort">
               <div className="flex items-center">
                 <p>Effort</p>
@@ -270,7 +270,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                 expertFeatures ? "" : "hidden"
               }`}
             >
-              <div className="flex items-center justify-between">
+              <div className="flex justify-between items-center">
                 <label htmlFor="flexCheckDefault">
                   Progressive{" "}
                   <Tooltip text="?">
@@ -287,7 +287,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                 />
               </div>
 
-              <div className="flex items-center justify-between">
+              <div className="flex justify-between items-center">
                 <label htmlFor="epf">
                   EPF{" "}
                   <Tooltip text="?">
@@ -311,7 +311,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                   <option value="3">3</option>
                 </select>
               </div>
-              <div className="flex items-center justify-between">
+              <div className="flex justify-between items-center">
                 <label htmlFor="resampling">
                   Resampling{" "}
                   <Tooltip text="?">
@@ -335,7 +335,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                   <option value="8">8</option>
                 </select>
               </div>
-              <div className="flex items-center justify-between">
+              <div className="flex justify-between items-center">
                 <label htmlFor="colorspace">
                   Colorspace{" "}
                   <Tooltip text="?">
@@ -356,7 +356,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                   <option value="1">YCoCg</option>
                 </select>
               </div>
-              <div className="flex items-center justify-between">
+              <div className="flex justify-between items-center">
                 <label htmlFor="colortransform">
                   Colortransform{" "}
                   <Tooltip text="?">

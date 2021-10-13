@@ -57,7 +57,7 @@ const FilesListItem = (props: FilesListItemProps) => {
         </div>
       </div>
       {props.file.converted === null ? (
-        <div className="group flex items-center w-auto mr-2">
+        <div className="flex items-center mr-2 w-auto group">
           <div className="sk-cube-grid">
             <div className="sk-cube sk-cube1"></div>
             <div className="sk-cube sk-cube2"></div>
