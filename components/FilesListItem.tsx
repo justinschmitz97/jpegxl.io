@@ -41,12 +41,12 @@ const FilesListItem = (props: FilesListItemProps) => {
     >
       <div className="flex flex-col justify-between items-baseline py-2 ml-2">
         <p className="overflow-hidden relative z-50 font-bold whitespace-nowrap select-none overflow-ellipsis">
-          {props.file.name}
+          {props.file.name.split(".").slice(0, -1)}
         </p>
         <div className="flex my-1">
           <p className="z-50 py-1 px-2 mr-2 rounded-sm text-tiny bg-red-1000">
             <span className="conversion_format">
-              original format | prettyBytes filesize
+              {props.file.name.split(".")[1]} | prettyBytes filesize
             </span>
           </p>
           {props.file.converted && (
