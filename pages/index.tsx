@@ -1,13 +1,19 @@
-import Layout from "@components/Layout";
 import Tooltip from "@components/Home/Tooltip";
 import ReactCompareImage from "react-compare-image";
 import Advantages from "@components/Home/Advantages";
-import type { NextPage } from "next";
 import { useState } from "react";
-import DropArea from "../components/DropArea";
-import FilesList from "../components/FilesList";
-import JXLConverter from "../components/JXLConverter";
-import { Options } from "../components/OptionsBox";
+import DropArea from "@components/DropArea";
+import FilesList from "@components/FilesList";
+import JXLConverter from "@components/JXLConverter";
+import { Options } from "@components/OptionsBox";
+import fs from "fs";
+import path from "path";
+import * as React from "react";
+import { InferGetStaticPropsType, NextPage } from "next";
+import matter from "gray-matter";
+import { postFilePaths, BLOG_POSTS_PATH } from "@utils/mdx";
+import Post from "@components/Blog/Post";
+import Layout from "@components/Layout";
 
 import cog from "@assets/settings.svg";
 
@@ -66,7 +72,124 @@ export interface FileInfo {
   converted: any;
 }
 
-const Home: NextPage = () => {
+const meta = {
+  title: "JPEG XL Converter - unlimited free conversions",
+  description:
+    "Fastest converter online. Supports bulk. Privacy protected. Convert all image types to Jpeg XL for free.🚀 Compress your images now!⏱",
+  url: "",
+  image: "/logo_draft.png",
+  datePublished: "31.10.21",
+  dateModified: "31.10.21",
+};
+
+const generatePosts = (folderPath: string) =>
+  postFilePaths(folderPath).map((filePath: string) => {
+    const source = fs.readFileSync(path.join(folderPath, filePath));
+    const { data } = matter(source);
+
+    return {
+      data,
+      slug: filePath.replace(".mdx", ""),
+    };
+  });
+
+export const getStaticProps = async () => {
+  const articles = generatePosts(`${BLOG_POSTS_PATH}/articles`);
+  const comparisons = generatePosts(`${BLOG_POSTS_PATH}/comparisons`);
+  const releases = generatePosts(`${BLOG_POSTS_PATH}/releases`);
+  const tutorials = generatePosts(`${BLOG_POSTS_PATH}/tutorials`);
+
+  const listPostsByFolder = {
+    articles,
+    comparisons,
+    releases,
+    tutorials,
+  };
+
+  const defaultFilteredPost = [
+    ...articles,
+    ...comparisons,
+    ...releases,
+    ...tutorials,
+  ];
+
+  const listSubCategories = [
+    ...new Set(defaultFilteredPost.map((post) => post.data.subcategory)),
+  ].filter(Boolean);
+  const listCategories = [
+    ...new Set(defaultFilteredPost.map((post) => post.data.category)),
+  ].filter(Boolean);
+  const listSupport = [
+    ...new Set(defaultFilteredPost.map((post) => post.data.support)),
+  ].filter(Boolean);
+
+  return {
+    props: {
+      articles,
+      comparisons,
+      releases,
+      tutorials,
+      defaultFilteredPost,
+      listSubCategories,
+      listCategories,
+      listSupport,
+      listAllCategories: [
+        ...listCategories,
+        ...listSubCategories,
+        ...listSupport,
+      ],
+
+      posts: listPostsByFolder as any,
+    },
+  };
+};
+
+type PostsPageProps = InferGetStaticPropsType<typeof getStaticProps>;
+const BlogAvif: NextPage<PostsPageProps> = ({
+  defaultFilteredPost,
+  articles,
+  comparisons,
+  releases,
+  tutorials,
+  /*listAllCategories,*/
+  listSupport,
+  listSubCategories,
+  listCategories,
+}) => {
+  const [filteredPost, setFilteredPost] = React.useState([]);
+  const [filterKeyword, setFilterKeyword] = React.useState("");
+  const [selectedCategoryPill, setSelectedCategoryPill] = React.useState("");
+
+  const handleSelectedPill = (category: string) => {
+    if (category === selectedCategoryPill) {
+      setSelectedCategoryPill("");
+      setFilteredPost([]);
+      return;
+    }
+
+    setSelectedCategoryPill(category);
+    const filteredPosts = defaultFilteredPost.filter((post) => {
+      return (
+        post.data.category === category ||
+        post.data.subcategory === category ||
+        post.data.support === category
+      );
+    });
+
+    setFilteredPost(filteredPosts as any);
+  };
+
+  const handleFilterByKeyword = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const keyword = event.target.value;
+    const filtered = defaultFilteredPost.filter((post) =>
+      post.data.title.toLowerCase().includes(keyword.toLowerCase())
+    );
+    setFilterKeyword(keyword);
+    setFilteredPost(filtered as any);
+  };
+
   const [files, setFiles] = useState<FileInfo[]>([]);
   const [options, setOptions] = useState<Options | null>(null);
 
@@ -115,20 +238,8 @@ const Home: NextPage = () => {
     }
   };
 
-  const meta = {
-    index: {
-      title: "JPEG XL Converter - unlimited free conversions",
-      description:
-        "Fastest converter online. Supports bulk. Privacy protected. Convert all image types to Jpeg XL for free.🚀 Compress your images now!⏱",
-      url: "",
-      image: "/logo_draft.png",
-      datePublished: "31.10.21",
-      dateModified: "31.10.21",
-    },
-  };
-
   return (
-    <Layout meta={meta.index}>
+    <Layout meta={meta}>
       <section className="px-2 mt-12 text-center md:px-3">
         <h1>Convert all images to JXL for free.</h1>
         <div className="block justify-center mb-6 md:flex">
@@ -181,8 +292,135 @@ const Home: NextPage = () => {
       <Glow />
       <Advantages />
       <ImageSlider />
+      <main className="p-2 md:p-4 archive blog">
+        <div className="mt-12 text-center">
+          <h1 id="blog">JPEG XL SUPPORT</h1>
+          <h2 className="mb-8 text-base">Articles and Tutorials</h2>
+        </div>
+        <div className="container max-w-screen-lg">
+          <div className="relative mt-1 mb-3 rounded-md">
+            <input
+              type="text"
+              placeholder="Search all posts"
+              className="block py-3 px-3 pr-10 w-full text-white rounded-md border-2 outline-none focus:border-blue-400 bg-bg-400 border-bg-500"
+              onChange={handleFilterByKeyword}
+            />
+            <div className="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none group">
+              🔎︎
+            </div>
+          </div>
+          <div className="mb-2">
+            {listCategories.map((category) => (
+              <button
+                key={category}
+                onClick={() => handleSelectedPill(category)}
+                className={`inline-flex items-center px-2 py-0 mt-2 mr-2 py-0.5 rounded-sm font-normal cursor-pointer ${
+                  selectedCategoryPill === category
+                    ? "bg-green-1000 border-transparent text-blue-400 hover:bg-indigo-700"
+                    : "bg-bg-500 text-gray-300"
+                }`}
+              >
+                {selectedCategoryPill === category && (
+                  <span className="mr-1">✓</span>
+                )}
+                {category}
+              </button>
+            ))}
+          </div>
+          <div className="mb-2">
+            {listSubCategories.map((category) => (
+              <button
+                key={category}
+                onClick={() => handleSelectedPill(category)}
+                className={`inline-flex items-center px-2 py-0 mt-2 mr-2 py-0.5 rounded-sm font-normal cursor-pointer ${
+                  selectedCategoryPill === category
+                    ? "bg-green-1000 border-transparent text-blue-400 hover:bg-indigo-700"
+                    : "bg-bg-500 text-gray-300"
+                }`}
+              >
+                {selectedCategoryPill === category && (
+                  <span className="mr-1">✓</span>
+                )}
+                {category}
+              </button>
+            ))}
+          </div>
+          <div className="mb-2">
+            {listSupport.map((category) => (
+              <button
+                key={category}
+                onClick={() => handleSelectedPill(category)}
+                className={`inline-flex items-center px-2 py-0 mt-2 mr-2 py-0.5 rounded-sm font-normal cursor-pointer ${
+                  selectedCategoryPill === category
+                    ? "bg-green-1000 border-transparent text-blue-400 hover:bg-indigo-700"
+                    : "bg-bg-500 text-gray-300"
+                }`}
+              >
+                {selectedCategoryPill === category && (
+                  <span className="mr-1">✓</span>
+                )}
+                {category}
+              </button>
+            ))}
+          </div>
+          {filterKeyword.length > 0 || filteredPost.length ? (
+            <div className="grid grid-cols-1 gap-2 mt-8 md:grid-cols-2 lg:grid-cols-3">
+              {filteredPost.map((post: any) => (
+                <Post key={post.slug} {...post.data} slug={post.slug} />
+              ))}
+            </div>
+          ) : (
+            <>
+              <h3
+                className="mt-8 mb-2 ml-3 text-xl font-bold capitalize"
+                id={"articles"}
+              >
+                Articles
+              </h3>
+              <div className="grid grid-cols-1 gap-2 mt-2 md:grid-cols-2 lg:grid-cols-3">
+                {articles.map((post: any) => (
+                  <Post key={post.slug} {...post.data} slug={post.slug} />
+                ))}
+              </div>
+              <h3
+                className="mt-8 mb-2 ml-3 text-xl font-bold capitalize"
+                id={"tutorials"}
+              >
+                Tutorials
+              </h3>
+              <div className="grid grid-cols-1 gap-2 mt-2 md:grid-cols-2 lg:grid-cols-3">
+                {tutorials.map((post: any) => (
+                  <Post key={post.slug} {...post.data} slug={post.slug} />
+                ))}
+              </div>
+              <h3
+                className="mt-8 mb-2 ml-3 text-xl font-bold capitalize"
+                id={"comparisons"}
+              >
+                Comparisons
+              </h3>
+              <div className="grid grid-cols-1 gap-2 mt-2 md:grid-cols-2 lg:grid-cols-3">
+                {comparisons.map((post: any) => (
+                  <Post key={post.slug} {...post.data} slug={post.slug} />
+                ))}
+              </div>
+              <h3
+                className="mt-8 mb-2 ml-3 text-xl font-bold capitalize"
+                id={"articles"}
+              >
+                Changelog
+              </h3>
+              <div className="grid grid-cols-1 gap-2 mt-2 md:grid-cols-2 lg:grid-cols-3">
+                {releases.map((post: any) => (
+                  <Post key={post.slug} {...post.data} slug={post.slug} />
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      </main>
     </Layout>
   );
 };
 
-export default Home;
+export default BlogAvif;

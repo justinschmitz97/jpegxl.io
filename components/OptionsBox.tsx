@@ -38,7 +38,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
   const [resampling, setResampling] = useState("1");
   const [colorspace, setColorspace] = useState("0");
   const [colortransform, setColortransform] = useState("1");
-  const [qualityMode, setQualityMode] = useState(QualityMode.Quality);
+  const [qualityMode, setQualityMode] = useState(QualityMode.Distance);
   const [expertFeatures, setExpertFeatures] = useState(false);
 
   const useQuality = qualityMode === QualityMode.Quality;

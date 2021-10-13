@@ -30,9 +30,9 @@ const Post = ({
   }
 
   return (
-    <Link href={slug ? `/blog/${category}/${slug}/` : `/` + url}>
+    <Link href={slug ? `/${category}/${slug}/` : `/` + url}>
       <a
-        href={slug ? `/blog/${category}/${slug}/` : `/` + url}
+        href={slug ? `/${category}/${slug}/` : `/` + url}
         tabIndex={0}
         className={`p-2 cursor-pointer group ${support}`}
       >

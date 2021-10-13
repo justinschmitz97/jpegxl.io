@@ -5,7 +5,7 @@ import matter from "gray-matter";
 import remarkSlug from "remark-slug";
 
 // POSTS_PATH is useful when you want to get the path to a specific file
-export const BLOG_POSTS_PATH = path.join(process.cwd(), "data/blog");
+export const BLOG_POSTS_PATH = path.join(process.cwd(), "data");
 export const DATA_PATH = path.join(process.cwd(), "data");
 
 // postFilePaths is the list of all mdx files inside the POSTS_PATH directory
