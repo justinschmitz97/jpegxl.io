@@ -6,7 +6,7 @@ keyword: XYZ
 category: tutorials
 subcategory: browser
 support: no support
-url: blog/tutorials/xyz/
+url: tutorials/xyz/
 image: "/logo_draft.png"
 datePublished: 31.10.21
 dateModified: 31.10.21
