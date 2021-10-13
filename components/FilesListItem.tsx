@@ -32,17 +32,29 @@ const FilesListItem = (props: FilesListItemProps) => {
 
   return (
     <div
-      className={`h-7 text-tiny text-white conversion justify-between w-full relative z-10 flex flex-row items-center self-auto mt-3 py-1 bg-bg-600 overflow-hidden rounded-md${
+      className={` text-tiny text-white conversion justify-between w-full relative z-10 flex flex-row items-center self-auto mt-3 py-1 bg-bg-600 overflow-hidden rounded-md${
         props.file.converted
           ? " pointer-events-auto bg-bg-600"
           : " pointer-events-none progress group"
       }`}
       data-transition-style={props.file.converted ? "bounceIn" : ""}
     >
-      <div className="flex flex-col justify-between items-baseline py-2 ml-3">
+      <div className="flex flex-col justify-between items-baseline py-2 ml-2">
         <p className="overflow-hidden relative z-50 font-bold whitespace-nowrap select-none overflow-ellipsis">
           {props.file.name}
         </p>
+        <div className="flex my-1">
+          <p className="z-50 py-1 px-2 mr-2 rounded-sm text-tiny bg-red-1000">
+            <span className="conversion_format">
+              original format | prettyBytes filesize
+            </span>
+          </p>
+          {props.file.converted && (
+            <p className="z-50 py-1 px-2 rounded-sm text-tiny bg-green-1000">
+              jxl | prettybytes filesize + percentage saved
+            </p>
+          )}
+        </div>
       </div>
       {props.file.converted === null ? (
         <div className="group flex items-center w-auto mr-2">
