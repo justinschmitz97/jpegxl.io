@@ -5,6 +5,8 @@ import Script from "next/script";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
+import { useRouter } from "next/router";
+
 const firebaseConfig = {
   apiKey: "AIzaSyChFA56DSf3-p_4NoViFaQkMr8T8Q0UJyU",
   authDomain: "jpegxl-8164f.firebaseapp.com",
@@ -26,6 +28,8 @@ export default function AvifIo({ Component, pageProps }: any) {
     }
   }, []);
 
+  const { asPath } = useRouter();
+
   return (
     <>
       <Script strategy="beforeInteractive" src="/detectSupport.js" />
@@ -33,6 +37,14 @@ export default function AvifIo({ Component, pageProps }: any) {
       <div className="overflow-x-hidden page">
         <Component {...pageProps} />
       </div>
+      <a
+        className="fixed bottom-2 left-2 invisible z-50 py-1 px-2 w-auto rounded-sm md:visible bg-bg-300 text-tiny"
+        href={`mailto:support@jpegxl.io?subject=Reporting%20Issue%20on%20${asPath}`}
+        target="_blank"
+        rel="noreferrer"
+      >
+        Report an issue
+      </a>
     </>
   );
 }

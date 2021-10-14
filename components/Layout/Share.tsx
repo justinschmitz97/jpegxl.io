@@ -26,7 +26,7 @@ export default function Blog() {
 
   const url = "https://jpegxl.io";
   return (
-    <div className="flex fixed right-4 bottom-4 z-50 justify-items-center content-center p-1 rounded-lg bg-bg-500">
+    <div className="flex fixed right-4 bottom-4 z-50 justify-items-center content-center p-1 rounded-md bg-bg-500">
       <ShareButton
         url={`https://twitter.com/intent/tweet?text=${url}`}
         name="Twitter"
