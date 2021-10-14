@@ -10,7 +10,7 @@
     "convert": "cd utils && node sharp && cd ../",
     "lint": "rustywind . --write && prettier --write . && next lint --fix --dir pages --dir components",
     "develop": "npm run build && npm run dev",
-    "release": "cd utils && node sharp && cd ../ npm run build && next export && next-sitemap --config next-sitemap.config.js && cd utils && node rss",
+    "release": "cd utils && node sharp && cd ../ && npm run build && next export && next-sitemap --config next-sitemap.config.js && cd utils && node rss",
     "prepare": "husky install",
     "commit": "git add . && git commit -m '.' && git push"
   },
@@ -42,7 +42,8 @@
     "remark-code-titles": "^0.1.2",
     "remark-slug": "^7.0.0",
     "schema-dts": "^1.0.0",
-    "url-loader": "^4.1.1"
+    "url-loader": "^4.1.1",
+    "webpack": "^5.58.2"
   },
   "devDependencies": {
     "@types/glob": "^7.1.4",

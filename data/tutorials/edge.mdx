@@ -25,8 +25,48 @@ relatedPosts:
   - edge
 ---
 
-## What is Edge?
+## What is Edge
 
-## Edge JXL support
+Edge is based on Chromium
 
-behind a flag since version 91
+## JPEG XL Support
+
+JPEG XL is available behind a flag in Edge, starting with stable version 91. You can activate support by following the instructions here:
+
+Not supported by default, but can be enabled
+
+Can be enabled via the --enable-features=JXL runtime flag.
+
+Chromium Basis.
+
+Version 91 - 93
+Released May 27, 2021 - Sep 3, 2021
+Global usage: 3.13%
+
+Version 94
+Released Sep 24, 2021
+Global usage: 0.52%
+
+## JPEG XL Tutorial
+
+Enabling JPEG XL in Microsoft Edge 91 is tricky. The runtime flag has to be embedded in a shortcut and may not work all the time (e.g. if you run Edge from a different shortcut without runtime flag). Here's how you can enable it permanently... or at least until you revert it.
+
+Enabling JPEG XL in Microsoft Edge 91 is tricky. The runtime flag has to be embedded in a shortcut and may not work all the time (e.g. if you run Edge from a different shortcut without runtime flag). Here's how you can enable it permanently... or at least until you revert it.
+
+## Enable via shortcut:
+
+You just have to add a command line flag to the end of the target field in the properties of the shortcut:
+--enable-features=JXL
+
+## Enable permanently
+
+1. MAKE SURE THAT THE BROWSER ISN'T RUNNING.
+2. Open %localappdata%\Microsoft\Edge\User Data in File Explorer.
+3. Open Local State file in your favourite text editor.
+4. Find "enabled_labs_experiments": string.
+   If you found it, enter "enable-jxl@1" inside empty brackets next to the string above.
+   If the brackets aren't empty because you've already got some flags enabled, insert ,"enable-jxl@1" (yes, with that comma) before the closing bracket, after all other flag descriptions (or inside the list, I tried to keep its alphabetical order).
+   If you couldn't find that string, add "enabled_labs_experiments":["enable-jxl@1"], right after "browser_version_of_last_seen_whats_new":"xxxxxxx",
+5. Save and close the file, then open the browser and test if JPEG XL is workingon
+
+Image bereits erstellt!

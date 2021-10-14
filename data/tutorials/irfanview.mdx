@@ -32,3 +32,45 @@ IrfanView is a free Microsoft Windows program that can be used to view, edit, or
 ## IrfanView JXL support
 
 https://www.reddit.com/r/jpegxl/comments/q72d8b/irfanview_has_now_added_jpeg_xl_compatibility/
+
+Please just remember to mention that the JXL Library (on which Irfanview's plugin is based) is still in active development, with new APIs being added, certain features being rewritten, and possible bugs and security issues that have yet to be tested for.
+
+Therefore if a display issue for a particular JXL file arises in the test version of Irfanview, it does not necessarily mean that the issue is caused by Irfanview itself. The tester needs to factor-in the version of the jxl library that's currently being used by Irfanview's plugin DLL (which the developer himself has described to me as a 'work in progress').
+
+## IrfanView JXL Tutorial
+
+Earlier this year I was in back-and-forth communication with the developer of Irfanview regarding some minor display issues with a couple of Irfanview's plugins. As I am keen to try to assist the adoption of JXL as mainstream format, I took the opportunity to also make the case to him for adding JXL support. This would be of great benefit to JXL (due to Irfanview's absolutely huge number of users).
+
+I did see a post in this sub (a few months ago) where someone else had made a similar request, but the response that they got was not encouraging, and the developer seemed reluctant to consider adding JXL support.
+
+Anyway despite that, I was recently contacted by the developer who told me that he has now added JXL support to Irfanview, and he sent me an evaluation copy to check out (which I have tested, and it's working great for me).
+
+However, I'm just an ordinary end user, so I don't mess around much with parameters and settings when I'm creating JXL images, so I asked the developer if I could share the evaluation version here so that more experienced JXL users could more thoroughly test out Irfanview's compatibility to ensure that it's working correctly before the formal release. He agreed to this.
+
+If you'd like to test the new JXL image support in Irfanview, you can download the test version of Irfanview from here:
+
+http://www.irfanview.info/test/iview64_test.zip
+
+To use it do the following:
+
+Download the 64bit version of Irfanview from the Irfanview web site (use the latest v4.58). Irfanview offers a portable zipped option, so no installation is necessary. You can also choose to download the plugins pack (if you want additional image format compatibility).
+
+Unzip the contents of the 'test' zip (linked above) directly into the Irfanview application folder to overwrite the application files (and any optional extra plugins) with the new test ones.
+
+Make sure that the JXL plugin is activated (go to the menu: Help > Installed Plugins and ensure that the 'JPEG_XL.DLL' checkbox is ticked).
+
+If you want to click on the JXL file directly to view it (rather than having to drag the image file onto the Irfanview window) then also associate the JXL extension with Irfanview (go to the menu: Options > Properties/Settings > Extensions and in the list of file-types tick the 'JXL' checkbox.
+
+It's currently working great for me, but I don't use all sorts of different color depths and compression etc., and I also don't have any animated JXL files to test, so if anybody can test some of those out that would be good.
+
+Please report any Irfanview-specific issues to the developer directly by emailing him. His contact email address can be found on the Help > About page in Irfanview.
+
+Update: I have been asked whether Irfanview's JXL compatibility is read-only, or whether it can also save as JXL. I can confirm that it can save any image as JXL format. See my reply comment below for a screenshot.
+
+I hope you find this useful.
+
+Just open any image in Irfanview (regardless of format), then go to the menu: File > Save As and select JXL from the format drop-list.
+
+You can then adjust basic JXL settings (Save Quality and Speed Effort) and there is also a checkbox option to save as a Progressive JXL if desired.
+
+<Image url="irfanview" alt="irfanview save as dialog with jxl enabled" />

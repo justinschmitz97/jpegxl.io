@@ -1,5 +1,5 @@
-function addClass(a) {
-  document.documentElement.classList.add(a);
+function addClass(format) {
+  document.documentElement.classList.add(format);
 }
 var jxl = new Image();
 (jxl.src =
