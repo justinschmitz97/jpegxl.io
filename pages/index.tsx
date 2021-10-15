@@ -28,44 +28,6 @@ function Glow() {
   );
 }
 
-function ImageSlider() {
-  return (
-    <section className="px-3 mx-auto max-w-screen-xl">
-      <div className="relative">
-        <ReactCompareImage
-          leftImage={"/comparison.jxl"}
-          rightImage={"/img/comparison.jpg"}
-          leftImageAlt="jxl image"
-          rightImageAlt="jpg image"
-          sliderLineWidth={4}
-          handle={
-            <div
-              role="button"
-              className="py-4 px-2 bg-blue-400 rounded-xl"
-              tabIndex={0}
-              id="handle"
-            />
-          }
-          sliderLineColor="rgba(255,255,255,0.2)"
-          sliderPositionPercentage={0.5}
-        />
-        <p
-          className="absolute top-4 left-4 py-2 px-3 rounded-md bg-bg-400"
-          id="jxl"
-        >
-          jxl · 30kB
-        </p>
-        <p
-          className="absolute top-4 right-4 py-2 px-3 rounded-md bg-bg-400"
-          id="jpg"
-        >
-          jpg · 30kB
-        </p>
-      </div>
-    </section>
-  );
-}
-
 export interface FileInfo {
   name: string;
   buffer: any;
@@ -159,6 +121,7 @@ const BlogAvif: NextPage<PostsPageProps> = ({
   const [filteredPost, setFilteredPost] = React.useState([]);
   const [filterKeyword, setFilterKeyword] = React.useState("");
   const [selectedCategoryPill, setSelectedCategoryPill] = React.useState("");
+  const [image, setImage] = React.useState("comparison.jxl");
 
   const handleSelectedPill = (category: string) => {
     if (category === selectedCategoryPill) {
@@ -295,7 +258,57 @@ const BlogAvif: NextPage<PostsPageProps> = ({
       </section>
       <Glow />
       <Advantages />
-      <ImageSlider />
+      <section className="px-3 mx-auto max-w-screen-xl">
+        <div className="relative">
+          <ReactCompareImage
+            leftImage={`/img/${image}.jpg`}
+            rightImage={`/${image}.jxl`}
+            leftImageAlt="jxl image"
+            rightImageAlt="jpg image"
+            sliderLineWidth={4}
+            handle={
+              <div
+                role="button"
+                className="py-4 px-2 bg-blue-400 rounded-xl"
+                tabIndex={0}
+                id="handle"
+              />
+            }
+            sliderLineColor="rgba(255,255,255,0.2)"
+            sliderPositionPercentage={0.5}
+          />
+          <p
+            className="absolute top-4 left-4 py-2 px-3 rounded-md bg-bg-400"
+            id="jxl"
+          >
+            jxl · 30kB
+          </p>
+          <p
+            className="absolute top-4 right-4 py-2 px-3 rounded-md bg-bg-400"
+            id="jpg"
+          >
+            jpg · 30kB
+          </p>
+        </div>
+        <div className="flex mt-2">
+          <button
+            style={{ backgroundImage: "url(/img/comparison.jpg" }}
+            className={`mr-1 w-8 h-8 bg-center bg-cover bg-no-repeat ${
+              image == "comparison" ? "border-4 border-blue-400" : "opacity-50"
+            }`}
+            onClick={() => setImage("comparison")}
+          />
+          <button
+            style={{ backgroundImage: "url(/img/about-chrome-384.jpg" }}
+            className={`mr-1 w-8 h-8 bg-center bg-cover bg-no-repeat ${
+              image == "about-chrome-384"
+                ? "border-4 border-blue-400"
+                : "opacity-50"
+            }`}
+            onClick={() => setImage("about-chrome-384")}
+          />
+        </div>
+      </section>
       <main className="p-2 md:p-4 archive blog">
         <div className="mt-12 text-center">
           <h1 id="blog">JPEG XL SUPPORT</h1>
