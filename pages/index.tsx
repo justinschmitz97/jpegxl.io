@@ -259,10 +259,40 @@ const BlogAvif: NextPage<PostsPageProps> = ({
       <Glow />
       <Advantages />
       <section className="px-3 mx-auto max-w-screen-xl">
+        <div className="flex mt-2 mb-2">
+          <button
+            style={{ backgroundImage: "url(/comparison/frog.jxl)" }}
+            className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
+              image == "frog" ? "border-4 border-blue-400" : "opacity-50"
+            }`}
+            onClick={() => setImage("frog")}
+          />
+          <button
+            style={{ backgroundImage: "url(/comparison/waterfalls.jxl" }}
+            className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
+              image == "waterfalls" ? "border-4 border-blue-400" : "opacity-50"
+            }`}
+            onClick={() => setImage("waterfalls")}
+          />
+          <button
+            style={{ backgroundImage: "url(/comparison/sunflower.jxl" }}
+            className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
+              image == "sunflower" ? "border-4 border-blue-400" : "opacity-50"
+            }`}
+            onClick={() => setImage("sunflower")}
+          />
+          <button
+            style={{ backgroundImage: "url(/comparison/drop.jxl" }}
+            className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
+              image == "drop" ? "border-4 border-blue-400" : "opacity-50"
+            }`}
+            onClick={() => setImage("drop")}
+          />
+        </div>
         <div className="relative">
           <ReactCompareImage
-            leftImage={`/img/${image}.jpg`}
-            rightImage={`/${image}.jxl`}
+            leftImage={`/comparison/${image}.jxl`}
+            rightImage={`/comparison/${image}.jpg`}
             leftImageAlt="jxl image"
             rightImageAlt="jpg image"
             sliderLineWidth={4}
@@ -281,32 +311,20 @@ const BlogAvif: NextPage<PostsPageProps> = ({
             className="absolute top-4 left-4 py-2 px-3 rounded-md bg-bg-400"
             id="jxl"
           >
-            jxl · 30kB
+            jxl ·{image == "frog" && " 30kb"}
+            {image == "waterfalls" && " 116kb"}
+            {image == "sunflower" && " 37kb"}
+            {image == "drop" && " 16kb"}
           </p>
           <p
             className="absolute top-4 right-4 py-2 px-3 rounded-md bg-bg-400"
             id="jpg"
           >
-            jpg · 30kB
+            jpg ·{image == "frog" && " 30kb"}
+            {image == "waterfalls" && " 116kb"}
+            {image == "sunflower" && " 37kb"}
+            {image == "drop" && " 16kb"}
           </p>
-        </div>
-        <div className="flex mt-2">
-          <button
-            style={{ backgroundImage: "url(/img/comparison.jpg" }}
-            className={`mr-1 w-8 h-8 bg-center bg-cover bg-no-repeat ${
-              image == "comparison" ? "border-4 border-blue-400" : "opacity-50"
-            }`}
-            onClick={() => setImage("comparison")}
-          />
-          <button
-            style={{ backgroundImage: "url(/img/about-chrome-384.jpg" }}
-            className={`mr-1 w-8 h-8 bg-center bg-cover bg-no-repeat ${
-              image == "about-chrome-384"
-                ? "border-4 border-blue-400"
-                : "opacity-50"
-            }`}
-            onClick={() => setImage("about-chrome-384")}
-          />
         </div>
       </section>
       <main className="p-2 md:p-4 archive blog">
