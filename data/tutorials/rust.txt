@@ -32,3 +32,5 @@ relatedPosts:
 ## What is XYZ?
 
 ## XYZ JXL support
+
+https://docs.rs/jpegxl-rs/0.6.0/jpegxl_rs/

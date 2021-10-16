@@ -27,8 +27,6 @@ relatedPosts:
   - edge
 ---
 
-
-
 ## What is XYZ?
 
 ## XYZ JXL support
