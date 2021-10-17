@@ -17,6 +17,8 @@ const Post = ({
       return "bg-teal-400";
     } else if (support === "no support") {
       return "bg-red-400";
+    } else if (support === "experimental support") {
+      return "bg-blue-400";
     }
   }
   function getBackground(support: any) {
@@ -26,6 +28,8 @@ const Post = ({
       return "bg-green-1000";
     } else if (support === "no support") {
       return "bg-red-1000";
+    } else if (support === "experimental support") {
+      return "bg-blue-1000";
     }
   }
 

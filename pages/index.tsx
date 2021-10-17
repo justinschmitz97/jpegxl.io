@@ -121,7 +121,7 @@ const BlogAvif: NextPage<PostsPageProps> = ({
   const [filteredPost, setFilteredPost] = React.useState([]);
   const [filterKeyword, setFilterKeyword] = React.useState("");
   const [selectedCategoryPill, setSelectedCategoryPill] = React.useState("");
-  const [image, setImage] = React.useState("comparison.jxl");
+  const [image, setImage] = React.useState("frog");
 
   const handleSelectedPill = (category: string) => {
     if (category === selectedCategoryPill) {
@@ -288,7 +288,15 @@ const BlogAvif: NextPage<PostsPageProps> = ({
             }`}
             onClick={() => setImage("drop")}
           />
+          <button
+            style={{ backgroundImage: "url(/comparison/smoke.jxl" }}
+            className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
+              image == "smoke" ? "border-4 border-blue-400" : "opacity-50"
+            }`}
+            onClick={() => setImage("smoke")}
+          />
         </div>
+
         <div className="relative">
           <ReactCompareImage
             leftImage={`/comparison/${image}.jxl`}
@@ -315,6 +323,7 @@ const BlogAvif: NextPage<PostsPageProps> = ({
             {image == "waterfalls" && " 116kb"}
             {image == "sunflower" && " 37kb"}
             {image == "drop" && " 16kb"}
+            {image == "smoke" && " 58kb"}
           </p>
           <p
             className="absolute top-4 right-4 py-2 px-3 rounded-md bg-bg-400"
@@ -324,12 +333,13 @@ const BlogAvif: NextPage<PostsPageProps> = ({
             {image == "waterfalls" && " 116kb"}
             {image == "sunflower" && " 37kb"}
             {image == "drop" && " 16kb"}
+            {image == "smoke" && " 58kb"}
           </p>
         </div>
       </section>
       <main className="p-2 md:p-4 archive blog">
         <div className="mt-12 text-center">
-          <h1 id="blog">JPEG XL SUPPORT</h1>
+          <h1 id="blog">JPEG XL SUPPORT (WIP!)</h1>
           <h2 className="mb-8 text-base">Articles and Tutorials</h2>
         </div>
         <div className="container max-w-screen-lg">

@@ -1,0 +1,207 @@
+---
+blog: true
+title: CSS JPEG XL support
+description: Learn how to detect JXL support an use JXL images within CSS, like for background images.
+keyword: CSS
+category: tutorials
+subcategory: coding
+support: full support
+url: tutorials/css/
+image: "/logo_draft.png"
+datePublished: 31.10.21
+dateModified: 31.10.21
+sources:
+  - caniuse.com/jpegxl
+  - css-tricks.com/time-for-next-gen-codecs-to-dethrone-jpeg/
+  - www.npmjs.com/package/jxl-in-css
+  - jpeg.org/jpegxl/
+  - www.spiedigitallibrary.org/conference-proceedings-of-spie/11137/111370K/JPEG-XL-next-generation-image-compression-architecture-and-coding-tools/10.1117/12.2529237.full?SSO=1
+  - cloudinary.com/blog/time_for_next_gen_codecs_to_dethrone_jpeg
+  - cloudinary.com/blog/how_jpeg_xl_compares_to_other_image_codecs
+  - en.m.wikipedia.org/wiki/JPEG_XL
+  - cloudinary.com/blog/improve_the_web_experience_with_progressive_image_decoding
+tags:
+  - jpeg xl
+  - jxl
+  - image format
+  - jpeg xl css
+  - codec
+  - image codec
+  - postcss
+  - background image
+  - image compression
+  - file format
+  - new codec
+  - image file
+  - image module
+questions:
+  - How to use JXL in CSS?
+relatedPosts:
+  - chrome
+  - cloudinary
+  - edge
+---
+
+## Introduction
+
+JPEG XL was developed to meet the demands of web delivery and professional photography. In addition to supporting wide color gamut, it supports images with high dynamic range and high bit depth. To help a wide range of use cases, JPEG XL offers a range of features, including animation, alpha channels, layers, thumbnails, and lossless and progressive coding. In addition to providing improved image quality and compression ratios, JPEG XL also has a shorter specification. Encoding and decoding are computationally efficient when using software implementations without requiring additional hardware acceleration.
+
+In this tutorial, you will see how easy it is to use JPEG XL images through HTML. HTML provides a media-type hint which enables the browser to find the correct version of the image for you. This is not an option available in CSS. It is still possible to support JPEG XL, AVIF, and WebP with a simple Javascript function. Our detection script utilizes classes to manipulate the HTML elements on your page.
+
+We must remember that the first rule does not win in CSS, but the last rule prevails. We have created a script that checks JPEG XL, AVIF, and WebP support by loading a JPEG XL-encoded 1x1 pixel image. If the browser successfully loads the JXL image, the HTML element receives a "jxl" class. If no JXL support is detected, the browser checks for AVIF support and adds an "avif" class. If the browser does not load the AVIF image, the script will further check the browser's support for WebP using the method described above. If your browser successfully loads the image, the HTML element gets a "webp" class. If it is doubtful that your browser will not pass this test, the HTML element will not get any class at all. Obviously, the AVIF and WebP detection are entirely optional, and you can remove them according to your preferences.
+
+## Detect Browser Support
+
+The following code can be added as an inline script in your header above any CSS content to avoid visible image changes when adding the jxl/avif/webp class to your DOM. There are only 1100 bytes in this script, and it takes approximately five milliseconds to load, which is sufficient for the purpose it serves.
+
+<Syntax language="javascript">
+  {`function addClass(format) {
+    document.documentElement.classList.add(format);
+}
+var jxl = new Image();
+(jxl.src =
+    "data:image/jxl;base64,/woIELASCAgQAFwASxLFgkWAHL0xqnCBCV0qDp901Te/5QM="),
+(jxl.onload = function() {
+    addClass("jxl");
+}),
+(jxl.onerror = function() {
+    var avif = new Image();
+    (avif.src =
+        "data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A="),
+    (avif.onload = function() {
+        addClass("avif");
+    }),
+    (avif.onerror = function() {
+        var webp = new Image();
+        (webp.src =
+            "data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA=="),
+        (webp.onload = function() {
+            addClass("webp");
+        });
+    });
+});`}
+</Syntax>
+
+Minified version:
+
+<Syntax language="javascript">
+  {`function addClass(A){document.documentElement.classList.add(A)}var jxl=new Image;jxl.src="data:image/jxl;base64,/woIELASCAgQAFwASxLFgkWAHL0xqnCBCV0qDp901Te/5QM=",jxl.onload=function(){addClass("jxl")},jxl.onerror=function(){var A=new Image;A.src="data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=",A.onload=function(){addClass("avif")},A.onerror=function(){var A=new Image;A.src="data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==",A.onload=function(){addClass("webp")}}};`}
+</Syntax>
+
+This will result in the following HTML code to use:
+
+<Syntax language="html">
+  {`<html></html> <!-- no class at all, you have to use jpg (oh god)-->
+<html class="webp"></html> <!-- you can use webp -->
+<html class="avif"></html> <!-- you can use avif -->
+<html class="jxl"></html> <!-- you can use jxl (yeah!) -->`}
+</Syntax>
+
+## CSS Code Snippet
+
+Once implemented, we can use the following CSS due to the high-level classes and cascading.
+
+<Syntax language="css">
+  {`.img {
+  background-image: url("image.jpg");
+}
+.webp .img {
+  background-image: url("image.webp");
+}
+.avif .img {
+  background-image: url("image.avif");
+}
+.jxl .img {
+  background-image: url("image.jxl");
+}`}
+</Syntax>
+
+## SCSS Background mixin
+
+Here is an SCSS background mixin that can be used to support JXL, AVIF and WebP including Retina support.
+
+<Syntax language="scss">{`@mixin bg-url(
+  $url,
+  $url2x: false,
+  $webp1x: false,
+  $webp2x: false,
+  $avif1x: false,
+  $avif2x: false,
+  $jxl1x: false,
+  $jxl2x: false
+) {
+  background-image: url($url);
+  @if $webp1x {
+    .webp & {
+      background-image: url($webp1x);
+    }
+  }
+  @if $avif1x {
+    .avif & {
+      background-image: url($avif1x);
+    }
+  }
+  @if $jxl1x {
+    .jxl & {
+      background-image: url($jxl1x);
+    }
+  }
+@if $url2x {
+    @media screen and (-webkit-min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+      background-image: url($url2x);
+@if $webp2x {
+        .webp & {
+          background-image: url($webp2x);
+}
+}
+@if $avif2x {
+        .avif & {
+          background-image: url($avif2x);
+}
+}
+@if $jxl2x {
+        .jxl & {
+          background-image: url($jxl2x);
+}}}}}`}
+
+</Syntax>
+
+## Future JPEG XL Detection
+
+According to the World Wide Web Consortium (W3C), we will define the image type using the CSS Images Module Level 4 in the future. We will be able to specify different image formats using the image-set property. The browser will render the first image format it supports. We demonstrate below how type() can be used to deliver multiple images.
+Type declarations are a feature that is unique to CSS4. 90% of browsers currently support image-set but do not yet support type declarations. In the absence of browser support for this feature, we must rely on JavaScript to detect the presence of JXL, AVIF, and WebP support.
+
+<Syntax language="css">
+  {`background-image:
+  image-set(
+    "zebra.jxl" type("image/jxl"),
+    "zebra.avif" type("image/avif"),
+    "zebra.webp" type("image/webp"),
+    "zebra.png" type("image/png")
+  );`}
+</Syntax>
+
+## Post CSS Plugin
+
+Joan Leon authored a tiny JS script (150B) and PostCSS plugin to use JPEG XL as a CSS background. This PostCSS Plugin lets you easily create CSS backgrounds that use JPEG XL images and fall back to the original image in unsupported browsers. NPM and Github packages are available for common JS and ES6. You can find it here: <Link href="github.com/nucliweb/jxl-in-css" text="JXL in CSS PostCSS Plugin by Joan"/>.
+
+A code snippet like this
+
+<Syntax language="css">
+  {`.img {
+  background-image: url(img.jpg);
+}`}
+</Syntax>
+
+will generate a JXL class on the HTML and a CSS output like this:
+
+<Syntax language="css">
+  {`body.jxl .logo {
+  background-image: url(img.jxl);
+}
+body.no-jxl .logo {
+  background-image: url(img.jpg);
+}`}
+</Syntax>

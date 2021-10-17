@@ -89,14 +89,14 @@ const OptionsBox = (props: OptionsBoxProps) => {
     >
       <div className={"text-left" + " " + (props.open ? "open" : "closed")}>
         <h2 className="mb-1">Settings</h2>
-        <div className="mb-4 text-tiny">
+        <div className="mb-4 text-tiny whitespace-nowrap">
           Settings don't change a running conversion.
         </div>
         <div className="my-4"></div>
         <div>
           <div>
             <p className="font-bold">Approach</p>
-            <div className="p-4 mb-4 rounded-md bg-bg-500">
+            <div className="p-3 mb-4 rounded-md bg-bg-500">
               <div className="mb-1" id="quality">
                 <div className="flex items-center">
                   <label className="text-none" htmlFor="quality_radio">
@@ -272,10 +272,11 @@ const OptionsBox = (props: OptionsBoxProps) => {
             >
               <div className="flex justify-between items-center">
                 <label htmlFor="flexCheckDefault">
-                  Progressive{" "}
+                  {" "}
                   <Tooltip text="?">
                     Enable progressive / responsive decoding.
                   </Tooltip>
+                  Progressive{" "}
                 </label>
                 <input
                   checked={progressive}
@@ -289,11 +290,12 @@ const OptionsBox = (props: OptionsBoxProps) => {
 
               <div className="flex justify-between items-center">
                 <label htmlFor="epf">
-                  EPF{" "}
+                  {" "}
                   <Tooltip text="?">
                     Edge preserving filter level (-1 = choose based on quality,
                     default)
                   </Tooltip>
+                  EPF{" "}
                 </label>
                 <select
                   value={epf}
@@ -313,11 +315,12 @@ const OptionsBox = (props: OptionsBoxProps) => {
               </div>
               <div className="flex justify-between items-center">
                 <label htmlFor="resampling">
-                  Resampling{" "}
+                  {" "}
                   <Tooltip text="?">
                     Subsample all color channels by this factor, or use 0 to
                     choose the resampling factor based on distance.
                   </Tooltip>
+                  Resampling{" "}
                 </label>
                 <select
                   value={resampling}
@@ -337,10 +340,11 @@ const OptionsBox = (props: OptionsBoxProps) => {
               </div>
               <div className="flex justify-between items-center">
                 <label htmlFor="colorspace">
-                  Colorspace{" "}
+                  {" "}
                   <Tooltip text="?">
                     Choose color organization technique.
                   </Tooltip>
+                  Colorspace{" "}
                 </label>
                 <select
                   value={colorspace}
@@ -358,10 +362,11 @@ const OptionsBox = (props: OptionsBoxProps) => {
               </div>
               <div className="flex justify-between items-center">
                 <label htmlFor="colortransform">
-                  Colortransform{" "}
+                  {" "}
                   <Tooltip text="?">
                     Choose old (YCbCr) or new (XYB) color space mode
                   </Tooltip>
+                  Transform{" "}
                 </label>
 
                 <select
@@ -381,11 +386,12 @@ const OptionsBox = (props: OptionsBoxProps) => {
               </div>
               <div className={`flex items-center justify-between`}>
                 <label htmlFor="override_bitdepth">
-                  Bitdepth{" "}
+                  {" "}
                   <Tooltip text="?">
                     If nonzero, store the given bit depth in the JPEG XL file
                     metadata
                   </Tooltip>
+                  Bitdepth{" "}
                 </label>
                 <b style={{ marginLeft: 10 }}>
                   {bitdepth == 0 ? "original" : bitdepth}
