@@ -1,12 +1,21 @@
 import type { FileInfo } from "@pages/index";
 
 import arrow from "@assets/arrow.svg";
+import prettyBytes from "pretty-bytes";
+import { useEffect, useState } from "react";
 
 export interface FilesListItemProps {
   file: FileInfo;
 }
 
 const FilesListItem = (props: FilesListItemProps) => {
+  const [originalSize, setOriginalSize] = useState<number>(0);
+  const outputSize = props.file.converted?.length;
+  const percentageSaved = originalSize === 0 ? 0 : Math.max(
+    Math.ceil((1 - outputSize / originalSize) * 100),
+    0
+  );
+  
   const downloadFile = (buffer: any, fileName: string) => {
     if (buffer !== null) {
       const saveByteArray = (function () {
@@ -30,6 +39,10 @@ const FilesListItem = (props: FilesListItemProps) => {
     }
   };
 
+  useEffect(() => {
+    setOriginalSize(props.file.buffer.length);
+  }, []);
+
   return (
     <div
       className={` text-tiny text-white conversion justify-between w-full relative z-10 flex flex-row items-center self-auto mt-3 py-1 bg-bg-600 overflow-hidden rounded-md${
@@ -46,12 +59,12 @@ const FilesListItem = (props: FilesListItemProps) => {
         <div className="flex my-1">
           <p className="z-50 py-1 px-2 mr-2 rounded-sm text-tiny bg-red-1000">
             <span className="conversion_format">
-              {props.file.name.split(".")[1]} | prettyBytes filesize
+              {props.file.name.split(".")[1]} | {prettyBytes(originalSize)}
             </span>
           </p>
           {props.file.converted && (
             <p className="z-50 py-1 px-2 rounded-sm text-tiny bg-green-1000">
-              jxl | prettybytes filesize + percentage saved
+              jxl | {prettyBytes(outputSize, { maximumFractionDigits: 0 })}  | -{percentageSaved}%
             </p>
           )}
         </div>
