@@ -10,9 +10,8 @@
     "convert": "cd utils && node sharp && cd ../",
     "lint": "rustywind . --write && prettier --write . && next lint --fix --dir pages --dir components",
     "develop": "npm run build && npm run dev",
-    "release": "cd utils && node sharp && cd ../ && npm run build && next export && next-sitemap --config next-sitemap.config.js && cd utils && node rss",
-    "prepare": "husky install",
-    "commit": "git add . && git commit -m '.' && git push"
+    "release": "npm run build && next export && next-sitemap --config next-sitemap.config.js && cd utils && node rss",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@mdx-js/loader": "^1.6.22",

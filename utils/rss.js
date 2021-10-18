@@ -4,10 +4,10 @@ const fs = require("fs");
 const path = require("path");
 const frontMatter = require("front-matter");
 
-const articles = path.resolve(__dirname, "../data", "blog", "articles");
-const comparisons = path.resolve(__dirname, "../data", "blog", "comparisons");
-const releases = path.resolve(__dirname, "../data", "blog", "releases");
-const tutorials = path.resolve(__dirname, "../data", "blog", "tutorials");
+const articles = path.resolve(__dirname, "../data", "articles");
+const comparisons = path.resolve(__dirname, "../data", "comparisons");
+const releases = path.resolve(__dirname, "../data", "releases");
+const tutorials = path.resolve(__dirname, "../data", "tutorials");
 
 const feed = new RSS({
   title: `jpegxl.io RSS Feed`,
