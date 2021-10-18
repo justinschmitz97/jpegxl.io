@@ -1,0 +1,84 @@
+---
+blog: true
+title: Firefox JPEG XL support
+description: Firefox is the largest not-for-profit browser. Learn how to use JXL images within Firefox.
+keyword: Firefox
+category: tutorials
+subcategory: browser
+support: full support
+url: tutorials/firefox/
+image: "/logo_draft.png"
+datePublished: 31.10.21
+dateModified: 31.10.21
+sources:
+  - bugzilla.mozilla.org/show_bug.cgi?id=1539075
+  - caniuse.com/jpegxl
+  - itigic.com/activate-support-for-jpeg-xl-in-chrome-firefox-and-edge/
+  - www.ghacks.net/2021/05/11/find-out-if-your-browser-supports-the-new-image-format-jpeg-xl/
+  - www.reddit.com/r/jpegxl/comments/mz0s9b/firefox_lands_an_initial_implementation_of_jpegxl/
+  - www.reddit.com/r/jpegxl/comments/nbgboo/jpeg_xl_support_has_been_added_to_firefox_nightly/
+  - www.reddit.com/r/firefox/comments/nb770d/jpeg_xl_support_has_been_added_to_firefox_nightly/
+  - www.soeren-hentzschel.at/firefox/firefox-unterstutzung-bildformat-jpeg-xl/
+  - en.wikipedia.org/wiki/JPEG_XL
+  - nspeaks.com/jpeg-xl-browser-support/
+tags:
+  - jpeg xl
+  - jxl
+  - image format
+  - jpeg xl image
+  - progressive jpeg
+  - new image format
+  - jpeg xl image format
+  - file format
+  - jxl image
+  - new codec
+  - jpeg xl format
+questions:
+  - Does Firefox support JXL?
+relatedPosts:
+  - geeqie
+  - gimp
+  - gthumb
+---
+
+## Introduction
+
+Those who are interested will find an introduction explaining Firefox and JPEG XL below for SEO purposes. You can jump to the tutorial on <Link href="#firefoxjpegxltutorial" text="how to enable JPEG XL support by clicking here."/>
+
+## What is Firefox?
+
+More than 500 million people worldwide use Firefox as their primary web browser for surfing and interacting with the Internet. In addition to being available on Linux, Mac, Windows, and handheld devices, Firefox is also available in more than 70 languages. Firefox places a strong emphasis on protecting your online privacy and security and helps to protect your personal information and activity on the Internet from being viewed or exploited. The browser is widely regarded as being the most customizable on the market. You can customize Firefox to look and function as you wish by choosing from a selection of over 8,000 free add-ons on the Firefox Add-ons site.
+
+## What is JPEG XL?
+
+Developed by the Joint Photographic Experts Group, Google, and Cloudinary, JPEG XL is a royalty-free, ISO-standardized image format and free software implementation that aims to be the best image format in all respects. Many features are offered, including lossless compression, lossy compression, transparency, animation, huge resolutions (up to one million by one million pixels), progressive decoding, and HDR (up to 32-bits of color per channel). The software also comes with a unique feature: lossless JPEG recompression, where it can convert a JPG to a JXL to losslessly shrink it by about 20% and then recover the original JPG from it if you wish.
+It is superior to JPG, JPEG 2000, JPEG XR, and WEBP in terms of lossy quality, but HEIF and AVIF images defeat it at meager bit rates. When it comes to lossless compression, it is superior to anything else available. As an animation codec, it outperforms GIF, MNG, and APNG on reduction. However, it is bested by video codecs, as it is designed to be used as an image codec.
+
+## Firefox JPEG XL Tutorial
+
+Firefox enabled experimental support for JPEG XL behind a flag since version 90.0a1, released on the 13th of July 2021. However, current experimental support is only available on the Nightly version of the browser. In conclusion, even though you could enable JXL as an experimental feature in the stable release version of Firefox, images will still not be displayed.
+
+To support JXL images, you have to do the following:
+
+<Checklist
+  items={[
+    "Download the Nightly version of Firefox.",
+    "Enter about:config inside the URL bar.",
+    "Confirm if any warning appears.",
+    "Type 'jxl' in the search bar.",
+    "Look for the setting 'image.jxl.enabled'.",
+    "Set it to true by clicking the button on the right.",
+  ]}
+  checked={true}
+/>
+
+<Image
+  url="firefox-nightly"
+  alt="firefox nightly settings to enable jxl support"
+/>
+
+Then, restart your browser and come back to see this awesome frog image:
+
+![your browser may show this JXL img](/comparison/frog.jxl)
+
+**Congratulations!**

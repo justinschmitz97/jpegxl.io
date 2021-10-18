@@ -35,11 +35,3 @@ fs.readdir(input, (err, files) => {
     }
   });
 });
-
-fs.copyFile(
-  "../images/comparison.jpg",
-  "../public/img/comparison.jpg",
-  (err) => {
-    if (err) throw err;
-  }
-);

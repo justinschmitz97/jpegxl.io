@@ -42,10 +42,14 @@ questions:
   - Does Edge support JXL?
   - How to support JXL on Edge?
 relatedPosts:
-  - chrome
-  - cloudinary
-  - edge
+  - exiftool
+  - facebook
+  - firefox
 ---
+
+## Introduction
+
+Those who are interested will find an introduction explaining Edge and JPEG XL below for SEO purposes. You can jump to the tutorial on <Link href="#edgejpegxltutorial" text="how to enable JPEG XL support by clicking here."/>
 
 ## What is JPEG XL?
 
@@ -59,9 +63,13 @@ Microsoft's Edge is the company's most recent internet browser. Originally refer
 
 ## JPEG XL Support
 
-Microsoft released stable version 91 of Edge, which is based on Chromium, on May 27, 2021. Support has been available since this version. However, support is not available by default. Edge usually has a website where you can activate experimental features. The JPEG XL feature, however, cannot be activated through that website. The process of enabling JPEG XL support is somewhat complicated. Please follow these instructions:
+Microsoft released stable version 91 of Edge, which is based on Chromium, on May 27, 2021. Support has been available since this version. However, support is not available by default. Edge usually has a website where you can activate experimental features. The JPEG XL feature, however, cannot be activated through that website.
 
-## JPEG XL Tutorial
+<Image url="edge-flags" alt="edge jxl flag not showing up" />
+
+The process of enabling JPEG XL support is somewhat complicated. Please follow these instructions:
+
+## Edge JPEG XL Tutorial
 
 Getting JPEG XL to work in Microsoft Edge 91 is not easy. There are two possible approaches. The first one is a bit more user-friendly, as you only need to create a shortcut to Edge and make a few settings changes. To utilize JPEG XL support, the browser must be opened through the shortcut created. The second approach is a bit more nerdy and complex but will enable JPEG XL support regardless of how you start it.
 
@@ -80,6 +88,8 @@ To view your current Edge version, open the three-dot menu on the top right, sel
   checked={true}
 />
 
+<Image url="edge-target" alt="enable jxl support on edge with a runtime flag" />
+
 ### Enable permanently
 
 <Checklist
@@ -96,4 +106,13 @@ To view your current Edge version, open the three-dot menu on the top right, sel
   checked={true}
 />
 
+<Image
+  url="edge-enabled-labs"
+  alt="edge enabled jxl support through local state file"
+/>
+
 Your configuration was successful if you see the following JPEG XL image:
+
+![your browser may show this JXL img](/comparison/frog.jxl)
+
+**Congratulations!**

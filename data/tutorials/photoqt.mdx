@@ -1,0 +1,44 @@
+---
+blog: true
+title: PhotoQt JPEG XL support
+description: PhotoQt is a free-to-use image viewer. Learn how to use JXL images within PhotoQt.
+keyword: PhotoQt
+category: tutorials
+subcategory: graphics
+support: full support
+url: tutorials/photoqt/
+image: "/logo_draft.png"
+datePublished: 31.10.21
+dateModified: 31.10.21
+sources:
+  - www.reddit.com/r/jpegxl/comments/ox2mhi/using_jpeg_xl_in_photoqt_v23_windows_64bit_version/
+  - github.com/novomesk/qt-jpegxl-image-plugin/releases/tag/v0.2.0
+  - github.com/novomesk/qt-jpegxl-image-plugin
+  - photoqt.org/features
+  - photoqt.org/about
+tags:
+  - jpeg xl
+  - jxl
+  - image format
+questions:
+  - Does PhotoQt support JXL?
+relatedPosts:
+  - php
+  - rust
+  - squoosh
+---
+
+## What is PhotoQt?
+
+Lukas Spies developed the PhotoQt image viewer. Several people may be reminded of 'Lightbox' image viewers by its unique interface on some websites. While there may be similarities ultimately, PhotoQt was designed and optimized for an ordinary desktop computer. There is no user interface other than the image being viewed, with a few elements becoming visible as they fade in/slide in (such as thumbnails along the bottom edge). Its speed and flexibility allow it to adapt to different workflows seamlessly.
+
+## PhotoQt JPEG XL Support
+
+With the addition of the qjpegxl.dll plug-in, the original PhotoQt v2.3 can be easily enhanced to display JXL images on Windows. The qjpegxl.dll file enables PhotoQt v2.3 to open JXL files. Several Win64 Qt-based applications can make use of qjpegxl.dll. However, the application must be built using the MSVC compiler, and Qt must be at least version 5.14.
+
+Please copy the qjpegxl.dll file into C:/Program Files/PhotoQt/imageformats/ folder. Then open JPEG XL images as you would any other image type.
+
+<Link
+  href="https://github.com/novomesk/qt-jpegxl-image-plugin/"
+  text="Download here"
+/>

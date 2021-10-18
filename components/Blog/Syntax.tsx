@@ -4,6 +4,7 @@ import html from "react-syntax-highlighter/dist/cjs/languages/hljs/htmlbars";
 import js from "react-syntax-highlighter/dist/cjs/languages/hljs/javascript";
 import scss from "react-syntax-highlighter/dist/cjs/languages/hljs/scss";
 import xml from "react-syntax-highlighter/dist/cjs/languages/hljs/xml";
+import typescript from "react-syntax-highlighter/dist/cjs/languages/hljs/typescript";
 import vs2015 from "react-syntax-highlighter/dist/cjs/styles/hljs/vs2015";
 
 SyntaxHighlighter.registerLanguage("javascript", js);
@@ -11,6 +12,7 @@ SyntaxHighlighter.registerLanguage("html", html);
 SyntaxHighlighter.registerLanguage("css", css);
 SyntaxHighlighter.registerLanguage("scss", scss);
 SyntaxHighlighter.registerLanguage("xml", xml);
+SyntaxHighlighter.registerLanguage("typescript", typescript);
 
 export default function Syntax(props: { language: string; children: any }) {
   function copyToClipboard(e: any) {

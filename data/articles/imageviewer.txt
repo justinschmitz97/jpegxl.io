@@ -22,9 +22,34 @@ tags:
 questions:
   - Does XYZ support JXL?
 relatedPosts:
-  - chrome
-  - cloudinary
-  - edge
+- chrome
+- cloudinary
+- css
+- edge
+- exiftool
+- facebook
+- firefox
+- geeqie
+- gimp
+- gthumb
+- html
+- imageglass
+- imagemagick
+- irfanview
+- kaos
+- kde
+- libvips
+- macos
+- nomacs
+- openmandriva
+- opera
+- photoqt
+- php
+- rust
+- squoosh
+- windows
+- wordpress
+- xnview
 ---
 
 ## What is XYZ?

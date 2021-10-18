@@ -1,0 +1,113 @@
+---
+blog: true
+title: Windows JPEG XL support
+description: Windows does not natively support JPEG XL. Learn how to still view files in the explorer and open them.
+keyword: Windows
+category: tutorials
+subcategory: os
+support: partial support
+url: tutorials/windows/
+image: "/logo_draft.png"
+datePublished: 31.10.21
+dateModified: 31.10.21
+sources:
+  - jpegxl.info/
+  - github.com/saschanaz/jxl-winthumb
+  - www.reddit.com/r/jpegxl/comments/ms48z3/jpeg_xl_windows_imaging_component_wic_explorer/
+  - imageglass.org/
+  - nomacs.org/windows-10/
+  - photoqt.org/downpopupwindows
+  - newsgroup.xnview.com/viewtopic.php?t=37391
+  - www.reddit.com/r/jpegxl/comments/ox2mhi/using_jpeg_xl_in_photoqt_v23_windows_64bit_version/
+  - www.reddit.com/r/jpegxl/comments/l3ju17/anybody_knows_when_a_jpeg_xl_viewer_is_available/
+  - www.reddit.com/r/jpegxl/comments/mc5foh/jpegxl_windows_x64_builds/
+  - jpeg.org/jpegxl/
+  - gitlab.com/wg1/jpeg-xl
+  - github.com/ImageMagick/jpeg-xl
+tags:
+  - jpeg xl
+  - jxl
+  - image format
+  - windows
+  - operating system
+  - windows jxl support
+questions:
+  - Does Windows support JXL?
+  - How to view JPEG XL images in Windows?
+relatedPosts:
+  - wordpress
+  - xnview
+  - chrome
+---
+
+## What is JPEG XL?
+
+The JPEG XL Image Coding System (ISO/IEC 18181) is particularly well suited to responsive web environments so that that content can be viewed effectively across a wide variety of devices. Further, it includes several features that facilitate the transition from the legacy JPEG format.
+The JPEG XL format supports both lossless and lossy compression, and it is a royalty-free raster graphics file format. It is designed to surpass existing raster formats and thus to replace them universally.
+
+JPEG XL provides the following key features:
+
+<Checklist
+  items={[
+    "High-fidelity lossy image compression.",
+    "Best lossless image compression.",
+    "Progressive decoding.",
+    "Lossless JPEG transcoding.",
+    "Designed for both photographic and synthetic images.",
+    "Fast software encoding and decoding.",
+    "Full support for wide gamut and HDR.",
+    "Perceptually optimizing reference encoder.",
+    "FOSS and royalty-free",
+  ]}
+  checked={true}
+/>
+
+Thanks to <Link href="jpegxl.info" text="jpegxl.info" for the great summary!
+
+## Windows JXL support
+
+There are several ways to enable support JPEG XL on Windows. Unfortunately, to this date, Windows offers no native support.
+You can either download plugins created by developers or use an external image viewer.
+
+### JPEGXL WIC
+
+This approach is not for a regular end-user since it provides no binary to open and install.
+
+JPEG XL WIC provides an implementation of Windows Imaging Components (WIC) architecture for the JPEG XL image format. It enables Windows to recognize the JPEG XL file format and use the JPEG XL codec directly when processing images. Through this technology, viewing pictures is as simple as using Windows Explorer, Microsoft Photo Viewer, or Microsoft Photos. The JPEG XL WIC, as well as the JPEG XL codec, are still being developed. The goal is to utilize the JPEG XL codec in Windows, focusing on decoding HDR/WCG images.
+
+Download JPEG XL WIC here: https://github.com/mirillis/jpegxl-wic
+
+### Windows Thumbnails
+
+##### Update: Now has WIC decoding support! JXL files can be viewed with Windows Photo Viewer or any WIC-capable image viewer.
+
+With the JXL-Winthumb plugin for Windows File Explorer, you can display thumbnail images for JPEG XL (\*.jxl) files.
+
+<Checklist
+  items={[
+    "Install Microsoft Visual C++ Redistributable for Visual Studio 2019 if it's not already installed.",
+    "Download the latest dll file from the releases page.",
+    "Open a terminal window as an administrator.",
+    "Move to your directory where the DLL file is located.",
+    "Type regsvr32 jxl_winthumb.dll and press Enter.",
+  ]}
+  checked={true}
+/>
+
+Download JXL Windows Thumbnails support here: https://github.com/saschanaz/jxl-winthumb
+
+### External Image Viewer
+
+Besides these plugins and tricks, you can also use an external image viewer that support JXL files, such as:
+
+<Link text="nomacs" href="nomacs.org/windows-10/" className="block" />
+
+<Link text="PhotoQT" href="photoqt.org/" className="block mt-2" />
+
+<Link
+  text="XnView MP"
+  href="www.xnview.com/en/xnviewmp/"
+  className="block mt-2"
+/>
+
+<Link text="ImageGlass" href="imageglass.org/" className="block" />
