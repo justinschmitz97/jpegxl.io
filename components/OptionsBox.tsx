@@ -30,7 +30,7 @@ export interface OptionsBoxProps {
 const OptionsBox = (props: OptionsBoxProps) => {
   const [progressive, setProgressive] = useState(false);
   const [quality, setQuality] = useState(100);
-  const [distance, setDistance] = useState(1);
+  const [distance, setDistance] = useState(3);
   const [effort, setEffort] = useState(5);
   const [bitdepth, setBitDepth] = useState(0);
   const [fasterDecoding, setFasterDecoding] = useState(0);

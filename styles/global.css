@@ -573,7 +573,7 @@ select {
 }
 
 [data-transition-style="glow"] {
-  animation: glow 15s ease-in-out infinite alternate-reverse both;
+  animation: glow 60s linear infinite alternate-reverse both;
 }
 
 /* Bouncing In Animation */

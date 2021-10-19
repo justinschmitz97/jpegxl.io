@@ -16,6 +16,7 @@ import Post from "@components/Blog/Post";
 import Layout from "@components/Layout";
 
 import cog from "@assets/settings.svg";
+import { render } from "preact";
 
 function Glow() {
   return (
@@ -204,7 +205,7 @@ const BlogAvif: NextPage<PostsPageProps> = ({
   return (
     <Layout meta={meta}>
       <section className="px-2 mt-12 text-center md:px-3">
-        <div className="flex items-center justify-center my-3">
+        <div className="block md:flex items-center justify-center my-3">
           <h1 className="m-0">Convert all images to JXL for free.</h1>{" "}
           <div className="inline-block relative px-2 py-1 mx-2 text-center text-white rounded-md min-w-4 tooltip bg-bg-300 group text-tiny">
             beta
@@ -259,87 +260,91 @@ const BlogAvif: NextPage<PostsPageProps> = ({
       <Glow />
       <Advantages />
       <section className="px-3 mx-auto max-w-screen-xl">
-        <div className="flex mt-2 mb-2">
-          <button
-            style={{ backgroundImage: "url(/comparison/frog.jxl)" }}
-            className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
-              image == "frog" ? "border-4 border-blue-400" : "opacity-50"
-            }`}
-            onClick={() => setImage("frog")}
-          />
-          <button
-            style={{ backgroundImage: "url(/comparison/waterfalls.jxl" }}
-            className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
-              image == "waterfalls" ? "border-4 border-blue-400" : "opacity-50"
-            }`}
-            onClick={() => setImage("waterfalls")}
-          />
-          <button
-            style={{ backgroundImage: "url(/comparison/sunflower.jxl" }}
-            className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
-              image == "sunflower" ? "border-4 border-blue-400" : "opacity-50"
-            }`}
-            onClick={() => setImage("sunflower")}
-          />
-          <button
-            style={{ backgroundImage: "url(/comparison/drop.jxl" }}
-            className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
-              image == "drop" ? "border-4 border-blue-400" : "opacity-50"
-            }`}
-            onClick={() => setImage("drop")}
-          />
-          <button
-            style={{ backgroundImage: "url(/comparison/smoke.jxl" }}
-            className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
-              image == "smoke" ? "border-4 border-blue-400" : "opacity-50"
-            }`}
-            onClick={() => setImage("smoke")}
-          />
-        </div>
+        <div>
+          <div className="flex mt-2 mb-2">
+            <button
+              style={{ backgroundImage: "url(/comparison/frog.jxl)" }}
+              className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
+                image == "frog" ? "border-4 border-blue-400" : "opacity-50"
+              }`}
+              onClick={() => setImage("frog")}
+            />
+            <button
+              style={{ backgroundImage: "url(/comparison/waterfalls.jxl" }}
+              className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
+                image == "waterfalls"
+                  ? "border-4 border-blue-400"
+                  : "opacity-50"
+              }`}
+              onClick={() => setImage("waterfalls")}
+            />
+            <button
+              style={{ backgroundImage: "url(/comparison/sunflower.jxl" }}
+              className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
+                image == "sunflower" ? "border-4 border-blue-400" : "opacity-50"
+              }`}
+              onClick={() => setImage("sunflower")}
+            />
+            <button
+              style={{ backgroundImage: "url(/comparison/drop.jxl" }}
+              className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
+                image == "drop" ? "border-4 border-blue-400" : "opacity-50"
+              }`}
+              onClick={() => setImage("drop")}
+            />
+            <button
+              style={{ backgroundImage: "url(/comparison/smoke.jxl" }}
+              className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
+                image == "smoke" ? "border-4 border-blue-400" : "opacity-50"
+              }`}
+              onClick={() => setImage("smoke")}
+            />
+          </div>
 
-        <div className="relative">
-          <ReactCompareImage
-            leftImage={`/comparison/${image}.jxl`}
-            rightImage={`/comparison/${image}.jpg`}
-            leftImageAlt="jxl image"
-            rightImageAlt="jpg image"
-            sliderLineWidth={4}
-            handle={
-              <div
-                role="button"
-                className="py-4 px-2 bg-blue-400 rounded-xl"
-                tabIndex={0}
-                id="handle"
-              />
-            }
-            sliderLineColor="rgba(255,255,255,0.2)"
-            sliderPositionPercentage={0.5}
-          />
-          <p
-            className="absolute top-4 left-4 py-2 px-3 rounded-md bg-bg-400"
-            id="jxl"
-          >
-            jxl ·{image == "frog" && " 30kb"}
-            {image == "waterfalls" && " 116kb"}
-            {image == "sunflower" && " 37kb"}
-            {image == "drop" && " 16kb"}
-            {image == "smoke" && " 58kb"}
-          </p>
-          <p
-            className="absolute top-4 right-4 py-2 px-3 rounded-md bg-bg-400"
-            id="jpg"
-          >
-            jpg ·{image == "frog" && " 30kb"}
-            {image == "waterfalls" && " 116kb"}
-            {image == "sunflower" && " 37kb"}
-            {image == "drop" && " 16kb"}
-            {image == "smoke" && " 58kb"}
-          </p>
+          <div className="relative">
+            <ReactCompareImage
+              leftImage={`/comparison/${image}.jxl`}
+              rightImage={`/comparison/${image}.jpg`}
+              leftImageAlt="jxl image"
+              rightImageAlt="jpg image"
+              sliderLineWidth={4}
+              handle={
+                <div
+                  role="button"
+                  className="py-4 px-2 bg-blue-400 rounded-xl"
+                  tabIndex={0}
+                  id="handle"
+                />
+              }
+              sliderLineColor="rgba(255,255,255,0.2)"
+              sliderPositionPercentage={0.5}
+            />
+            <p
+              className="absolute top-4 left-4 py-2 px-3 rounded-md bg-bg-400"
+              id="jxl"
+            >
+              jxl ·{image == "frog" && " 30kb"}
+              {image == "waterfalls" && " 116kb"}
+              {image == "sunflower" && " 37kb"}
+              {image == "drop" && " 16kb"}
+              {image == "smoke" && " 58kb"}
+            </p>
+            <p
+              className="absolute top-4 right-4 py-2 px-3 rounded-md bg-bg-400"
+              id="jpg"
+            >
+              jpg ·{image == "frog" && " 30kb"}
+              {image == "waterfalls" && " 116kb"}
+              {image == "sunflower" && " 37kb"}
+              {image == "drop" && " 16kb"}
+              {image == "smoke" && " 58kb"}
+            </p>
+          </div>
         </div>
       </section>
       <main className="p-2 md:p-4 archive blog">
         <div className="mt-12 text-center">
-          <h1 id="blog">JPEG XL SUPPORT (WIP!)</h1>
+          <h1 id="blog">JPEG XL SUPPORT</h1>
           <h2 className="mb-8 text-base">Articles and Tutorials</h2>
         </div>
         <div className="container max-w-screen-lg">
@@ -422,6 +427,7 @@ const BlogAvif: NextPage<PostsPageProps> = ({
               >
                 Articles
               </h3>
+              - coming soon -
               <div className="grid grid-cols-1 gap-2 mt-2 md:grid-cols-2 lg:grid-cols-3">
                 {articles.map((post: any) => (
                   <Post key={post.slug} {...post.data} slug={post.slug} />
@@ -444,6 +450,7 @@ const BlogAvif: NextPage<PostsPageProps> = ({
               >
                 Comparisons
               </h3>
+              - coming soon -
               <div className="grid grid-cols-1 gap-2 mt-2 md:grid-cols-2 lg:grid-cols-3">
                 {comparisons.map((post: any) => (
                   <Post key={post.slug} {...post.data} slug={post.slug} />

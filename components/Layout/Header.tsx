@@ -31,6 +31,7 @@ export default function Header() {
     >
       <div className="flex flex-wrap justify-between items-center md:flex-row">
         <nav className="flex flex-wrap justify-center items-center text-base md:pl-4 md:mr-auto">
+          <Link className="p-2 block md:p-3" text="Blog" href="/#blog" />
           <Link
             className="hidden p-2 md:block md:p-3"
             text="Tutorials"

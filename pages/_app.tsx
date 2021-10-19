@@ -33,6 +33,7 @@ export default function AvifIo({ Component, pageProps }: any) {
   return (
     <>
       <Script strategy="beforeInteractive" src="/detectSupport.js" />
+      <Script strategy="beforeInteractive" src="/detectSupport-jxl.js" />
       {/*<Script strategy="afterInteractive" src="/hotjar.js" />*/}
       <div className="overflow-x-hidden page">
         <Component {...pageProps} />

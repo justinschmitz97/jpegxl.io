@@ -31,8 +31,8 @@ export default function Footer() {
             <h6 className="mt-6 mb-3 font-bold text-white">Categories</h6>
             <nav className="list-none">
               <FooterLink text="Blog" href="/#blog" />
-              <FooterLink text="Tutorials" href="/b#tutorials" />
-              <FooterLink text="Release Notes" href="/#releasenotes" />
+              <FooterLink text="Tutorials" href="/#tutorials" />
+              <FooterLink text="Release Notes" href="/#changelog" />
             </nav>
           </div>
           <div className="px-4 w-full md:w-1/2 lg:w-1/4">
