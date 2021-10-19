@@ -263,9 +263,6 @@ const OptionsBox = (props: OptionsBoxProps) => {
                 type="checkbox"
                 id="expertFeatures"
               />{" "}
-              <label htmlFor="expertFeatures" className="hidden">
-                Enable Expert Features
-              </label>
               <span className="font-bold">Expert Settings</span>
             </div>
             <div
