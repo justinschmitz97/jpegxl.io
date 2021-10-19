@@ -3,6 +3,8 @@ import Tooltip from "@components/Home/Tooltip";
 
 export interface Options {
   progressive: boolean;
+  jpeg_transcode: boolean;
+  modular_mode: boolean;
   quality: number;
   distance: number;
   effort: number;
@@ -34,12 +36,14 @@ const OptionsBox = (props: OptionsBoxProps) => {
   const [effort, setEffort] = useState(5);
   const [bitdepth, setBitDepth] = useState(0);
   const [fasterDecoding, setFasterDecoding] = useState(0);
+  const [jpegTranscode, setJpegTranscode] = useState(false);
   const [epf, setEpf] = useState("-1");
   const [resampling, setResampling] = useState("1");
   const [colorspace, setColorspace] = useState("0");
   const [colortransform, setColortransform] = useState("1");
   const [qualityMode, setQualityMode] = useState(QualityMode.Distance);
   const [expertFeatures, setExpertFeatures] = useState(false);
+  const [modularMode, setModularMode] = useState(false);
 
   const useQuality = qualityMode === QualityMode.Quality;
   const useDistance = qualityMode === QualityMode.Distance;
@@ -56,6 +60,8 @@ const OptionsBox = (props: OptionsBoxProps) => {
       effort: effort,
       override_bitdepth: bitdepth,
       faster_decoding: fasterDecoding,
+      jpeg_transcode: jpegTranscode,
+      modular_mode: modularMode,
       epf: +epf,
       resampling: +resampling,
       colorspace: +colorspace,
@@ -72,7 +78,9 @@ const OptionsBox = (props: OptionsBoxProps) => {
     bitdepth,
     epf,
     resampling,
+    modularMode,
     colorspace,
+    jpegTranscode,
     colortransform,
     qualityMode,
     fasterDecoding,
@@ -115,7 +123,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
 
                   <p>Quality</p>
                   <Tooltip text="?">
-                    Compressed based on fixed quality parameter. 100 =
+                    Convert images based on fixed quality parameter. 100 =
                     mathematically lossless. Higher equals higher quality.
                   </Tooltip>
                 </div>
@@ -139,9 +147,9 @@ const OptionsBox = (props: OptionsBoxProps) => {
 
                   <p>Distance</p>
                   <Tooltip text="?">
-                    Compress image based on psychovisual similarity. 0 equals
-                    mathematically losless. 1 equals visually lossless. Lower
-                    numbers equal higher quality.
+                    Convert images based on psychovisual similarity. 0 equals
+                    mathematically losless. 1 equals visually lossless. Higher
+                    numbers equal less quality.
                   </Tooltip>
                 </div>
                 <div className={`flex content-center items-center `}>
@@ -241,7 +249,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                     id="faster_decoding"
                   />
                 </label>
-                <b style={{ marginLeft: 10 }}>{fasterDecoding * 25}%</b>
+                <b style={{ marginLeft: 10 }}>{jpegTranscode}</b>
               </div>
             </div>
           </div>
@@ -289,7 +297,38 @@ const OptionsBox = (props: OptionsBoxProps) => {
                   id="flexCheckDefault"
                 />
               </div>
-
+              <div className="flex justify-between items-center">
+                <label htmlFor="flexCheckDefault">
+                  <Tooltip text="?">
+                    Enable lossless transcoding of legacy JPEGs.
+                  </Tooltip>
+                  JPEG transcode{" "}
+                </label>
+                <input
+                  checked={jpegTranscode}
+                  onChange={(e) => {
+                    setJpegTranscode(e.target.checked);
+                  }}
+                  type="checkbox"
+                  id="flexCheckDefault"
+                />
+              </div>
+              <div className="flex justify-between items-center">
+                <label htmlFor="flexCheckDefault">
+                  <Tooltip text="?">
+                    Use the modular mode (lossy / lossless)
+                  </Tooltip>
+                  Modular Mode{" "}
+                </label>
+                <input
+                  checked={modularMode}
+                  onChange={(e) => {
+                    setModularMode(e.target.checked);
+                  }}
+                  type="checkbox"
+                  id="flexCheckDefault"
+                />
+              </div>
               <div className="flex justify-between items-center">
                 <label htmlFor="epf">
                   {" "}
