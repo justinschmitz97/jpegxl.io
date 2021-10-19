@@ -11,11 +11,11 @@ export interface FilesListItemProps {
 const FilesListItem = (props: FilesListItemProps) => {
   const [originalSize, setOriginalSize] = useState<number>(0);
   const outputSize = props.file.converted?.length;
-  const percentageSaved = originalSize === 0 ? 0 : Math.max(
-    Math.ceil((1 - outputSize / originalSize) * 100),
-    0
-  );
-  
+  const percentageSaved =
+    originalSize === 0
+      ? 0
+      : Math.max(Math.ceil((1 - outputSize / originalSize) * 100), 0);
+
   const downloadFile = (buffer: any, fileName: string) => {
     if (buffer !== null) {
       const saveByteArray = (function () {
@@ -64,7 +64,8 @@ const FilesListItem = (props: FilesListItemProps) => {
           </p>
           {props.file.converted && (
             <p className="z-50 py-1 px-2 rounded-sm text-tiny bg-green-1000">
-              jxl | {prettyBytes(outputSize, { maximumFractionDigits: 0 })}  | -{percentageSaved}%
+              jxl | {prettyBytes(outputSize, { maximumFractionDigits: 0 })} | -
+              {percentageSaved}%
             </p>
           )}
         </div>

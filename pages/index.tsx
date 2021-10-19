@@ -205,9 +205,9 @@ const BlogAvif: NextPage<PostsPageProps> = ({
   return (
     <Layout meta={meta}>
       <section className="px-2 mt-12 text-center md:px-3">
-        <div className="block md:flex items-center justify-center my-3">
+        <div className="block justify-center items-center my-3 md:flex">
           <h1 className="m-0">Convert all images to JXL for free.</h1>{" "}
-          <div className="inline-block relative px-2 py-1 mx-2 text-center text-white rounded-md min-w-4 tooltip bg-bg-300 group text-tiny">
+          <div className="inline-block relative py-1 px-2 mx-2 text-center text-white rounded-md min-w-4 tooltip bg-bg-300 group text-tiny">
             beta
           </div>
         </div>
