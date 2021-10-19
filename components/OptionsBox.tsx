@@ -121,7 +121,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                 </div>
               </div>
 
-              <div id="distance">
+              <div id="approach">
                 <div className="flex items-center mb-2">
                   <label className="text-none" htmlFor="distance_radio">
                     Distance
@@ -134,7 +134,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                     type="radio"
                     value={QualityMode.Distance}
                     name="options"
-                    id="distance_radio"
+                    id="distance"
                   />
 
                   <p>Distance</p>
@@ -158,7 +158,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                           min="0"
                           max="25"
                           step="1"
-                          id="distance"
+                          id="distancevalue"
                         />
                       </label>
                       <b style={{ marginLeft: 10 }}>{distance}</b>
@@ -209,7 +209,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                     min="1"
                     max="9"
                     step="1"
-                    id="effort"
+                    id="effort_value"
                   />
                 </label>
                 <b style={{ marginLeft: 10 }}>{(effort + -1) * 12.5}%</b>
@@ -263,6 +263,9 @@ const OptionsBox = (props: OptionsBoxProps) => {
                 type="checkbox"
                 id="expertFeatures"
               />{" "}
+              <label htmlFor="expertFeatures" className="hidden">
+                Enable Expert Features
+              </label>
               <span className="font-bold">Expert Settings</span>
             </div>
             <div

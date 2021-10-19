@@ -268,6 +268,7 @@ const BlogAvif: NextPage<PostsPageProps> = ({
                 image == "frog" ? "border-4 border-blue-400" : "opacity-50"
               }`}
               onClick={() => setImage("frog")}
+              name="jxl vs jpg comparison image 1: froggo"
             />
             <button
               style={{ backgroundImage: "url(/comparison/waterfalls.jxl" }}
@@ -277,6 +278,7 @@ const BlogAvif: NextPage<PostsPageProps> = ({
                   : "opacity-50"
               }`}
               onClick={() => setImage("waterfalls")}
+              name="jxl vs jpg comparison image 2: waterfalls"
             />
             <button
               style={{ backgroundImage: "url(/comparison/sunflower.jxl" }}
@@ -284,6 +286,7 @@ const BlogAvif: NextPage<PostsPageProps> = ({
                 image == "sunflower" ? "border-4 border-blue-400" : "opacity-50"
               }`}
               onClick={() => setImage("sunflower")}
+              name="jxl vs jpg comparison image 3: sunflower"
             />
             <button
               style={{ backgroundImage: "url(/comparison/drop.jxl" }}
@@ -291,6 +294,7 @@ const BlogAvif: NextPage<PostsPageProps> = ({
                 image == "drop" ? "border-4 border-blue-400" : "opacity-50"
               }`}
               onClick={() => setImage("drop")}
+              name="jxl vs jpg comparison image 4: waterdrop on leaflet"
             />
             <button
               style={{ backgroundImage: "url(/comparison/smoke.jxl" }}
@@ -298,6 +302,7 @@ const BlogAvif: NextPage<PostsPageProps> = ({
                 image == "smoke" ? "border-4 border-blue-400" : "opacity-50"
               }`}
               onClick={() => setImage("smoke")}
+              name="jxl vs jpg comparison image 5: green smoke"
             />
           </div>
 
