@@ -132,7 +132,11 @@ export default function Advantages() {
           </span>{" "}
           for stunning visuals
         </AdvantageItem>
-        <AdvantageItem number="visualizer-10" image={visualizer4}>
+        <AdvantageItem
+          number="visualizer-10"
+          image={visualizer4}
+          url="https://cloudinary.com/blog/how_jpeg_xl_compares_to_other_image_codecs#computational_complexity"
+        >
           <span className="font-bold leading-snug text-blue-400">
             fast encoding and decoding
           </span>{" "}
