@@ -50,7 +50,7 @@ export default function Meta(props: MetaProps) {
       <meta property="og:url" content={`https://jpegxl.io/${props.url}`} />
       <meta property="og:title" content={props.title + " | " + "jpegxl.io"} />
       <meta property="og:description" content={props.description} />
-      {props.image && <meta property="og:image" content={`${props.image}`} />}
+      <meta property="og:image" content={`https://jpegxl.io/json-logo.png`} />
 
       <meta name="twitter:card" content="summary"></meta>
       <meta property="twitter:creator" content="@jschmitz97" />
