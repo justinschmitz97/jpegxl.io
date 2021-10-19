@@ -180,7 +180,9 @@ const OptionsBox = (props: OptionsBoxProps) => {
                           id="quality"
                         />
                       </label>
-                      <b style={{ marginLeft: 10 }}>{quality}%</b>
+                      <b style={{ marginLeft: 10 }}>
+                        {quality == 100 ? "lossless" : quality + "%"}
+                      </b>
                     </>
                   )}
                 </div>
