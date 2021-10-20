@@ -303,7 +303,7 @@ nav ol li:before {
   background: inherit;
   filter: blur(6px);
   transition: all 0.2s;
-  animation: glowbutton 10s infinite alternate-reverse both;
+  transform: scale(0.95);
   transform-origin: center center;
 }
 
@@ -331,15 +331,6 @@ button[aria-label="Conversion settings"]:after {
   }
   to {
     opacity: 0.5;
-  }
-}
-
-@keyframes glowbutton {
-  from {
-    transform: scale(0.95);
-  }
-  to {
-    transform: scale(1);
   }
 }
 
