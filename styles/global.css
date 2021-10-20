@@ -179,7 +179,7 @@
   }
 
   button {
-    @apply block z-0 py-2 px-3 text-white font-bold text-center border-2 border-transparent rounded-md cursor-pointer;
+    @apply block z-0 py-2 px-3 text-white font-bold text-center border-4 border-transparent rounded-md cursor-pointer;
   }
 
   button:focus-visible {
@@ -287,6 +287,59 @@ nav ol li:before {
 @media only screen and (min-width: 769px) {
   .tutorials a:nth-child(2n) {
     padding: theme("spacing.2") theme("spacing.2") 0;
+  }
+}
+
+.download_button:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.8;
+  border-radius: 20px;
+  background: inherit;
+  filter: blur(6px);
+  transition: all 0.2s;
+  animation: glowbutton 10s infinite alternate-reverse both;
+  transform-origin: center center;
+}
+
+button[aria-label="Conversion settings"]:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 1;
+  border-radius: 20px;
+  background: inherit;
+  filter: blur(6px) invert(62%) sepia(10%) saturate(2195%) hue-rotate(130deg)
+    brightness(91%) contrast(94%);
+  transition: all 0.2s;
+  animation: opacity 4s infinite alternate-reverse both;
+  transform-origin: center center;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+@keyframes glowbutton {
+  from {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
   }
 }
 
