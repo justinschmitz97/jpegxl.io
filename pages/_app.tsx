@@ -4,6 +4,7 @@ import Script from "next/script";
 
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { getDatabase, ref, push } from "firebase/database";
 
 import { useRouter } from "next/router";
 
@@ -15,6 +16,7 @@ const firebaseConfig = {
   messagingSenderId: "1054719837554",
   appId: "1:1054719837554:web:5c5d13fdb02436b217c9eb",
   measurementId: "G-12SZR00CGD",
+  databaseUrl: "https://jpegxl-8164f-default-rtdb.firebaseio.com/",
 };
 
 export default function AvifIo({ Component, pageProps }: any) {
@@ -25,6 +27,16 @@ export default function AvifIo({ Component, pageProps }: any) {
       const app = initializeApp(firebaseConfig);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const analytics = getAnalytics(app);
+      const db = getDatabase();
+      /* Logs Console Errors to Firebase. 60 Days after release to track errors. */
+      const error = console.error.bind(console);
+      console.error = (...args) => {
+        error(...args);
+        push(ref(db), {
+          userAgent: navigator.userAgent,
+          error: args,
+        });
+      };
     }
   }, []);
 
@@ -34,7 +46,7 @@ export default function AvifIo({ Component, pageProps }: any) {
     <>
       <Script strategy="beforeInteractive" src="/detectSupport.js" />
       <Script strategy="beforeInteractive" src="/detectSupport-jxl.js" />
-      {/*<Script strategy="afterInteractive" src="/hotjar.js" />*/}
+      <Script strategy="afterInteractive" src="/hotjar.js" />*
       <div className="overflow-x-hidden page">
         <Component {...pageProps} />
       </div>
