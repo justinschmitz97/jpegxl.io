@@ -3,7 +3,7 @@
 #include <jxl/enc_file.h>
 #include <jxl/enc_external_image.h>
 #include <avif/avif.h>
-#include <src/webp/decode.h>
+#include <webp/decode.h>
 
 std::unique_ptr<IEncoder> create_encoder(const uintptr_t data, const size_t size, jxl::CodecInOut* io, jxl::ThreadPoolInternal* pool)
 {

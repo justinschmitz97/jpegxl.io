@@ -131,6 +131,8 @@ package-lock.json
 
 # production
 /build
+build.sh
+build.bat
 
 # misc
 .DS_Store
