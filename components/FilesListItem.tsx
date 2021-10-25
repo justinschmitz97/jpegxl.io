@@ -95,7 +95,7 @@ const FilesListItem = (props: FilesListItemProps) => {
           {" "}
           <span
             style={{ backgroundSize: "200%" }}
-            className="download_button absolute top-0 right-0 bottom-0 left-0 bg-center bg-cover rounded-md cursor-pointer bg-gradient"
+            className="absolute top-0 right-0 bottom-0 left-0 bg-center bg-cover rounded-md cursor-pointer download_button bg-gradient"
           ></span>
           <span
             className="absolute top-0 right-0 bottom-0 left-0 z-50 text-white bg-center bg-no-repeat transition-all duration-300 ease-in transform rotate-180 hover:scale-110 hover:translate-y-1"
