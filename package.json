@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@mdx-js/loader": "^1.6.22",
+    "@next/bundle-analyzer": "^11.1.2",
     "@next/mdx": "^11.1.2",
     "atropos": "^1.0.1",
     "firebase": "^9.0.1",
