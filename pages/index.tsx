@@ -8,15 +8,12 @@ import JXLConverter from "@components/JXLConverter";
 import { Options } from "@components/OptionsBox";
 import fs from "fs";
 import path from "path";
-import * as React from "react";
 import { InferGetStaticPropsType, NextPage } from "next";
 import matter from "gray-matter";
 import { postFilePaths, BLOG_POSTS_PATH } from "@utils/mdx";
 import Post from "@components/Blog/Post";
 import Layout from "@components/Layout";
-
 import cog from "@assets/settings.svg";
-import { render } from "preact";
 
 function Glow() {
   return (
@@ -119,10 +116,10 @@ const BlogAvif: NextPage<PostsPageProps> = ({
   listSubCategories,
   listCategories,
 }) => {
-  const [filteredPost, setFilteredPost] = React.useState([]);
-  const [filterKeyword, setFilterKeyword] = React.useState("");
-  const [selectedCategoryPill, setSelectedCategoryPill] = React.useState("");
-  const [image, setImage] = React.useState("frog");
+  const [filteredPost, setFilteredPost] = useState([]);
+  const [filterKeyword, setFilterKeyword] = useState("");
+  const [selectedCategoryPill, setSelectedCategoryPill] = useState("");
+  const [image, setImage] = useState("frog");
 
   const handleSelectedPill = (category: string) => {
     if (category === selectedCategoryPill) {
