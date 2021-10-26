@@ -298,7 +298,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                 />
               </div>
               <div className="flex justify-between items-center">
-                <label htmlFor="flexCheckDefault">
+                <label htmlFor="jpegTranscode">
                   <Tooltip text="?">
                     Enable lossless transcoding of legacy JPEGs.
                   </Tooltip>
@@ -310,11 +310,11 @@ const OptionsBox = (props: OptionsBoxProps) => {
                     setJpegTranscode(e.target.checked);
                   }}
                   type="checkbox"
-                  id="flexCheckDefault"
+                  id="jpegTranscode"
                 />
               </div>
               <div className="flex justify-between items-center">
-                <label htmlFor="flexCheckDefault">
+                <label htmlFor="modularmode">
                   <Tooltip text="?">
                     Use the modular mode (lossy / lossless)
                   </Tooltip>
@@ -326,7 +326,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                     setModularMode(e.target.checked);
                   }}
                   type="checkbox"
-                  id="flexCheckDefault"
+                  id="modularmode"
                 />
               </div>
               <div className="flex justify-between items-center">
