@@ -52,7 +52,7 @@ export default function AvifIo({ Component, pageProps }: any) {
       </div>
       <a
         className="fixed bottom-2 left-2 invisible z-50 py-1 px-2 w-auto rounded-sm md:visible bg-bg-300 text-tiny"
-        href={`mailto:support@jpegxl.io?subject=Reporting%20Issue%20on%20${asPath}`}
+        href={`mailto:support@jpegxl.io`}
         target="_blank"
         rel="noreferrer"
       >

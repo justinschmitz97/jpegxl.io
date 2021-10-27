@@ -6,7 +6,7 @@ import sh from "@assets/share.svg";
 const ShareButton = (props: any) => {
   return (
     <button
-      className="hidden p-1 m-1 w-5 h-5 bg-center bg-no-repeat bg-contain md:block"
+      className="hidden p-0 m-0 w-5 h-5 bg-center bg-no-repeat bg-contain md:block"
       style={{ backgroundImage: `url(${props.image})` }}
       onClick={() => window.open(`${props.url}`, "_blank")}
       onKeyPress={() => window.open(`${props.url}`, "_blank")}
