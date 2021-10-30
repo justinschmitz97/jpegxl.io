@@ -8,7 +8,6 @@ const meta = {
     title: "Privacy Policy",
     description: "Learn how we utilize your data to optimize our service.",
     url: "privacy-policy/",
-    image: "/logo_draft.png",
     datePublished: "01.09.20",
     dateModified: "10.01.21",
   },

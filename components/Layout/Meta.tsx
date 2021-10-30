@@ -50,7 +50,7 @@ export default function Meta(props: MetaProps) {
       <meta property="og:url" content={`https://jpegxl.io/${props.url}`} />
       <meta property="og:title" content={props.title + " | " + "jpegxl.io"} />
       <meta property="og:description" content={props.description} />
-      <meta property="og:image" content={`https://jpegxl.io/json-logo.png`} />
+      <meta property="og:image" content="https://jpegxl.io/json-logo.png" />
 
       <meta name="twitter:card" content="summary"></meta>
       <meta property="twitter:creator" content="@jschmitz97" />
@@ -61,9 +61,8 @@ export default function Meta(props: MetaProps) {
         content={props.title + " | " + "jpegxl.io ✨"}
       />
       <meta property="twitter:description" content={props.description} />
-      {props.image && (
-        <meta name="twitter:image" content="https://jpegxl.io/twitter.png" />
-      )}
+
+      <meta name="twitter:image" content="https://jpegxl.io/twitter.png" />
 
       <script
         {...jsonLdScriptProps<Organization>({
@@ -90,7 +89,7 @@ export default function Meta(props: MetaProps) {
             },
             "headline": props.title,
             "description": props.description,
-            "image": props.image,
+            "image": "https://avif.io/logo_draft.png",
             "author": {
               "@type": "Person",
               "name": "Justin Schmitz",

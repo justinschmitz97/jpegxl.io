@@ -1,5 +1,5 @@
 ---
-blog: true
+
 title: "JPEG XL vs GIF"
 description:
   An in-depth guide on how the brand-new file format JPEG XL stacks up against
@@ -7,7 +7,7 @@ description:
 keyword: GIF
 category: comparisons
 url: comparisons/jxl-vs-gif/
-image: "/logo_draft.png"
+
 datePublished: 31.10.21
 dateModified: 31.10.21
 questions:

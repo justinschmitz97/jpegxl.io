@@ -1,11 +1,11 @@
 ---
-blog: true
+
 title: "JPEG XL Overview"
 description: An in-depth overview of the new image format JPEG XL.
 keyword: JPEG XL Overview
 category: articles
 url: articles/jpegxl-overview
-image: "/logo_draft.png"
+
 datePublished: 31.10.21
 dateModified: 31.10.21
 questions:

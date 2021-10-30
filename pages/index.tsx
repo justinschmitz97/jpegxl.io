@@ -37,7 +37,6 @@ const meta = {
   description:
     "Fastest converter online. Supports bulk. Privacy protected. Convert all image types to Jpeg XL for free.🚀 Compress your images now!⏱",
   url: "",
-  image: "/logo_draft.png",
   datePublished: "31.10.21",
   dateModified: "31.10.21",
 };
@@ -48,7 +47,12 @@ const generatePosts = (folderPath: string) =>
     const { data } = matter(source);
 
     return {
-      data,
+      title: data.title,
+      description: data.description,
+      support: data.support ? data.support : "",
+      category: data.category,
+      subcategory: data.subcategory ? data.subcategory : "",
+      keyword: data.keyword,
       slug: filePath.replace(".mdx", ""),
     };
   });
@@ -74,13 +78,13 @@ export const getStaticProps = async () => {
   ];
 
   const listSubCategories = [
-    ...new Set(defaultFilteredPost.map((post) => post.data.subcategory)),
+    ...new Set(defaultFilteredPost.map((post) => post.subcategory)),
   ].filter(Boolean);
   const listCategories = [
-    ...new Set(defaultFilteredPost.map((post) => post.data.category)),
+    ...new Set(defaultFilteredPost.map((post) => post.category)),
   ].filter(Boolean);
   const listSupport = [
-    ...new Set(defaultFilteredPost.map((post) => post.data.support)),
+    ...new Set(defaultFilteredPost.map((post) => post.support)),
   ].filter(Boolean);
 
   return {
@@ -131,9 +135,9 @@ const BlogAvif: NextPage<PostsPageProps> = ({
     setSelectedCategoryPill(category);
     const filteredPosts = defaultFilteredPost.filter((post) => {
       return (
-        post.data.category === category ||
-        post.data.subcategory === category ||
-        post.data.support === category
+        post.category === category ||
+        post.subcategory === category ||
+        post.support === category
       );
     });
 
@@ -145,7 +149,7 @@ const BlogAvif: NextPage<PostsPageProps> = ({
   ) => {
     const keyword = event.target.value;
     const filtered = defaultFilteredPost.filter((post) =>
-      post.data.title.toLowerCase().includes(keyword.toLowerCase())
+      post.title.toLowerCase().includes(keyword.toLowerCase())
     );
     setFilterKeyword(keyword);
     setFilteredPost(filtered as any);
@@ -418,7 +422,16 @@ const BlogAvif: NextPage<PostsPageProps> = ({
           {filterKeyword.length > 0 || filteredPost.length ? (
             <div className="grid grid-cols-1 gap-2 mt-8 md:grid-cols-2 lg:grid-cols-3">
               {filteredPost.map((post: any) => (
-                <Post key={post.slug} {...post.data} slug={post.slug} />
+                <Post
+                  key={post.slug}
+                  title={post.title}
+                  description={post.description}
+                  support={post.support}
+                  category={post.category}
+                  subcategory={post.subcategory}
+                  keyword={post.keyword}
+                  slug={post.slug}
+                />
               ))}
             </div>
           ) : (
@@ -432,7 +445,16 @@ const BlogAvif: NextPage<PostsPageProps> = ({
               - coming soon -
               <div className="grid grid-cols-1 gap-2 mt-2 md:grid-cols-2 lg:grid-cols-3">
                 {articles.map((post: any) => (
-                  <Post key={post.slug} {...post.data} slug={post.slug} />
+                  <Post
+                    key={post.slug}
+                    title={post.title}
+                    description={post.description}
+                    support={post.support}
+                    category={post.category}
+                    subcategory={post.subcategory}
+                    keyword={post.keyword}
+                    slug={post.slug}
+                  />
                 ))}
               </div>
               <h3
@@ -443,7 +465,16 @@ const BlogAvif: NextPage<PostsPageProps> = ({
               </h3>
               <div className="grid grid-cols-1 gap-2 mt-2 md:grid-cols-2 lg:grid-cols-3">
                 {tutorials.map((post: any) => (
-                  <Post key={post.slug} {...post.data} slug={post.slug} />
+                  <Post
+                    key={post.slug}
+                    title={post.title}
+                    description={post.description}
+                    support={post.support}
+                    category={post.category}
+                    subcategory={post.subcategory}
+                    keyword={post.keyword}
+                    slug={post.slug}
+                  />
                 ))}
               </div>
               <h3
@@ -455,7 +486,16 @@ const BlogAvif: NextPage<PostsPageProps> = ({
               - coming soon -
               <div className="grid grid-cols-1 gap-2 mt-2 md:grid-cols-2 lg:grid-cols-3">
                 {comparisons.map((post: any) => (
-                  <Post key={post.slug} {...post.data} slug={post.slug} />
+                  <Post
+                    key={post.slug}
+                    title={post.title}
+                    description={post.description}
+                    support={post.support}
+                    category={post.category}
+                    subcategory={post.subcategory}
+                    keyword={post.keyword}
+                    slug={post.slug}
+                  />
                 ))}
               </div>
               <h3
@@ -466,7 +506,16 @@ const BlogAvif: NextPage<PostsPageProps> = ({
               </h3>
               <div className="grid grid-cols-1 gap-2 mt-2 md:grid-cols-2 lg:grid-cols-3">
                 {releases.map((post: any) => (
-                  <Post key={post.slug} {...post.data} slug={post.slug} />
+                  <Post
+                    key={post.slug}
+                    title={post.title}
+                    description={post.description}
+                    support={post.support}
+                    category={post.category}
+                    subcategory={post.subcategory}
+                    keyword={post.keyword}
+                    slug={post.slug}
+                  />
                 ))}
               </div>
             </>

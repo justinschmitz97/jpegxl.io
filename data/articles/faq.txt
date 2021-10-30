@@ -1,11 +1,11 @@
 ---
-blog: true
+
 title: "JPEG XL FAQ"
 description: Frequently asked questions about the new JPEG XL format answered here.
 keyword: JPEG XL FAQ
 category: articles
 url: articles/faq/
-image: "/logo_draft.png"
+
 datePublished: 31.10.21
 dateModified: 31.10.21
 questions:
