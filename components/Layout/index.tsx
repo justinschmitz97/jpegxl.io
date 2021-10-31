@@ -13,15 +13,7 @@ interface Layout {
 export default function Layout(props: Layout) {
   return (
     <>
-      <Meta
-        title={props.meta.title}
-        description={props.meta.description}
-        url={props.meta.url}
-        image={props.meta.image}
-        datePublished={props.meta.datePublished}
-        dateModified={props.meta.dateModified}
-        blog={props.meta.blog}
-      />
+      <Meta {...props.meta} />
       <Header />
       {props.children}
       <CTA />
