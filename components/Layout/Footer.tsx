@@ -1,74 +1,65 @@
 import Link from "@components/Link";
 
-const FooterLink = (props: any) => {
+const posts1 = [
+  ["Blog", "/#blog"],
+  ["Tutorials", "/#tutorials"],
+  ["Release Notes", "/#changelog"],
+];
+
+const posts2 = [
+  ["JPEG XL in Chrome", "/tutorials/chrome/"],
+  ["JPEG XL in Firefox", "/tutorials/firefox/"],
+  ["JPEG XL in Edge", "/tutorials/edge/"],
+  ["JPEG XL in Opera", "/tutorials/opera/"],
+  ["JPEG XL in CSS", "/tutorials/css/"],
+];
+
+const posts3 = [
+  ["AVIF Converter", "avif.io"],
+  [
+    "ProductHunt",
+    "www.producthunt.com/posts/jpegxl-io-a-free-jpeg-xl-converter",
+  ],
+  ["Discord", "discord.com/invite/6w42YpF5hm"],
+  ["Sitemap", "/sitemap.xml"],
+  ["RSS Feed", "/rss.xml"],
+  ["Legal and Privacy", "/privacy-policy/"],
+];
+
+const Column = (props: any) => {
   return (
-    <Link
-      className="block text-gray-400 hover:text-white"
-      text={props.text}
-      href={props.href}
-    />
+    <div className="px-4 w-full md:w-1/2 lg:w-1/4">
+      <h6 className="mt-6 mb-3 font-bold text-white">{props.title}</h6>
+      <nav className="list-none">
+        {props.posts.map((item: any) => (
+          <Link
+            key={item}
+            className="block text-gray-400 hover:text-white"
+            text={item[0]}
+            href={item[1]}
+          />
+        ))}
+      </nav>
+    </div>
   );
 };
 
 export default function Footer() {
   return (
-    <footer className="text-gray-400 bg-tenpercent body-font">
-      <div className="container py-8 px-1 mx-auto">
-        <div className="flex flex-wrap order-first text-left">
-          <div className="flex flex-col px-4 mt-6 w-full md:w-1/2 lg:w-1/4">
-            <Link
-              className="flex justify-start items-center text-xl font-bold text-white font-display"
-              text="jpegxl.io"
-              href="/"
-            />
-            <div className="my-4 text-gray-400">
-              A tool by Justin Schmitz to convert JPG, PNG, WebP and AVIF to
-              JPEG XL.
-              <Link text="- @jschmitz97" href="twitter.com/jschmitz97" />
-            </div>
-          </div>
-          <div className="px-4 w-full md:w-1/2 lg:w-1/4">
-            <h6 className="mt-6 mb-3 font-bold text-white">Categories</h6>
-            <nav className="list-none">
-              <FooterLink text="Blog" href="/#blog" />
-              <FooterLink text="Tutorials" href="/#tutorials" />
-              <FooterLink text="Release Notes" href="/#changelog" />
-            </nav>
-          </div>
-          <div className="px-4 w-full md:w-1/2 lg:w-1/4">
-            <h6 className="mt-6 mb-3 font-bold text-white">Most viewed</h6>
-            <nav className="list-none">
-              <FooterLink text="JPEG XL in Chrome" href="/tutorials/chrome/" />
-              <FooterLink
-                text="JPEG XL in Firefox"
-                href="/tutorials/firefox/"
-              />
-              <FooterLink text="JPEG XL in Edge" href="/tutorials/edge/" />
-              <FooterLink text="JPEG XL in Opera" href="/tutorials/opera/" />
-              <FooterLink text="JPEG XL in CSS" href="/tutorials/css/" />
-            </nav>
-          </div>
-          <div className="px-4 w-full md:w-1/2 lg:w-1/4">
-            <h6 className="mt-6 mb-3 font-bold text-white">Other Pages</h6>
-            <nav className="list-none">
-              <FooterLink text="AVIF Converter" href="avif.io" ext />
-              <FooterLink
-                text="ProductHunt"
-                href="www.producthunt.com/posts/jpegxl-io-a-free-jpeg-xl-converter"
-                ext
-              />
-              <FooterLink
-                text="Discord"
-                href="discord.com/invite/6w42YpF5hm"
-                ext
-              />
-              <FooterLink text="Sitemap" href="/sitemap.xml" />
-              <FooterLink text="RSS Feed" href="/rss.xml" />
-              <FooterLink text="Legal and Privacy" href="/privacy-policy/" />
-            </nav>
-          </div>
-        </div>
+    <footer className="bg-bg-400 container pt-4 pb-8 px-1 mx-auto flex flex-wrap order-first text-left">
+      <div className="flex flex-col px-4 mt-6 w-full md:w-1/2 lg:w-1/4 text-gray-400">
+        <Link
+          className="text-xl font-bold text-white mb-4"
+          text="jpegxl.io"
+          href="/"
+        />
+        An open-source platform by Justin Schmitz that converts image formats
+        like PNG, JPG, GIF, WEBP to JPEG XL.
+        <Link text="@jschmitz97" href="twitter.com/jschmitz97" />
       </div>
+      <Column posts={posts1} title="Categories" />
+      <Column posts={posts2} title="Most viewed" />
+      <Column posts={posts3} title="Other pages" />
     </footer>
   );
 }
