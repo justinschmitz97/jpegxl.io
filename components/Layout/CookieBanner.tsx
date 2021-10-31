@@ -15,7 +15,7 @@ function useStickyState(defaultValue: any, key: any) {
 }
 
 const CookieBanner = () => {
-  const [mode, setMode] = useStickyState("false", "true");
+  const [mode, setMode] = useStickyState(false, true);
   return (
     <div
       className={`p-3 bg-bg-500 fixed bottom-2 right-2 text-tiny rounded-md z-50 ${
