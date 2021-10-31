@@ -125,6 +125,26 @@ const BlogAvif: NextPage<PostsPageProps> = ({
   const [selectedCategoryPill, setSelectedCategoryPill] = useState("");
   const [image, setImage] = useState("frog");
 
+  const sliderImages = [
+    ["frog", "30"],
+    ["waterfalls", "116"],
+    ["sunflower", "37"],
+    ["drop", "16"],
+    ["smoke", "58"],
+  ];
+
+  const sliderButtons = sliderImages.map((item: any, i) => (
+    <button
+      key={item[1]}
+      style={{ backgroundImage: `url(/comparison/${item[0]}.jxl` }}
+      className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
+        image == item[0] ? "border-4 border-pink-700" : "opacity-50"
+      }`}
+      onClick={() => setImage(`${item[0]}`)}
+      name={`jxl vs jpg comparison image ${i + 1}: ${item[0]}`}
+    />
+  ));
+
   const handleSelectedPill = (category: string) => {
     if (category === selectedCategoryPill) {
       setSelectedCategoryPill("");
@@ -262,51 +282,7 @@ const BlogAvif: NextPage<PostsPageProps> = ({
       <Advantages />
       <section className="px-3 mx-auto max-w-screen-xl">
         <div>
-          <div className="flex mt-2 mb-2">
-            <button
-              style={{ backgroundImage: "url(/comparison/frog.jxl)" }}
-              className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
-                image == "frog" ? "border-4 border-blue-400" : "opacity-50"
-              }`}
-              onClick={() => setImage("frog")}
-              name="jxl vs jpg comparison image 1: froggo"
-            />
-            <button
-              style={{ backgroundImage: "url(/comparison/waterfalls.jxl" }}
-              className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
-                image == "waterfalls"
-                  ? "border-4 border-blue-400"
-                  : "opacity-50"
-              }`}
-              onClick={() => setImage("waterfalls")}
-              name="jxl vs jpg comparison image 2: waterfalls"
-            />
-            <button
-              style={{ backgroundImage: "url(/comparison/sunflower.jxl" }}
-              className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
-                image == "sunflower" ? "border-4 border-blue-400" : "opacity-50"
-              }`}
-              onClick={() => setImage("sunflower")}
-              name="jxl vs jpg comparison image 3: sunflower"
-            />
-            <button
-              style={{ backgroundImage: "url(/comparison/drop.jxl" }}
-              className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
-                image == "drop" ? "border-4 border-blue-400" : "opacity-50"
-              }`}
-              onClick={() => setImage("drop")}
-              name="jxl vs jpg comparison image 4: waterdrop on leaflet"
-            />
-            <button
-              style={{ backgroundImage: "url(/comparison/smoke.jxl" }}
-              className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
-                image == "smoke" ? "border-4 border-blue-400" : "opacity-50"
-              }`}
-              onClick={() => setImage("smoke")}
-              name="jxl vs jpg comparison image 5: green smoke"
-            />
-          </div>
-
+          <div className="flex mt-2 mb-2">{sliderButtons}</div>
           <div className="relative">
             <ReactCompareImage
               leftImage={`/comparison/${image}.jxl`}
