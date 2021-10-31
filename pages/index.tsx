@@ -124,6 +124,7 @@ const BlogAvif: NextPage<PostsPageProps> = ({
   const [filterKeyword, setFilterKeyword] = useState("");
   const [selectedCategoryPill, setSelectedCategoryPill] = useState("");
   const [image, setImage] = useState("frog");
+  const [imageSize, setImageSize] = useState("30");
 
   const sliderImages = [
     ["frog", "30"],
@@ -136,12 +137,15 @@ const BlogAvif: NextPage<PostsPageProps> = ({
   const sliderButtons = sliderImages.map((item: any, i) => (
     <button
       key={item[1]}
-      style={{ backgroundImage: `url(/comparison/${item[0]}.jxl` }}
+      style={{ backgroundImage: `url(/comparison/${item[0]}.avif` }}
       className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
         image == item[0] ? "border-4 border-pink-700" : "opacity-50"
       }`}
-      onClick={() => setImage(`${item[0]}`)}
-      name={`jxl vs jpg comparison image ${i + 1}: ${item[0]}`}
+      onClick={() => {
+        setImage(`${item[0]}`);
+        setImageSize(`${item[1]}`);
+      }}
+      name={`avif vs jpg comparison image ${i + 1}: ${item[0]}`}
     />
   ));
 
@@ -305,21 +309,13 @@ const BlogAvif: NextPage<PostsPageProps> = ({
               className="absolute top-4 left-4 py-2 px-3 rounded-md bg-bg-400"
               id="jxl"
             >
-              jxl ·{image == "frog" && " 30kb"}
-              {image == "waterfalls" && " 116kb"}
-              {image == "sunflower" && " 37kb"}
-              {image == "drop" && " 16kb"}
-              {image == "smoke" && " 58kb"}
+              {"jxl · " + imageSize + "kb"}
             </p>
             <p
               className="absolute top-4 right-4 py-2 px-3 rounded-md bg-bg-400"
               id="jpg"
             >
-              jpg ·{image == "frog" && " 30kb"}
-              {image == "waterfalls" && " 116kb"}
-              {image == "sunflower" && " 37kb"}
-              {image == "drop" && " 16kb"}
-              {image == "smoke" && " 58kb"}
+              {"jpg · " + imageSize + "kb"}
             </p>
           </div>
         </div>

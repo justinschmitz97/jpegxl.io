@@ -1,28 +1,30 @@
 /* eslint-disable @next/next/no-img-element */
-export default function Image(props: { alt: string; url: string }) {
+export default function Image(props: { alt: string; src: string }) {
+  const sizes = [1536, 768, 576, 384];
+  const formats = [
+    ["image/avif", "avif"],
+    ["image/webp", "webp"],
+    ["image/jpeg", "jpg"],
+  ];
+
+  const sources = formats.map((format: any) => (
+    <source
+      key={format[1]}
+      type={`image/${format[0]}`}
+      srcSet={`/img/${props.src}-${sizes[0]}.${format[1]} ${sizes[0]}w, /img/${props.src}-${sizes[1]}.${format[1]} ${sizes[1]}w, /img/${props.src}-${sizes[2]}.${format[1]} ${sizes[2]}w, /img/${props.src}-${sizes[3]}.${format[1]} ${sizes[3]}w`}
+      sizes="(max-width: 768px) 100vw, 768px"
+    />
+  ));
+
   return (
     <picture>
-      <source
-        type="image/avif"
-        srcSet={`/img/${props.url}-1536.avif 1536w, /img/${props.url}-768.avif 768w, /img/${props.url}-576.avif 576w, /img/${props.url}-384.avif 384w`}
-        sizes="(max-width: 768px) 100vw, 768px"
-      />
-      <source
-        type="image/webp"
-        srcSet={`/img/${props.url}-1536.webp 1536w, /img/${props.url}-768.webp 768w, /img/${props.url}-576.webp 576w, /img/${props.url}-384.webp 384w`}
-        sizes="(max-width: 768px) 100vw, 768px"
-      />
-      <source
-        type="image/jpeg"
-        srcSet={`/img/${props.url}-1536.jpg 1536w, /img/${props.url}-768.jpg 768w, /img/${props.url}-576.jpg 576w, /img/${props.url}-384.jpg 384w`}
-        sizes="(max-width: 768px) 100vw, 768px"
-      />
+      {sources}
       <img
         loading="lazy"
         decoding="async"
         width={2880}
         height={1620}
-        src={`/img/${props.url}-1536.jpg`}
+        src={`/img/${props.src}-1536.jpg`}
         alt={props.alt}
         title={props.alt}
       />
