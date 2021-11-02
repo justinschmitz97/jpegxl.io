@@ -7,7 +7,6 @@ description:
 keyword: SVG
 category: comparisons
 url: comparisons/jxl-vs-svg/
-
 datePublished: 31.10.21
 dateModified: 31.10.21
 questions:

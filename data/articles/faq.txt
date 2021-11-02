@@ -5,7 +5,6 @@ description: Frequently asked questions about the new JPEG XL format answered he
 keyword: JPEG XL FAQ
 category: articles
 url: articles/faq/
-
 datePublished: 31.10.21
 dateModified: 31.10.21
 questions:

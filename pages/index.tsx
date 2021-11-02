@@ -109,7 +109,7 @@ export const getStaticProps = async () => {
 };
 
 type PostsPageProps = InferGetStaticPropsType<typeof getStaticProps>;
-const BlogAvif: NextPage<PostsPageProps> = ({
+const BlogJxl: NextPage<PostsPageProps> = ({
   defaultFilteredPost,
   articles,
   comparisons,
@@ -137,7 +137,7 @@ const BlogAvif: NextPage<PostsPageProps> = ({
   const sliderButtons = sliderImages.map((item: any, i) => (
     <button
       key={item[1]}
-      style={{ backgroundImage: `url(/comparison/${item[0]}.avif` }}
+      style={{ backgroundImage: `url(/comparison/${item[0]}.jxl` }}
       className={`mr-2 w-8 h-8 bg-center bg-cover bg-no-repeat ${
         image == item[0] ? "border-4 border-pink-700" : "opacity-50"
       }`}
@@ -145,7 +145,7 @@ const BlogAvif: NextPage<PostsPageProps> = ({
         setImage(`${item[0]}`);
         setImageSize(`${item[1]}`);
       }}
-      name={`avif vs jpg comparison image ${i + 1}: ${item[0]}`}
+      name={`jxl vs jpg comparison image ${i + 1}: ${item[0]}`}
     />
   ));
 
@@ -498,4 +498,4 @@ const BlogAvif: NextPage<PostsPageProps> = ({
   );
 };
 
-export default BlogAvif;
+export default BlogJxl;
