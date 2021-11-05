@@ -60,7 +60,7 @@ export default function Blog(props: {
           <div className="mt-12">
             {props.postMeta.sources && (
               <>
-                <h5 className="inline-block py-0 px-3 mt-6 font-bold rounded-md">
+                <h5 className="inline-block py-1 px-3 mt-6 font-bold rounded-md">
                   Sources
                 </h5>
                 <Sources sources={props.postMeta.sources} />
@@ -69,7 +69,7 @@ export default function Blog(props: {
 
             {props.postMeta.tags && (
               <>
-                <h5 className="inline-block py-0 px-3 mt-6 font-bold rounded-md">
+                <h5 className="inline-block py-1 px-3 mt-6 font-bold rounded-md">
                   Topic clusters
                 </h5>
                 <Tags tags={props.postMeta.tags} />
@@ -78,7 +78,7 @@ export default function Blog(props: {
 
             {props.postMeta.questions && (
               <>
-                <h5 className="inline-block py-0 px-3 mt-6 font-bold rounded-md">
+                <h5 className="inline-block py-1 px-3 mt-6 font-bold rounded-md">
                   Related search terms
                 </h5>
                 <Questions questions={props.postMeta.questions} />
