@@ -29,10 +29,10 @@ export default function H(props: HProps) {
     <CustomTag
       id={props.level === 2 || props.level === 3 ? trimmedText : undefined}
       className={`${
-        props.level === 2 ? "mt-12 mb-3 md:text-3xl md:mt-12 md:mb-4 " : ""
+        props.level === 2 ? "mt-8 mb-3 md:text-3xl md:mt-12 md:mb-4 " : ""
       } ${props.level === 3 ? "mt-8 " : ""} ${
         props.level === 4 ? "mt-6 mb-3 " : ""
-      } group items-center flex relative`}
+      } group items-center flex relative rounded-sm`}
     >
       {props.text}
       {(props.level === 2 || props.level === 3) && (

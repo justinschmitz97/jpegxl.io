@@ -115,7 +115,6 @@ const BlogJxl: NextPage<PostsPageProps> = ({
   comparisons,
   releases,
   tutorials,
-  /*listAllCategories,*/
   listSupport,
   listSubCategories,
   listCategories,
@@ -229,7 +228,7 @@ const BlogJxl: NextPage<PostsPageProps> = ({
 
   return (
     <Layout meta={meta}>
-      <section className="px-2 mt-12 text-center md:px-3">
+      <section className="px-2 mt-8 md:mt-12 text-center md:px-3">
         <div className="block justify-center items-center my-3 md:flex">
           <h1 className="m-0">Convert all images to JXL for free.</h1>{" "}
           <div className="inline-block relative py-1 px-2 mx-2 text-center text-white rounded-md min-w-4 tooltip bg-bg-300 group text-tiny">
@@ -284,7 +283,7 @@ const BlogJxl: NextPage<PostsPageProps> = ({
       </section>
       <Glow />
       <Advantages />
-      <section className="px-3 mx-auto max-w-screen-xl">
+      <section className="px-2 mx-auto max-w-screen-xl">
         <div>
           <div className="flex mt-2 mb-2">{sliderButtons}</div>
           <div className="relative">

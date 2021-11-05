@@ -27,17 +27,17 @@ export default function Blog(props: {
     <Layout meta={props.postMeta}>
       <main className={`blog ${props.className}`}>
         <div
-          className="relative py-12 px-4 md:p-10 lg:p-12 bg-gradient animation-delay-2"
+          className="relative pt-8 pb-6 md:py-8 px-2 md:px-4 md:p-8 lg:pt-12 lg:pb-8 bg-gradient animation-delay-2"
           data-transition-style="in:circle:center"
         >
           <div
             className="absolute right-0 left-0 top-1 bottom-1 w-full h-full rounded-md opacity-25 transform scale-105 -z-1 bg-gradient blur-xl bg-200"
             data-transition-style="gradientAnimation"
           />
-          <div className="container max-w-screen-md">
+          <div className="mt-4 md:mt-0 container max-w-screen-md">
             <Breadcrumbs postMeta={props.postMeta} />
             <h1
-              className="md:text-4xl animation-delay-5"
+              className="mt-2 md:mt-6 md:text-4xl animation-delay-5"
               data-transition-style="in:wipe:right"
             >
               {props.postMeta.title}
@@ -54,7 +54,7 @@ export default function Blog(props: {
         </div>
 
         <div className="container mx-auto max-w-screen-md">
-          <article ref={articleRef} className="p-3 md:p-0">
+          <article ref={articleRef} className="p-2 md:p-0">
             {props.children}
           </article>
           <div className="mt-12">

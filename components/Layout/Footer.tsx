@@ -28,7 +28,7 @@ const posts3 = [
 
 const Column = (props: any) => {
   return (
-    <div className="px-4 w-full md:w-1/2 lg:w-1/4">
+    <div className="px-2 w-full md:w-1/2 lg:w-1/4">
       <h6 className="mt-6 mb-3 font-bold text-white">{props.title}</h6>
       <nav className="list-none">
         {props.posts.map((item: any) => (
@@ -47,7 +47,7 @@ const Column = (props: any) => {
 export default function Footer() {
   return (
     <footer className="flex flex-wrap order-first px-1 pt-4 pb-8 mx-auto text-left bg-bg-400">
-      <div className="flex flex-col px-4 mt-6 w-full text-gray-400 md:w-1/2 lg:w-1/4">
+      <div className="flex flex-col px-2 mt-6 w-full text-gray-400 md:w-1/2 lg:w-1/4">
         <Link
           className="mb-4 text-xl font-bold text-white"
           text="jpegxl.io"

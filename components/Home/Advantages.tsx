@@ -68,7 +68,7 @@ function AdvantageItem(props: Advantages) {
 
 export default function Advantages() {
   return (
-    <section className="container relative p-4 lg:p-0" id="avifadvantages">
+    <section className="container relative mt-2 p-2 p-4 lg:p-0" id="avifadvantages">
       <div className="grid grid-cols-1 gap-4 mb-12 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         <AdvantageItem
           number="visualizer-1"

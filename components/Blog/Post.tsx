@@ -38,9 +38,9 @@ const Post = ({
       <a
         href={slug ? `/${category}/${slug}/` : `/` + url}
         tabIndex={0}
-        className={`p-2 cursor-pointer group ${support}`}
+        className={`p-0 mt-1 md:mt-0 md:p-2 cursor-pointer group ${support}`}
       >
-        <div className="overflow-hidden relative p-3 h-full rounded-sm bg-bg-500">
+        <div className="overflow-hidden relative py-2 px-1 md:p-3 h-full rounded-sm bg-bg-500">
           <div className="absolute right-0 bottom-0 z-0 w-4 h-3 transition-all transform scale-0 translate-x-4 translate-y-2 bg-gradient rotate-300 group-hover:scale-1500"></div>
           <div
             className={`relative mb-2 flex ${

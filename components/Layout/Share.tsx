@@ -6,7 +6,7 @@ import sh from "@assets/share.svg";
 const ShareButton = (props: any) => {
   return (
     <button
-      className="hidden p-0 m-0 w-5 h-5 bg-center bg-no-repeat bg-contain md:block"
+      className="hidden p-1 m-0 w-5 h-5 bg-center bg-no-repeat bg-contain md:block"
       style={{ backgroundImage: `url(${props.image})` }}
       onClick={() => window.open(`${props.url}`, "_blank")}
       onKeyPress={() => window.open(`${props.url}`, "_blank")}
@@ -26,7 +26,9 @@ export default function Blog() {
 
   const url = "https://jpegxl.io";
   return (
-    <div className="flex fixed right-4 bottom-4 z-40 justify-items-center content-center p-1 rounded-md bg-bg-500">
+    <div className="bg-bg-500 fixed right-2 bottom-2 md:right-3 md:bottom-3 z-40 p-1 rounded-md border-2 border-bg-500 md:border-0">
+    <div className="flex justify-items-center items-center content-center ">
+    <div className="text-tiny ml-1 mr-2 hidden md:block">Share</div>
       <ShareButton
         url={`https://twitter.com/intent/tweet?text=${url}`}
         name="Twitter"
@@ -43,7 +45,7 @@ export default function Blog() {
         image={fb}
       />
       <button
-        className="block p-1 m-1 w-5 h-5 bg-center bg-no-repeat bg-contain md:hidden"
+        className="block p-1 w-5 h-5 bg-center bg-no-repeat bg-contain md:hidden"
         style={{ backgroundImage: `url(${sh})` }}
         onClick={() => share()}
         onKeyPress={() => share()}
@@ -51,6 +53,7 @@ export default function Blog() {
         title="share on social media"
         id="share"
       ></button>
+    </div>
     </div>
   );
 }
