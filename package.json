@@ -9,7 +9,7 @@
     "convert": "cd utils && node sharp && cd ../",
     "lint": "rustywind . --write && prettier --write . && next lint --fix --dir pages --dir components",
     "develop": "npm run build && npm run dev",
-    "release": "npm run build && next export && next-sitemap --config next-sitemap.config.js && cd utils && node rss"
+    "release": "npm run build && next export && next-sitemap --config next-sitemap.config.js && cd utils && node rss && firebase deploy"
   },
   "dependencies": {
     "@mdx-js/loader": "^1.6.22",
