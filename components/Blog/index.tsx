@@ -12,6 +12,10 @@ export default function Blog(props: {
   posts: any;
   className?: any;
 }) {
+
+  const urlSplit = props.postMeta.url.split("/");
+  const breadCrumb = urlSplit[0] === "tutorials" || "comparisons" || "releases" || "articles"
+
   const articleRef = useRef<HTMLElement>(null);
   const [readingTime, setReadingTime] = useState(0);
 
@@ -22,7 +26,7 @@ export default function Blog(props: {
     const averageWordsPerMinute = 150;
     setReadingTime(Math.ceil(wordCount / averageWordsPerMinute));
   }, [articleRef]);
-
+  
   return (
     <Layout meta={props.postMeta}>
       <main className={`blog ${props.className}`}>
@@ -35,7 +39,9 @@ export default function Blog(props: {
             data-transition-style="gradientAnimation"
           />
           <div className="mt-4 md:mt-0 container max-w-screen-md">
+    {breadCrumb === true &&
             <Breadcrumbs postMeta={props.postMeta} />
+  }
             <h1
               className="mt-2 md:mt-6 md:text-4xl animation-delay-5"
               data-transition-style="in:wipe:right"
