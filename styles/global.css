@@ -155,7 +155,7 @@
   }
 
   h5 {
-    @apply my-2 p-2 font-normal text-tiny bg-bg-500 leading-snug
+    @apply my-2 p-2 font-normal text-tiny bg-bg-500 leading-snug;
   }
 
   div,

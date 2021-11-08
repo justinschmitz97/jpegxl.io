@@ -137,7 +137,7 @@ const BlogJxl: NextPage<PostsPageProps> = ({
     <button
       key={item[1]}
       style={{ backgroundImage: `url(/comparison/${item[0]}.jxl` }}
-      className={`mr-2 w-8 rounded-sm h-8 bg-center bg-cover bg-no-repeat ${
+      className={`mr-2 w-8 rounded-md h-8 bg-center bg-cover bg-no-repeat ${
         image == item[0] ? "border-4 border-teal-700" : "opacity-50"
       }`}
       onClick={() => {
@@ -491,6 +491,51 @@ const BlogJxl: NextPage<PostsPageProps> = ({
               </div>
             </>
           )}
+          <div className="mt-12 mb-8 text-center max-w-3xl m-auto">
+            <div className="text-xl font-bold">A summary of JPEG XL</div>
+            <p className="mt-2">
+              JPEG XL is a fusion of Google's PIK format and Cloudinary's FUIF
+              format. The JPEG XL Image Coding System contains a wide range of
+              features that are especially suited for responsive web
+              environments, so your content will look great on a variety of
+              devices.
+            </p>
+            <p className="mt-2">
+              Compared to existing image formats, it will offer various
+              advantages. It will be significantly smaller but will offer
+              comparable quality. Decoding and encoding are fast and
+              parallelizable, and progressive encoding is one of the features.
+              Accordingly, it supports a wide gamut, higher resolutions, bit
+              depths, and dynamic ranges, as well as lossless coding.
+            </p>
+            <p className="mt-2">
+              As an image with a maximum of a billion pixels on each side and up
+              to 4100 channels, it is perfectly suited to store large amounts of
+              information, whether it be synthetic or photographic. The JPEG XL
+              format was designed to take advantage of multicore and SIMD, and
+              actually decodes at a faster rate than JPEG.
+            </p>
+            <p className="mt-2">
+              By migrating to JPEG XL, storage costs can be reduced since
+              servers can store just one JPEG XL file for both JPEG and JPEG XL
+              clients. Lossless transcoding of existing JPEG files to JPEG XL
+              significantly reduces their size. JPEG XL is unique in that it
+              provides value to existing JPEG users and to new users alike. By
+              using its coding tools, JPEG can be transmitted and stored at a
+              22% reduction in cost, while retaining exact byte-for-byte
+              reconstruction of the original. The prevention of transcoding and
+              additional artifacts contributes to the preservation of our
+              digital heritage.
+            </p>
+            <p className="mt-2">
+              JPEG XL is also royalty-free patent software, in addition to being
+              Free and Open Source Software (FOSS). You can easily convert
+              multiple images to JXL with our converter. It supports conversion
+              from JPEG to JPEG XL, PNG to JPEG XL, WebP to JPEG XL, and AVIF to
+              JPEG XL. It is completely free, supports bulk conversion, and
+              works client-side. Image files are not uploaded to the cloud.
+            </p>
+          </div>
         </div>
       </main>
     </Layout>
