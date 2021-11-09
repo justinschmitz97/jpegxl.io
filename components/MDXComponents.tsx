@@ -4,6 +4,7 @@ import Heading from "@components/Blog/H";
 import Checklist from "@components/Blog/Checklist";
 import Image from "@components/Blog/Image";
 import Syntax from "@components/Blog/Syntax";
+import Video from "@components/Blog/Video";
 
 interface ChildrenProps {
   children: React.ReactNode;
@@ -14,6 +15,7 @@ const MDXComponents = {
   Image,
   Checklist,
   Syntax,
+  Video,
   code: Syntax,
   H: Heading,
   h1: ({ children }: ChildrenProps) => (
