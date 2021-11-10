@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "@components/Link";
 import Heading from "@components/Blog/Heading";
-import Checklist from "@components/Blog/Checklist";
 import Image from "@components/Blog/Image";
 import Syntax from "@components/Blog/Syntax";
 import Video from "@components/Blog/Video";
@@ -14,7 +13,6 @@ interface ChildrenProps {
 const MDXComponents = {
   Link,
   Image,
-  Checklist,
   Syntax,
   Video,
   code: Syntax,

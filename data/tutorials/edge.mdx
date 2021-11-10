@@ -75,34 +75,24 @@ To view your current Edge version, open the three-dot menu on the top right, sel
 
 ### Runtime flag
 
-<Checklist
-  items={[
-    "Make sure Edge is updated to at least v91.",
-    "Close the browser.",
-    "Create a shortcut to Edge.",
-    "Open the Properties of the shortcut.",
-    "Add the following runtime flag to the end of the target field: --enable-features=JXL",
-  ]}
-  checked={true}
-/>
+- Make sure Edge is updated to at least v91.
+- Close the browser.
+- Create a shortcut to Edge.
+- Open the Properties of the shortcut.
+- Add the following runtime flag to the end of the target field: --enable-features=JXL
 
 <Image src="edge-target" alt="enable jxl support on edge with a runtime flag" />
 
 ### Enable permanently
 
-<Checklist
-  items={[
-    "Make sure Edge is updated to at least v91.",
-    "Close the browser.",
-    "Open %localappdata%MicrosoftEdgeUser Data in the Explorer",
-    "Open the file called Local State.",
-    "Search for an enabled_labs_experiments string.",
-    'Enter "enable-jxl@1" (with quotes) inside the empty brackets.',
-    'Could not find enabled_labs_experiments? Search for the browser_version_of_last_seen string and behind its value in brackets and the comma, add "enabled_labs_experiments":["enable-jxl@1"] right after.',
-    "Save and close the file, then open the browser.",
-  ]}
-  checked={true}
-/>
+- Make sure Edge is updated to at least v91.
+- Close the browser.
+- Open %localappdata%MicrosoftEdgeUser Data in the Explorer
+- Open the file called Local State.
+- Search for an enabled_labs_experiments string.
+- Enter "enable-jxl@1" (with quotes) inside the empty brackets.
+- Could not find enabled_labs_experiments? Search for the browser_version_of_last_seen string and behind its value in brackets and the comma, add "enabled_labs_experiments":["enable-jxl@1"] right after.
+- Save and close the file, then open the browser.
 
 <Image
   src="edge-enabled-labs"

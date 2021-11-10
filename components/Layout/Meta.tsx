@@ -12,7 +12,7 @@ export interface Props {
 }
 
 export default function Meta(props: Props) {
-  const {title, description, url, datePublished, dateModified, blog} = props
+  const { title, description, url, datePublished, dateModified, blog } = props;
   const publishedSplit = datePublished.split(".");
   const publishedDate =
     "20" +
@@ -56,10 +56,7 @@ export default function Meta(props: Props) {
       <meta property="twitter:creator" content="@jschmitz97" />
       <meta property="twitter:site" content="@jschmitz97" />
       <meta property="twitter:url" content="https://twitter.com/jschmitz97" />
-      <meta
-        property="twitter:title"
-        content={title + " | " + "jpegxl.io ✨"}
-      />
+      <meta property="twitter:title" content={title + " | " + "jpegxl.io ✨"} />
       <meta property="twitter:description" content={description} />
 
       <meta name="twitter:image" content="https://jpegxl.io/twitter.png" />

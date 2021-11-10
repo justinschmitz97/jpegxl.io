@@ -178,6 +178,10 @@
     @apply flex items-center;
   }
 
+  em {
+    @apply mx-2 contents;
+  }
+
   button {
     @apply block z-0 py-2 px-3 text-white font-bold text-center border-4 border-transparent rounded-md cursor-pointer;
   }
@@ -205,6 +209,19 @@
   }
   article p strong {
     color: #fff;
+  }
+
+  article ul li:before {
+    content: "\2714\0020";
+    @apply mr-2;
+  }
+
+  article ul {
+    @apply my-4;
+  }
+
+  article ul li {
+    @apply mb-2 items-baseline;
   }
 }
 
