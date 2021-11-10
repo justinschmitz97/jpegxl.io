@@ -1,4 +1,4 @@
-import _ from "lodash";
+import sortBy from "lodash/sortBy";
 
 export interface SourcesProps {
   sources: string[];
@@ -15,7 +15,7 @@ export default function Sources(props: SourcesProps) {
     original = `https://${original}`;
     return { original, short };
   });
-  sources = _.sortBy(sources, (s) => s.short);
+  sources = sortBy(sources, (s) => s.short);
 
   const listItems = sources.map((source: any) => (
     <li
@@ -29,8 +29,11 @@ export default function Sources(props: SourcesProps) {
   ));
 
   return (
-    <div id="sources">
+    <>
+      <h5 className="inline-block py-1 px-3 mt-6 font-bold rounded-md">
+        Sources
+      </h5>
       <ol>{listItems}</ol>
-    </div>
+    </>
   );
 }

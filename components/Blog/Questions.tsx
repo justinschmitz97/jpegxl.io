@@ -1,4 +1,4 @@
-import _ from "lodash";
+import sortBy from "lodash/sortBy";
 
 export interface QuestionsProps {
   questions: string[];
@@ -12,7 +12,7 @@ export default function Questions(props: QuestionsProps) {
     short = short.replace(/\+/g, " ");
     return { original, short };
   });
-  questions = _.sortBy(questions, (s) => s.short);
+  questions = sortBy(questions, (s) => s.short);
 
   const listQuestions = questions.map((source: any) => (
     <li
@@ -26,8 +26,11 @@ export default function Questions(props: QuestionsProps) {
   ));
 
   return (
-    <div className="questions_container f0">
-      <ol className="questions_wrapper">{listQuestions}</ol>
-    </div>
+    <>
+      <h5 className="inline-block py-1 px-3 mt-6 font-bold rounded-md">
+        Related search terms
+      </h5>
+      <ol>{listQuestions}</ol>
+    </>
   );
 }

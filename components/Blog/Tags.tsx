@@ -1,4 +1,4 @@
-import _ from "lodash";
+import sortBy from "lodash/sortBy";
 
 export interface TagsProps {
   tags: string[];
@@ -12,7 +12,7 @@ export default function Tags(props: TagsProps) {
     short = short.replace(/\+/g, " ");
     return { original, short };
   });
-  tags = _.sortBy(tags, (s) => s.short);
+  tags = sortBy(tags, (s) => s.short);
 
   const listTags = tags.map((source: any) => (
     <li
@@ -26,8 +26,11 @@ export default function Tags(props: TagsProps) {
   ));
 
   return (
-    <div className="tags_container f0">
-      <ol className="tags_wrapper">{listTags}</ol>
-    </div>
+    <>
+      <h5 className="inline-block py-1 px-3 mt-6 font-bold rounded-md">
+        Topic clusters
+      </h5>
+      <ol>{listTags}</ol>
+    </>
   );
 }

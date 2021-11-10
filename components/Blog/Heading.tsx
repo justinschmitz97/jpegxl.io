@@ -2,19 +2,20 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { ContentTableEntry } from "./ContentTable";
 
-export interface HProps {
+export interface Props {
   text: string;
   level: number;
   callback?: (entry: ContentTableEntry) => void;
 }
 
-export default function H(props: HProps) {
-  const CustomTag = `h${props.level}` as keyof JSX.IntrinsicElements;
-  const trimmedText = props.text.replace(/\s/g, "").toLowerCase();
+export default function Heading(props: Props) {
+  const { text, level, callback } = props;
+  const CustomTag = `h${level}` as keyof JSX.IntrinsicElements;
+  const trimmedText = text.replace(/\s/g, "").toLowerCase();
   const router = useRouter();
 
   useEffect(() => {
-    props.callback?.({ text: props.text, href: `#${trimmedText}` });
+    callback?.({ text: text, href: `#${trimmedText}` });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -27,15 +28,15 @@ export default function H(props: HProps) {
 
   return (
     <CustomTag
-      id={props.level === 2 || props.level === 3 ? trimmedText : undefined}
+      id={level === 2 || level === 3 ? trimmedText : undefined}
       className={`${
-        props.level === 2 ? "mt-8 mb-3 md:text-3xl md:mt-12 md:mb-4 " : ""
-      } ${props.level === 3 ? "mt-8 " : ""} ${
-        props.level === 4 ? "mt-6 mb-3 " : ""
+        level === 2 ? "mt-8 mb-3 md:text-3xl md:mt-12 md:mb-4 " : ""
+      } ${level === 3 ? "mt-8 " : ""} ${
+        level === 4 ? "mt-6 mb-3 " : ""
       } group items-center flex relative rounded-sm`}
     >
-      {props.text}
-      {(props.level === 2 || props.level === 3) && (
+      {text}
+      {(level === 2 || level === 3) && (
         <a
           className={`transform inline-flex text-teal-400 opacity-0 items-center group-hover:opacity-100 group-hover:translate-x-2 transition-all`}
           href={`${router.asPath}#${trimmedText}`}

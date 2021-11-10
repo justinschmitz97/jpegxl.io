@@ -17,7 +17,7 @@ export default function Image(props: { alt: string; src: string }) {
   ));
 
   return (
-    <picture>
+    <picture className="overflow-hidden rounded-md bg-bg-300">
       {sources}
       <img
         loading="lazy"

@@ -26,34 +26,34 @@ export default function Blog() {
 
   const url = "https://jpegxl.io";
   return (
-    <div className="bg-bg-500 fixed right-2 bottom-2 md:right-3 md:bottom-3 z-40 p-1 rounded-md border-2 border-bg-500 md:border-0">
-    <div className="flex justify-items-center items-center content-center ">
-    <div className="text-tiny ml-1 mr-2 hidden md:block">Share</div>
-      <ShareButton
-        url={`https://twitter.com/intent/tweet?text=${url}`}
-        name="Twitter"
-        image={tw}
-      />
-      <ShareButton
-        url={`https://reddit.com/submit?url=${url}`}
-        name="Reddit"
-        image={rd}
-      />
-      <ShareButton
-        url={`https://facebook.com/share.php?u=${url}`}
-        name="Facebook"
-        image={fb}
-      />
-      <button
-        className="block p-1 w-5 h-5 bg-center bg-no-repeat bg-contain md:hidden"
-        style={{ backgroundImage: `url(${sh})` }}
-        onClick={() => share()}
-        onKeyPress={() => share()}
-        aria-label="share"
-        title="share on social media"
-        id="share"
-      ></button>
-    </div>
+    <div className="fixed right-2 bottom-2 z-40 p-1 rounded-md border-2 md:right-3 md:bottom-3 md:border-0 bg-bg-500 border-bg-500">
+      <div className="flex justify-items-center content-center items-center">
+        <div className="hidden mr-2 ml-1 md:block text-tiny">Share</div>
+        <ShareButton
+          url={`https://twitter.com/intent/tweet?text=${url}`}
+          name="Twitter"
+          image={tw}
+        />
+        <ShareButton
+          url={`https://reddit.com/submit?url=${url}`}
+          name="Reddit"
+          image={rd}
+        />
+        <ShareButton
+          url={`https://facebook.com/share.php?u=${url}`}
+          name="Facebook"
+          image={fb}
+        />
+        <button
+          className="block p-1 w-5 h-5 bg-center bg-no-repeat bg-contain md:hidden"
+          style={{ backgroundImage: `url(${sh})` }}
+          onClick={() => share()}
+          onKeyPress={() => share()}
+          aria-label="share"
+          title="share on social media"
+          id="share"
+        ></button>
+      </div>
     </div>
   );
 }

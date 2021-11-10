@@ -18,19 +18,14 @@ export default function Breadcrumbs(props: any) {
                 "position": 1,
                 "name": urlSplit[0],
                 "item": "https://jpegxl.io/#" + urlSplit[0],
-              }
+              },
             ],
           })}
         />
         )
       </Head>
       <div>
-        <div
-          data-transition-style="in:wipe:right"
-          className="animation-delay-3"
-        >
-          <Link href={`/#${urlSplit[0]}`} text={`#${urlSplit[0]}`} />
-        </div>
+        <Link href={`/#${urlSplit[0]}`} text={`#${urlSplit[0]}`} />
       </div>
     </>
   );

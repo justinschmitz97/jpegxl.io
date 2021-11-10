@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function CTA() {
   return (
-    <div className="container my-8 mx-auto text-center px-2">
+    <div className="container px-2 my-8 mx-auto text-center">
       <Link href="/" passHref>
         <div className="container inline-block max-w-screen-lg text-left">
           <div
@@ -13,7 +13,7 @@ export default function CTA() {
               Profit from a faster website, higher ranking and better
               conversions.
             </div>
-            <div className="mt-4 leading-snug relative z-10 text-2xl font-bold">
+            <div className="relative z-10 mt-4 text-2xl font-bold leading-snug">
               Convert your images to JXL.
             </div>
             <div

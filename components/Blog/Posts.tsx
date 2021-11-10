@@ -72,5 +72,14 @@ export default function BlogPosts(props: any) {
       </Link>
     )
   );
-  return <>{listItems}</>;
+  return (
+    <>
+      <h3 className="mt-8 mb-2 ml-3 text-xl font-bold capitalize">
+        Related articles
+      </h3>
+      <div className="grid grid-cols-1 gap-2 mt-2 md:grid-cols-2 lg:grid-cols-3">
+        {listItems}
+      </div>
+    </>
+  );
 }

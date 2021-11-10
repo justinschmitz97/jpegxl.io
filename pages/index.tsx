@@ -228,7 +228,7 @@ const BlogJxl: NextPage<PostsPageProps> = ({
 
   return (
     <Layout meta={meta}>
-      <section className="px-2 mt-8 md:mt-12 text-center md:px-3">
+      <section className="px-2 mt-8 text-center md:px-3 md:mt-12">
         <div className="block justify-center items-center my-3 md:flex">
           <h1 className="m-0">Convert all images to JXL for free.</h1>{" "}
           <div className="inline-block relative py-1 px-2 mx-2 text-center text-white rounded-md min-w-4 tooltip bg-bg-300 group text-tiny">
@@ -491,7 +491,7 @@ const BlogJxl: NextPage<PostsPageProps> = ({
               </div>
             </>
           )}
-          <div className="mt-12 mb-8 text-center max-w-3xl m-auto">
+          <div className="m-auto mt-12 mb-8 max-w-3xl text-center">
             <div className="text-xl font-bold">A summary of JPEG XL</div>
             <p className="mt-2">
               JPEG XL is a fusion of Google's PIK format and Cloudinary's FUIF
