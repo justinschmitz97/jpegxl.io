@@ -4,7 +4,6 @@ import Questions from "@components/Blog/Questions";
 import Sources from "@components/Blog/Sources";
 import Tags from "@components/Blog/Tags";
 import Layout from "@components/Layout";
-import Link from "@components/Link";
 import { useEffect, useRef, useState } from "react";
 
 interface Props {
@@ -53,14 +52,6 @@ export default function Blog(props: Props) {
       <aside className="container mt-12 max-w-screen-lg bg-bg-700">
         <Posts posts={posts} />
       </aside>
-      <Link
-        className="fixed bottom-2 left-2 invisible z-50 py-1 px-2 w-auto rounded-sm md:visible bg-bg-300 text-tiny"
-        text="Help improve this article"
-        href={`github.com/justinschmitz97/avif.io/blob/master/data/${postMeta.url.slice(
-          0,
-          -1
-        )}.mdx`}
-      />
     </Layout>
   );
 }

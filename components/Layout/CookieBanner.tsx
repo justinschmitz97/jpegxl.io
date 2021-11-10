@@ -1,14 +1,14 @@
-import React from "react";
+import {useEffect, useState} from "react";
 
 function useStickyState(defaultValue: any, key: any) {
-  const [value, setValue] = React.useState(defaultValue);
-  React.useEffect(() => {
+  const [value, setValue] = useState(defaultValue);
+  useEffect(() => {
     const stickyValue = window.localStorage.getItem(key);
     if (stickyValue !== null) {
       setValue(JSON.parse(stickyValue));
     }
   }, [key]);
-  React.useEffect(() => {
+  useEffect(() => {
     window.localStorage.setItem(key, JSON.stringify(value));
   }, [key, value]);
   return [value, setValue];

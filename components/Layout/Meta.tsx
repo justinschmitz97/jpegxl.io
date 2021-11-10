@@ -2,18 +2,18 @@ import Head from "next/head";
 import { jsonLdScriptProps } from "react-schemaorg";
 import { BlogPosting, Organization } from "schema-dts";
 
-export interface MetaProps {
+export interface Props {
   title?: string;
   description?: string;
   url?: string;
-  image?: string;
   datePublished: string;
   dateModified: string;
   blog?: boolean;
 }
 
-export default function Meta(props: MetaProps) {
-  const publishedSplit = props.datePublished.split(".");
+export default function Meta(props: Props) {
+  const {title, description, url, datePublished, dateModified, blog} = props
+  const publishedSplit = datePublished.split(".");
   const publishedDate =
     "20" +
     publishedSplit[2] +
@@ -22,13 +22,13 @@ export default function Meta(props: MetaProps) {
     "-" +
     publishedSplit[0];
 
-  const modifiedSplit = props.dateModified.split(".");
+  const modifiedSplit = dateModified.split(".");
   const modifiedDate =
     "20" + modifiedSplit[2] + "-" + modifiedSplit[1] + "-" + modifiedSplit[0];
 
   return (
     <Head>
-      <link rel="canonical" href={`https://jpegxl.io/${props.url}`} />
+      <link rel="canonical" href={`https://jpegxl.io/${url}`} />
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link
@@ -37,19 +37,19 @@ export default function Meta(props: MetaProps) {
         href="/apple-touch-icon.png"
       />
 
-      <title>{props.title} | jpegxl.io ✨</title>
+      <title>{title} | jpegxl.io ✨</title>
 
-      <meta name="description" content={props.description} />
+      <meta name="description" content={description} />
       <meta name="author" content="Justin Schmitz" />
 
       <meta
         property="og:site_name"
         content="Jpeg XL Converter | jpegxl.io ✨"
       />
-      <meta property="og:type" content={props.blog ? "article" : "website"} />
-      <meta property="og:url" content={`https://jpegxl.io/${props.url}`} />
-      <meta property="og:title" content={props.title + " | " + "jpegxl.io"} />
-      <meta property="og:description" content={props.description} />
+      <meta property="og:type" content={blog ? "article" : "website"} />
+      <meta property="og:url" content={`https://jpegxl.io/${url}`} />
+      <meta property="og:title" content={title + " | " + "jpegxl.io"} />
+      <meta property="og:description" content={description} />
       <meta property="og:image" content="https://jpegxl.io/json-logo.png" />
 
       <meta name="twitter:card" content="summary"></meta>
@@ -58,9 +58,9 @@ export default function Meta(props: MetaProps) {
       <meta property="twitter:url" content="https://twitter.com/jschmitz97" />
       <meta
         property="twitter:title"
-        content={props.title + " | " + "jpegxl.io ✨"}
+        content={title + " | " + "jpegxl.io ✨"}
       />
-      <meta property="twitter:description" content={props.description} />
+      <meta property="twitter:description" content={description} />
 
       <meta name="twitter:image" content="https://jpegxl.io/twitter.png" />
 
@@ -78,17 +78,17 @@ export default function Meta(props: MetaProps) {
         })}
       />
 
-      {props.blog && (
+      {blog && (
         <script
           {...jsonLdScriptProps<BlogPosting>({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": "https://jpegxl.io/" + props.url,
+              "@id": "https://jpegxl.io/" + url,
             },
-            "headline": props.title,
-            "description": props.description,
+            "headline": title,
+            "description": description,
             "image": "https://avif.io/logo_draft.png",
             "author": {
               "@type": "Person",
