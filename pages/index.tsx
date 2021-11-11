@@ -1,7 +1,7 @@
 import Tooltip from "@components/Home/Tooltip";
 import ReactCompareImage from "react-compare-image";
 import Advantages from "@components/Home/Advantages";
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import DropArea from "@components/DropArea";
 import FilesList from "@components/FilesList";
 import JXLConverter from "@components/JXLConverter";
@@ -167,9 +167,7 @@ const BlogJxl: NextPage<PostsPageProps> = ({
     setFilteredPost(filteredPosts as any);
   };
 
-  const handleFilterByKeyword = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleFilterByKeyword = (event: ChangeEvent<HTMLInputElement>) => {
     const keyword = event.target.value;
     const filtered = defaultFilteredPost.filter((post) =>
       post.title.toLowerCase().includes(keyword.toLowerCase())

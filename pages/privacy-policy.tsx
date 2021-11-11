@@ -1,6 +1,4 @@
-import ContentTable, { ContentTableEntry } from "@components/Blog/ContentTable";
 import Heading from "@components/Blog/Heading";
-import { useState } from "react";
 import Layout from "@components/Layout";
 
 const meta = {
@@ -12,21 +10,10 @@ const meta = {
 };
 
 export default function BlogPost() {
-  const [contentTable, setContentTable] = useState<ContentTableEntry[]>([]);
-
-  function callback(entry: ContentTableEntry) {
-    contentTable.push(entry);
-    setContentTable([...contentTable]);
-  }
   return (
     <Layout meta={meta}>
       <div className="mt-12" />
-      <ContentTable contentTable={contentTable} />
-      <Heading
-        callback={callback}
-        level={2}
-        text="Short version for the common user"
-      />
+      <Heading level={2} text="Short version for the common user" />
       Hello, you are visiting the Legal Blog and Privacy Policy of jpegxl.io, a
       tool by Justin Schmitz and Niksa Sporin. Most parts of this site are
       created by privacy generators and of course, contain many legal terms. I
@@ -74,13 +61,13 @@ export default function BlogPost() {
       question, please send an e-mail to support@jpegxl.io or just tweet
       @jschmitz97. I will be happy to help and answer any questions you may
       have.
-      <Heading level={2} callback={callback} text="Legal Stuff" />
+      <Heading level={2} text="Legal Stuff" />
       This service is brought to you by Justin Schmitz, resident in Germany.
       More information is not revealed for personal protection. You can request
       this information at support@jpegxl.io.
-      <Heading level={2} callback={callback} text="Privacy Policy" />
+      <Heading level={2} text="Privacy Policy" />
       Effective date: 23th of December, 2020
-      <Heading level={2} callback={callback} text="Introduction" />
+      <Heading level={2} text="Introduction" />
       Welcome to jpegxl.io. jpegxl.io (“us”, “we”, or “our”) operates
       https://jpegxl.io and https://jpegxl.io & https://jpegxl.io and
       https://jpegxl.io and possibly an jpegxl.io mobile application
@@ -95,7 +82,7 @@ export default function BlogPost() {
       meanings as in our Terms and Conditions. Our Terms and Conditions
       (“Terms”) govern all use of our Service and together with the Privacy
       Policy constitutes your agreement with us (“agreement”).
-      <Heading level={2} callback={callback} text="Definitions" />
+      <Heading level={2} text="Definitions" />
       SERVICE means the https://jpegxl.io and https://jpegxl.io and
       https://jpegxl.io and https://jpegxl.io website and possibly an jpegxl.io
       mobile application operated by jpegxl.io PERSONAL DATA means data about a
@@ -115,14 +102,10 @@ export default function BlogPost() {
       any living individual who is the subject of Personal Data. THE USER is the
       individual using our Service. The User corresponds to the Data Subject,
       who is the subject of Personal Data.
-      <Heading
-        callback={callback}
-        level={2}
-        text="Information Collection and Use"
-      />
+      <Heading level={2} text="Information Collection and Use" />
       We collect several different types of information for various purposes to
       provide and improve our Service to you.
-      <Heading level={2} callback={callback} text="Types of Data Collected" />
+      <Heading level={2} text="Types of Data Collected" />
       Personal Data While using our Service, we may ask you to provide us with
       certain personally identifiable information that can be used to contact or
       identify you (“Personal Data”). Personally identifiable information may
@@ -162,7 +145,7 @@ export default function BlogPost() {
       Security Cookies for security purposes. (d) Advertising Cookies:
       Advertising Cookies are used to serve you with advertisements that may be
       relevant to you and your interests.
-      <Heading level={2} callback={callback} text="Use of Data" />
+      <Heading level={2} text="Use of Data" />
       jpegxl.io uses the collected data for various purposes: (a) to provide and
       maintain our Service; (b) to notify you about changes to our Service; (c)
       to allow you to participate in interactive features of our Service when
@@ -180,7 +163,7 @@ export default function BlogPost() {
       about unless you have opted not to receive such information; (l) in any
       other way we may describe when you provide the information; (m) for any
       other purpose with your consent.
-      <Heading level={2} callback={callback} text="Retention of Data" />
+      <Heading level={2} text="Retention of Data" />
       We will retain your Personal Data only for as long as is necessary for the
       purposes set out in this Privacy Policy. We will retain and use your
       Personal Data to the extent necessary to comply with our legal obligations
@@ -191,7 +174,7 @@ export default function BlogPost() {
       data is used to strengthen the security or to improve the functionality of
       our Service, or we are legally obligated to retain this data for longer
       time periods.
-      <Heading level={2} callback={callback} text="Transfer of Data" />
+      <Heading level={2} text="Transfer of Data" />
       Your information, including Personal Data, may be transferred to – and
       maintained on – computers located outside of your state, province, country
       or other governmental jurisdiction where the data protection laws may
@@ -205,7 +188,7 @@ export default function BlogPost() {
       transfer of your Personal Data will take place to an organisation or a
       country unless there are adequate controls in place including the security
       of your data and other personal information.
-      <Heading level={2} callback={callback} text="Disclosure of Data" />
+      <Heading level={2} text="Disclosure of Data" />
       We may disclose personal information that we collect, or you provide: (a)
       Disclosure for Law Enforcement. Under certain circumstances, we may be
       required to disclose your Personal Data if required to do so by law or in
@@ -221,7 +204,7 @@ export default function BlogPost() {
       cases; (vii) if we believe disclosure is necessary or appropriate to
       protect the rights, property, or safety of the Company, our customers, or
       others.
-      <Heading level={2} callback={callback} text="Security of Data" />
+      <Heading level={2} text="Security of Data" />
       The security of your data is important to us but remember that no method
       of transmission over the Internet or method of electronic storage is 100%
       secure. While we strive to use commercially acceptable means to protect
@@ -322,14 +305,14 @@ export default function BlogPost() {
       covered by the CCPA, short for the California Consumer Privacy Act. To
       find out more, visit the official California Legislative Information
       website. The CCPA took effect on 01/01/2020.
-      <Heading level={2} callback={callback} text="Service Providers" />
+      <Heading level={2} text="Service Providers" />
       We may employ third party companies and individuals to facilitate our
       Service (“Service Providers”), provide Service on our behalf, perform
       Service-related services or assist us in analysing how our Service is
       used. These third parties have access to your Personal Data only to
       perform these tasks on our behalf and are obligated not to disclose or use
       it for any other purpose.
-      <Heading level={2} callback={callback} text="Analytics" />
+      <Heading level={2} text="Analytics" />
       The privacy of our website visitors is important to us so we do not track
       any individual people. We run the Plausible Analytics script to collect
       some anonymous usage data for statistical purposes. The goal is to track
@@ -340,7 +323,7 @@ export default function BlogPost() {
       information from the devices (device type, operating system, country and
       browser) used during the visit and more. You can see full details in our
       data policy.
-      <Heading level={2} callback={callback} text="Hotjar" />
+      <Heading level={2} text="Hotjar" />
       "We use Hotjar in order to better understand our users’ needs and to
       optimize this service and experience. Hotjar is a technology service that
       helps us better understand our users’ experience (e.g. how much time they
@@ -355,7 +338,7 @@ export default function BlogPost() {
       our behalf in a pseudonymized user profile. Hotjar is contractually
       forbidden to sell any of the data collected on our behalf. For further
       details, please see the ‘about Hotjar’ section of Hotjar’s support site.
-      <Heading level={2} callback={callback} text=" CI and CD Tools" />
+      <Heading level={2} text=" CI and CD Tools" />
       We may use third-party Service Providers to automate the development
       process of our Service. GitHub GitHub is provided by GitHub, Inc. GitHub
       is a development platform to host and review code, manage projects, and
@@ -371,7 +354,7 @@ export default function BlogPost() {
       more information on what data GitLab CI/CD collects for what purpose and
       how the protection of the data is ensured, please visit GitLab CI/CD
       Privacy Policy page: https://about.gitlab.com/privacy/.
-      <Heading level={2} callback={callback} text="Advertising" />
+      <Heading level={2} text="Advertising" />
       We may use third-party Service Providers to show advertisements to you to
       help support and maintain our Service. Google AdSense DoubleClick Cookie
       Google, as a third party vendor, uses cookies to serve ads on our Service.
@@ -392,7 +375,7 @@ export default function BlogPost() {
       uses data when you use our partners' sites or app” page:
       https://google.com/policies/privacy/partners/ or visit the Privacy Policy
       of Google: https://google.com/policies/privacy/
-      <Heading level={2} callback={callback} text="Behavioral Remarketing" />
+      <Heading level={2} text="Behavioral Remarketing" />
       jpegxl.io uses remarketing services to advertise on third party websites
       to you after you visited our Service. We and our third-party vendors use
       cookies to inform, optimise and serve ads based on your past visits to our
@@ -440,7 +423,7 @@ export default function BlogPost() {
       learn more about the privacy practices and policies of Pinterest by
       visiting their Privacy Policy page:
       https://about.pinterest.com/en/privacy-policy
-      <Heading level={2} callback={callback} text="Payments" />
+      <Heading level={2} text="Payments" />
       We may provide paid products and/or services within Service. In that case,
       we use third-party services for payment processing (e.g. payment
       processors). We will not store or collect your payment card details. That
@@ -483,14 +466,14 @@ export default function BlogPost() {
       at: https://go.wepay.com/privacy-policy WorldPay: Their Privacy Policy can
       be viewed at: https://online.worldpay.com/terms/privacy WeChat: Their
       Privacy Policy can be viewed at: https://wechat.com/en/privacy_policy.html
-      <Heading level={2} callback={callback} text="Links to other sites" />
+      <Heading level={2} text="Links to other sites" />
       Our Service may contain links to other sites that are not operated by us.
       If you click a third party link, you will be directed to that third
       party's site. We strongly advise you to review the Privacy Policy of every
       site you visit. We have no control over and assume no responsibility for
       the content, privacy policies or practices of any third party sites or
       services.
-      <Heading level={2} callback={callback} text="Children's Privacy" />
+      <Heading level={2} text="Children's Privacy" />
       Our Services are not intended for use by children under the age of 18
       (“Child” or “Children”). We do not knowingly collect personally
       identifiable information from Children under 18. If you become aware that
@@ -498,11 +481,7 @@ export default function BlogPost() {
       become aware that we have collected Personal Data from Children without
       verification of parental consent, we take steps to remove that information
       from our servers.
-      <Heading
-        callback={callback}
-        level={2}
-        text="Changes to this Privacy Policy"
-      />
+      <Heading level={2} text="Changes to this Privacy Policy" />
       We may update our Privacy Policy from time to time. We will notify you of
       any changes by posting the new Privacy Policy on this page. We will let
       you know via email and/or a prominent notice on our Service, prior to the
@@ -510,7 +489,7 @@ export default function BlogPost() {
       Privacy Policy. You are advised to review this Privacy Policy periodically
       for any changes. Changes to this Privacy Policy are effective when they
       are posted on this page.
-      <Heading level={2} callback={callback} text="Contact Us" />
+      <Heading level={2} text="Contact Us" />
       If you have any questions about this Privacy Policy, please contact us: By
       email: support@jpegxl.io.
     </Layout>

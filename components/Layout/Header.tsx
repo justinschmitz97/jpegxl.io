@@ -1,8 +1,6 @@
 import Link from "@components/Link";
-import NextLink from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-import github from "@assets/github.svg";
 import discord from "@assets/discord.svg";
 
 export default function Header() {
@@ -65,17 +63,15 @@ export default function Header() {
           />
         </nav>
         <nav className="flex flex-wrap justify-between items-center">
-          <a
+          <Link
             className="hidden w-4 h-4 bg-center bg-no-repeat md:block md:py-1 md:px-4 md:mr-4"
-            target="_blank"
-            rel="noreferrer"
             style={{
               backgroundImage: `url(${discord})`,
               backgroundSize: 24,
             }}
-            href="https://discord.com/invite/6w42YpF5hm"
+            href="discord.com/invite/6w42YpF5hm"
           />
-          <NextLink href="/">
+          <Link href="/">
             <button className="inline-flex items-center py-1 px-2 mr-1 text-base rounded border-0 md:mt-0 focus:outline-none bg-bg-200 hover:bg-bg-300">
               Convert to JPEG XL
               <svg
@@ -90,7 +86,7 @@ export default function Header() {
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </button>
-          </NextLink>
+          </Link>
         </nav>
       </div>
     </header>

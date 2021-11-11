@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactNode } from "react";
 import Link from "@components/Link";
 import Heading from "@components/Blog/Heading";
 import Image from "@components/Blog/Image";
@@ -7,7 +7,7 @@ import Video from "@components/Blog/Video";
 import Quote from "@components/Blog/Quote";
 
 interface ChildrenProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const MDXComponents = {
