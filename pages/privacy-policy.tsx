@@ -12,6 +12,7 @@ const meta = {
 export default function BlogPost() {
   return (
     <Layout meta={meta}>
+      <Heading level={1} text="Privacy Policy" />
       <div className="mt-12" />
       <Heading level={2} text="Short version for the common user" />
       Hello, you are visiting the Legal Blog and Privacy Policy of jpegxl.io, a

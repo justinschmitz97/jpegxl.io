@@ -60,6 +60,10 @@ export default function Meta(props: Props) {
       <meta property="twitter:description" content={description} />
 
       <meta name="twitter:image" content="https://jpegxl.io/twitter.png" />
+      <meta
+        name="twitter:image:alt"
+        content="Logo for the JPEG XL Converter jpegxl.io"
+      />
 
       <script
         {...jsonLdScriptProps<Organization>({
