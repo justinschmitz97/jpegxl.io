@@ -1,6 +1,6 @@
 import "@styles/global.css";
 import { useEffect } from "react";
-import Script from "next/script";
+import Script from "next/script"; 
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
@@ -27,6 +27,10 @@ export default function AvifIo({ Component, pageProps }: any) {
     <>
       <Script strategy="beforeInteractive" src="/detectSupport.js" />
       <Script strategy="beforeInteractive" src="/detectSupport-jxl.js" />
+      <Script
+        strategy="lazyOnload"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+      />
       <div className="overflow-x-hidden page">
         <Component {...pageProps} />
       </div>
