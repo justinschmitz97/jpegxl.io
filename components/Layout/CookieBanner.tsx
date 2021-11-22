@@ -22,13 +22,13 @@ const CookieBanner = () => {
         mode && "hidden"
       }`}
     >
-      We use cookies from Google to deliver services.
+      We use Google cookies for our services.
       <div
         role="button"
         onKeyDown={() => setMode("true")}
         onClick={() => setMode("true")}
         tabIndex={0}
-        className="font-bold"
+        className="ml-2 inline-block font-bold"
       >
         OK
       </div>
