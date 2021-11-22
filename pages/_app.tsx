@@ -29,7 +29,8 @@ export default function AvifIo({ Component, pageProps }: any) {
       <Script strategy="beforeInteractive" src="/detectSupport-jxl.js" />
       <Script
         strategy="lazyOnload"
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        crossOrigin="anonymous"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4499854243209236"
       />
       <div className="overflow-x-hidden page">
         <Component {...pageProps} />
