@@ -415,9 +415,7 @@ const BlogJxl: NextPage<PostsPageProps> = ({
               >
                 Articles
               </h3>
-              - coming soon -
               <aside className="px-2 mx-auto max-w-screen-md">
-        <Ad />
       </aside>
               <div className="grid grid-cols-1 gap-2 mt-2 md:grid-cols-2 lg:grid-cols-3">
                 {articles.map((post: any) => (
