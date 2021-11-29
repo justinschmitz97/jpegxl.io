@@ -7,6 +7,7 @@ const frontMatter = require("front-matter");
 const articles = path.resolve(__dirname, "../data", "articles");
 const comparisons = path.resolve(__dirname, "../data", "comparisons");
 const releases = path.resolve(__dirname, "../data", "releases");
+const news = path.resolve(__dirname, "../data", "news");
 const tutorials = path.resolve(__dirname, "../data", "tutorials");
 
 const feed = new RSS({
@@ -37,7 +38,7 @@ fs.readdirSync(articles)
     feed.item({
       title,
       description,
-      url: `https://jpegxl.io/blog/articles/${fileName.replace(".mdx", "")}/`,
+      url: `https://jpegxl.io/articles/${fileName.replace(".mdx", "")}/`,
       date: datePublished,
     });
   });
@@ -57,7 +58,7 @@ fs.readdirSync(comparisons)
     feed.item({
       title,
       description,
-      url: `https://jpegxl.io/blog/comparisons/${fileName.replace(
+      url: `https://jpegxl.io/comparisons/${fileName.replace(
         ".mdx",
         ""
       )}/`,
@@ -80,7 +81,27 @@ fs.readdirSync(releases)
     feed.item({
       title,
       description,
-      url: `https://jpegxl.io/blog/releases/${fileName.replace(".mdx", "")}/`,
+      url: `https://jpegxl.io/releases/${fileName.replace(".mdx", "")}/`,
+      date: datePublished,
+    });
+  });
+
+  fs.readdirSync(news)
+  .map((fileName) => {
+    const fullPath = path.join(releases, fileName);
+    const file = fs.readFileSync(fullPath, "utf8");
+    const { attributes } = frontMatter(file);
+    return { ...attributes, fileName };
+  })
+  .sort((a, b) => +new Date(b.date) - +new Date(a.date))
+  .forEach(({ title, description, datePublished, fileName }) => {
+    datePublished = datePublished.split(".");
+    datePublished =
+      "20" + datePublished[2] + "-" + datePublished[1] + "-" + datePublished[0];
+    feed.item({
+      title,
+      description,
+      url: `https://jpegxl.io/news/${fileName.replace(".mdx", "")}/`,
       date: datePublished,
     });
   });
@@ -100,7 +121,7 @@ fs.readdirSync(tutorials)
     feed.item({
       title,
       description,
-      url: `https://jpegxl.io/blog/tutorials/${fileName.replace(".mdx", "")}/`,
+      url: `https://jpegxl.io/tutorials/${fileName.replace(".mdx", "")}/`,
       date: datePublished,
     });
   });
