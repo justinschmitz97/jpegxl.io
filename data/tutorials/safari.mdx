@@ -75,13 +75,11 @@ Safari's core component, Webkit, has excellent news in the bug tracker. All iOS 
 <Link
   href="bugs.webkit.org/show_bug.cgi?id=208235"
   text="A parent bug ticket"
-/> tracks all tasks left for a full JPEG XL implementation.{" "}
-
-Tasks/Bugs:
+/> tracks all tasks left for a full JPEG XL implementation. Tasks/Bugs:
 
 - Implement JPEG XL image decoder using libjxl (<Link href="bugs.webkit.org/show_bug.cgi?id=233113" text="DONE"/>)
-- Allow enabling JPEG-XL support at build time (<Link href="bugs.webkit.org/show_bug.cgi?id=233325" text="DONE"/>)
-- JPEG XL decoder should support understand color profiles (<Link href="bugs.webkit.org/show_bug.cgi?id=233364" text="UNRESOLVED"/>)
+- JPEG-XL support at build time (<Link href="bugs.webkit.org/show_bug.cgi?id=233325" text="DONE"/>)
+- JPEG XL decoder color profile support (<Link href="bugs.webkit.org/show_bug.cgi?id=233364" text="UNRESOLVED"/>)
 - Support Animated JPEG-XL images (<Link href="bugs.webkit.org/show_bug.cgi?id=233545" text="UNRESOLVED"/>)
 
 When the unresolved tasks on Webkit are resolved, we can expect full support. There is a significant downside, however. Apple ports do not use WebKit's image decoding functions.
@@ -94,6 +92,12 @@ Remember: Apple did not add support for WebP till a decade after it was released
 
 With WebKit contributors having already begun supporting JPEG XL, one wonders when Apple will enable support. Apple implements its new formats in its operating system and not in its browsers. While JPEG XL support is about to be available in the WebKitGTK and WPE ports, it will remain unavailable in the Apple Safari ports. Apple allows Safari to interact with the operating system to determine which file formats to support. The browser does not decode images. The operating system does it.
 
-Apple software engineer Sam Sneddon, working for WebKit, confirmed this with his statement in the WebKit bug tracker: "The Apple ports use the system-provided image decoding capabilities; we're unlikely to deviate from that here, so any support for [..] depends on underlying OS support."
+Apple software engineer Sam Sneddon, working for WebKit, confirmed this with his statement in the WebKit bug tracker:
+
+<Quote
+  text="The Apple ports use the system-provided image decoding capabilities; we're unlikely to deviate from that here, so any support for [..] depends on underlying OS support."
+  author="Sam Sneddon"
+  source="bugs.webkit.org/show_bug.cgi?format=multiple&id=207750"
+/>
 
 Since Apple only releases OS and Safari updates twice a year, and there is no official announcement or alpha/beta operating system version that suggests JPEG XL support, **we will probably have to wait at least six months for Safari to support JPEG XL**.
