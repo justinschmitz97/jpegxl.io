@@ -63,13 +63,11 @@ export const getStaticProps = async () => {
   const comparisons = generatePosts(`${BLOG_POSTS_PATH}/comparisons`);
   const releases = generatePosts(`${BLOG_POSTS_PATH}/releases`);
   const tutorials = generatePosts(`${BLOG_POSTS_PATH}/tutorials`);
-  const news = generatePosts(`${BLOG_POSTS_PATH}/news`);
 
   const listPostsByFolder = {
     articles,
     comparisons,
     releases,
-    news,
     tutorials,
   };
 
@@ -77,7 +75,6 @@ export const getStaticProps = async () => {
     ...articles,
     ...comparisons,
     ...releases,
-    ...news,
     ...tutorials,
   ];
 
@@ -96,7 +93,6 @@ export const getStaticProps = async () => {
       articles,
       comparisons,
       releases,
-      news,
       tutorials,
       defaultFilteredPost,
       listSubCategories,
@@ -119,7 +115,6 @@ const BlogJxl: NextPage<PostsPageProps> = ({
   articles,
   comparisons,
   releases,
-  news,
   tutorials,
   listSupport,
   listSubCategories,
@@ -480,27 +475,6 @@ const BlogJxl: NextPage<PostsPageProps> = ({
                     support={post.support}
                     category={post.category}
                     subcategory={post.subcategory}
-                    keyword={post.keyword}
-                    slug={post.slug}
-                  />
-                ))}
-              </div>
-              <aside className="px-2 mx-auto max-w-screen-md">
-        <Ad />
-      </aside>
-      <h3
-                className="mt-8 mb-2 ml-3 text-xl font-bold capitalize"
-                id={"news"}
-              >
-                News
-              </h3>
-              <div className="grid grid-cols-1 gap-2 mt-2 md:grid-cols-2 lg:grid-cols-3">
-                {news.map((post: any) => (
-                  <Post
-                    key={post.slug}
-                    title={post.title}
-                    description={post.description}
-                    category={post.category}
                     keyword={post.keyword}
                     slug={post.slug}
                   />
