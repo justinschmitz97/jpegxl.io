@@ -1,0 +1,26 @@
+---
+
+title: "JPEG XL Overview"
+description: An in-depth overview of the new image format JPEG XL.
+keyword: JPEG XL Overview
+category: articles
+url: articles/jpegxl-overview
+datePublished: 31.10.21
+dateModified: 31.10.21
+questions:
+  - JPEGXL FAQ
+tags:
+  - jxl
+  - jpeg xl
+sources:
+  - www.google.com
+  - www.google.de
+relatedPosts:
+  - jxl-vs-avif
+  - jxl-vs-bmp
+  - jxl-vs-gif
+---
+
+## Question 1
+
+Answer 1

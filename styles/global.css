@@ -7,11 +7,12 @@
 /*  */
 
 @font-face {
-  font-family: "Catamaran";
-  font-style: normal;
   font-weight: 400;
+  font-family: "Poppins";
+  font-style: normal;
+  src: local("Poppins Regular"), local("Poppins-Regular"),
+    url("/fonts/poppins-regular.woff2") format("woff2");
   font-display: swap;
-  src: url("/fonts/body.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
     U+FEFF, U+FFFD;
@@ -19,13 +20,34 @@
 
 @font-face {
   font-weight: 700;
-  font-family: "Headline";
+  font-family: "Poppins";
   font-style: normal;
-  src: url("/fonts/headline.woff2") format("woff2");
+  src: local("Poppins Bold"), local("Poppins-Bold"),
+    url("/fonts/poppins-bold.woff2") format("woff2");
   font-display: swap;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
     U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: "Patua One";
+  font-style: normal;
+  src: url("/fonts/patua-one.woff2") format("woff2");
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: fallback-font;
+  ascent-override: 105%;
+  descent-override: 35%;
+  line-gap-override: 10%;
+  advance-override: 254, 1%;
+  src: local(Arial);
 }
 
 /*  */
@@ -55,7 +77,7 @@
 
 @layer base {
   ::selection {
-    @apply bg-purple-700;
+    @apply bg-teal-400;
   }
 
   :focus:not(:focus-visible) {
@@ -69,16 +91,16 @@
   }
 
   html {
-    @apply box-border overflow-x-hidden text-text-900 font-normal cursor-default;
-    font-family: "Catamaran", "fallback-font";
+    @apply box-border overflow-x-hidden text-white font-normal cursor-default;
+    font-family: "Poppins", "fallback-font";
     scroll-padding: 150px;
-    accent-color: theme("colors.purple[400]");
+    accent-color: theme("colors.blue[400]");
   }
 
   body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: textscale;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   img {
@@ -115,8 +137,8 @@
   }
 
   h1 {
-    @apply mt-6 mb-3 font-bold text-2xl leading-snug;
-    font-family: "Headline", serif;
+    @apply mt-6 mb-3 font-bold text-2xl md:text-3xl leading-snug;
+    font-family: "Patua One", serif;
     letter-spacing: 1px;
   }
 
@@ -133,7 +155,7 @@
   }
 
   h5 {
-    @apply my-2 p-2 font-normal text-tiny text-purple-500 leading-snug;
+    @apply my-2 p-2 font-normal text-tiny bg-bg-500 leading-snug;
   }
 
   div,
@@ -161,7 +183,7 @@
   }
 
   button {
-    @apply block z-0 py-2 px-3 text-text-900 font-bold text-center border-4 border-transparent rounded-md cursor-pointer;
+    @apply block z-0 py-2 px-3 text-white font-bold text-center border-4 border-transparent rounded-md cursor-pointer;
   }
 
   button:focus-visible {
@@ -169,13 +191,13 @@
   }
 
   pre {
-    @apply mt-3 mb-4 p-3 text-purple-500;
+    @apply mt-3 mb-4 p-3 bg-bg-500;
     border-radius: theme("borderRadius.md") 0 theme("borderRadius.md")
       theme("borderRadius.md");
   }
 
   article a {
-    @apply text-blue-400 underline cursor-pointer;
+    @apply text-teal-400 underline cursor-pointer;
   }
 
   article p {
@@ -210,15 +232,123 @@
   }
 }
 
+/*  */
+/* Animation Delay */
+/*  */
+
+@layer utilities {
+  .animation-delay-1 {
+    animation-delay: 0.2s !important;
+  }
+  .animation-delay-2 {
+    animation-delay: 0.4s !important;
+  }
+  .animation-delay-3 {
+    animation-delay: 0.6s !important;
+  }
+  .animation-delay-4 {
+    animation-delay: 0.8s !important;
+  }
+  .animation-delay-5 {
+    animation-delay: 1s !important;
+  }
+  .animation-delay-6 {
+    animation-delay: 1.2s !important;
+  }
+  .animation-delay-7 {
+    animation-delay: 1.4s !important;
+  }
+  .animation-delay-8 {
+    animation-delay: 1.6s !important;
+  }
+}
+
+/*  */
+/* Some Custom Code */
+/*  */
+
+.copycode {
+  transition: all 0.2s ease-in-out;
+}
+
+.copycode .check {
+  transform: scale(0) translateX(-10px) rotate(10deg);
+  transform-origin: center center;
+  transition: all 0.1s ease-in;
+}
+
+.copycode:focus .check {
+  transform: scale(1) translateX(0) rotate(0);
+  transition: all 0.1s ease-out;
+}
+
 nav ol li:before {
   display: inline-block;
   width: 24px;
   margin-right: 16px;
-  color: theme("colors.purple[600]");
+  color: theme("colors.blue[600]");
   font-size: 80%;
   text-align: right;
   border-radius: 11px;
   content: counter(step-counter);
+}
+
+.playstate * {
+  animation-play-state: paused !important;
+}
+
+.playstate:hover * {
+  animation-play-state: running !important;
+}
+
+@media only screen and (min-width: 769px) {
+  .tutorials a:nth-child(2n) {
+    padding: theme("spacing.2") theme("spacing.2") 0;
+  }
+}
+
+.download_button:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.8;
+  border-radius: 20px;
+  background: inherit;
+  filter: blur(6px);
+  transition: all 0.2s;
+  transform: scale(0.95);
+  transform-origin: center center;
+}
+
+button[aria-label="Conversion settings"]:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 1;
+  border-radius: 20px;
+  background: inherit;
+  filter: blur(6px) invert(62%) sepia(10%) saturate(2195%) hue-rotate(130deg)
+    brightness(91%) contrast(94%);
+  transition: all 0.2s;
+  animation: opacity 4s infinite alternate-reverse both;
+  transform-origin: center center;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
 }
 
 /*  */
@@ -227,11 +357,11 @@ nav ol li:before {
 
 input[type="checkbox"],
 input[type="radio"] {
-  --active: theme("colors.purple[400]");
+  --active: theme("colors.blue[400]");
   --active-inner: #fff;
-  --focus: 2px theme("colors.purple[500]");
+  --focus: 2px theme("colors.bg[500]");
   --border: #fff;
-  --border-hover: theme("colors.purple[400]");
+  --border-hover: theme("colors.blue[400]");
   --background: none;
   position: relative;
   display: inline-block;
@@ -378,7 +508,7 @@ input[type="radio"]:checked {
 }
 
 ::-moz-range-track {
-  background: theme("colors.text[500]");
+  background: theme("colors.gray[500]");
   border: 0;
 }
 
@@ -392,7 +522,7 @@ input[type="range"] {
   height: 6px;
   margin: 0;
   padding: 0;
-  background: theme("colors.blue[900]");
+  background: theme("colors.teal[1000]");
   border-radius: theme("borderRadius.md");
   outline: none;
   appearance: none;
@@ -400,13 +530,13 @@ input[type="range"] {
 }
 
 input[type="range"]:disabled::-webkit-slider-thumb {
-  background: theme("colors.text[400]");
+  background: theme("colors.gray[400]");
 }
 
 input[type="range"]::-webkit-slider-thumb {
   width: 20px;
   height: 20px;
-  background: theme("colors.purple[400]");
+  background: theme("colors.blue[400]");
   border-radius: 50%;
   cursor: pointer;
   transition: background 0.15s ease-in-out;
@@ -417,13 +547,13 @@ input[type="range"]::-moz-range-thumb:hover,
 input[type="range"]:active::-moz-range-thumb,
 input[type="range"]:active::-webkit-slider-thumb,
 input[type="range"]::-webkit-slider-thumb:hover {
-  background: theme("colors.purple[400]");
+  background: theme("colors.red[400]");
 }
 
 input[type="range"]::-moz-range-thumb {
   width: 20px;
   height: 20px;
-  background: theme("colors.purple[400]");
+  background: theme("colors.red[400]");
   border: 0;
   border-radius: 50%;
   cursor: pointer;
@@ -431,7 +561,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 select {
-  background: theme("colors.purple[300]");
+  background: theme("colors.bg[300]");
 }
 
 /*  */
@@ -639,47 +769,47 @@ select {
 .sk-cube-grid .sk-cube1 {
   -webkit-animation-delay: 0.2s;
   animation-delay: 0.2s;
-  background-color: theme("colors.purple[50]");
+  background-color: theme("colors.blue[50]");
 }
 .sk-cube-grid .sk-cube2 {
   -webkit-animation-delay: 0.3s;
   animation-delay: 0.3s;
-  background-color: theme("colors.purple[100]");
+  background-color: theme("colors.blue[100]");
 }
 .sk-cube-grid .sk-cube3 {
   -webkit-animation-delay: 0.4s;
   animation-delay: 0.4s;
-  background-color: theme("colors.purple[200]");
+  background-color: theme("colors.blue[200]");
 }
 .sk-cube-grid .sk-cube4 {
   -webkit-animation-delay: 0.1s;
   animation-delay: 0.1s;
-  background-color: theme("colors.purple[300]");
+  background-color: theme("colors.blue[300]");
 }
 .sk-cube-grid .sk-cube5 {
   -webkit-animation-delay: 0.2s;
   animation-delay: 0.2s;
-  background-color: theme("colors.purple[400]");
+  background-color: theme("colors.blue[400]");
 }
 .sk-cube-grid .sk-cube6 {
   -webkit-animation-delay: 0.3s;
   animation-delay: 0.3s;
-  background-color: theme("colors.purple[500]");
+  background-color: theme("colors.blue[500]");
 }
 .sk-cube-grid .sk-cube7 {
   -webkit-animation-delay: 0s;
   animation-delay: 0s;
-  background-color: theme("colors.purple[600]");
+  background-color: theme("colors.blue[600]");
 }
 .sk-cube-grid .sk-cube8 {
   -webkit-animation-delay: 0.1s;
   animation-delay: 0.1s;
-  background-color: theme("colors.purple[700]");
+  background-color: theme("colors.blue[700]");
 }
 .sk-cube-grid .sk-cube9 {
   -webkit-animation-delay: 0.2s;
   animation-delay: 0.2s;
-  background-color: theme("colors.purple[800]");
+  background-color: theme("colors.blue[800]");
 }
 
 @-webkit-keyframes sk-cubeGridScaleDelay {

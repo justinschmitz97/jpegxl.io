@@ -1,0 +1,51 @@
+---
+title: nomacs JPEG XL support
+description: nomacs is an open source image viewer. Learn how to use JXL images within nomacs.
+keyword: nomacs
+category: tutorials
+subcategory: graphics
+support: partial support
+url: tutorials/nomacs/
+datePublished: 31.10.21
+dateModified: 31.10.21
+sources:
+  - en.wikipedia.org/wiki/JPEG
+  - www.reddit.com/r/jpegxl/comments/l4nwb2/how_to_view_jpeg_xl_images_in_nomacs_for_windows/
+  - ci.appveyor.com/project/novomesk/qt-jpegxl-image-plugin/build/artifacts
+  - github.com/novomesk/qt-jpegxl-image-plugin
+  - www.reddit.com/r/jpegxl/comments/mx3hyc/i_want_to_play_with_jpegxl_jxl_files_software/
+  - github.com/nomacs/nomacs/pull/585
+tags:
+  - jpeg xl
+  - jxl
+  - image format
+  - novomesk
+  - nomacs
+  - image viewer
+questions:
+  - Does nomacs support JXL?
+  - How can I view JXL images?
+relatedPosts:
+  - openmandriva
+  - opera
+  - photoqt
+---
+
+## What is nomacs?
+
+Nomacs is a free and open-source image viewer available for many platforms. It supports all standard image formats, including RAW and PSD formats. One of the most notable features of Nomacs is the semi-transparent widgets that display additional information, including thumbnails, metadata, and histograms. Photos in zip files or MS Office files can be viewed through the program. Metadata associated with the image can be displayed, as well as notes attached to it. Furthermore, a thumbnail preview of the current folder is displayed and a panel for switching between folders. An image directory can be filtered so that only images whose filenames contain a specific string or match a regular expression are displayed. Caching allows you to switch between images at any time. Nomacs is a program that allows users to adjust the brightness, contrast, saturation, hue, gamma, and exposure of images. A pseudo-color function is provided in the program to produce false-color images. One of the unique aspects of Nomacs is its ability to synchronize multiple instances. By utilizing this feature, you can easily compare two images by zooming or panning at the same position or overlaying them with different opacities.
+
+## nomacs JXL support
+
+Daniel Novomeský is a workhorse! Once again, he created a plugin to add JPEG XL support to software. This time, he presents us with a plugin for nomacs, and it is fairly easy to install:
+
+- Download qjpegxl.dll (it is a Qt plugin).
+- Copy the qjpegxl.dll into C:/Program Files/nomacs/binimageformats.
+- Enjoy using Nomacs to view JXL files like any other image.
+
+<Link
+  href="ci.appveyor.com/project/novomesk/qt-jpegxl-image-plugin/build/artifacts"
+  text="Download the plugin here."
+/>
+
+The extension is open-source and available on <Link text="Github" href="github.com/novomesk/qt-jpegxl-image-plugin/issues"/> to view the source code or report issues.

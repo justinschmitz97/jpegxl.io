@@ -26,8 +26,21 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   );
 
   const source = fs.readFileSync(filePath);
+
   const { data, content } = matter(source);
   const headings = await getHeadings(content);
+
+  const mdxFiles = glob.sync("data/**/*.mdx");
+  const selectedPosts = data.relatedPosts.map((post: string) =>
+    mdxFiles.find((file) => file.indexOf(post) >= 0)
+  );
+
+  const relatedPosts = selectedPosts.map((post: string) => {
+    const file = path.join(process.cwd(), post);
+    const sourceFile = fs.readFileSync(file);
+    const { data } = matter(sourceFile);
+    return { ...data };
+  });
 
   const mdxSource = await serialize(content, {
     mdxOptions: {
@@ -44,6 +57,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
       },
       source: mdxSource,
       headings,
+      relatedPosts,
     },
   };
 };
@@ -64,10 +78,11 @@ const PostDetail: NextPage<PostDetailPageProps> = ({
   frontMatter,
   source,
   headings,
+  relatedPosts,
 }) => {
   return (
     <>
-      <Blog postMeta={{ ...frontMatter }}>
+      <Blog postMeta={{ ...frontMatter }} posts={relatedPosts}>
         <ContentTable contentTable={headings} />
         <MDXRemote {...source} components={MDXComponents} />
       </Blog>

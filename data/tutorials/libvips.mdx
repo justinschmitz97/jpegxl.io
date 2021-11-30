@@ -1,0 +1,44 @@
+---
+title: libvips JPEG XL support
+description: Learn how to use JXL images within libvips.
+keyword: libvips
+category: tutorials
+subcategory: coding
+support: full support
+url: tutorials/libvips/
+datePublished: 31.10.21
+dateModified: 31.10.21
+sources:
+  - en.wikipedia.org/wiki/JPEG_XS
+  - github.com/libvips/libvips
+  - github.com/libvips/libvips/discussions/2055
+  - github.com/libvips/libvips/issues/1559
+  - gitlab.com/wg1/jpeg-xl/-/issues/208
+  - www.libvips.org/2021/06/04/What's-new-in-8.11.html
+  - www.libvips.org/API/current/func-list.html
+  - labs.projektemacher.org/en/post/jepg-xl/
+  - www.reddit.com/r/AMA/comments/orcn11/i_am_a_cocreator_of_jpeg_xl_jxl_a_new_image/
+  - github.com/lovell/sharp/issues/2731
+tags:
+  - jpeg xl
+  - jxl
+  - image format
+  - libvips
+  - jpeg xl libvips
+questions:
+  - Does libvips support JXL?
+relatedPosts:
+  - macos
+  - nomacs
+  - openmandriva
+---
+
+## What is libvips?
+
+LibVIPS is an image processing library that is horizontally threaded based on demand. LibVIPS runs rapidly and uses little memory in comparison to similar libraries. The LGPL 2.1+ license applies to libvips. The algorithm has approximately 300 operations, including arithmetic, histograms, convolutions, morphological operations, frequency filtering, color, resampling, statistics, etc. It supports a wide range of numeric types, from 8-bit integers to 128-bit complex numbers. Images may consist of any number of bands. It supports a good range of image formats, including JPEG, JPEG2000, TIFF, PNG, WebP, HEIC, AVIF, FITS, Matlab, OpenEXR, PDF, SVG, HDR, PPM / PGM / PFM, CSV, GIF, Analyze, NIfTI, DeepZoom, and OpenSlide. It can also load images using ImageMagick or GraphicsMagick, enabling it to work with DICOM formats. Bindings are available for C, C++, and the command line. A complete set of bindings is available for Ruby, Python, PHP, C# / .NET, Go, and Lua. Several software applications use libvips as an image processing engine, including sharp (on node.js), bimg, sharp for Go, Ruby on Rails, carrierwave-vips, mediawiki, PhotoFlow and others. The official GUI for libvips is nip2, a strange combination of a spreadsheet and a photo editor.
+
+## libvips JXL support
+
+A new version of libvips 8.11 was released on June 4th, 2021, with experimental support for JPEG XL. JPEG has been replaced with other formats several times in the past few years. HEIC is perhaps the best known: it can compress files to about half their size compared with comparable JPEG files and supports several valuable features, including animations, transparency, and lossless compression. Some patent issues may limit its usefulness. AVIF is similar to HEIC. However, it does not possess a patent. Unfortunately, the available libraries for loading and saving are extremely slow. Compared to HEIC and AVIF, JPEG-XL appears to offer the same compression level and valuable features but has no patent issues and is sufficiently fast to be practical.
+
+Due to the support for JPEG XL in libvips, support will likely be added to other libraries and programs, including the Node.JS module sharp for image processing.

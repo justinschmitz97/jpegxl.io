@@ -1,0 +1,103 @@
+---
+title: Safari JPEG XL support
+description: Is Safari adding JPEG XL support in 2022? Find out more about the current state.
+keyword: Safari
+category: tutorials
+subcategory: browser
+support: no support
+url: tutorials/safari/
+datePublished: 29.11.21
+dateModified: 29.11.21
+sources:
+  - en.wikipedia.org/wiki/Safari_(web_browser)
+  - de.wikipedia.org/wiki/Safari_(Browser)
+  - www.apple.com/safari/
+  - support.apple.com/de-de/HT204416
+  - en.wikipedia.org/wiki/WebKit
+  - de.wikipedia.org/wiki/JPEG_XL
+  - en.wikipedia.org/wiki/JPEG_XL
+  - www.spiedigitallibrary.org/conference-proceedings-of-spie/11353/2556264/Benchmarking-JPEG-XL-image-compression/10.1117/12.2556264.short?SSO=1
+  - en.m.wikipedia.org/wiki/JPEG_XL
+  - jpeg.org/downloads/jpegxl/jpegxl-cfp.pdf
+  - cloudinary.com/blog/what_to_focus_on_in_image_compression_fidelity_or_appeal
+  - bugs.webkit.org/show_bug.cgi?id=208235
+  - lists.webkit.org/pipermail/webkit-dev/2021-May/031846.html
+  - arxiv.org/ftp/arxiv/papers/1908/1908.03565.pdf
+tags:
+  - image format
+  - flag
+  - supported browsers
+  - browser support
+  - chromium
+  - jxl format
+  - experimental
+  - jpeg xl
+  - jxl support
+  - file format
+  - jpeg xl format
+  - new image format
+  - jxl
+  - safari
+  - image codec
+  - jpegxl safari
+  - jpeg images
+  - jpeg xl image format
+  - encode jpeg xl images
+questions:
+  - How to enable JXL in Safari?
+  - Which browsers support jpeg xl?
+  - Does Safari support JXL?
+  - Will Safari feature JXL support?
+relatedPosts:
+  - squoosh
+  - thelounge
+  - thunderbird
+---
+
+## What is JPEG XL?
+
+Compared to the original JPEG, JPEG XL offers 60% image size savings at the same perceptual quality while supporting modern features like HDR, animation, alpha channel, lossless JPEG recompression, lossless and progressive modes.
+
+JPEG XL offers significantly better image quality and compression ratio compared to legacy JPEG. Through lossless JPEG recompression, it is possible to convert JPEGs from the past to the new format quickly.
+
+JPEG XL supports both lossless and lossy compression. Lossless compression reduces filesizes by 20-60%. Using software implementations, encoding and decoding can be performed with a high degree of computational efficiency without hardware acceleration.
+
+There are several reasons to use JPEG XL as an image format for the web, including its support for HDR and animation, its small file size and progressive decoding mechanisms, and the ecosystem interest from web developers, CDNs, and large tech companies like Google and Facebook.
+
+## What is Safari?
+
+Safari is Apple's web browser, exclusive to iPhone, iPad, and macOS. It was first released in 2003. Safari's popularity grew with the iPhone and iPad, and it currently has about an 18% share of the browser market. Safari works like any other popular browser. Websites can be browsed, favorited, and multiple tabs can be opened at once. Apple's Safari was the first web browser to support HTML 5 while built with the WebKit engine. Safari has several excellent features, including automatic syncing between devices using the same iCloud account, as well as a built-in airdrop button that allows users to share a website quickly. The browser is exclusively available on Apple devices.
+
+## Webkit Support
+
+Safari's core component, Webkit, has excellent news in the bug tracker. All iOS web browsers make use of this engine, including Apple's Safari web browser. WebKit is also used by BlackBerry browsers, PlayStation consoles, the browser part of Amazon's Kindle e-book reader, and Tizen mobile operating systems.
+
+<Link
+  href="bugs.webkit.org/show_bug.cgi?id=208235"
+  text="A parent bug ticket"
+/> tracks all tasks left for a full JPEG XL implementation. Tasks/Bugs:
+
+- Implement JPEG XL image decoder using libjxl (<Link href="bugs.webkit.org/show_bug.cgi?id=233113" text="DONE"/>)
+- JPEG-XL support at build time (<Link href="bugs.webkit.org/show_bug.cgi?id=233325" text="DONE"/>)
+- JPEG XL decoder color profile support (<Link href="bugs.webkit.org/show_bug.cgi?id=233364" text="UNRESOLVED"/>)
+- Support Animated JPEG-XL images (<Link href="bugs.webkit.org/show_bug.cgi?id=233545" text="UNRESOLVED"/>)
+
+When the unresolved tasks on Webkit are resolved, we can expect full support. There is a significant downside, however. Apple ports do not use WebKit's image decoding functions.
+
+## Why it might take longer
+
+Due to the lack of support for JPEG XL on iOS, iPadOS, and macOS, Safari does not support it.
+
+Remember: Apple did not add support for WebP till a decade after it was released. Safari is one of the most popular web browsers, so its refusal to add support for the format has delayed its adoption as a whole. Developers couldn't use this format without sacrificing Apple users' usability.
+
+With WebKit contributors having already begun supporting JPEG XL, one wonders when Apple will enable support. Apple implements its new formats in its operating system and not in its browsers. While JPEG XL support is about to be available in the WebKitGTK and WPE ports, it will remain unavailable in the Apple Safari ports. Apple allows Safari to interact with the operating system to determine which file formats to support. The browser does not decode images. The operating system does it.
+
+Apple software engineer Sam Sneddon, working for WebKit, confirmed this with his statement in the WebKit bug tracker:
+
+<Quote
+  text="The Apple ports use the system-provided image decoding capabilities; we're unlikely to deviate from that here, so any support for [..] depends on underlying OS support."
+  author="Sam Sneddon"
+  source="bugs.webkit.org/show_bug.cgi?format=multiple&id=207750"
+/>
+
+Since Apple only releases OS and Safari updates twice a year, and there is no official announcement or alpha/beta operating system version that suggests JPEG XL support, **we will probably have to wait at least six months for Safari to support JPEG XL**.

@@ -1,3 +1,5 @@
+import sortBy from "lodash/sortBy";
+
 export interface QuestionsProps {
   questions: string[];
 }
@@ -6,15 +8,16 @@ export default function Questions(props: QuestionsProps) {
   let questions = props.questions.map((original) => {
     original = original.replace(/\s+/g, "+").toLowerCase();
     let short = original.replace(/\/$/, "");
-    original = `https://google.com/search?q=site%3Ajustinschmitz.de+${original}`;
+    original = `https://google.com/search?q=site%3Ajpegxl.io+${original}`;
     short = short.replace(/\+/g, " ");
     return { original, short };
   });
+  questions = sortBy(questions, (s) => s.short);
 
   const listQuestions = questions.map((source: any) => (
     <li
       key={source.original}
-      className="inline-block px-2 py-1 m-1 text-purple-800 rounded-sm text-tiny bg-purple-200"
+      className="inline-block p-1 m-1 text-teal-400 rounded-md text-tiny bg-green-1000"
     >
       <a target="_blank" rel="noreferrer" href={source.original}>
         {source.short}
@@ -24,7 +27,7 @@ export default function Questions(props: QuestionsProps) {
 
   return (
     <>
-      <h5 className="inline-block py-1 mt-5 font-bold rounded-md text-text-800">
+      <h5 className="inline-block py-1 px-3 mt-6 font-bold rounded-md">
         Related search terms
       </h5>
       <ol>{listQuestions}</ol>

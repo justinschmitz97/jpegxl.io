@@ -1,0 +1,42 @@
+---
+
+title: "JPEG XL vs GIF"
+description:
+  An in-depth guide on how the brand-new file format JPEG XL stacks up against
+  its competitor GIF.
+keyword: GIF
+category: comparisons
+url: comparisons/jxl-vs-gif/
+datePublished: 31.10.21
+dateModified: 31.10.21
+questions:
+  - What is the difference between GIF and JPEG XL?
+  - Is JPEG XL better than GIF?
+  - How does GIF compare to JPEG XL?
+tags:
+  - jxl
+  - jpeg xl
+sources:
+  - www.google.com
+  - www.google.de
+relatedPosts:
+  - jxl-vs-avif
+  - jxl-vs-bmp
+  - jxl-vs-gif
+---
+
+## Introduction
+
+## Quality and Limits
+
+## Compression
+
+## Speed
+
+## Features
+
+## Summary for Nerds
+
+## Summary for Marketeers
+
+## Conclusion

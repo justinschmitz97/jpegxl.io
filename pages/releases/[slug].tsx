@@ -21,7 +21,7 @@ import ContentTable from "@components/Blog/ContentTable";
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const filePath = path.join(
-    `${BLOG_POSTS_PATH}/portfolio`,
+    `${BLOG_POSTS_PATH}/releases`,
     `${ctx.params?.slug}.mdx`
   );
 
@@ -31,6 +31,16 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const headings = await getHeadings(content);
 
   const mdxFiles = glob.sync("data/**/*.mdx");
+  const selectedPosts = data.relatedPosts.map((post: string) =>
+    mdxFiles.find((file) => file.indexOf(post) >= 0)
+  );
+
+  const relatedPosts = selectedPosts.map((post: string) => {
+    const file = path.join(process.cwd(), post);
+    const sourceFile = fs.readFileSync(file);
+    const { data } = matter(sourceFile);
+    return { ...data };
+  });
 
   const mdxSource = await serialize(content, {
     mdxOptions: {
@@ -47,12 +57,13 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
       },
       source: mdxSource,
       headings,
+      relatedPosts,
     },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = postFilePaths(`${BLOG_POSTS_PATH}/portfolio`)
+  const paths = postFilePaths(`${BLOG_POSTS_PATH}/releases`)
     .map((p) => p.replace(/\.mdx?$/, ""))
     .map((slug) => ({ params: { slug } }));
 
@@ -67,10 +78,11 @@ const PostDetail: NextPage<PostDetailPageProps> = ({
   frontMatter,
   source,
   headings,
+  relatedPosts,
 }) => {
   return (
     <>
-      <Blog postMeta={{ ...frontMatter }}>
+      <Blog postMeta={{ ...frontMatter }} posts={relatedPosts}>
         <ContentTable contentTable={headings} />
         <MDXRemote {...source} components={MDXComponents} />
       </Blog>
