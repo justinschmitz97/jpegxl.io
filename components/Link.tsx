@@ -10,7 +10,7 @@ interface Props {
   children?: any;
 }
 
-export default function Quote(props: Props) {
+export default function Link(props: Props) {
   const { href, text, className, lazy, style, children } = props;
   const isInternal = href && (href.startsWith("/") || href.startsWith("#"));
 

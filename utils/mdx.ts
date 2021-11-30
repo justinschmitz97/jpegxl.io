@@ -4,16 +4,11 @@ import { serialize } from "next-mdx-remote/serialize";
 import matter from "gray-matter";
 import remarkSlug from "remark-slug";
 
-// POSTS_PATH is useful when you want to get the path to a specific file
 export const BLOG_POSTS_PATH = path.join(process.cwd(), "data");
 export const DATA_PATH = path.join(process.cwd(), "data");
 
-// postFilePaths is the list of all mdx files inside the POSTS_PATH directory
 export const postFilePaths = (path: string) =>
-  fs
-    .readdirSync(path)
-    // Only include md(x) files
-    .filter((p) => /\.mdx?$/.test(p));
+  fs.readdirSync(path).filter((p) => /\.mdx?$/.test(p));
 
 const fileLastUpdate = (path: string) => fs.statSync(path).mtime;
 
@@ -46,7 +41,6 @@ export async function getHeadings(source: string) {
 
   return headingLines.map((raw: string) => {
     const text = raw.replace(/^###*\s/, "");
-
     return { text, href: `#${text.replace(/\s/gi, "").toLowerCase()}` };
   });
 }

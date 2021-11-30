@@ -1,4 +1,3 @@
-import sortBy from "lodash/sortBy";
 
 export interface TagsProps {
   tags: string[];
@@ -8,16 +7,15 @@ export default function Tags(props: TagsProps) {
   let tags = props.tags.map((original) => {
     original = original.replace(/\s+/g, "+").toLowerCase();
     let short = original.replace(/\/$/, "");
-    original = `https://google.com/search?q=site%3Ajpegxl.io+${original}`;
+    original = `https://google.com/search?q=site%3Ajustinschmitz.de+${original}`;
     short = short.replace(/\+/g, " ");
     return { original, short };
   });
-  tags = sortBy(tags, (s) => s.short);
 
   const listTags = tags.map((source: any) => (
     <li
       key={source.original}
-      className="inline-block p-1 m-1 text-teal-400 rounded-md text-tiny bg-green-1000"
+      className="inline-block px-2 py-1 m-1 text-purple-800 rounded-sm text-tiny bg-purple-200"
     >
       <a target="_blank" rel="noreferrer" href={source.original}>
         {source.short}
@@ -27,7 +25,7 @@ export default function Tags(props: TagsProps) {
 
   return (
     <>
-      <h5 className="inline-block py-1 px-3 mt-6 font-bold rounded-md">
+      <h5 className="inline-block py-1 mt-5 font-bold rounded-md text-text-800">
         Topic clusters
       </h5>
       <ol>{listTags}</ol>

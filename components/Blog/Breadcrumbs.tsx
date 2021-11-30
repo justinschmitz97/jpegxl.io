@@ -17,7 +17,7 @@ export default function Breadcrumbs(props: any) {
                 "@type": "ListItem",
                 "position": 1,
                 "name": urlSplit[0],
-                "item": "https://jpegxl.io/#" + urlSplit[0],
+                "item": "https://justinschmitz.de/#" + urlSplit[0],
               },
             ],
           })}

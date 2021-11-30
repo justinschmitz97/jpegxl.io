@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { jsonLdScriptProps } from "react-schemaorg";
-import { BlogPosting, Organization } from "schema-dts";
+import { BlogPosting } from "schema-dts";
 
 export interface Props {
   title?: string;
@@ -28,7 +28,7 @@ export default function Meta(props: Props) {
 
   return (
     <Head>
-      <link rel="canonical" href={`https://jpegxl.io/${url}`} />
+      <link rel="canonical" href={`https://justinschmitz.de/${url}`} />
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link
@@ -36,88 +36,78 @@ export default function Meta(props: Props) {
         sizes="180x180"
         href="/apple-touch-icon.png"
       />
-
-      <title>{title} | jpegxl.io ✨</title>
-
+      <title>{title} | justinschmitz.de</title>
       <meta name="description" content={description} />
       <meta name="author" content="Justin Schmitz" />
-
       <meta
         property="og:site_name"
-        content="Jpeg XL Converter | jpegxl.io ✨"
+        content="Justin Schmitz - UX Consultant & Digital Designer"
       />
       <meta property="og:type" content={blog ? "article" : "website"} />
-      <meta property="og:url" content={`https://jpegxl.io/${url}`} />
-      <meta property="og:title" content={title + " | " + "jpegxl.io"} />
+      <meta property="og:url" content={`https://justinschmitz.de/${url}`} />
+      <meta property="og:title" content={title + " | " + "justinschmitz.de"} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content="https://jpegxl.io/json-logo.png" />
-
+      <meta
+        property="og:image"
+        content="https://justinschmitz.de/apple-touch-icon.png"
+      />
       <meta name="twitter:card" content="summary"></meta>
       <meta property="twitter:creator" content="@jschmitz97" />
       <meta property="twitter:site" content="@jschmitz97" />
       <meta property="twitter:url" content="https://twitter.com/jschmitz97" />
-      <meta property="twitter:title" content={title + " | " + "jpegxl.io ✨"} />
-      <meta property="twitter:description" content={description} />
-
-      <meta name="twitter:image" content="https://jpegxl.io/twitter.png" />
       <meta
-        name="twitter:image:alt"
-        content="Logo for the JPEG XL Converter jpegxl.io"
+        property="twitter:title"
+        content={title + " | " + "justinschmitz.de ✨"}
       />
-
+      <meta property="twitter:description" content={description} />
+      <meta
+        name="twitter:image"
+        content="https://justinschmitz.de/apple-touch-icon.png"
+      />
+      <meta name="twitter:image:alt" content="Logo for justinschmitz.de" />
       <script
-        {...jsonLdScriptProps<Organization>({
+        {...jsonLdScriptProps<BlogPosting>({
           "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "jpegxl.io",
-          "url": "https://jpegxl.io",
-          "logo": "https://jpegxl.io/json-logo.png",
-          "sameAs": [
-            "https://discord.com/invite/6w42YpF5hm",
-            "https://www.producthunt.com/",
-          ],
+          "@type": "BlogPosting",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://justinschmitz.de/" + url,
+          },
+          "headline": title,
+          "description": description,
+          "image": "https://justinschmitz.de/apple-touch-icon.png",
+          "author": {
+            "@type": "Person",
+            "name": "Justin Schmitz",
+            "url": "justinschmitz.de",
+            "gender": "male",
+            "jobTitle": "UX Consultant & Digital Designer",
+            "email": "justin@justinschmitz.de",
+            "telephone": "+4915738435060",
+            "sameAs": [
+              "https://twitter.com/jschmitz97",
+              "https://dribbble.com/justinschmitz",
+              "https://www.fiverr.com/zoayenemies",
+              "https://www.upwork.com/freelancers/~014b24a2eaf9eac622",
+              "https://www.xing.com/profile/Justin_Schmitz9/",
+              "https://www.linkedin.com/in/justinschmitz97/",
+            ],
+          },
+          "publisher": {
+            "@type": "Person",
+            "name": "Justin Schmitz",
+            "jobTitle": "UX Consultant & Digital Designer",
+            "url": "justinschmitz.de",
+            "email": "justin@justinschmitz.de",
+            "telephone": "+4915738435060",
+          },
+          "datePublished": publishedDate,
+          "dateModified": modifiedDate,
+          "isFamilyFriendly": true,
+          "inLanguage": "de-DE",
         })}
       />
-
-      {blog && (
-        <script
-          {...jsonLdScriptProps<BlogPosting>({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": "https://jpegxl.io/" + url,
-            },
-            "headline": title,
-            "description": description,
-            "image": "https://avif.io/logo_draft.png",
-            "author": {
-              "@type": "Person",
-              "name": "Justin Schmitz",
-              "sameAs": [
-                "https://twitter.com/jschmitz97",
-                "https://dribbble.com/justinschmitz",
-                "https://www.fiverr.com/zoayenemies",
-                "https://www.upwork.com/freelancers/~014b24a2eaf9eac622",
-                "https://www.xing.com/profile/Justin_Schmitz9/",
-                "https://www.linkedin.com/in/justinschmitz97/",
-              ],
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "jpegxl.io",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://jpegxl.io/json-logo.png",
-              },
-            },
-            "datePublished": publishedDate,
-            "dateModified": modifiedDate,
-            "isFamilyFriendly": true,
-            "inLanguage": "en-US",
-          })}
-        />
-      )}
+      )
     </Head>
   );
 }

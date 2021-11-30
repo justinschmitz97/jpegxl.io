@@ -2,7 +2,6 @@ import { ReactNode } from "react";
 import Link from "@components/Link";
 import Heading from "@components/Blog/Heading";
 import Image from "@components/Blog/Image";
-import Syntax from "@components/Blog/Syntax";
 import Video from "@components/Blog/Video";
 import Quote from "@components/Blog/Quote";
 
@@ -13,9 +12,7 @@ interface ChildrenProps {
 const MDXComponents = {
   Link,
   Image,
-  Syntax,
   Video,
-  code: Syntax,
   Quote,
   h1: ({ children }: ChildrenProps) => (
     <Heading level={1} text={children as string} />

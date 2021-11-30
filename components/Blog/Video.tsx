@@ -20,7 +20,7 @@ export default function Video(props: Props) {
           allowFullScreen
         ></iframe>
       </div>
-      <div className="py-2 px-1 w-full text-white bg-bg-300">
+      <div className="py-2 px-1 w-full text-text-900 bg-bg-300">
         <div className="flex flex-col justify-between items-center mb-1 md:flex-row">
           <h4 className="m-0 w-full font-bold">{title}</h4>
           <p className="mr-2 ml-10 w-8 text-right md:mb-0 md:ml-0">{length}</p>

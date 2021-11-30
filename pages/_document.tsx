@@ -1,4 +1,3 @@
-// eslint-disable-next-line @next/next/no-document-import-in-page
 import Document, { Head, Html, Main, NextScript } from "next/document";
 
 class Layout extends Document<Layout> {
@@ -8,9 +7,9 @@ class Layout extends Document<Layout> {
   }
   render() {
     return (
-      <Html lang="en">
+      <Html lang="de">
         <Head />
-        <body className="w-full text-base text-white bg-bg-700">
+        <body className="overflow-x-hidden w-full text-base text-text-900">
           <Main />
           <NextScript />
         </body>

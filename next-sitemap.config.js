@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-undef
 module.exports = {
-  siteUrl: "https://jpegxl.io",
+  siteUrl: "https://justinschmitz.de",
   changefreq: null,
   priority: null,
   transform: async (config, path) => {

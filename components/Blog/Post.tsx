@@ -50,7 +50,7 @@ const Post = ({
               className={`inline-flex items-center relative px-2 py-1 ${getBackground(
                 support
               )}
-         rounded-md text-tiny text-white mr-1`}
+         rounded-md text-tiny text-text-900 mr-1`}
             >
               <span
                 className={`w-1 h-1 rounded-full inline-block mr-1 ${getDot(
@@ -59,14 +59,14 @@ const Post = ({
               ></span>
               {support}
             </div>
-            <div className="inline-flex relative py-1 px-2 mr-2 text-white rounded-md bg-bg-700 text-tiny">
+            <div className="inline-flex relative py-1 px-2 mr-2 text-text-900 rounded-md bg-bg-700 text-tiny">
               {subcategory}
             </div>
           </div>
-          <div className="relative mb-0 ml-1 font-bold text-white">
+          <div className="relative mb-0 ml-1 font-bold text-text-900">
             {keyword || keyword || ""}
           </div>
-          <div className="relative ml-1 text-white text-tiny">
+          <div className="relative ml-1 text-text-900 text-tiny">
             {description}
           </div>
         </div>
