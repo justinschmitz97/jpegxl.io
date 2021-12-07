@@ -415,8 +415,7 @@ const BlogJxl: NextPage<PostsPageProps> = ({
               >
                 Articles
               </h3>
-              <aside className="px-2 mx-auto max-w-screen-md">
-      </aside>
+              <aside className="px-2 mx-auto max-w-screen-md"></aside>
               <div className="grid grid-cols-1 gap-2 mt-2 md:grid-cols-2 lg:grid-cols-3">
                 {articles.map((post: any) => (
                   <Post
@@ -432,8 +431,8 @@ const BlogJxl: NextPage<PostsPageProps> = ({
                 ))}
               </div>
               <aside className="px-2 mx-auto max-w-screen-md">
-        <Ad />
-      </aside>
+                <Ad />
+              </aside>
               <h3
                 className="mt-8 mb-2 ml-3 text-xl font-bold capitalize"
                 id={"tutorials"}
@@ -455,8 +454,8 @@ const BlogJxl: NextPage<PostsPageProps> = ({
                 ))}
               </div>
               <aside className="px-2 mx-auto max-w-screen-md">
-        <Ad />
-      </aside>
+                <Ad />
+              </aside>
               <h3
                 className="mt-8 mb-2 ml-3 text-xl font-bold capitalize"
                 id={"comparisons"}
@@ -479,8 +478,8 @@ const BlogJxl: NextPage<PostsPageProps> = ({
                 ))}
               </div>
               <aside className="px-2 mx-auto max-w-screen-md">
-        <Ad />
-      </aside>
+                <Ad />
+              </aside>
               <h3
                 className="mt-8 mb-2 ml-3 text-xl font-bold capitalize"
                 id={"articles"}
@@ -502,18 +501,18 @@ const BlogJxl: NextPage<PostsPageProps> = ({
                 ))}
               </div>
               <aside className="px-2 mx-auto max-w-screen-md">
-        <Ad />
-      </aside>
+                <Ad />
+              </aside>
             </>
           )}
           <div className="m-auto mt-12 mb-8 max-w-3xl text-center">
             <div className="text-xl font-bold">A summary of JPEG XL</div>
             <p className="mt-2">
-              JPEG XL is a fusion of Google's PIK format and Cloudinary's FUIF
-              format. The JPEG XL Image Coding System contains a wide range of
-              features that are especially suited for responsive web
-              environments, so your content will look great on a variety of
-              devices.
+              JPEG XL is a fusion of Google&apos;s PIK format and
+              Cloudinary&apos;s FUIF format. The JPEG XL Image Coding System
+              contains a wide range of features that are especially suited for
+              responsive web environments, so your content will look great on a
+              variety of devices.
             </p>
             <p className="mt-2">
               Compared to existing image formats, it will offer various

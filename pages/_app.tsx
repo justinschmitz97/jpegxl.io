@@ -1,6 +1,6 @@
 import "@styles/global.css";
 import { useEffect } from "react";
-import Script from "next/script"; 
+import Script from "next/script";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 

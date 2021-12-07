@@ -57,10 +57,7 @@ fs.readdirSync(comparisons)
     feed.item({
       title,
       description,
-      url: `https://jpegxl.io/comparisons/${fileName.replace(
-        ".mdx",
-        ""
-      )}/`,
+      url: `https://jpegxl.io/comparisons/${fileName.replace(".mdx", "")}/`,
       date: datePublished,
     });
   });
@@ -84,7 +81,6 @@ fs.readdirSync(releases)
       date: datePublished,
     });
   });
-
 
 fs.readdirSync(tutorials)
   .map((fileName) => {

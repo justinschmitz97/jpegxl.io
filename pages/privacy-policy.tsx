@@ -18,38 +18,40 @@ export default function BlogPost() {
       Hello, you are visiting the Legal Blog and Privacy Policy of jpegxl.io, a
       tool by Justin Schmitz and Niksa Sporin. Most parts of this site are
       created by privacy generators and of course, contain many legal terms. I
-      don't want you to have to read all this, but since you are here, I have
-      created this small paragraph to tell you how and which data we use in a
-      short and "easy to read" way. For an imprint, please visit the imprint
+      don&apos;t want you to have to read all this, but since you are here, I
+      have created this small paragraph to tell you how and which data we use in
+      a short and easy to read way. For an imprint, please visit the imprint
       page of https://justinschmitz.de/.
       <Heading level={3} text="Can we see images?" />
-      No. We don't like to store data that doesn't belong to me, and we try to
-      keep it to a minimum. That's why we only convert images in the browser. We
-      use a few technologies so that no images are uploaded during the process
-      and we can never simply view your images. There's one exception: if a
-      conversion fails, we'll immediately ask you if you want to send us the
-      image so that we can further evaluate what went wrong. Again, we don't
-      send images without your consent under any circumstances. Besides, I
-      really don't care about your 500 dog pictures, I'm sorry.
+      No. We don&apos;t like to store data that doesn&apos;t belong to me, and
+      we try to keep it to a minimum. That&apos;s why we only convert images in
+      the browser. We use a few technologies so that no images are uploaded
+      during the process and we can never simply view your images. There&apos;s
+      one exception: if a conversion fails, we&apos;ll immediately ask you if
+      you want to send us the image so that we can further evaluate what went
+      wrong. Again, we don&apos;t send images without your consent under any
+      circumstances. Besides, I really don&apos;t care about your 500 dog
+      pictures, I&apos;m sorry.
       <Heading level={3} text="What about analytics?" />
       We use Hotjar and GA. The only reason we use it is because it provides us
       with useful data that allows us to optimize our service. It sounds like an
       empty phrase, but it is certainly true, and I will tell you how. We
       receive data about the most commonly used browsers, devices and
       resolutions. We integrate this information into our testing process. We
-      don't want to send our website advertising to people who aren't interested
-      in it, but to people who can benefit from it. It also allows us to
-      evaluate the growth and maybe find an investor for the future. It's
-      probably even good for which countries are our primary targets, so we can
-      offer personalized content like translations Cool? Cool. What's special
-      about Hotjar is that we found this tool only recently and we absolutely
-      love it. What Hotjar does is that it records your web session on our
-      website. That sounds scary at first, but there's no reason to be afraid.
-      We can't see you through your webcam, nor can we see anything else BUT our
-      website. It stores no IP addresses, just your country, browser and
-      operating system. Since the day we activated it, we've added and repaired
-      so many tiny things that have drastically improved the overall user
-      experience. After viewing a record of the web session, we delete them.
+      don&apos;t want to send our website advertising to people who aren&apos;t
+      interested in it, but to people who can benefit from it. It also allows us
+      to evaluate the growth and maybe find an investor for the future.
+      It&apos;s probably even good for which countries are our primary targets,
+      so we can offer personalized content like translations Cool? Cool.
+      What&apos;s special about Hotjar is that we found this tool only recently
+      and we absolutely love it. What Hotjar does is that it records your web
+      session on our website. That sounds scary at first, but there&apos;s no
+      reason to be afraid. We can&apos;t see you through your webcam, nor can we
+      see anything else BUT our website. It stores no IP addresses, just your
+      country, browser and operating system. Since the day we activated it,
+      we&apos;ve added and repaired so many tiny things that have drastically
+      improved the overall user experience. After viewing a record of the web
+      session, we delete them.
       <Heading
         level={3}
         text="Below is the full version of the privacy policy."
@@ -118,9 +120,9 @@ export default function BlogPost() {
       support@jpegxl.io. Usage Data We may also collect information that your
       browser sends whenever you visit our Service or when you access Service by
       or through a mobile device (“Usage Data”). This Usage Data may include
-      information such as your computer's Internet Protocol address (e.g. IP
-      address), browser type, browser version, the pages of our Service that you
-      visit, the time and date of your visit, the time spent on those pages,
+      information such as your computer&apos;s Internet Protocol address (e.g.
+      IP address), browser type, browser version, the pages of our Service that
+      you visit, the time and date of your visit, the time spent on those pages,
       unique device identifiers and other diagnostic data. When you access
       Service with a mobile device, this Usage Data may include information such
       as the type of mobile device you use, your mobile device unique ID, the IP
@@ -293,8 +295,8 @@ export default function BlogPost() {
       information. If you choose to delete your personal information, you may
       not be able to use certain functions that require your personal
       information to operate. (c) To stop selling your personal information. We
-      don't sell or rent your personal information to any third parties for any
-      purpose. You are the only owner of your Personal Data and can request
+      don&apos;t sell or rent your personal information to any third parties for
+      any purpose. You are the only owner of your Personal Data and can request
       disclosure or deletion at any time. Please note, if you ask us to delete
       or stop selling your data, it may impact your experience with us, and you
       may not be able to participate in certain programs or membership services
@@ -325,20 +327,21 @@ export default function BlogPost() {
       browser) used during the visit and more. You can see full details in our
       data policy.
       <Heading level={2} text="Hotjar" />
-      "We use Hotjar in order to better understand our users’ needs and to
+      We use Hotjar in order to better understand our users’ needs and to
       optimize this service and experience. Hotjar is a technology service that
       helps us better understand our users’ experience (e.g. how much time they
       spend on which pages, which links they choose to click, what users do and
       don’t like, etc.) and this enables us to build and maintain our service
       with user feedback. Hotjar uses cookies and other technologies to collect
-      data on our users’ behavior and their devices. This includes a device's IP
-      address (processed during your session and stored in a de-identified
-      form), device screen size, device type (unique device identifiers),
-      browser information, geographic location (country only), and the preferred
-      language used to display our website. Hotjar stores this information on
-      our behalf in a pseudonymized user profile. Hotjar is contractually
-      forbidden to sell any of the data collected on our behalf. For further
-      details, please see the ‘about Hotjar’ section of Hotjar’s support site.
+      data on our users’ behavior and their devices. This includes a
+      device&apos;s IP address (processed during your session and stored in a
+      de-identified form), device screen size, device type (unique device
+      identifiers), browser information, geographic location (country only), and
+      the preferred language used to display our website. Hotjar stores this
+      information on our behalf in a pseudonymized user profile. Hotjar is
+      contractually forbidden to sell any of the data collected on our behalf.
+      For further details, please see the ‘about Hotjar’ section of Hotjar’s
+      support site.
       <Heading level={2} text=" CI and CD Tools" />
       We may use third-party Service Providers to automate the development
       process of our Service. GitHub GitHub is provided by GitHub, Inc. GitHub
@@ -359,7 +362,7 @@ export default function BlogPost() {
       We may use third-party Service Providers to show advertisements to you to
       help support and maintain our Service. Google AdSense DoubleClick Cookie
       Google, as a third party vendor, uses cookies to serve ads on our Service.
-      Google's use of the DoubleClick cookie enables it and its partners to
+      Google&apos;s use of the DoubleClick cookie enables it and its partners to
       serve ads to our users based on their visit to our Service or other
       websites on the Internet. You may opt out of the use of the DoubleClick
       Cookie for interest-based advertising by visiting the Google Ads Settings
@@ -373,7 +376,7 @@ export default function BlogPost() {
       Google service by following the instructions described by Google:
       https://support.google.com/ads/answer/2662922?hl=en For more information
       on how Google uses the collected information, please visit the “How Google
-      uses data when you use our partners' sites or app” page:
+      uses data when you use our partners&apos; sites or app” page:
       https://google.com/policies/privacy/partners/ or visit the Privacy Policy
       of Google: https://google.com/policies/privacy/
       <Heading level={2} text="Behavioral Remarketing" />
@@ -398,13 +401,13 @@ export default function BlogPost() {
       by visiting their Privacy Policy page:
       https://privacy.microsoft.com/en-us/PrivacyStatement Twitter Twitter
       remarketing service is provided by Twitter Inc. You can opt-out from
-      Twitter's interest-based ads by following their instructions:
+      Twitter&apos;s interest-based ads by following their instructions:
       https://support.twitter.com/articles/20170405 You can learn more about the
       privacy practices and policies of Twitter by visiting their Privacy Policy
       page: https://twitter.com/privacy Facebook Facebook remarketing service is
       provided by Facebook Inc. You can learn more about interest-based
       advertising from Facebook by visiting this page:
-      https://facebook.com/help/164968693837950 To opt-out from Facebook's
+      https://facebook.com/help/164968693837950 To opt-out from Facebook&apos;s
       interest-based ads, follow these instructions from Facebook:
       https://facebook.com/help/568137493302217 Facebook adheres to the
       Self-Regulatory Principles for Online Behavioural Advertising established
@@ -415,11 +418,11 @@ export default function BlogPost() {
       Interactive Digital Advertising Alliance in Europe
       https://youronlinechoices.eu/, or opt-out using your mobile device
       settings. For more information on the privacy practices of Facebook,
-      please visit Facebook's Data Policy:
+      please visit Facebook&apos;s Data Policy:
       https://facebook.com/privacy/explanation Pinterest Pinterest remarketing
-      service is provided by Pinterest Inc. You can opt-out from Pinterest's
-      interest-based ads by enabling the “Do Not Track” functionality of your
-      web browser or by following Pinterest instructions:
+      service is provided by Pinterest Inc. You can opt-out from
+      Pinterest&apos;s interest-based ads by enabling the “Do Not Track”
+      functionality of your web browser or by following Pinterest instructions:
       https://help.pinterest.com/en/articles/personalization-and-data You can
       learn more about the privacy practices and policies of Pinterest by
       visiting their Privacy Policy page:
@@ -470,9 +473,9 @@ export default function BlogPost() {
       <Heading level={2} text="Links to other sites" />
       Our Service may contain links to other sites that are not operated by us.
       If you click a third party link, you will be directed to that third
-      party's site. We strongly advise you to review the Privacy Policy of every
-      site you visit. We have no control over and assume no responsibility for
-      the content, privacy policies or practices of any third party sites or
+      party&apos;s site. We strongly advise you to review the Privacy Policy of
+      every site you visit. We have no control over and assume no responsibility
+      for the content, privacy policies or practices of any third party sites or
       services.
       <Heading level={2} text="Children's Privacy" />
       Our Services are not intended for use by children under the age of 18

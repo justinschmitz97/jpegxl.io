@@ -98,7 +98,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
       <div className={"text-left" + " " + (props.open ? "open" : "closed")}>
         <h2 className="mb-1">Settings</h2>
         <div className="mb-4 whitespace-nowrap text-tiny">
-          Settings don't change a running conversion.
+          Settings don&apos;t change a running conversion.
         </div>
         <div className="my-4"></div>
         <div>

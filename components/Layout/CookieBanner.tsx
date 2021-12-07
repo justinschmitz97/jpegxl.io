@@ -28,7 +28,7 @@ const CookieBanner = () => {
         onKeyDown={() => setMode("true")}
         onClick={() => setMode("true")}
         tabIndex={0}
-        className="ml-2 inline-block font-bold"
+        className="inline-block ml-2 font-bold"
       >
         OK
       </div>
