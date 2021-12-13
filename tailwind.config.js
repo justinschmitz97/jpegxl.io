@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-undef
 module.exports = {
   mode: "jit",
-  purge: [
+  content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
     "./public/**/*.{js,ts,jsx,tsx}",
@@ -10,7 +10,7 @@ module.exports = {
     "./utils/**/*.{js,ts,jsx,tsx}",
     "./styles/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: false,
+  darkMode: "media",
   theme: {
     container: {
       center: true,
