@@ -81,16 +81,16 @@
   }
 
   :focus:not(:focus-visible) {
-    @apply outline-none; /* keyboard focus but no mouse focus */
-  }
-
-  :focus-visible:not(input) {
-    @apply transform outline-2 outline-white translate-y-1 ease-in-out transition-all duration-300;
+    @apply outline-0; /* keyboard focus but no mouse focus */
   }
 
   html {
-    @apply box-border overflow-x-hidden text-white font-normal cursor-default scroll-p-9 accent-blue-400;
+    @apply box-border overflow-x-hidden text-white font-normal cursor-default scroll-p-9 accent-blue-400 focus:outline-0 focus:ring-0;
     font-family: "Poppins", "fallback-font";
+  }
+
+  :focus-visible:not(input, select) {
+    @apply transform outline-2 outline-white translate-y-1 ease-in-out transition-all duration-300;
   }
 
   body {
@@ -183,7 +183,7 @@
   }
 
   button:focus-visible {
-    @apply border-white border-2;
+    @apply focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus:outline-0;
   }
 
   pre {
@@ -225,8 +225,17 @@
   }
   input[type="checkbox"],
   input[type="radio"] {
-    @apply accent-blue-500;
+    @apply w-3 h-3 mr-2 rounded-sm bg-blue-700 border-transparent focus:border-transparent focus:bg-blue-300 text-blue-300 focus:ring-0 focus:ring-offset-2 focus:ring-blue-500;
   }
+
+  input[type="radio"] {
+    @apply rounded-full;
+  }
+
+  select {
+    @apply mt-1 rounded-md bg-blue-800 border-none focus:border-none focus:bg-blue-700 focus:ring-0;
+  }
+
   .sk-cube-grid {
     width: 40px;
     height: 40px;

@@ -41,7 +41,7 @@ export default function Heading(props: Props) {
         {text}
         {(level === 2 || level === 3) && (
           <a
-            className={`transform inline-flex text-red-700 opacity-0 items-center group-hover:opacity-100 group-hover:translate-x-2 transition-all`}
+            className={`transform inline-flex text-blue-500 opacity-0 items-center group-hover:opacity-100 group-hover:translate-x-2 transition-all`}
             href={`${router.asPath}#${trimmedText}`}
             onClick={copyToClipboard}
           >
