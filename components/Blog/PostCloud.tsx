@@ -236,7 +236,11 @@ export default function PostCloud() {
   const listQuestions = content.map((source: any, index: any) => (
     <li
       key={index}
-      className="inline-block p-1 m-1 text-teal-400 rounded-md text-tiny bg-green-1000"
+      className={`${
+        source[0].startsWith("⏩")
+          ? "block py-2 px-1 font-bold max-w-sm"
+          : "inline-block p-1"
+      } m-1 text-teal-400 rounded-md text-tiny bg-green-1000`}
     >
       <a target="_blank" rel="noreferrer" href={source[1]}>
         {source[0]}
