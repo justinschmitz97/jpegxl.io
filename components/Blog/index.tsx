@@ -3,6 +3,7 @@ import Posts from "@components/Blog/Posts";
 import Questions from "@components/Blog/Questions";
 import Sources from "@components/Blog/Sources";
 import Tags from "@components/Blog/Tags";
+import PostCloud from "@components/Blog/PostCloud";
 import Layout from "@components/Layout";
 import { useEffect, useRef, useState } from "react";
 
@@ -47,6 +48,7 @@ export default function Blog(props: Props) {
           <Sources sources={postMeta.sources} />
           <Tags tags={postMeta.tags} />
           <Questions questions={postMeta.questions} />
+          <PostCloud />
         </aside>
       </main>
       <aside className="container mt-12 max-w-screen-lg bg-bg-700">

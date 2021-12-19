@@ -519,7 +519,7 @@ JPEG XL's legacy-friendly feature is essential. You can also save both storage a
 
 In terms of image compression, JPEG XL has a high perceptual quality that ranges from visually near-lossless (in a side-by-side comparison) to visually completely lossless (in a flicker test, which is stricter than a side-by-side evaluation) to mathematically lossless.
 
-There has been a great deal of effort put into preserving the images' subtle texture and other fine details. While it is possible to use the codec at lower bitrates, where the degradation becomes more evident, it excels at the relatively high bitrates.
+There has been a great deal of effort to preserve the images' subtle texture and other fine details. While it is possible to use the codec at lower bitrates, where the degradation becomes more evident, it excels at the relatively high bitrates.
 
 A video codec-based image format, on the other hand, tends to do well at very low bitrates: it can produce an excellent image in just a few bytes. The picture looks good at first but, on closer inspection, often seems washed out. Usually, that won't be a problem for video codecs: low bitrates keep the file size or bandwidth low, and frames are typically shown for less than 40 milliseconds, so the audience usually won't notice such artifacts. Still images, however, are often of higher quality.
 
@@ -599,7 +599,7 @@ Suppose you wish to perform lossless transcoding of JPEG bitstreams (reconstruct
 
 One or more frames may be present in a JPEG XL file, for example, for animation or overlays. A frame can be subtracted from a previous frame without motion compensation and having smaller bounding boxes, blend mode, and dispose mode. They may also refer to regions from prior frames that have been designated as reference frames, which can serve as a simple interframe coding function and as a tool for coding the content of a screen for still images.
 
-For efficient decoding of cropped regions of interest (regions of interest), each frame is divided into parallel encoding and decoding groups. For VarDCT mode, the group size is 256x256 pixels (with special border handling), whereas, for Modular mode, it ranges from 128x128 to 1024x1024 pixels. Aside from thread-parallelism, the JPEG XL codec has also been designed with SIMD (single instruction, multiple data) features, which makes it suitable for efficient CPU encoders and decoders on today's desktop and mobile processors.
+Each frame is divided into parallel encoding and decoding groups for efficient decoding of cropped regions of interest (regions of interest). For VarDCT mode, the group size is 256x256 pixels (with special border handling), whereas, for Modular mode, it ranges from 128x128 to 1024x1024 pixels. Aside from thread-parallelism, the JPEG XL codec has also been designed with SIMD (single instruction, multiple data) features, which makes it suitable for efficient CPU encoders and decoders on today's desktop and mobile processors.
 An emphasis has been placed on reducing header and metadata overhead, including the compression of color profiles and Exif/XMP metadata, which is particularly important to delivering smaller images via the web.
 
 ## Does JPEG XL use variable block sizes?
@@ -634,7 +634,7 @@ However, the prediction mode is rather primitive and does not account for the tw
 
 When predicting the value of a pixel in position (x,y), the adaptive predictor identifies the prediction mode that is most likely to produce the least amount of error by calculating the maximum error expected for pixels (x-1, y), (x,y, -1) and (-1, y -1). An adaptive predictor that computes the expected error in this way also keeps track of the number of prediction modes expected to reach the level of accuracy calculated.
 
-Multiple distributions are created based on the expected error and the number of "correct" prediction modes. This technique, which detects flat areas in an image and uses specific distributions, can achieve significant size savings.
+Multiple distributions are created based on the expected error and the number of "correct" prediction modes. This technique detects flat areas in an image, uses specific distributions, and achieves significant size savings.
 
 In lossless mode, this predictor is modified. Lossless predictors use fewer prediction modes (four instead of eight), but the weighted average is calculated instead of choosing one.
 
@@ -670,7 +670,7 @@ In JPEG, AC coefficients are always encoded in zig-zag order, which increases th
 
 Its zig-zag order is generalized to those cases since JPEG XL has different transform sizes. Furthermore, since this order may not always be optimal for a particular image, a custom order may be encoded. A Lehmer15-like code is employed to encode efficient identification permutations for this custom order, which encrypts the zig-zag order as a permutation of the zig-zag order.
 
-In the encoding of AC coefficients, the order of encoding is followed; it keeps track of the number of non-zero coefficients in the current block, and uses this value, along with the position in the current block, to split the coefficients into multiple distributions. Whenever there are no non-zero coefficients left in the bitstream, there are no further values present.
+In the encoding of AC coefficients, the order of encoding is followed; it keeps track of the number of non-zero coefficients in the current block, and uses this value, along with the position in the current block, to split the coefficients into multiple distributions. Whenever there are no non-zero coefficients left in the bitstream, no further values are present.
 
 ## Entropy Coding
 
@@ -690,7 +690,7 @@ Many different distributions of symbols can be included in an ANS stream. The am
 
 2. E-commerce websites can present higher resolution images of their products and services. A correlation has been observed between catalog image quality and sales. As a result, JPEG XL delivers high-quality images while retaining performance, vital for conversion purposes.
 
-3. Many users upload their images to cloud storage applications. Depending on how they are uploaded, the images are stored either as a copy or after transcoding, either lossless or lossy. When browsing and creating timeline-style thumbnails, you can transcode images to more efficient formats and lower resolutions. It is helpful to convert pictures to more efficient formats for storing and browsing.
+3. Many users upload their images to cloud storage applications. Depending on how they are uploaded, the images are stored either as a copy or after transcoding, either lossless or lossy. You can transcode images to more efficient formats and lower resolutions when browsing and creating timeline-style thumbnails. It is helpful to convert pictures to more efficient formats for storing and browsing.
 
 4. News agencies, journalists, and users capture images, which are then published on media sites. Images can be high-resolution or thumbnail-sized, resulting in web pages containing multiple megabyte images. Webmasters with extensive collections of JPEG images should benefit from a new format to facilitate its adoption.
 
@@ -702,9 +702,9 @@ Many different distributions of symbols can be included in an ANS stream. The am
 
 8. HDR/WCG images are needed in many applications, such as on-demand video services and gaming, to support HDR/WCG videos or enhance the user experience. For example, a user may want to store single frames (stills) from movies. There are currently no formats that can display HDR/WCG content. Such applications require a new HDR/WCG coding standard. ICC defines the format as enabling content creators to specify the rendering intent.
 
-9. cameras (medium-format) currently produce images with 100-400 MPixels. These should be opened to be viewed (at full resolution) or processed immediately. Raw (color-filter array) images can also be stored as lossless/near-lossless encodings. Images may later be 'cooked' using more advanced processing algorithms.
+9. Cameras (medium-format) currently produce images with 100-400 MPixels. These should be opened to be viewed (at full resolution) or processed immediately. Raw (color-filter array) images can also be stored as lossless/near-lossless encodings. Images may later be 'cooked' using more advanced processing algorithms.
 
-10. CMYK color models are widely used by the printing industry. In addition, spot colors can be applied in additional channels. To distribute images intended for printing, high-resolution and lossless or very high quality are required, as is the capability to show CMYK and possibly additional channels (for spot colors/OGV). As CMYK is generally used for interchange rather than storage or delivery, its storage will typically be lossless or near-lossless.
+10. The printing industry widely uses CMYK color models. In addition, spot colors can be applied in additional channels. To distribute images intended for printing, high-resolution and lossless or very high quality are required, as is the capability to show CMYK and possibly additional channels (for spot colors/OGV). As CMYK is generally used for interchange rather than storage or delivery, its storage will typically be lossless or near-lossless.
 
 ## Can I use JPEG XL?
 
