@@ -240,8 +240,7 @@ export default function PostCloud() {
         source[0].startsWith("⏩")
           ? "block py-1 mt-2 font-bold max-w-sm"
           : "inline-block"
-      }
-    px-1 text-teal-400 mr-1 rounded-md text-tiny bg-green-1000 `}
+      } px-1 text-teal-400 mr-1 rounded-md text-tiny bg-green-1000 `}
     >
       <a target="_blank" rel="noreferrer" href={source[1]}>
         {source[0]}
