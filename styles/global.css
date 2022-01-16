@@ -187,7 +187,8 @@
   }
 
   pre {
-    @apply mt-3 mb-4 p-3 bg-bg-500 rounded-tl-md rounded-tr-none rounded-b-md;
+    @apply mt-3 mb-4 p-3  rounded-tl-md rounded-tr-none rounded-b-md;
+    background: rgba(255, 255, 255, 0.025) !important;
   }
 
   article a {
@@ -325,21 +326,6 @@
 /* Some Custom Code */
 /*  */
 
-.copycode {
-  transition: all 0.2s ease-in-out;
-}
-
-.copycode .check {
-  transform: scale(0) translateX(-10px) rotate(10deg);
-  transform-origin: center center;
-  transition: all 0.1s ease-in;
-}
-
-.copycode:focus .check {
-  transform: scale(1) translateX(0) rotate(0);
-  transition: all 0.1s ease-out;
-}
-
 .playstate * {
   animation-play-state: paused !important;
 }
@@ -369,6 +355,10 @@
   transition: all 0.2s;
   transform: scale(0.95);
   transform-origin: center center;
+}
+
+.ad:first-of-type {
+  display: none;
 }
 
 button[aria-label="Conversion settings"]:after {
@@ -415,21 +405,6 @@ button[aria-label="Conversion settings"]:after {
 
 [data-transition-style="in:circle:center"] {
   animation: 1.5s cubic-bezier(0.25, 1, 0.3, 1) circle-in-center both;
-}
-
-/* Wipe In Right Animation */
-
-@keyframes wipe-in-right {
-  from {
-    clip-path: inset(0 100% 0 0);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-[data-transition-style="in:wipe:right"] {
-  animation: 1s cubic-bezier(0.25, 1, 0.3, 1) wipe-in-right both;
 }
 
 /* CTA Animation */

@@ -50,12 +50,11 @@ export default function Footer() {
     <footer className="flex flex-wrap order-first px-1 pt-4 pb-8 mx-auto text-left bg-bg-400">
       <div className="flex flex-col px-2 mt-6 w-full text-gray-400 md:w-1/2 lg:w-1/4">
         <Link
-          className="mb-4 text-xl font-bold text-white"
+          className="mb-2 text-xl font-bold text-white"
           text="jpegxl.io"
           href="/"
         />
-        An open-source platform by Justin Schmitz that converts image formats
-        like PNG, JPG, GIF, WEBP to JPEG XL.
+        Convert image formats like PNG, JPG, GIF, WEBP to JPEG XL.
         <Link text="@jschmitz97" href="twitter.com/jschmitz97" />
       </div>
       <Column posts={posts1} title="Categories" />

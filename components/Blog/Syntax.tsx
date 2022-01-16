@@ -26,7 +26,7 @@ export default function Syntax(props: Props) {
   }
 
   return (
-    <div className="relative code group">
+    <div className="relative code group text-tiny">
       <SyntaxHighlighter
         language={language}
         style={vs2015}
@@ -34,18 +34,18 @@ export default function Syntax(props: Props) {
       >
         {children}
       </SyntaxHighlighter>
-      <button
-        className="absolute top-0 left-full z-50 py-2 px-1 w-8 text-blue-400 rounded-l-none rounded-r-md opacity-0 cursor-pointer group-hover:opacity-100 hover:text-white hover:bg-pink-700 copycode bg-blue-800 group"
-        onClick={copyToClipboard}
-      >
-        <span>Copy</span>
-        <span
-          className="flex absolute z-50 justify-center items-center p-2 w-5 h-5 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 check"
-          style={{ top: "10%", right: "-40px" }}
+      <div className="flex flex-col justify-center items-center">
+        <button
+          className="flex absolute top-0 left-full z-50 justify-center items-center py-1 px-2 text-white bg-teal-700 rounded-l-none rounded-r-md cursor-pointer hover:bg-teal-800 copycode group"
+          style={{ wordBreak: "keep-all" }}
+          onClick={copyToClipboard}
         >
-          ✓
-        </span>
-      </button>
+          Copy
+          <span className="flex absolute z-50 justify-center items-center p-2 w-4 h-4 bg-teal-700 rounded-full opacity-0 transition-all duration-200 ease-out origin-center scale-0 rotate-6 translate-x-0 group-hover:opacity-100 group-focus:scale-100 group-focus:rotate-0 group-focus:translate-x-6 check">
+            ✓
+          </span>
+        </button>
+      </div>
     </div>
   );
 }

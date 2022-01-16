@@ -89,7 +89,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
   return (
     <div
       className={
-        "absolute top-0 left-full ml-4 w-24 h-auto p-4 bg-bg-700 rounded-md ease-out transform transition-all duration-500 origin-left" +
+        "absolute top-0 left-full ml-4 w-24 h-auto p-4 bg-bg-700 rounded-md ease-out transform transition-all duration-300 origin-top-left" +
         (props.open
           ? " opacity-100 translate-x-0 scale-100"
           : " opacity-0 -translate-x-12 scale-0")
@@ -111,6 +111,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                     Quality
                   </label>
                   <input
+                    className="mr-1 w-3 h-3 accent-purple-700"
                     checked={useQuality}
                     onChange={(e) =>
                       setQualityModeCheck(e.target.checked, e.target.value)
@@ -135,6 +136,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                     Distance
                   </label>
                   <input
+                    className="mr-1 w-3 h-3 accent-purple-700"
                     checked={useDistance}
                     onChange={(e) =>
                       setQualityModeCheck(e.target.checked, e.target.value)
@@ -266,6 +268,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
               }}
             >
               <input
+                className="mr-1 w-3 h-3 accent-purple-700"
                 checked={expertFeatures}
                 onChange={(e) => {
                   setExpertFeatures(e.target.checked);
@@ -289,6 +292,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                   Progressive{" "}
                 </label>
                 <input
+                  className="mr-1 w-3 h-3 accent-purple-700"
                   checked={progressive}
                   onChange={(e) => {
                     setProgressive(e.target.checked);
@@ -305,6 +309,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                   JPEG transcode{" "}
                 </label>
                 <input
+                  className="mr-1 w-3 h-3 accent-purple-700"
                   checked={jpegTranscode}
                   onChange={(e) => {
                     setJpegTranscode(e.target.checked);
@@ -321,6 +326,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                   Modular Mode{" "}
                 </label>
                 <input
+                  className="mr-1 w-3 h-3 accent-purple-700"
                   checked={modularMode}
                   onChange={(e) => {
                     setModularMode(e.target.checked);
@@ -339,6 +345,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                   EPF{" "}
                 </label>
                 <select
+                  className="py-1 px-2 pr-5"
                   value={epf}
                   onChange={(e) => {
                     setEpf(e.target.value);
@@ -364,6 +371,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                   Resampling{" "}
                 </label>
                 <select
+                  className="py-1 px-2 pr-5"
                   value={resampling}
                   onChange={(e) => {
                     setResampling(e.target.value);
@@ -388,6 +396,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                   Colorspace{" "}
                 </label>
                 <select
+                  className="py-1 px-2 pr-5"
                   value={colorspace}
                   onChange={(e) => {
                     setColorspace(e.target.value);
@@ -411,6 +420,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                 </label>
 
                 <select
+                  className="py-1 px-2 pr-5"
                   value={colortransform}
                   onChange={(e) => {
                     setColortransform(e.target.value);

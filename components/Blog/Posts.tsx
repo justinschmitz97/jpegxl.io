@@ -35,9 +35,9 @@ export default function BlogPosts(props: any) {
         <a
           href={slug ? `/${category}/${slug}/` : `/` + url}
           tabIndex={0}
-          className={`p-0 md:p-2 cursor-pointer group ${support}`}
+          className={`p-0 cursor-pointer group ${support}`}
         >
-          <div className="overflow-hidden relative p-3 h-full rounded-sm bg-bg-500">
+          <div className="overflow-hidden relative p-3 h-full rounded-md bg-bg-500">
             <div className="absolute right-0 bottom-0 z-0 w-4 h-3 transition-all transform scale-0 translate-x-4 translate-y-2 bg-gradient rotate-300 group-hover:scale-1500"></div>
             <div
               className={`relative mb-2 flex ${
@@ -61,12 +61,10 @@ export default function BlogPosts(props: any) {
                 {subcategory}
               </div>
             </div>
-            <div className="relative mb-0 ml-1 font-bold text-white">
+            <div className="relative mb-0 font-bold text-white">
               {keyword || keyword || ""}
             </div>
-            <div className="relative ml-1 text-white text-tiny">
-              {description}
-            </div>
+            <div className="relative text-white text-tiny">{description}</div>
           </div>
         </a>
       </Link>
@@ -74,7 +72,7 @@ export default function BlogPosts(props: any) {
   );
   return (
     <>
-      <h3 className="mt-8 mb-2 ml-3 text-xl font-bold capitalize">
+      <h3 className="mt-8 mb-2 text-xl font-bold capitalize">
         Related articles
       </h3>
       <div className="grid grid-cols-1 gap-2 mt-2 md:grid-cols-2 lg:grid-cols-3">

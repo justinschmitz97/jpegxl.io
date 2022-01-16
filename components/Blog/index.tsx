@@ -29,12 +29,10 @@ export default function Blog(props: Props) {
   return (
     <Layout meta={postMeta}>
       <main>
-        <div className="relative px-2 pt-8 pb-6 md:p-8 md:py-8 md:px-4 lg:pt-12 lg:pb-8 bg-gradient">
-          <div className="absolute right-0 left-0 top-1 bottom-1 w-full rounded-md opacity-25 transform scale-105 md:h-full -z-1 bg-gradient blur-xl bg-200" />
-          <div className="container mt-4 max-w-screen-md md:mt-0">
+        <div className="relative px-2 pt-8 pb-6 md:p-8 md:py-6 md:px-4 lg:pt-12 lg:pb-8 bg-gradient">
+          <div className="mt-4 md:mt-0">
+            <h1 className="mt-2 md:mt-4 md:text-4xl">{postMeta.title}</h1>
             <Breadcrumbs postMeta={postMeta} />
-            <h1 className="mt-2 md:mt-6 md:text-4xl">{postMeta.title}</h1>
-            <div>{readingTime} min reading time</div>
           </div>
         </div>
 
@@ -44,14 +42,14 @@ export default function Blog(props: Props) {
         >
           {children}
         </article>
-        <aside className="container mx-auto mt-12 max-w-screen-md">
+        <aside className="container p-2 mx-auto mt-4 max-w-screen-md lg:p-0">
           <Sources sources={postMeta.sources} />
           <Tags tags={postMeta.tags} />
           <Questions questions={postMeta.questions} />
           <PostCloud />
         </aside>
       </main>
-      <aside className="container mt-12 max-w-screen-lg bg-bg-700">
+      <aside className="container p-2 mt-4 max-w-screen-lg lg:p-0 bg-bg-700">
         <Posts posts={posts} />
       </aside>
     </Layout>

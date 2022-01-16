@@ -8,7 +8,7 @@ export default function CTA() {
       <aside className="px-2 mx-auto max-w-screen-md">
         <Ad />
       </aside>
-      <div className="container px-2 my-8 mx-auto text-center">
+      <div className="container px-2 my-8 mx-auto text-center duration-200 hover:scale-105">
         <Link href="/" passHref>
           <div className="container inline-block max-w-screen-lg text-left">
             <div
@@ -19,7 +19,7 @@ export default function CTA() {
                 Profit from a faster website, higher ranking and better
                 conversions.
               </div>
-              <div className="relative z-10 mt-4 text-2xl font-bold leading-snug">
+              <div className="relative z-10 text-2xl font-bold leading-snug">
                 Convert your images to JPEG XL for free.
               </div>
               <div

@@ -26,9 +26,9 @@ export default function ContentTable(props: ContentTableProps) {
   return (
     <nav
       aria-label="chapters"
-      className="p-2 mt-4 rounded-lg md:p-5 md:pt-2 bg-bg-400"
+      className="p-4 my-4 rounded-lg md:py-2 bg-bg-400"
     >
-      <h4 className="mb-4 bold">Table of Content</h4>
+      <h4 className="mb-2 bold">Table of Content</h4>
       <ol className="list-none">{contentItem}</ol>
     </nav>
   );

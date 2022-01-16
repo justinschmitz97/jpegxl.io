@@ -37,9 +37,9 @@ const Post = ({
       <a
         href={slug ? `/${category}/${slug}/` : `/` + url}
         tabIndex={0}
-        className={`p-0 mt-1 md:mt-0 md:p-2 cursor-pointer group ${support}`}
+        className={`p-0 mt-1 md:mt-0 cursor-pointer group ${support}`}
       >
-        <div className="overflow-hidden relative py-2 px-1 h-full rounded-sm md:p-3 bg-bg-500">
+        <div className="overflow-hidden relative py-2 px-1 h-full rounded-md md:p-2 bg-bg-500">
           <div className="absolute right-0 bottom-0 z-0 w-4 h-3 transition-all transform scale-0 translate-x-4 translate-y-2 bg-gradient rotate-300 group-hover:scale-1500"></div>
           <div
             className={`relative mb-2 flex ${
@@ -47,10 +47,9 @@ const Post = ({
             }`}
           >
             <div
-              className={`inline-flex items-center relative px-2 py-1 ${getBackground(
+              className={`inline-flex items-center relative px-2 py-1 rounded-md text-tiny text-white mr-1 ${getBackground(
                 support
-              )}
-         rounded-md text-tiny text-white mr-1`}
+              )}`}
             >
               <span
                 className={`w-1 h-1 rounded-full inline-block mr-1 ${getDot(
@@ -63,12 +62,10 @@ const Post = ({
               {subcategory}
             </div>
           </div>
-          <div className="relative mb-0 ml-1 font-bold text-white">
+          <div className="relative mb-0 font-bold text-white">
             {keyword || keyword || ""}
           </div>
-          <div className="relative ml-1 text-white text-tiny">
-            {description}
-          </div>
+          <div className="relative text-white text-tiny">{description}</div>
         </div>
       </a>
     </Link>

@@ -26,7 +26,7 @@ export default function Header() {
   return (
     <header
       className={`fixed w-100 right-0 left-0 top-0 z-50 ${
-        isFixed ? "fixed-header" : undefined
+        isFixed ? "translate-y-[-32px]" : undefined
       }`}
       style={
         isFixed
@@ -35,21 +35,21 @@ export default function Header() {
               backdropFilter: "blur(4px)",
               zIndex: 9999,
             }
-          : {}
+          : { borderBottom: "2px solid hsla(0, 0%, 100%, 0.05)" }
       }
     >
       <div
-        className={`block text-center text-tiny p-1 ${
-          isFixed ? "hidden" : ""
-        } ${support ? "bg-gradient" : "bg-bg-200"}`}
+        className={`hidden md:block text-center text-tiny p-1  ${
+          support ? "bg-gradient" : "bg-bg-200"
+        }`}
       >
         {support
           ? "Your browser supports JPEG XL.🥳"
           : "Your browser does not support JPEG XL.😞"}
       </div>
 
-      <div className="flex flex-wrap justify-between items-center py-2 px-1 md:flex-row md:px-3">
-        <nav className="flex flex-wrap justify-center items-center text-base md:pl-4 md:mr-auto">
+      <div className="flex flex-wrap justify-between items-center py-2 px-1 md:flex-row md:px-1">
+        <nav className="flex flex-wrap justify-center items-center text-base md:mr-auto">
           <Link className="p-1 md:p-3" text="Blog" href="/#blog" />
           <Link
             className="hidden p-2 md:block md:p-3"

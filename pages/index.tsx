@@ -282,7 +282,7 @@ const BlogJxl: NextPage<PostsPageProps> = ({
       </section>
       <Glow />
       <Advantages />
-      <section className="px-2 mx-auto max-w-screen-xl">
+      <section className="container px-2">
         <div>
           <div className="flex mt-2 mb-2">{sliderButtons}</div>
           <div className="relative">
@@ -326,7 +326,7 @@ const BlogJxl: NextPage<PostsPageProps> = ({
           <h1 id="blog">JPEG XL SUPPORT</h1>
           <h2 className="mb-8 text-base">Articles and Tutorials</h2>
         </div>
-        <div className="container max-w-screen-lg">
+        <div className="container px-2">
           <div className="relative mt-1 mb-3 rounded-md">
             <input
               type="text"
@@ -393,7 +393,7 @@ const BlogJxl: NextPage<PostsPageProps> = ({
             ))}
           </div>
           {filterKeyword.length > 0 || filteredPost.length ? (
-            <div className="grid grid-cols-1 gap-2 mt-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-3 mt-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
               {filteredPost.map((post: any) => (
                 <Post
                   key={post.slug}
@@ -410,13 +410,13 @@ const BlogJxl: NextPage<PostsPageProps> = ({
           ) : (
             <>
               <h3
-                className="mt-8 mb-2 ml-3 text-xl font-bold capitalize"
+                className="mt-8 mb-2 text-xl font-bold capitalize"
                 id={"articles"}
               >
                 Articles
               </h3>
               <aside className="px-2 mx-auto max-w-screen-md"></aside>
-              <div className="grid grid-cols-1 gap-2 mt-2 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-3 mt-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
                 {articles.map((post: any) => (
                   <Post
                     key={post.slug}
@@ -434,12 +434,12 @@ const BlogJxl: NextPage<PostsPageProps> = ({
                 <Ad />
               </aside>
               <h3
-                className="mt-8 mb-2 ml-3 text-xl font-bold capitalize"
+                className="mt-8 mb-2 text-xl font-bold capitalize"
                 id={"tutorials"}
               >
                 Tutorials
               </h3>
-              <div className="grid grid-cols-1 gap-2 mt-2 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-3 mt-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
                 {tutorials.map((post: any) => (
                   <Post
                     key={post.slug}
@@ -457,13 +457,13 @@ const BlogJxl: NextPage<PostsPageProps> = ({
                 <Ad />
               </aside>
               <h3
-                className="mt-8 mb-2 ml-3 text-xl font-bold capitalize"
+                className="mt-8 mb-2 text-xl font-bold capitalize"
                 id={"comparisons"}
               >
                 Comparisons
               </h3>
               - coming soon -
-              <div className="grid grid-cols-1 gap-2 mt-2 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-3 mt-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
                 {comparisons.map((post: any) => (
                   <Post
                     key={post.slug}
@@ -481,12 +481,12 @@ const BlogJxl: NextPage<PostsPageProps> = ({
                 <Ad />
               </aside>
               <h3
-                className="mt-8 mb-2 ml-3 text-xl font-bold capitalize"
+                className="mt-8 mb-2 text-xl font-bold capitalize"
                 id={"articles"}
               >
                 Changelog
               </h3>
-              <div className="grid grid-cols-1 gap-2 mt-2 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-3 mt-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
                 {releases.map((post: any) => (
                   <Post
                     key={post.slug}
