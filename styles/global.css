@@ -357,10 +357,6 @@
   transform-origin: center center;
 }
 
-.ad:first-of-type {
-  display: none;
-}
-
 button[aria-label="Conversion settings"]:after {
   content: "";
   position: absolute;
