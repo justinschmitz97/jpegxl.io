@@ -164,6 +164,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                           onChange={(e) => {
                             setDistance(+e.target.value);
                           }}
+                          className="w-8"
                           type="range"
                           min="0"
                           max="25"
@@ -183,6 +184,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                           onChange={(e) => {
                             setQuality(+e.target.value);
                           }}
+                          className="w-8"
                           type="range"
                           min="0"
                           max="100"
@@ -217,6 +219,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                     onChange={(e) => {
                       setEffort(+e.target.value);
                     }}
+                    className="w-8"
                     type="range"
                     min="1"
                     max="9"
@@ -244,6 +247,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                     onChange={(e) => {
                       setFasterDecoding(+e.target.value);
                     }}
+                    className="w-8"
                     type="range"
                     min="0"
                     max="4"
@@ -453,6 +457,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
                 onChange={(e) => {
                   setBitDepth(+e.target.value);
                 }}
+                className="w-8"
                 type="range"
                 min="0"
                 max="32"
