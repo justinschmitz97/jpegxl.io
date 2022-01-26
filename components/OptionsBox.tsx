@@ -36,7 +36,7 @@ const OptionsBox = (props: OptionsBoxProps) => {
   const [effort, setEffort] = useState(5);
   const [bitdepth, setBitDepth] = useState(0);
   const [fasterDecoding, setFasterDecoding] = useState(0);
-  const [jpegTranscode, setJpegTranscode] = useState(false);
+  const [jpegTranscode, setJpegTranscode] = useState(true);
   const [epf, setEpf] = useState("-1");
   const [resampling, setResampling] = useState("1");
   const [colorspace, setColorspace] = useState("0");
