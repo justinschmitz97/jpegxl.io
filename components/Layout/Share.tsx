@@ -26,7 +26,7 @@ export default function Blog() {
 
   const url = "https://jpegxl.io";
   return (
-    <div className="fixed right-2 bottom-2 z-40 p-1 rounded-md border-2 md:right-3 md:bottom-3 md:border-0 bg-bg-500 border-bg-500">
+    <div className="fixed right-2 bottom-2 z-40 p-1 rounded-md border-2 md:border-0 bg-bg-500 border-bg-500">
       <div className="flex justify-items-center content-center items-center">
         <div className="hidden mr-2 ml-1 md:block text-tiny">Share</div>
         <ShareButton

@@ -89,10 +89,10 @@ const OptionsBox = (props: OptionsBoxProps) => {
   return (
     <div
       className={
-        "absolute top-0 left-full ml-4 w-24 h-auto p-4 bg-bg-700 rounded-md ease-out transform transition-all duration-300 origin-top-left" +
+        "absolute top-0 left-full ml-4 w-24 h-auto p-4 bg-bg-700 rounded-md ease-out transform transition-all duration-300 origin-[10%_10%]" +
         (props.open
           ? " opacity-100 translate-x-0 scale-100"
-          : " opacity-0 -translate-x-12 scale-0")
+          : " opacity-100 -translate-x-12 scale-0")
       }
     >
       <div className={"text-left" + " " + (props.open ? "open" : "closed")}>
@@ -197,6 +197,24 @@ const OptionsBox = (props: OptionsBoxProps) => {
                       </b>
                     </>
                   )}
+                </div>
+                <div className="flex justify-between items-center">
+                  <label htmlFor="jpegTranscode">
+                    <Tooltip text="?">
+                      Enable lossless transcoding of legacy JPEGs. If checked,
+                      ignores distance & quality parameter for JPEG files.
+                    </Tooltip>
+                    JPEG transcode{" "}
+                  </label>
+                  <input
+                    className="mr-1 w-3 h-3 accent-purple-700"
+                    checked={jpegTranscode}
+                    onChange={(e) => {
+                      setJpegTranscode(e.target.checked);
+                    }}
+                    type="checkbox"
+                    id="jpegTranscode"
+                  />
                 </div>
               </div>
             </div>
@@ -303,23 +321,6 @@ const OptionsBox = (props: OptionsBoxProps) => {
                   }}
                   type="checkbox"
                   id="flexCheckDefault"
-                />
-              </div>
-              <div className="flex justify-between items-center">
-                <label htmlFor="jpegTranscode">
-                  <Tooltip text="?">
-                    Enable lossless transcoding of legacy JPEGs.
-                  </Tooltip>
-                  JPEG transcode{" "}
-                </label>
-                <input
-                  className="mr-1 w-3 h-3 accent-purple-700"
-                  checked={jpegTranscode}
-                  onChange={(e) => {
-                    setJpegTranscode(e.target.checked);
-                  }}
-                  type="checkbox"
-                  id="jpegTranscode"
                 />
               </div>
               <div className="flex justify-between items-center">

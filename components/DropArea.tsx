@@ -81,7 +81,7 @@ const DropArea = (props: DropAreaProps) => {
         onDrop={filesDroped}
         onDragOver={preventDefault}
         onDragEnter={preventDefault}
-        className={`z-50 order-first h-full bg-white-500 w-full rounded-xl ease-out duration-200 text-center playstate group`}
+        className={`z-50 order-first h-full bg-white-500 w-full rounded-xl ease-out duration-200 text-center playstate group hover:scale-[0.99] transition-all active:scale-[0.95]`}
       >
         <div
           className="py-7 px-3 text-center text-blue-400 bg-white rounded-xl transform group"

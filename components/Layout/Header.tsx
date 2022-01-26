@@ -25,7 +25,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed w-100 right-0 left-0 top-0 z-50 ${
+      className={`fixed w-100 right-0 left-0 top-0 z-50 transition-all duration-150 ${
         isFixed ? "translate-y-[-32px]" : undefined
       }`}
       style={

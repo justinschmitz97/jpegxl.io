@@ -45,7 +45,7 @@ const FilesListItem = (props: FilesListItemProps) => {
 
   return (
     <div
-      className={` text-tiny text-white conversion justify-between w-full relative z-10 flex flex-row items-center self-auto mt-3 py-1 bg-bg-600 overflow-hidden rounded-md${
+      className={`group text-tiny text-white conversion justify-between w-full relative z-10 flex flex-row items-center self-auto mt-3 py-1 bg-bg-600 overflow-hidden rounded-md${
         props.file.converted
           ? " pointer-events-auto bg-bg-600"
           : " pointer-events-none progress group"
@@ -88,20 +88,20 @@ const FilesListItem = (props: FilesListItemProps) => {
         <button
           onClick={() => downloadFile(props.file.converted, props.file.name)}
           title={`download ${props.file.name}`}
-          className={`group absolute top-0 right-0 w-6 h-full cursor-pointer transform ${
+          className={`group absolute top-0 right-0 w-6 h-full cursor-pointer transform z-50 transition-all duration-500 group-hover:w-full ${
             props.file.converted ? "" : "hidden"
           }`}
         >
           {" "}
           <span
             style={{ backgroundSize: "200%" }}
-            className="absolute top-0 right-0 bottom-0 left-0 bg-center bg-cover rounded-md cursor-pointer download_button bg-gradient"
+            className="absolute top-0 right-0 bottom-0 left-0 bg-center bg-cover rounded-md cursor-pointer group-hover:rounded-sm download_button bg-gradient"
           ></span>
           <span
-            className="absolute top-0 right-0 bottom-0 left-0 z-50 text-white bg-center bg-no-repeat transition-all duration-300 ease-in transform rotate-180 hover:scale-110 hover:translate-y-1"
+            className="absolute top-0 right-0 bottom-0 left-0 z-50 text-white bg-center bg-no-repeat transition-all duration-300 ease-in transform rotate-180 hover:scale-110"
             style={{
               backgroundImage: `url(${arrow})`,
-              backgroundSize: "30%",
+              backgroundSize: "16px",
             }}
           ></span>
         </button>
