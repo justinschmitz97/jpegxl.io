@@ -4,12 +4,6 @@ This Github repo is the source code behind the website [jpegxl.io](https://jpegx
 
 <br/>
 
-## Background & State
-
-This source code has been published in October 2021. Feel free to create issues or pull requests. I appreciate any help!
-
-<br/>
-
 ## Advantages
 
 1. Converted files are never sent to the server
@@ -50,10 +44,7 @@ You can find the related commands in the package.json file.
 ## Privacy
 
 No images are stored anywhere.
-We currently use Hotjar, Google Analytics and store the log of your Browser console.
-Hotjar allows us to optimize the User Experience. Google Analytics lets us figure out what audience we are serving and if Page Performance is reliable. The browser console logs help us detect errors and bugs in conversion.
-
-As soon as we reach a stable version (~December 21), we will turn off the browser console logs and Hotjar.
+We currently use Google Analytics. It lets us figure out what audience we are serving and if Page Performance is reliable.
 
 <br/>
 
