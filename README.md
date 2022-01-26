@@ -45,6 +45,7 @@ You can find the related commands in the package.json file.
 
 No images are stored anywhere.
 We currently use Google Analytics. It lets us figure out what audience we are serving and if Page Performance is reliable.
+We use Google Ads to pay for domain costs (5$/month). Server is free, hosted on Firebase.
 
 <br/>
 
