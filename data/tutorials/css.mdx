@@ -118,7 +118,8 @@ Once implemented, we can use the following CSS due to the high-level classes and
 
 Here is an SCSS background mixin that can be used to support JXL, AVIF and WebP including Retina support.
 
-<Syntax language="scss">{`@mixin bg-url(
+<Syntax language="scss">
+  {`@mixin bg-url(
   $url,
   $url2x: false,
   $webp1x: false,
@@ -163,7 +164,6 @@ Here is an SCSS background mixin that can be used to support JXL, AVIF and WebP 
         .jxl & {
           background-image: url($jxl2x);
 }}}}}`}
-
 </Syntax>
 
 ## Future JPEG XL Detection

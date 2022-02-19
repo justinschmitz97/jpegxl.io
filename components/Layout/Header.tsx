@@ -56,11 +56,6 @@ export default function Header() {
             text="Tutorials"
             href="/#tutorials"
           />
-          <Link
-            className="hidden p-2 md:block md:p-3"
-            text="Comparisons"
-            href="/#comparisons"
-          />
         </nav>
         <nav className="flex flex-wrap justify-between items-center">
           <Link

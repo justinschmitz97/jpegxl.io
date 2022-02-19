@@ -37,13 +37,6 @@ module.exports = withPlugins(
               },
             ],
           });
-          if (!dev && !isServer) {
-            // Replace React with Preact only in client production build
-            Object.assign(config.resolve.alias, {
-              "react": "preact/compat",
-              "react-dom": "preact/compat",
-            });
-          }
           return config;
         },
       },
