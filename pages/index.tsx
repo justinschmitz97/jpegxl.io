@@ -320,7 +320,7 @@ const BlogJxl: NextPage<PostsPageProps> = ({
       </aside>
       <main className="p-2 md:p-4 archive blog">
         <div className="mt-12 text-center">
-          <h1 id="blog">JPEG XL SUPPORT</h1>
+          <h2 id="blog">JPEG XL SUPPORT</h2>
           <h2 className="mb-8 text-base">Articles and Tutorials</h2>
         </div>
         <div className="container px-2">
