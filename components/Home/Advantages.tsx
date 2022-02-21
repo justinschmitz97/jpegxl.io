@@ -155,7 +155,7 @@ export default function Advantages() {
           </span>
         </AdvantageItem>
         <AdvantageItem
-          number="visualizer-11"
+          number="visualizer-12"
           image={visualizer8}
           url="https://gitlab.com/wg1/jpeg-xl/-/issues/68"
         >

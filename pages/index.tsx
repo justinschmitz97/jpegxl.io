@@ -137,7 +137,7 @@ const BlogJxl: NextPage<PostsPageProps> = ({
   const sliderButtons = sliderImages.map((item: any, i) => (
     <button
       key={item[1]}
-      style={{ backgroundImage: `url(/comparison/${item[0]}.jxl` }}
+      style={{ backgroundImage: `url(/comparison/${item[0]}.jxl)` }}
       className={`mr-2 w-8 rounded-md h-8 bg-center bg-cover bg-no-repeat ${
         image == item[0] ? "border-4 border-teal-700" : "opacity-50"
       }`}
