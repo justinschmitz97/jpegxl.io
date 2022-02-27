@@ -79,7 +79,7 @@ export default function Meta(props: Props) {
         })}
       />
 
-      {blog && (
+      {datePublished && (
         <script
           {...jsonLdScriptProps<BlogPosting>({
             "@context": "https://schema.org",
@@ -110,9 +110,14 @@ export default function Meta(props: Props) {
                 "@type": "ImageObject",
                 "url": "https://jpegxl.io/json-logo.png",
               },
+              "brand": "jpegxl.io",
+              "url": "https://jpegxl.io",
+              "knowsAbout": ["jpegxl", "image performance"],
+              "email": "contact@jpegxl.io",
             },
             "datePublished": publishedDate,
             "dateModified": modifiedDate,
+            "isAccessibleForFree": true,
             "isFamilyFriendly": true,
             "inLanguage": "en-US",
           })}
