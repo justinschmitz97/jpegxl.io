@@ -1,18 +1,18 @@
 ---
 
-title: "JPEG XL vs BMP"
+title: "JPEG XL vs JPEG2000"
 description:
   An in-depth guide on how the brand-new file format JPEG XL stacks up against
-  its competitor BMP.
-keyword: BMP
+  its competitor JPEG2000.
+keyword: JPEG2000
 category: comparisons
-url: comparisons/jxl-vs-bmp/
-datePublished: 31.10.21
-dateModified: 31.10.21
+url: comparisons/jxl-vs-jpeg2000/
+datePublished:2021-10-31
+dateModified:2021-10-31
 questions:
-  - What is the difference between BMP and JPEG XL?
-  - Is JPEG XL better than BMP?
-  - How does BMP compare to JPEG XL?
+  - What is the difference between JPEG2000 and JPEG XL?
+  - Is JPEG XL better than JPEG2000?
+  - How does JPEG2000 compare to JPEG XL?
 tags:
   - jxl
   - jpeg xl

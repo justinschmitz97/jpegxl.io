@@ -1,18 +1,18 @@
 ---
 
-title: "JPEG XL vs SVG"
+title: "JPEG XL vs AVIF"
 description:
   An in-depth guide on how the brand-new file format JPEG XL stacks up against
-  its competitor SVG.
-keyword: SVG
+  its competitor AVIF.
+keyword: AVIF
 category: comparisons
-url: comparisons/jxl-vs-svg/
-datePublished: 31.10.21
-dateModified: 31.10.21
+url: comparisons/jxl-vs-avif/
+datePublished:2021-10-31
+dateModified:2021-10-31
 questions:
-  - What is the difference between SVG and JPEG XL?
-  - Is JPEG XL better than SVG?
-  - How does SVG compare to JPEG XL?
+  - What is the difference between AVIF and JPEG XL?
+  - Is JPEG XL better than AVIF?
+  - How does AVIF compare to JPEG XL?
 tags:
   - jxl
   - jpeg xl

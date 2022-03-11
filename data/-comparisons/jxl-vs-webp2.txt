@@ -1,18 +1,18 @@
 ---
 
-title: "JPEG XL vs WebP"
+title: "JPEG XL vs WebP2"
 description:
   An in-depth guide on how the brand-new file format JPEG XL stacks up against
-  its competitor WebP.
-keyword: WebP
+  its competitor WebP2.
+keyword: WebP2
 category: comparisons
-url: comparisons/jxl-vs-webp/
-datePublished: 31.10.21
-dateModified: 31.10.21
+url: comparisons/jxl-vs-webp2/
+datePublished:2021-10-31
+dateModified:2021-10-31
 questions:
-  - What is the difference between WebP and JPEG XL?
-  - Is JPEG XL better than WebP?
-  - How does WebP compare to JPEG XL?
+  - What is the difference between WebP2 and JPEG XL?
+  - Is JPEG XL better than WebP2?
+  - How does WebP2 compare to JPEG XL?
 tags:
   - jxl
   - jpeg xl

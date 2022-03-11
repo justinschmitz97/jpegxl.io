@@ -17,12 +17,18 @@ export default function Heading(props: Props) {
 
   useEffect(() => {
     callback?.({ text: text, href: `#${trimmedText}` });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [callback, text, trimmedText]);
 
   function copyToClipboard(e: any) {
     navigator.clipboard.writeText(
-      `https://jpegxl.io${router.asPath}#${trimmedText}`
+      `${
+        router.asPath.includes("#")
+          ? process.env.NEXT_PUBLIC_SITE_URL + router.asPath.substring(1)
+          : process.env.NEXT_PUBLIC_SITE_URL +
+            router.asPath.substring(1) +
+            "#" +
+            trimmedText
+      }`
     );
     e.target.focus();
   }
@@ -33,7 +39,7 @@ export default function Heading(props: Props) {
       <CustomTag
         id={level === 2 || level === 3 ? trimmedText : undefined}
         className={`${
-          level === 2 ? "mt-6 mb-3 md:text-3xl md:mt-12 md:mb-4 " : ""
+          level === 2 ? "mt-6  mb-3 md:text-3xl md:mt-12 md:mb-2 " : ""
         } ${level === 3 ? "mt-6 " : ""} ${
           level === 4 ? "mt-6 mb-3 " : ""
         } group items-center flex relative rounded-sm`}
@@ -42,7 +48,11 @@ export default function Heading(props: Props) {
         {(level === 2 || level === 3) && (
           <a
             className={`transform inline-flex text-blue-500 opacity-0 items-center group-hover:opacity-100 group-hover:translate-x-2 transition-all`}
-            href={`${router.asPath}#${trimmedText}`}
+            href={`${
+              router.asPath.includes("#")
+                ? router.asPath
+                : router.asPath + "#" + trimmedText
+            }`}
             onClick={copyToClipboard}
           >
             <span className="inline-block p-2" title="Copy link to heading">

@@ -58,7 +58,7 @@ export default function Header() {
           />
         </nav>
         <nav className="flex flex-wrap justify-between items-center">
-          <Link
+          <a
             className="hidden w-4 h-4 bg-center bg-no-repeat md:block md:py-1 md:px-4 md:mr-4"
             style={{
               backgroundImage: `url(${discord})`,

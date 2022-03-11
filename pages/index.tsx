@@ -39,7 +39,6 @@ const meta = {
     "Fastest converter online. Supports bulk. Privacy protected. Convert all image types to Jpeg XL for free.🚀 Compress your images now!⏱",
   url: "",
   datePublished: "31.10.21",
-  dateModified: "31.10.21",
 };
 
 const generatePosts = (folderPath: string) =>
@@ -60,23 +59,16 @@ const generatePosts = (folderPath: string) =>
 
 export const getStaticProps = async () => {
   const articles = generatePosts(`${BLOG_POSTS_PATH}/articles`);
-  const comparisons = generatePosts(`${BLOG_POSTS_PATH}/comparisons`);
   const releases = generatePosts(`${BLOG_POSTS_PATH}/releases`);
   const tutorials = generatePosts(`${BLOG_POSTS_PATH}/tutorials`);
 
   const listPostsByFolder = {
     articles,
-    comparisons,
     releases,
     tutorials,
   };
 
-  const defaultFilteredPost = [
-    ...articles,
-    ...comparisons,
-    ...releases,
-    ...tutorials,
-  ];
+  const defaultFilteredPost = [...articles, ...releases, ...tutorials];
 
   const listSubCategories = [
     ...new Set(defaultFilteredPost.map((post) => post.subcategory)),
@@ -91,7 +83,6 @@ export const getStaticProps = async () => {
   return {
     props: {
       articles,
-      comparisons,
       releases,
       tutorials,
       defaultFilteredPost,
@@ -113,7 +104,6 @@ type PostsPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 const BlogJxl: NextPage<PostsPageProps> = ({
   defaultFilteredPost,
   articles,
-  comparisons,
   releases,
   tutorials,
   listSupport,
@@ -225,6 +215,14 @@ const BlogJxl: NextPage<PostsPageProps> = ({
     }
   };
 
+  const articleTypes = [
+    ["Articles", articles],
+    ["Tutorials", tutorials],
+    ["Changelog", releases],
+  ];
+
+  const filterTypes = [listCategories, listSubCategories, listSupport];
+
   return (
     <Layout meta={meta}>
       <section className="px-2 mt-8 text-center md:px-3 md:mt-12">
@@ -324,71 +322,32 @@ const BlogJxl: NextPage<PostsPageProps> = ({
           <h2 className="mb-8 text-base">Articles and Tutorials</h2>
         </div>
         <div className="container px-2">
-          <div className="relative mt-1 mb-3 rounded-md">
-            <input
-              type="text"
-              placeholder="Search all posts"
-              className="block py-3 px-3 pr-10 w-full text-white rounded-md border-2 outline-none focus:border-blue-400 bg-bg-400 border-bg-500"
-              onChange={handleFilterByKeyword}
-            />
-            <div className="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none group">
-              🔎︎
+          <input
+            type="text"
+            placeholder="🔎︎ Search all posts"
+            className="block relative py-3 px-3 pr-10 mt-1 mb-3 w-full text-white rounded-md border-2 outline-none focus:border-pink-700 bg-bg-400 border-bg-500"
+            onChange={handleFilterByKeyword}
+          />
+          {filterTypes.map((type: any, key: any) => (
+            <div className="mb-2" key={key}>
+              {type.map((category: any) => (
+                <button
+                  key={category}
+                  onClick={() => handleSelectedPill(category)}
+                  className={`inline-flex items-center px-2 py-0 mt-2 mr-2 py-0.5 rounded-sm font-normal cursor-pointer ${
+                    selectedCategoryPill === category
+                      ? "bg-green-1000 border-transparent text-blue-400 hover:bg-indigo-700"
+                      : "bg-bg-500 text-gray-300"
+                  }`}
+                >
+                  {selectedCategoryPill === category && (
+                    <span className="mr-1">✓</span>
+                  )}
+                  {category}
+                </button>
+              ))}
             </div>
-          </div>
-          <div className="mb-2">
-            {listCategories.map((category) => (
-              <button
-                key={category}
-                onClick={() => handleSelectedPill(category)}
-                className={`inline-flex items-center px-2 py-0 mt-2 mr-2 py-0.5 rounded-sm font-normal cursor-pointer ${
-                  selectedCategoryPill === category
-                    ? "bg-green-1000 border-transparent text-blue-400 hover:bg-indigo-700"
-                    : "bg-bg-500 text-gray-300"
-                }`}
-              >
-                {selectedCategoryPill === category && (
-                  <span className="mr-1">✓</span>
-                )}
-                {category}
-              </button>
-            ))}
-          </div>
-          <div className="mb-2">
-            {listSubCategories.map((category) => (
-              <button
-                key={category}
-                onClick={() => handleSelectedPill(category)}
-                className={`inline-flex items-center px-2 py-0 mt-2 mr-2 py-0.5 rounded-sm font-normal cursor-pointer ${
-                  selectedCategoryPill === category
-                    ? "bg-green-1000 border-transparent text-blue-400 hover:bg-indigo-700"
-                    : "bg-bg-500 text-gray-300"
-                }`}
-              >
-                {selectedCategoryPill === category && (
-                  <span className="mr-1">✓</span>
-                )}
-                {category}
-              </button>
-            ))}
-          </div>
-          <div className="mb-2">
-            {listSupport.map((category) => (
-              <button
-                key={category}
-                onClick={() => handleSelectedPill(category)}
-                className={`inline-flex items-center px-2 py-0 mt-2 mr-2 py-0.5 rounded-sm font-normal cursor-pointer ${
-                  selectedCategoryPill === category
-                    ? "bg-green-1000 border-transparent text-blue-400 hover:bg-indigo-700"
-                    : "bg-bg-500 text-gray-300"
-                }`}
-              >
-                {selectedCategoryPill === category && (
-                  <span className="mr-1">✓</span>
-                )}
-                {category}
-              </button>
-            ))}
-          </div>
+          ))}
           {filterKeyword.length > 0 || filteredPost.length ? (
             <div className="grid grid-cols-1 gap-3 mt-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
               {filteredPost.map((post: any) => (
@@ -406,100 +365,33 @@ const BlogJxl: NextPage<PostsPageProps> = ({
             </div>
           ) : (
             <>
-              <h3
-                className="mt-8 mb-2 text-xl font-bold capitalize"
-                id={"articles"}
-              >
-                Articles
-              </h3>
-              <aside className="px-2 mx-auto max-w-screen-md"></aside>
-              <div className="grid grid-cols-1 gap-3 mt-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-                {articles.map((post: any) => (
-                  <Post
-                    key={post.slug}
-                    title={post.title}
-                    description={post.description}
-                    support={post.support}
-                    category={post.category}
-                    subcategory={post.subcategory}
-                    keyword={post.keyword}
-                    slug={post.slug}
-                  />
-                ))}
-              </div>
-              <aside className="px-2 mx-auto max-w-screen-md">
-                <Ad />
-              </aside>
-              <h3
-                className="mt-8 mb-2 text-xl font-bold capitalize"
-                id={"tutorials"}
-              >
-                Tutorials
-              </h3>
-              <div className="grid grid-cols-1 gap-3 mt-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-                {tutorials.map((post: any) => (
-                  <Post
-                    key={post.slug}
-                    title={post.title}
-                    description={post.description}
-                    support={post.support}
-                    category={post.category}
-                    subcategory={post.subcategory}
-                    keyword={post.keyword}
-                    slug={post.slug}
-                  />
-                ))}
-              </div>
-              <aside className="px-2 mx-auto max-w-screen-md">
-                <Ad />
-              </aside>
-              <h3
-                className="mt-8 mb-2 text-xl font-bold capitalize"
-                id={"comparisons"}
-              >
-                Comparisons
-              </h3>
-              - coming soon -
-              <div className="grid grid-cols-1 gap-3 mt-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-                {comparisons.map((post: any) => (
-                  <Post
-                    key={post.slug}
-                    title={post.title}
-                    description={post.description}
-                    support={post.support}
-                    category={post.category}
-                    subcategory={post.subcategory}
-                    keyword={post.keyword}
-                    slug={post.slug}
-                  />
-                ))}
-              </div>
-              <aside className="px-2 mx-auto max-w-screen-md">
-                <Ad />
-              </aside>
-              <h3
-                className="mt-8 mb-2 text-xl font-bold capitalize"
-                id={"articles"}
-              >
-                Changelog
-              </h3>
-              <div className="grid grid-cols-1 gap-3 mt-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-                {releases.map((post: any) => (
-                  <Post
-                    key={post.slug}
-                    title={post.title}
-                    description={post.description}
-                    support={post.support}
-                    category={post.category}
-                    subcategory={post.subcategory}
-                    keyword={post.keyword}
-                    slug={post.slug}
-                  />
-                ))}
-              </div>
-              <aside className="px-2 mx-auto max-w-screen-md">
-                <Ad />
-              </aside>
+              {articleTypes.map((article: any, key: any) => (
+                <section key={key}>
+                  <h3
+                    className="mt-8 mb-3 text-xl font-bold capitalize"
+                    id={article[0].toLowerCase()}
+                  >
+                    {article[0]}
+                  </h3>
+                  <div className="grid grid-cols-1 gap-3 mt-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+                    {article[1].map((post: any) => (
+                      <Post
+                        key={post.slug}
+                        title={post.title}
+                        description={post.description}
+                        support={post.support}
+                        category={post.category}
+                        subcategory={post.subcategory}
+                        keyword={post.keyword}
+                        slug={post.slug}
+                      />
+                    ))}
+                  </div>
+                  <aside className="px-2 mx-auto max-w-screen-md">
+                    <Ad />
+                  </aside>
+                </section>
+              ))}
             </>
           )}
           <div className="m-auto mt-12 mb-8 max-w-3xl text-center">

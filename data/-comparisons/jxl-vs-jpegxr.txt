@@ -1,18 +1,18 @@
 ---
 
-title: "JPEG XL vs HEIF"
+title: "JPEG XL vs JPEGXR"
 description:
   An in-depth guide on how the brand-new file format JPEG XL stacks up against
-  its competitor HEIF.
-keyword: HEIF
+  its competitor JPEGXR.
+keyword: JPEGXR
 category: comparisons
-url: comparisons/jxl-vs-heif/
-datePublished: 31.10.21
-dateModified: 31.10.21
+url: comparisons/jxl-vs-jpegxr/
+datePublished:2021-10-31
+dateModified:2021-10-31
 questions:
-  - What is the difference between HEIF and JPEG XL?
-  - Is JPEG XL better than HEIF?
-  - How does HEIF compare to JPEG XL?
+  - What is the difference between JPEGXR and JPEG XL?
+  - Is JPEG XL better than JPEGXR?
+  - How does JPEGXR compare to JPEG XL?
 tags:
   - jxl
   - jpeg xl

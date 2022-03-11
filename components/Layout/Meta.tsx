@@ -3,32 +3,22 @@ import { jsonLdScriptProps } from "react-schemaorg";
 import { BlogPosting, Organization } from "schema-dts";
 
 export interface Props {
-  title?: string;
-  description?: string;
-  url?: string;
+  title: string;
+  description: string;
+  url: string;
   datePublished: string;
-  dateModified: string;
-  blog?: boolean;
+  dateModified?: string;
 }
 
 export default function Meta(props: Props) {
-  const { title, description, url, datePublished, dateModified, blog } = props;
-  const publishedSplit = datePublished.split(".");
-  const publishedDate =
-    "20" +
-    publishedSplit[2] +
-    "-" +
-    publishedSplit[1] +
-    "-" +
-    publishedSplit[0];
-
-  const modifiedSplit = dateModified.split(".");
-  const modifiedDate =
-    "20" + modifiedSplit[2] + "-" + modifiedSplit[1] + "-" + modifiedSplit[0];
+  const { title, description, url, datePublished, dateModified } = props;
 
   return (
     <Head>
-      <link rel="canonical" href={`https://jpegxl.io/${url}`} />
+      <link
+        rel="canonical"
+        href={`${process.env.NEXT_PUBLIC_SITE_URL}${url}`}
+      />
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link
@@ -37,60 +27,72 @@ export default function Meta(props: Props) {
         href="/apple-touch-icon.png"
       />
 
-      <title>{title} | jpegxl.io ✨</title>
+      <title>
+        {title} | {process.env.NEXT_PUBLIC_SITE_NAME} ✨
+      </title>
 
       <meta name="description" content={description} />
       <meta name="author" content="Justin Schmitz" />
 
       <meta
         property="og:site_name"
-        content="Jpeg XL Converter | jpegxl.io ✨"
+        content={`${process.env.NEXT_PUBLIC_FORMAT} Converter | ${process.env.NEXT_PUBLIC_SITE_NAME} ✨`}
       />
-      <meta property="og:type" content={blog ? "article" : "website"} />
-      <meta property="og:url" content={`https://jpegxl.io/${url}`} />
-      <meta property="og:title" content={title + " | " + "jpegxl.io"} />
+      <meta property="og:type" content={dateModified ? "article" : "website"} />
+      <meta
+        property="og:url"
+        content={`${process.env.NEXT_PUBLIC_SITE_URL}${url}`}
+      />
+      <meta
+        property="og:title"
+        content={title + " | " + process.env.NEXT_PUBLIC_SITE_NAME}
+      />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content="https://jpegxl.io/json-logo.png" />
+      <meta
+        property="og:image"
+        content={`${process.env.NEXT_PUBLIC_SITE_URL}logo.png`}
+      />
 
       <meta name="twitter:card" content="summary"></meta>
       <meta property="twitter:creator" content="@jschmitz97" />
       <meta property="twitter:site" content="@jschmitz97" />
       <meta property="twitter:url" content="https://twitter.com/jschmitz97" />
-      <meta property="twitter:title" content={title + " | " + "jpegxl.io ✨"} />
-      <meta property="twitter:description" content={description} />
-
-      <meta name="twitter:image" content="https://jpegxl.io/twitter.png" />
       <meta
-        name="twitter:image:alt"
-        content="Logo for the JPEG XL Converter jpegxl.io"
+        property="twitter:title"
+        content={title + " | " + process.env.NEXT_PUBLIC_SITE_NAME + "✨"}
+      />
+      <meta property="twitter:description" content={description} />
+      <meta
+        name="twitter:image"
+        content={`${process.env.NEXT_PUBLIC_SITE_URL}twitter.png`}
       />
 
       <script
         {...jsonLdScriptProps<Organization>({
           "@context": "https://schema.org",
           "@type": "Organization",
-          "name": "jpegxl.io",
-          "url": "https://jpegxl.io",
-          "logo": "https://jpegxl.io/json-logo.png",
+          "name": process.env.NEXT_PUBLIC_SITE_NAME,
+          "url": process.env.NEXT_PUBLIC_SITE_URL,
+          "logo": `${process.env.NEXT_PUBLIC_SITE_URL}logo.png`,
           "sameAs": [
+            "https://github.com/justinschmitz97/jpegxl.io/",
             "https://discord.com/invite/6w42YpF5hm",
-            "https://www.producthunt.com/",
           ],
         })}
       />
 
-      {datePublished && (
+      {dateModified && (
         <script
           {...jsonLdScriptProps<BlogPosting>({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": "https://jpegxl.io/" + url,
+              "@id": process.env.NEXT_PUBLIC_SITE_URL + url,
             },
             "headline": title,
             "description": description,
-            "image": "https://avif.io/logo_draft.png",
+            "image": `${process.env.NEXT_PUBLIC_SITE_URL}logo.png`,
             "author": {
               "@type": "Person",
               "name": "Justin Schmitz",
@@ -105,20 +107,23 @@ export default function Meta(props: Props) {
             },
             "publisher": {
               "@type": "Organization",
-              "name": "jpegxl.io",
+              "name": process.env.NEXT_PUBLIC_SITE_NAME,
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://jpegxl.io/json-logo.png",
+                "url": `${process.env.NEXT_PUBLIC_SITE_URL}logo.png`,
               },
-              "brand": "jpegxl.io",
-              "url": "https://jpegxl.io",
-              "knowsAbout": ["jpegxl", "image performance"],
-              "email": "contact@jpegxl.io",
+              "brand": process.env.NEXT_PUBLIC_SITE_NAME,
+              "url": process.env.NEXT_PUBLIC_SITE_URL,
+              "knowsAbout": [
+                `${process.env.NEXT_PUBLIC_FORMAT}`,
+                "image performance",
+              ],
+              "email": process.env.NEXT_PUBLIC_SITE_MAIL,
             },
-            "datePublished": publishedDate,
-            "dateModified": modifiedDate,
-            "isAccessibleForFree": true,
+            "datePublished": new Date(datePublished).toISOString(),
+            "dateModified": new Date(dateModified).toISOString(),
             "isFamilyFriendly": true,
+            "isAccessibleForFree": true,
             "inLanguage": "en-US",
           })}
         />

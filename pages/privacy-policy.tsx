@@ -6,7 +6,6 @@ const meta = {
   description: "Learn how we utilize your data to optimize our service.",
   url: "privacy-policy/",
   datePublished: "01.09.20",
-  dateModified: "10.01.21",
 };
 
 export default function BlogPost() {
