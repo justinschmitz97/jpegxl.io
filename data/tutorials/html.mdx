@@ -38,7 +38,7 @@ relatedPosts:
 ## Browser Support
 
 Unfortunately, JPEG XL has no browser support on stable releases of browser versions. Chromium-browsers like Chrome, Edge, and Opera, as well as the Firefox browser, support JXL as part of other experimental features behind a flag.
-Even if these browsers support JPEG XL on stable browser versions, other browsers like Safari and people with outdated browsers don't support JPEG XL. It takes several years to establish a new image format, and in the meantime, you should always look for serving content that all users can view.
+Even if these browsers support JPEG XL on stable browser versions, other browsers like Safari and people with outdated browsers don't support JPEG XL. It takes several years to establish a new image format, and in the meantime, you should always look for serving contentall users can view.
 
 ## The picture element
 
@@ -51,7 +51,7 @@ To support every user, you can use the native picture element in HTML. It allows
 
 ## Implementation
 
-Currently **96% of browsers support the picture element**. Even if your grandma visits your website with her disgusting Internet Explorer 2 via her modem, her browser will simply revert to the default image format when you specify it. Have a look at the following example and copy it if you want to use it for your website:
+Currently **96% of browsers support the picture element**. Even if your grandma visits your website with her disgusting Internet Explorer 2 via her modem, her browser willrevert to the default image format when you specify it. Have a look at the following example and copy it if you want to use it for your website:
 
 <Syntax language="html">
   {`<picture>
@@ -70,7 +70,7 @@ Make sure **the first source tag is a JXL image** for the browser to display the
 
 ## Responsiveness
 
-Creating a great visual experience for Retina and 4K displays and mobile devices, we want to make sure that images aren't pixelated or too large for the device, wasting bandwidth. We can do so by implementing the srcSet attribute.
+Creating a great visual experience for Retina and 4K displays and mobile devices, we want to make sureimages aren't pixelated or too large for the device, wasting bandwidth. We can do so by implementing the srcSet attribute.
 
 <Syntax language="html">
   {`<picture>

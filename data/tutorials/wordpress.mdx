@@ -47,7 +47,7 @@ relatedPosts:
 
 ## No official support
 
-With the recent release of WordPress 5.8 Tatum, WebP support was added. Unfortunately, modern formats such as AVIF and JPEG XL are not supported. Because it took more than a decade to support WebP, it is unlikely that JPEG XL will be supported within the next few years.
+With the recent release of WordPress 5.8 Tatum, WebP support was added. Unfortunately, modern formats such as AVIF and JPEG XL are not supported. Because it took more than a decade to support WebP, it is unlikelyJPEG XL will be supported within the next few years.
 
 ### WordPress needs JPEG XL support for two reasons:
 
@@ -59,15 +59,15 @@ WordPress powers about 35% of the web. More than 409 million people visit more t
 
 "Sorry, this file type is not permitted for security reasons."
 
-WordPress has implemented a security check for file uploads. Your uploaded files are checked for their file extension by WordPress, and files that do not match their preference will be rejected. As of this writing, WordPress does not support natively viewing or uploading JPEG XL images or other modern formats. Luckily, there are several ways to circumvent this security check.
+WordPress has implemented a security check for file uploads. Your uploaded files are checked for their file extension by WordPress, and filesdo not match their preference will be rejected. As of this writing, WordPress does not support natively viewing or uploading JPEG XL images or other modern formats. Luckily, there are several ways to circumvent this security check.
 
 ## Plugins
 
-Currently, no plugin exists that can convert your images to JPEG XL. This will change in the future as browser adaptation is still ongoing and will occur over the next several months. The moment that web users can benefit from the new format, developers will create extensions for it.
+Currently, no plugin existscan convert your images to JPEG XL. This will change in the future as browser adaptation is still ongoing and will occur over the next several months. The momentweb users can benefit from the new format, developers will create extensions for it.
 
 ## CDN Cloudinary
 
-The Cloudinary CDN provides beta support for the JPEG XL format and is currently the only CDN that offers this service. Cloudinary's developers are actively involved in the development of the JPEG XL format. The company offers an unlimited plan without credit card requirements. Credits are used to track your usage, with a free plan offering 25 credits. You may either use them to purchase 25K transformations, 25GB of managed storage, or 25GB of net viewing bandwidth. Moreover, they offer video transformation, an API, remote fetch, automatic backups, and revision tracking. Pricing plans with more advanced features include additional conversions, backups to your S3 bucket, auto-tagging-based search, and access to a whole assortment of add-ons (e.g., background removal).
+The Cloudinary CDN provides beta support for the JPEG XL format and is currently the only CDNoffers this service. Cloudinary's developers are actively involved in the development of the JPEG XL format. The company offers an unlimited plan without credit card requirements. Credits are used to track your usage, with a free plan offering 25 credits. You may either use them to purchase 25K transformations, 25GB of managed storage, or 25GB of net viewing bandwidth. Moreover, they offer video transformation, an API, remote fetch, automatic backups, and revision tracking. Pricing plans with more advanced features include additional conversions, backups to your S3 bucket, auto-tagging-based search, and access to a whole assortment of add-ons (e.g., background removal).
 
 <Link href="cloudinary.com/" text="Homepage" />
 {" · "}
@@ -91,11 +91,11 @@ The Cloudinary CDN provides beta support for the JPEG XL format and is currently
 
 ## Manually uploading
 
-According to WordPress, files that do not match its list of Internet media types, also known as content types or mime-types, are restricted from being uploaded. A MIME type is a two-part identifier that describes the file types and the types of content sent over the Internet. The basic structure of a media file is as follows: It consists of a type and a subtype that define its content and extension. An HTML file has the mime-type text/html, whereas a JPEG image has the mime-type image/jpeg. WordPress makes use of these mime types. The organization maintains a list of files that are allowed and those that are prohibited. There are several methods by which this behavior can be altered, and mime types added.
+According to WordPress, filesdo not match its list of Internet media types, also known as content types or mime-types, are restricted from being uploaded. A MIME type is a two-part identifierdescribes the file types and the types of content sent over the Internet. The basic structure of a media file is as follows: It consists of a type and a subtypedefine its content and extension. An HTML file has the mime-type text/html, whereas a JPEG image has the mime-type image/jpeg. WordPress makes use of these mime types. The organization maintains a list of filesare allowed and thoseare prohibited. There are several methods by which this behavior can be altered, and mime types added.
 
 ### Solution 1: Functions.php
 
-The functions.php file is present in every theme in WordPress and provides basic functionality. You can access it by going to Appearance and selecting Theme Editor. If a warning appears, confirm that you understand what you are doing. Select your active theme from the right-hand sidebar, and you will see all theme files listed below, including functions.php. Click on the file to open it and scroll to the bottom. Add the following to a new line after the end of the file. By using this code, you will upload JPEG XL files just like any other image. Please copy the following code if you would like to add more support for all the new image formats.
+The functions.php file is present in every theme in WordPress and provides basic functionality. You can access it by going to Appearance and selecting Theme Editor. If a warning appears, confirmyou understand what you are doing. Select your active theme from the right-hand sidebar, and you will see all theme files listed below, including functions.php. Click on the file to open it and scroll to the bottom. Add the following to a new line after the end of the file. By using this code, you will upload JPEG XL fileslike any other image. Please copy the following code if you would like to add more support for all the new image formats.
 
 <Syntax language="php">
   {`function allow_modern_images( $mime_types ) {
@@ -122,7 +122,7 @@ Modifying the functions.php has a significant disadvantage. It is related to the
 
 ### No automatic conversion
 
-It is excellent that images can be uploaded, but there is still a significant problem. Every image you wish to serve to your users must be manually converted. Multiple files can be converted with bulk converters like jpegxl.io. HTML picture tags are still used, however. Implementing an image plugin that converts images to modern formats would be more straightforward and offers the best solution based on the user's browser. However, such a plugin has yet to be developed. In the meantime, Cloudinary is an excellent CDN to consider.
+It is excellentimages can be uploaded, but there is still a significant problem. Every image you wish to serve to your users must be manually converted. Multiple files can be converted with bulk converters like jpegxl.io. HTML picture tags are still used, however. Implementing an image pluginconverts images to modern formats would be more straightforward and offers the best solution based on the user's browser. However, such a plugin has yet to be developed. In the meantime, Cloudinary is an excellent CDN to consider.
 
 ## Summary
 
@@ -134,9 +134,9 @@ The purpose of this section is to improve search engine optimization. Nonetheles
 
 JPEG XL is an initiative of the JPEG Committee established in April 2018 to standardize the latest generation of image coding for usable compression for web image delivery and efficient analysis of high-quality images and features desirable for web distribution.
 
-It is believed that one of the significant reasons lossy image codecs have failed to deliver outstanding psychovisual performance is their tendency to operate at low bit rates and that the coding methods cannot scale to higher bit rates without losing most of their efficiency. Those codecs which are derived from successful video encoding research demonstrate this most clearly.
+It is believedone of the significant reasons lossy image codecs have failed to deliver outstanding psychovisual performance is their tendency to operate at low bit rates andthe coding methods cannot scale to higher bit rates without losing most of their efficiency. Those codecs which are derived from successful video encoding research demonstrate this most clearly.
 
-JPEG XL offers a practical approach that is focused on high-quality image compression and scalable web distribution. Compared to existing image formats, it will provide various benefits, including smaller sizes at equivalent subjective quality; fast, parallelizable decoding and encoding processes. As well as the improvements discussed above, it provides progressive, lossless compression, lossy compression, animation, and reversible transcoding of existing legacy JPEG. As far as quality is concerned, it supports high-quality applications, including wide gamut and visually lossless coding.
+JPEG XL offers a practical approachis focused on high-quality image compression and scalable web distribution. Compared to existing image formats, it will provide various benefits, including smaller sizes at equivalent subjective quality; fast, parallelizable decoding and encoding processes. As well as the improvements discussed above, it provides progressive, lossless compression, lossy compression, animation, and reversible transcoding of existing legacy JPEG. As far as quality is concerned, it supports high-quality applications, including wide gamut and visually lossless coding.
 
 In addition to supporting all the features expected by modern image formats, JPEG XL intends to be a full-featured image codec. As a result, JPEG XL allows an arbitrary number of channels, including alpha and depth channels. Additionally, it permits parallel, progressive, and partial decoding. The JPEG XL format also allows the encoding of multiple animation frames, with different behaviors depending on how each frame is blended with the previous one: they can be summed, replaced with a sub-rectangle, or alpha-blend. In addition to lossless modes, JPEG XL also features a responsive-by-design mode. Finally, it is completely royalty-free.
 
