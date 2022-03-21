@@ -29,8 +29,8 @@ export default function BlogPost() {
       one exception: if a conversion fails, we&apos;ll immediately ask you if
       you want to send us the image so that we can further evaluate what went
       wrong. Again, we don&apos;t send images without your consent under any
-      circumstances. Besides, Idon&apos;t care about your 500 dog pictures,
-      I&apos;m sorry.
+      circumstances. Besides, I really don&apos;t care about your 500 dog
+      pictures, I&apos;m sorry.
       <Heading level={3} text="What about analytics?" />
       We use Hotjar and GA. The only reason we use it is because it provides us
       with useful data that allows us to optimize our service. It sounds like an
@@ -46,11 +46,11 @@ export default function BlogPost() {
       and we absolutely love it. What Hotjar does is that it records your web
       session on our website. That sounds scary at first, but there&apos;s no
       reason to be afraid. We can&apos;t see you through your webcam, nor can we
-      see anything else BUT our website. It stores no IP addresses,your country,
-      browser and operating system. Since the day we activated it, we&apos;ve
-      added and repaired so many tiny things that have drastically improved the
-      overall user experience. After viewing a record of the web session, we
-      delete them.
+      see anything else BUT our website. It stores no IP addresses, just your
+      country, browser and operating system. Since the day we activated it,
+      we&apos;ve added and repaired so many tiny things that have drastically
+      improved the overall user experience. After viewing a record of the web
+      session, we delete them.
       <Heading
         level={3}
         text="Below is the full version of the privacy policy."
@@ -60,8 +60,9 @@ export default function BlogPost() {
       we will update the Privacy Policy accordingly, as we have done and want to
       do. If you are interested in reading the Privacy Policy and legal terms
       generated below, do not hesitate. If you would like to answer a simple
-      question, please send an e-mail to support@jpegxl.io ortweet @jschmitz97.
-      I will be happy to help and answer any questions you may have.
+      question, please send an e-mail to support@jpegxl.io or just tweet
+      @jschmitz97. I will be happy to help and answer any questions you may
+      have.
       <Heading level={2} text="Legal Stuff" />
       This service is brought to you by Justin Schmitz, resident in Germany.
       More information is not revealed for personal protection. You can request

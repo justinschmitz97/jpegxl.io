@@ -74,7 +74,7 @@ const posts = [
     "howmuchfilesizedoeslossyjpegxlsave?",
   ],
   [
-    "Does JPEG XL have a vast headerlike AVIF?",
+    "Does JPEG XL have a vast header just like AVIF?",
     "doesjpegxlhaveavastheaderjustlikeavif?",
   ],
   ["⏩SPEED FEATURES", "%E2%8F%A9speedfeatures"],

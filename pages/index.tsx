@@ -420,7 +420,7 @@ const BlogJxl: NextPage<PostsPageProps> = ({
             </p>
             <p className="mt-2">
               By migrating to JPEG XL, storage costs can be reduced since
-              servers can storeone JPEG XL file for both JPEG and JPEG XL
+              servers can store just one JPEG XL file for both JPEG and JPEG XL
               clients. Lossless transcoding of existing JPEG files to JPEG XL
               significantly reduces their size. JPEG XL is unique in that it
               provides value to existing JPEG users and to new users alike. By
