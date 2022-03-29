@@ -1,16 +1,18 @@
-import CookieBanner from "@components/Layout/CookieBanner";
-import CTA from "@components/Layout/CTA";
-import Footer from "@components/Layout/Footer";
+import dynamic from "next/dynamic";
 import Header from "@components/Layout/Header";
 import Meta from "@components/Layout/Meta";
-import Share from "@components/Layout/Share";
 
-interface Layout {
+const CookieBanner = dynamic(() => import("@components/Layout/CookieBanner"));
+const Footer = dynamic(() => import("@components/Layout/Footer"));
+const Share = dynamic(() => import("@components/Layout/Share"));
+const CTA = dynamic(() => import("@components/Layout/CTA"));
+
+interface LayoutProps {
   meta: any;
   children: any;
 }
 
-export default function Layout(props: Layout) {
+export default function Layout(props: LayoutProps) {
   return (
     <>
       <Meta {...props.meta} />

@@ -1,18 +1,18 @@
 ---
 
-title: "JPEG XL vs JPEGXR"
+title: "JPEG XL vs BMP"
 description:
   An in-depth guide on how the brand-new file format JPEG XL stacks up against
-  its competitor JPEGXR.
-keyword: JPEGXR
+  its competitor BMP.
+keyword: BMP
 category: comparisons
-url: comparisons/jxl-vs-jpegxr/
-datePublished: 31.10.21
-dateModified: 31.10.21
+url: comparisons/jxl-vs-bmp/
+datePublished:2021-10-31
+dateModified:2021-10-31
 questions:
-  - What is the difference between JPEGXR and JPEG XL?
-  - Is JPEG XL better than JPEGXR?
-  - How does JPEGXR compare to JPEG XL?
+  - What is the difference between BMP and JPEG XL?
+  - Is JPEG XL better than BMP?
+  - How does BMP compare to JPEG XL?
 tags:
   - jxl
   - jpeg xl

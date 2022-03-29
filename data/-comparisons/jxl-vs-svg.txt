@@ -1,18 +1,18 @@
 ---
 
-title: "JPEG XL vs JPG"
+title: "JPEG XL vs SVG"
 description:
   An in-depth guide on how the brand-new file format JPEG XL stacks up against
-  its competitor JPG.
-keyword: JPG
+  its competitor SVG.
+keyword: SVG
 category: comparisons
-url: comparisons/jxl-vs-jpg/
-datePublished: 31.10.21
-dateModified: 31.10.21
+url: comparisons/jxl-vs-svg/
+datePublished:2021-10-31
+dateModified:2021-10-31
 questions:
-  - What is the difference between JPG and JPEG XL?
-  - Is JPEG XL better than JPG?
-  - How does JPG compare to JPEG XL?
+  - What is the difference between SVG and JPEG XL?
+  - Is JPEG XL better than SVG?
+  - How does SVG compare to JPEG XL?
 tags:
   - jxl
   - jpeg xl

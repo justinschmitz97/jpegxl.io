@@ -4,13 +4,8 @@ import html from "react-syntax-highlighter/dist/cjs/languages/hljs/htmlbars";
 import js from "react-syntax-highlighter/dist/cjs/languages/hljs/javascript";
 import scss from "react-syntax-highlighter/dist/cjs/languages/hljs/scss";
 import xml from "react-syntax-highlighter/dist/cjs/languages/hljs/xml";
+import php from "react-syntax-highlighter/dist/cjs/languages/hljs/php";
 import vs2015 from "react-syntax-highlighter/dist/cjs/styles/hljs/vs2015";
-
-SyntaxHighlighter.registerLanguage("javascript", js);
-SyntaxHighlighter.registerLanguage("html", html);
-SyntaxHighlighter.registerLanguage("css", css);
-SyntaxHighlighter.registerLanguage("scss", scss);
-SyntaxHighlighter.registerLanguage("xml", xml);
 
 interface Props {
   language: string;
@@ -18,6 +13,13 @@ interface Props {
 }
 
 export default function Syntax(props: Props) {
+  SyntaxHighlighter.registerLanguage("javascript", js);
+  SyntaxHighlighter.registerLanguage("html", html);
+  SyntaxHighlighter.registerLanguage("css", css);
+  SyntaxHighlighter.registerLanguage("scss", scss);
+  SyntaxHighlighter.registerLanguage("xml", xml);
+  SyntaxHighlighter.registerLanguage("php", php);
+
   const { language, children } = props;
 
   function copyToClipboard(e: any) {

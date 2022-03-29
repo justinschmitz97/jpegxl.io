@@ -22,7 +22,7 @@ const CookieBanner = () => {
         mode && "hidden"
       }`}
     >
-      We use Google cookies for our services.
+      We use cookies for our services.
       <div
         role="button"
         onKeyDown={() => setMode("true")}

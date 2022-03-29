@@ -37,7 +37,6 @@ const Column = (props: any) => {
             className="block text-gray-400 hover:text-white"
             text={item[0]}
             href={item[1]}
-            lazy
           />
         ))}
       </nav>
