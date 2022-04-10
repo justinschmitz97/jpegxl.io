@@ -4,7 +4,6 @@ export default function Image(props: { alt: string; src: string }) {
   const formats = [
     ["image/avif", "avif"],
     ["image/webp", "webp"],
-    ["image/jpeg", "jpg"],
   ];
 
   const sources = formats.map((format: any) => (
@@ -24,7 +23,7 @@ export default function Image(props: { alt: string; src: string }) {
         decoding="async"
         width={2880}
         height={1620}
-        src={`/img/${props.src}-768.jpg`}
+        src={`/img/${props.src}-768.webp`}
         alt={props.alt}
         title={props.alt}
       />

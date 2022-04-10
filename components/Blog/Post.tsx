@@ -1,14 +1,6 @@
 import Link from "next/link";
 
-const Post = ({
-  slug,
-  category,
-  subcategory,
-  url,
-  keyword,
-  description,
-  support,
-}: any) => {
+const Post = ({ slug, category, url, keyword, description, support }: any) => {
   function getDot(support: any) {
     if (support === "full support") {
       return "bg-yellow-700";
@@ -16,8 +8,6 @@ const Post = ({
       return "bg-teal-400";
     } else if (support === "no support") {
       return "bg-red-400";
-    } else if (support === "experimental support") {
-      return "bg-blue-400";
     }
   }
   function getBackground(support: any) {
@@ -27,8 +17,6 @@ const Post = ({
       return "bg-green-1000";
     } else if (support === "no support") {
       return "bg-red-1000";
-    } else if (support === "experimental support") {
-      return "bg-blue-1000";
     }
   }
 
@@ -57,9 +45,6 @@ const Post = ({
                 )}`}
               ></span>
               {support}
-            </div>
-            <div className="inline-flex relative py-1 px-2 mr-2 text-white rounded-md bg-bg-700 text-tiny">
-              {subcategory}
             </div>
           </div>
           <div className="relative mb-0 font-bold text-white">
