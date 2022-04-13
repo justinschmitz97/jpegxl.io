@@ -1,14 +1,9 @@
 import { useRouter } from "next/router";
 
-import twitter from "@assets/twitter.svg";
-import reddit from "@assets/reddit.svg";
-import facebook from "@assets/facebook.svg";
-import sh from "@assets/share.svg";
-
 const socialMedia = [
-  ["Twitter", "https://twitter.com/intent/tweet?text=", twitter],
-  ["Reddit", "https://reddit.com/submit?url=", reddit],
-  ["Facebook", "https://facebook.com/share.php?u=", facebook],
+  ["twitter", "https://twitter.com/intent/tweet?text="],
+  ["reddit", "https://reddit.com/submit?url="],
+  ["facebook", "https://facebook.com/share.php?u="],
 ];
 
 export default function Blog() {
@@ -32,7 +27,7 @@ export default function Blog() {
         {socialMedia.map((media: any) => (
           <button
             className="hidden p-1 m-0 w-5 h-5 bg-center bg-no-repeat bg-contain md:block"
-            style={{ backgroundImage: `url(${media[2]})` }}
+            style={{ backgroundImage: `url(/assets/${media[0]}.svg)` }}
             onClick={() => shareFunction(media[1])}
             onKeyPress={() => shareFunction(media[1])}
             title={`Share on ${media[0]}`}
@@ -43,7 +38,7 @@ export default function Blog() {
         ))}
         <button
           className="block p-1 w-5 h-5 bg-center bg-no-repeat bg-contain md:hidden"
-          style={{ backgroundImage: `url(${sh})` }}
+          style={{ backgroundImage: `url(/assets/share.svg)` }}
           onClick={() => share()}
           onKeyPress={() => share()}
           aria-label="share"

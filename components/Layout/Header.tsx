@@ -1,8 +1,6 @@
 import Link from "@components/Link";
 import { useEffect, useState } from "react";
 
-import discord from "@assets/discord.svg";
-
 export default function Header() {
   const [isFixed, setIsFixed] = useState(true);
   const [support, setSupport] = useState(false);
@@ -61,7 +59,7 @@ export default function Header() {
           <a
             className="hidden w-4 h-4 bg-center bg-no-repeat md:block md:py-1 md:px-4 md:mr-4"
             style={{
-              backgroundImage: `url(${discord})`,
+              backgroundImage: `url(/assets/discord.svg)`,
               backgroundSize: 24,
             }}
             href="discord.com/invite/6w42YpF5hm"

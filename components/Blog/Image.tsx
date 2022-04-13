@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 export default function Image(props: { alt: string; src: string }) {
-  const sizes = [768, 576, 384];
+  const sizes = [768, 384];
   const formats = [
     ["image/avif", "avif"],
     ["image/webp", "webp"],

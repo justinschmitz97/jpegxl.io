@@ -1,44 +1,31 @@
-const withPlugins = require("next-compose-plugins");
-const images = require("next-images");
-const bundleAnalyzer = require("@next/bundle-analyzer")({
+const withMDX = require("@next/mdx")({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+    providerImportSource: "@mdx-js/react",
+  },
+});
+
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
 
-module.exports = withPlugins([
-  images,
-  [
-    bundleAnalyzer,
-    {
-      trailingSlash: true,
-      basePath: "",
-      env: {
-        baseUrl: "",
-      },
-      webpack: (config, { dev, isServer }) => {
-        config.module.rules.push({
-          test: /\.svg$/,
-          use: [
-            {
-              loader: "url-loader",
-              options: {
-                limit: 8192,
-              },
-            },
-          ],
+module.exports = withBundleAnalyzer(
+  withMDX({
+    swcMinify: true,
+    reactStrictMode: true,
+    webpack: (config, { dev, isServer }) => {
+      // Replace React with Preact only in client production build
+      if (!dev && !isServer) {
+        Object.assign(config.resolve.alias, {
+          "react/jsx-runtime.js": "preact/compat/jsx-runtime",
+          "react": "preact/compat",
+          "react-dom/test-utils": "preact/test-utils",
+          "react-dom": "preact/compat",
         });
-        {
-          /*
-        if (!dev && !isServer) {
-          Object.assign(config.resolve.alias, {
-            react: "preact/compat",
-            "react-dom/test-utils": "preact/test-utils",
-            "react-dom": "preact/compat",
-          });
-        }
-      */
-        }
-        return config;
-      },
+      }
+      return config;
     },
-  ],
-]);
+  })
+);

@@ -13,7 +13,6 @@ import matter from "gray-matter";
 import { postFilePaths, BLOG_POSTS_PATH } from "@utils/mdx";
 import Post from "@components/Blog/Post";
 import Layout from "@components/Layout";
-import cog from "@assets/settings.svg";
 import Ad from "@components/Blog/Ad";
 
 function Glow() {
@@ -266,7 +265,7 @@ const BlogJxl: NextPage<PostsPageProps> = ({
                 settingsBoxOpen ? " rotate-180" : "rotate-0"
               }`}
               style={{
-                backgroundImage: `url(${cog})`,
+                backgroundImage: `url(/assets/settings.svg)`,
                 backgroundSize: 24,
                 filter: `${
                   settingsBoxOpen

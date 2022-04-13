@@ -46,3 +46,5 @@ blogTypes.map((type) =>
 const xml = feed.xml();
 
 fs.writeFileSync(path.resolve(__dirname, "../public") + "/rss.xml", xml);
+
+console.log("✅ RSS Feed created");

@@ -2,8 +2,6 @@ import OptionsBox, { Options } from "./OptionsBox";
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 
-import arrow from "@assets/arrow.svg";
-
 export interface DropAreaProps {
   onDrop(files: File[]): void;
   onOptionsChanged(options: Options): void;
@@ -95,7 +93,7 @@ const DropArea = (props: DropAreaProps) => {
             <div
               className="relative z-50 w-full h-full bg-center bg-no-repeat"
               style={{
-                backgroundImage: `url(${arrow})`,
+                backgroundImage: `url(/assets/arrow.svg)`,
               }}
             ></div>
             <div

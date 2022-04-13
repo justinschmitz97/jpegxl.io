@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "noImplicitAny": true,
-    "module": "es2020",
+    "module": "esnext",
     "moduleResolution": "Node",
     "target": "es6",
     "jsx": "preserve",
@@ -10,7 +10,6 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["./components/*"],
-      "@assets/*": ["./assets/*"],
       "@images/*": ["./public/images/*"],
       "@utils/*": ["utils/*"],
       "@styles/*": ["styles/*"],

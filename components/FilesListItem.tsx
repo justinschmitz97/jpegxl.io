@@ -1,6 +1,5 @@
 import type { FileInfo } from "@pages/index";
 
-import arrow from "@assets/arrow.svg";
 import prettyBytes from "pretty-bytes";
 import { useEffect, useState } from "react";
 
@@ -100,7 +99,7 @@ const FilesListItem = (props: FilesListItemProps) => {
           <span
             className="absolute top-0 right-0 bottom-0 left-0 z-50 text-white bg-center bg-no-repeat transition-all duration-300 ease-in transform rotate-180 hover:scale-110"
             style={{
-              backgroundImage: `url(${arrow})`,
+              backgroundImage: `url(/assets/arrow.svg)`,
               backgroundSize: "16px",
             }}
           ></span>

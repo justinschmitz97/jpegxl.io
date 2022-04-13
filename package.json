@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap --config scripts/sitemap.js && cd scripts && node rss && node images && cd ../",
     "start": "next start",
     "analyze": "npx cross-env ANALYZE=true next build",
-    "convert": "cd utils && node sharp && cd ../",
     "lint": "rustywind . --write && prettier --write . && next lint --fix --dir pages --dir components",
-    "release": "npm run build && next export && next-sitemap --config next-sitemap.config.js && cd utils && node rss"
+    "release": "npm run build && next export && firebase deploy"
   },
   "dependencies": {
     "@mdx-js/loader": "^2.1.1",

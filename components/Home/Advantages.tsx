@@ -1,60 +1,54 @@
 import "atropos/css";
 import Atropos from "atropos/react";
 
-import visualizer1 from "@assets/visualizer-1.svg";
-import visualizer3 from "@assets/visualizer-3.svg";
-import visualizer4 from "@assets/visualizer-4.svg";
-import visualizer6 from "@assets/visualizer-6.svg";
-import visualizer7 from "@assets/visualizer-7.svg";
-import visualizer8 from "@assets/visualizer-8.svg";
-import visualizer9 from "@assets/visualizer-9.svg";
-import visualizer11 from "@assets/visualizer-11.svg";
-import visualizer12 from "@assets/visualizer-12.svg";
-
 const advantages = [
   [
-    visualizer1,
+    "visualizer-1",
     "reduces file size by an average of 20-60%",
     "https://www.spiedigitallibrary.org/conference-proceedings-of-spie/11353/2556264/Benchmarking-JPEG-XL-image-compression/10.1117/12.2556264.short?SSO=1",
   ],
-  [visualizer3, "developed by the JPEG committee", "https://jpeg.org/jpegxl/"],
   [
-    visualizer4,
+    "visualizer-3",
+    "developed by the JPEG committee",
+    "https://jpeg.org/jpegxl/",
+  ],
+  [
+    "visualizer-4",
     "progressive decoding for web experience",
     "https://www.youtube.com/watch?v=UphN1_7nP8U",
   ],
   [
-    visualizer6,
+    "visualizer-6",
     "lossless jpeg transcoding",
     "https://cloudinary.com/blog/legacy_and_transition_creating_a_new_universal_image_codec",
   ],
   [
-    visualizer7,
+    "visualizer-7",
     "photographic & synthetic images",
     "https://cloudinary.com/blog/time_for_next_gen_codecs_to_dethrone_jpeg",
   ],
   [
-    visualizer8,
+    "visualizer-8",
     "embraces wide gamut / HDR and 32 bit depth",
     "https://cloudinary.com/blog/how_jpeg_xl_compares_to_other_image_codecs#universality",
   ],
   [
-    visualizer9,
+    "visualizer-9",
     "fast software encoding and decoding",
     "https://cloudinary.com/blog/how_jpeg_xl_compares_to_other_image_codecs#computational_complexity",
   ],
   [
-    visualizer11,
+    "visualizer-11",
     "full of smartphone features like overlays",
     "http://ds.jpeg.org/documents/wg1n83043-REQ-JPEG_XL_Use_Cases_and_Requirements.pdf",
   ],
   [
-    visualizer8,
+    "visualizer-8",
     "WIP support for animated frames",
     "https://gitlab.com/wg1/jpeg-xl/-/issues/68",
   ],
   [
-    visualizer12,
+    "visualizer-12",
     "FOSS and royalty-free license",
     "https://gitlab.com/wg1/jpeg-xl/-/blob/main/LICENSE",
   ],
@@ -88,7 +82,7 @@ export default function Advantages() {
               className="z-0 mb-4 h-6 bg-center bg-no-repeat bg-contain rounded-lg transition-all duration-500 ease-out origin-center background-no-repeat group-hover:scale-200"
               data-atropos-offset="10"
               style={{
-                backgroundImage: `url(${advantage[0]})`,
+                backgroundImage: `url(/assets/${advantage[0]}.svg)`,
               }}
             ></div>
             <div
@@ -102,7 +96,7 @@ export default function Advantages() {
             <div
               className="absolute top-0 right-0 bottom-0 left-0 bg-center bg-cover md:bg-no-repeat"
               style={{
-                backgroundImage: `url(${advantage[0]})`,
+                backgroundImage: `url(/assets/${advantage[0]}.svg)`,
                 opacity: "0.025",
                 filter: "blur(4px)",
               }}
