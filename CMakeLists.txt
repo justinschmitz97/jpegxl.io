@@ -28,7 +28,7 @@ add_executable(wjpegxl
 )
 
 target_include_directories(wjpegxl PUBLIC ${JPEGXL_PATH} "${AVIF_PATH}include" "${WEBP_PATH}src" "${JPEGXL_PATH}lib" "${JPEGXL_PATH}lib/include" "${JPEGXL_PATH}third_party/highway")
-target_link_directories(wjpegxl PRIVATE libs/)
+target_link_directories(wjpegxl PRIVATE lib/)
 target_link_libraries(wjpegxl jxl jxl_threads hwy skcms jxl_extras-static lodepng jpeg sjpeg z gif avif yuv gav1 webp)
 target_compile_definitions(wjpegxl PUBLIC -DJPEGXL_ENABLE_JPEG=1 -DJPEGXL_ENABLE_SJPEG=1 -DJPEGXL_ENABLE_GIF=1)
 set_target_properties(wjpegxl PROPERTIES LINK_FLAGS "--bind -s ALLOW_MEMORY_GROWTH=1 -s WASM=1 -s EXIT_RUNTIME=0 -s INVOKE_RUN=0 -s MODULARIZE=1 -s EXPORT_NAME=JXL -flto -O3")

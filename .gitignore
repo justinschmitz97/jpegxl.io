@@ -156,3 +156,6 @@ public/rss.xml
 
 #github
 .github/
+
+# Contentlayer
+.contentlayer

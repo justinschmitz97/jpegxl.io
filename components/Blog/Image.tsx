@@ -10,7 +10,7 @@ export default function Image(props: { alt: string; src: string }) {
     <source
       key={format[1]}
       sizes="(max-width: 768px) 100vw, 768px"
-      srcSet={`/img/${props.src}-${sizes[0]}.${format[1]} ${sizes[0]}w, /img/${props.src}-${sizes[1]}.${format[1]} ${sizes[1]}w, /img/${props.src}-${sizes[2]}.${format[1]} ${sizes[2]}w, /img/${props.src}-${sizes[3]}.${format[1]} ${sizes[3]}w`}
+      srcSet={`/img/${props.src}-${sizes[0]}.${format[1]} ${sizes[0]}w, /img/${props.src}-${sizes[1]}.${format[1]} ${sizes[1]}w`}
       type={`${format[0]}`}
     />
   ));

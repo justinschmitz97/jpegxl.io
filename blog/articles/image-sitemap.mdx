@@ -1,0 +1,103 @@
+---
+title: Create image sitemaps in 2021
+description: Learn how to create image sitemaps in 2021.
+keyword: Image Sitemap
+datePublished: 2021-12-14
+dateModified: 2021-12-14
+sources:
+  - developers.google.com/search/docs/advanced/sitemaps/image-sitemaps
+  - developers.google.com/search/docs/advanced/sitemaps/image-sitemaps?hl=de
+  - serpstat.com/blog/how-to-create-an-xml-image-sitemap/
+  - www.xml-sitemaps.com/images-sitemap.html
+  - en.wikipedia.org/wiki/Site_map
+tags:
+  - image
+  - sitemap
+questions:
+  - How to create image Sitemap?
+  - What is a image sitemap?
+  - How do I create an image sitemap?
+  - Is image sitemap important?
+  - Can we include images in the sitemap?
+  - Should I exclude images from sitemap?
+  - Can you list images in an XML sitemap?
+  - Are Sitemaps Important for SEO?
+  - What is a sitemap example?
+  - What should be included in a sitemap?
+  - Should I include attachments in Sitemap?
+  - What should not be included in a sitemap?
+  - How do I remove a URL from a sitemap?
+  - How does sitemap XML improve SEO?
+relatedPosts:
+  - faq
+  - browser-support
+  - jpegxl-allrounder
+---
+
+## Introduction
+
+By adding images to your sitemap, Google can discover images that they would not find otherwise, such as images accessed using JavaScript. Follow best practices for publishing images by adding images to your existing sitemap or creating a separate image sitemap. Metadata can be added to an image, such as contact details or licensing information, which will be displayed in the image search results.
+
+When the Google Search Console returns errors for the sitemap, such a result represents a potential error that will cause the ranking of the website to be underestimated. In addition to the main sitemap, the Search Console panel displays an index of pictures based on map coordinates. In addition, users frequently search for pictures. In turn, they go to the website to see them. Create an Image Sitemap to improve your chances of being found in Google image search results. Title and alt attributes must also be filled in correctly. Both effect image ranking positively.
+
+## Creating a sitemap
+
+Image sitemaps include URLs and other details about the specific images you want Google, Bing, and other engines to index. Sitemaps are formatted with standard XML tags, and they are used by most search engines. Your standard sitemap needs to contain relevant details about images on your site for Google to understand them. Type of image, topic, title, caption, and location are a few examples. Using this method, website owners can determine which images are most relevant for their pages.
+
+Make a separate file for each picture that organizes its information. In this way, the pictures will be more likely to be indexed. The sitemap.xml file on the website can also be edited by adding the appropriate tags.
+
+## The right markup
+
+Sitemap tags specific to images can be found below. Please use the required tags; optional tags are encouraged for a better user experience.
+
+**image:image**
+
+An image's metadata contains its information. Using `<url>` tags, you can include up to 1,000 `<image:image>` tags.
+
+**image:loc**
+
+This is the URL for the image. Occasionally, your main website may not host the same image URL. I don't have a problem with this as long as both domains are verified on Google Search Console. To ensure that you're using a verified hosting site in Google Search Console, you can, for example, use a content delivery network like Google Sites to host your images. Please check your robots.txt file to ensure that any content you would like indexed is not blocked.
+
+**image:caption**
+
+A caption for the image.
+
+**image:geo_location**
+
+The geographic location of the image.
+
+**image:title**
+
+The title of the image.
+
+**image:license**
+
+The license of the image can be found at the following URL. You may also use the image metadata.
+
+## Example Image Sitemap
+
+<Syntax language="html">
+  {`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://jpegxl.io/image-sitemap</loc>
+    <image:image>
+      <image:loc>https://jpegxl.io/photo1.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jpegxl.io/photo2.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://jpegxl.io/another-article</loc>
+    <image:image>
+      <image:loc>https://jpegxl.io/picture.jpg</image:loc>
+      <image:caption>This is an image caption</image:caption>
+      <image:geo_location>London, England</image:geo_location>
+      <image:title>An image title</image:title>
+      <image:license>https://jpegxl.io/license</image:license>
+    </image:image>
+  </url>
+</urlset>`}
+</Syntax>

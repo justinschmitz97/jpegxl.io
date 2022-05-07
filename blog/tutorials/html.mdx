@@ -1,0 +1,148 @@
+---
+title: HTML JPEG XL support
+description: Learn how to use JXL images within HTML.
+keyword: HTML
+subcategory: coding
+support: full support
+datePublished: 2021-10-31
+dateModified: 2021-10-31
+sources:
+  - en.wikipedia.org/wiki/JPEG_XL
+  - jpeg.org/jpegxl/
+  - jpeg.org/jpegxl/documentation.html
+  - opensource.googleblog.com/2021/09/using-saliency-in-progressive-jpeg-xl-images.html
+  - nspeaks.com/jpeg-xl-browser-support/
+  - www.heise.de/news/JPEG-XL-soll-JPEG-PNG-GIF-umd-Webp-beerben-5022986.html
+  - cloudinary.com/blog/legacy_and_transition_creating_a_new_universal_image_codec
+  - cloudinary.com/blog/how_jpeg_xl_compares_to_other_image_codecs
+  - bugzilla.mozilla.org/show_bug.cgi?id=1539075
+tags:
+  - jpeg xl
+  - jxl
+  - image format
+  - html
+  - jpeg xl html
+  - coding
+  - picture tag
+questions:
+  - Does HTML support JXL?
+  - How can I use JXL in HTML?
+relatedPosts:
+  - imageglass
+  - imagemagick
+  - irfanview
+---
+
+## Browser Support
+
+Unfortunately, JPEG XL has no browser support on stable releases of browser versions. Chromium-browsers like Chrome, Edge, and Opera, as well as the Firefox browser, support JXL as part of other experimental features behind a flag.
+Even if these browsers support JPEG XL on stable browser versions, other browsers like Safari and people with outdated browsers don't support JPEG XL. It takes several years to establish a new image format, and in the meantime, you should look for serving content that all users can view.
+
+## The picture element
+
+To support every user, you can use the native picture element in HTML. It allows for progressive support. You mention all the file formats you want to serve, and your visitor's browser will only load the first image it supports. This reduced load on your server and the bandwidth usage of your visitors. The advantages are:
+
+- Does not download more than one image at a time.
+- Native support for selecting the most appropriate image.
+- 96% browser support and automatic fallback.
+- Getting this implemented is easy and straightforward.
+
+## Implementation
+
+Currently **96% of browsers support the picture element**. Even if your grandma visits your website with her disgusting Internet Explorer 2 via her modem, her browser will revert to the default image format when you specify it. Have a look at the following example and copy it if you want to use it for your website:
+
+<Syntax language="html">
+  {`<picture>
+  <source srcSet="image.jxl" type="image/jxl" />
+  <source srcSet="image.avif" type="image/avif" />
+  <source srcSet="image.webp" type="image/webp" />
+  <img
+  width="1280" height="720" decoding="async" loading="lazy"
+  src="image.jpg" alt="hopefully an jxl image" />
+</picture>`}
+</Syntax>
+
+##### PS: We added several attributes to the IMG tag to speed up the loading.
+
+Make sure **the first source tag is a JXL image** for the browser to display the first media type it can handle. You can edit this code snippet to your needs, depending on if you want to serve AVIF or WebP.
+
+## Responsiveness
+
+Creating a great visual experience for Retina and 4K displays and mobile devices, we want to make sure that images aren't pixelated or too large for the device, wasting bandwidth. We can do so by implementing the srcSet attribute.
+
+<Syntax language="html">
+  {`<picture>
+   <source
+      sizes="(max-width: 640px) 100vw, 640px"
+      srcSet="/image-1280.jxl 1280w, /image-640.jxl 640w, /image-320.jxl 320w"
+      type="image/jxl" />
+   <source
+      sizes="(max-width: 640px) 100vw, 640px"
+      srcSet="/image-1280.avif 1280w, /image-640.avif 640w, /image-320.avif 320w"
+      type="image/avif" />
+   <source
+      sizes="(max-width: 640px) 100vw, 640px"
+      srcSet="/image-1280.avif 1280w, /image-640.webp 640w, /image-320.webp 320w"
+      type="image/webp" />
+   <source
+      sizes="(max-width: 640px) 100vw, 640px"
+      srcSet="/image-1280.avif 1280w, /image-640.jpg 640w, /image-320.jpg 320w"
+      type="image/jpg" />
+   <img
+      width="1280" height="720" decoding="async" loading="lazy"
+      src="/image.jpg" alt="an avif image" />
+</picture>`}
+</Syntax>
+
+## Components
+
+Creating JPEG XL images for any viewport of any format can be exhausting, so if you're using a framework, make sure to use a component to save yourself some time.
+For example, we use the following image component in NextJS:
+
+<Syntax language="typescript">
+  {`export default function Image(props: { alt: string; url: string }) {
+  return (
+    <picture>
+      <source
+        type="image/jxl"
+        srcSet={\`/img/\${props.url}-1536.jxl 1536w, /img/\${props.url}-768.jxl 768w, /img/\${props.url}-576.jxl 576w, /img/\${props.url}-384.jxl 384w\`}
+        sizes="(max-width: 768px) 100vw, 768px"
+      />
+      <source
+        type="image/avif"
+        srcSet={\`/img/\${props.url}-1536.avif 1536w, /img/\${props.url}-768.avif 768w, /img/\${props.url}-576.avif 576w, /img/\${props.url}-384.avif 384w\`}
+        sizes="(max-width: 768px) 100vw, 768px"
+      />
+      <source
+        type="image/webp"
+        srcSet={\`/img/\${props.url}-1536.webp 1536w, /img/\${props.url}-768.webp 768w, /img/\${props.url}-576.webp 576w, /img/\${props.url}-384.webp 384w\`}
+        sizes="(max-width: 768px) 100vw, 768px"
+      />
+      <source
+        type="image/jpeg"
+        srcSet={\`/img/\${props.url}-1536.jpg 1536w, /img/\${props.url}-768.jpg 768w, /img/\${props.url}-576.jpg 576w, /img/\${props.url}-384.jpg 384w\`}
+        sizes="(max-width: 768px) 100vw, 768px"
+      />
+      <img
+        loading="lazy"
+        decoding="async"
+        width={2880}
+        height={1620}
+        src={\`/img/\${props.url}-1536.jpg\`}
+        alt={props.alt}
+        title={props.alt}
+      />
+    </picture>
+  );
+}`}
+</Syntax>
+
+This allows us to easily add an image like this:
+
+<Syntax language="html">
+  {`<Image src="frog" alt="frog looking nicely" />`}
+</Syntax>
+
+<Image src="frog" alt="frog looking nicely" />
+
+Please remember to provide fallback images for older browser versions or experimental use. Otherwise, your user experience may suffer as images are not rendered.

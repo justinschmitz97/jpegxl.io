@@ -1,93 +1,43 @@
-import {
-  GetStaticPaths,
-  GetStaticProps,
-  InferGetStaticPropsType,
-  NextPage,
-} from "next";
-import path from "path";
-import glob from "glob";
-import fs from "fs";
-import matter from "gray-matter";
-import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote } from "next-mdx-remote";
-import readingTime from "reading-time";
-import remarkSlug from "remark-slug";
-
-import { postFilePaths, BLOG_POSTS_PATH, getHeadings } from "@utils/mdx";
-
-import MDXComponents from "@components/MDXComponents";
+import { getHeadings } from "@utils/mdx";
+import { getPost } from "@utils/allPosts";
 import Blog from "@components/Blog";
 import ContentTable from "@components/Blog/ContentTable";
+import { allTutorials, Tutorials } from "contentlayer/generated";
+import { useMDXComponent } from "next-contentlayer/hooks";
+import MDXComponents from "@components/MDXComponents";
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
-  const filePath = path.join(
-    `${BLOG_POSTS_PATH}/tutorials`,
-    `${ctx.params?.slug}.mdx`
-  );
-
-  const source = fs.readFileSync(filePath);
-
-  const { data, content } = matter(source);
-  const headings = await getHeadings(content);
-
-  const mdxFiles = glob.sync("data/**/*.mdx");
-  const selectedPosts = data.relatedPosts.map((post: string) =>
-    mdxFiles.find((file) => file.indexOf(post) >= 0)
-  );
-
-  const relatedPosts = selectedPosts.map((post: string) => {
-    const file = path.join(process.cwd(), post);
-    const sourceFile = fs.readFileSync(file);
-    const { data } = matter(sourceFile);
-    return { ...data };
-  });
-
-  const mdxSource = await serialize(content, {
-    mdxOptions: {
-      remarkPlugins: [remarkSlug, require("remark-code-titles")],
-    },
-    scope: data,
-  });
-
+export async function getStaticPaths() {
   return {
-    props: {
-      frontMatter: {
-        readingTime: readingTime(content),
-        ...data,
-      },
-      source: mdxSource,
-      headings,
-      relatedPosts,
-    },
-  };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = postFilePaths(`${BLOG_POSTS_PATH}/tutorials`)
-    .map((p) => p.replace(/\.mdx?$/, ""))
-    .map((slug) => ({ params: { slug } }));
-
-  return {
-    paths,
+    paths: allTutorials.map((p) => ({ params: { slug: p.slug } })),
     fallback: false,
   };
-};
+}
 
-type PostDetailPageProps = InferGetStaticPropsType<typeof getStaticProps>;
-const PostDetail: NextPage<PostDetailPageProps> = ({
-  frontMatter,
-  source,
+export async function getStaticProps({ params }: { params: any }) {
+  const post = allTutorials.find((post) => post.slug === params.slug);
+  const headings = await getHeadings(post!.body.raw);
+  const relatedPosts = post!.relatedPosts.map((slug: string) => getPost(slug));
+  return { props: { post, headings, relatedPosts } };
+}
+
+const PostLayout = ({
+  post,
   headings,
   relatedPosts,
+}: {
+  post: Tutorials;
+  headings: any;
+  relatedPosts: any;
 }) => {
+  const MDXContent = useMDXComponent(post.body.code);
   return (
     <>
-      <Blog meta={{ ...frontMatter }} posts={relatedPosts}>
+      <Blog meta={post} posts={relatedPosts}>
         <ContentTable contentTable={headings} />
-        <MDXRemote {...source} components={MDXComponents} />
+        <MDXContent components={MDXComponents} />
       </Blog>
     </>
   );
 };
 
-export default PostDetail;
+export default PostLayout;

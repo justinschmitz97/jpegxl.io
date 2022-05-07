@@ -6,8 +6,8 @@ export interface Props {
   title: string;
   description: string;
   url: string;
-  datePublished: string;
-  dateModified?: string;
+  datePublished: Date;
+  dateModified?: Date;
 }
 
 export default function Meta(props: Props) {
@@ -88,7 +88,7 @@ export default function Meta(props: Props) {
             "@type": "BlogPosting",
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": process.env.NEXT_PUBLIC_SITE_URL + url,
+              "@id": process.env.NEXT_PUBLIC_SITE_URL + url + "/",
             },
             "headline": title,
             "description": description,

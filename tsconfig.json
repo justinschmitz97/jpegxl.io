@@ -15,7 +15,8 @@
       "@styles/*": ["styles/*"],
       "@pages/*": ["pages/*"],
       "@public/*": ["public/*"],
-      "@lib/*": ["lib/*"]
+      "@lib/*": ["lib/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "allowSyntheticDefaultImports": true,
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -29,6 +30,11 @@
     "removeComments": true,
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".contentlayer/generated"
+  ],
   "exclude": ["node_modules"]
 }

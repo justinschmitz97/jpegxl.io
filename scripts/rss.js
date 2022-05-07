@@ -21,10 +21,10 @@ const feed = new RSS({
 
 blogTypes.map((type) =>
   fs
-    .readdirSync(path.resolve(__dirname, "../data", type))
+    .readdirSync(path.resolve(__dirname, "../blog", type))
     .map((fileName) => {
       const fullPath = path.join(
-        path.resolve(__dirname, "../data", type),
+        path.resolve(__dirname, "../blog", type),
         fileName
       );
       const file = fs.readFileSync(fullPath, "utf8");
