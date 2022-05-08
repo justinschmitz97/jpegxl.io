@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "next-sitemap --config scripts/sitemap.js && cd scripts && node rss && cd ../",
+    "postbuild": "next-sitemap --config scripts/sitemap.js && cd scripts && node rss && node images && cd ../",
     "start": "next start",
     "analyze": "npx cross-env ANALYZE=true next build",
     "lint": "rustywind . --write && prettier --write . && next lint --fix --dir pages --dir components --dir lib",

@@ -29,7 +29,6 @@ module.exports = {
       "2xl": "1536px",
     },
     fontSize: {
-      "none": "0",
       "tiny": "0.875rem",
       "base": "1.25rem",
       "lg": "1.56rem",
@@ -92,8 +91,6 @@ module.exports = {
     },
     colors: {
       transparent: "transparent",
-      tenpercent: "rgba(0,0,0,0.10)",
-      current: "currentColor",
       white: "#ffffff",
       // Grayscale Design palette: https://grayscale.design/app?lums=92.72,72.74,56.79,43.47,32.39,23.22,15.67,9.51,4.51,0.50&palettes=%2398305a,%23F9F871,%23061212,%236BD8A1,%234AC8AE,%233bb6b3&filters=0%7C0,0%7C0,0%7C-30,0%7C0,0%7C0,0%7C0&names=red,yellow,gray,green,teal,blue&labels=,,,,,
       red: {
@@ -197,39 +194,19 @@ module.exports = {
       transitionTimingFunction: {
         cog: "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
       },
-      zIndex: {
-        "-1": "-1",
-      },
-      scale: {
-        200: "2.0",
-        300: "3.0",
-        400: "4.0",
-        1000: "10.0",
-        1500: "15.0",
-        2000: "20.0",
-      },
-      rotate: {
-        135: "135deg",
-        225: "225deg",
-        300: "300deg",
-        315: "315deg",
-      },
-      blur: {
-        100: "100px",
-      },
     },
   },
   variants: {
     extend: {
-      backgroundImage: ["hover", "focus", "group-hover", "group-focus"],
-      transform: ["hover", "focus", "group-hover", "group-focus"],
-      scale: ["hover", "focus", "group-hover", "group-focus"],
-      translate: ["hover", "focus", "group-hover", "group-focus"],
-      display: ["hover", "focus", "group-hover", "group-focus"],
-      filter: ["hover", "focus", "group-hover", "group-focus"],
-      opacity: ["hover", "focus", "group-hover", "group-focus"],
-      blur: ["hover", "focus", "group-hover", "group-focus"],
-      text: ["hover", "focus", "group-hover", "group-focus"],
+      backgroundImage: ["hover", "focus", "group-hover"],
+      transform: ["hover", "focus", "group-hover"],
+      scale: ["hover", "focus", "group-hover"],
+      translate: ["hover", "focus", "group-hover"],
+      display: ["hover", "focus", "group-hover"],
+      filter: ["hover", "focus", "group-hover"],
+      opacity: ["hover", "focus", "group-hover"],
+      blur: ["hover", "focus", "group-hover"],
+      text: ["hover", "focus", "group-hover"],
     },
   },
 };

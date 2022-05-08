@@ -25,7 +25,7 @@ export default function CTA() {
               Convert your images to JPEGXL for free.
             </div>
             <div
-              className="absolute right-0 left-0 top-1 bottom-1 w-full h-full rounded-md opacity-25 transform scale-105 -z-1 bg-gradient blur-xl"
+              className="absolute right-0 left-0 top-1 bottom-1 w-full h-full rounded-md opacity-25 transform scale-105 -z-10 bg-gradient blur-xl"
               data-transition-style="gradientAnimation"
             />
           </div>

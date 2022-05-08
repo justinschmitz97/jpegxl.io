@@ -20,6 +20,7 @@ export default function Quote(props: Props) {
         rel={isInternal ? "prefetch" : "noopener noreferrer"}
         target={isInternal ? "_self" : "_blank"}
         className={className}
+        tabIndex={0}
       >
         {text}
         {children}

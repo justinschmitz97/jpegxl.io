@@ -1,38 +1,31 @@
-import Link from "next/link";
+import Link from "@components/Link";
 
-const Post = ({ category, keyword, description, support, url }: any) => {
-  function getBackground(support: any) {
-    if (support === "full support") {
-      return "bg-green-1000";
-    } else if (support === "partial support") {
-      return "bg-yellow-1000";
-    } else if (support === "no support") {
-      return "bg-red-1000";
-    }
-  }
-
+const Post = ({ keyword, description, support, url, title }: any) => {
+  const supportBackground =
+    support === "full"
+      ? "bg-green-1000"
+      : support === "partial"
+      ? "bg-yellow-1000"
+      : "bg-red-1000";
   return (
-    <Link href={`/blog/${url}/`}>
-      <a
-        href={`/blog/${url}/`}
-        tabIndex={0}
-        className={`p-0 mt-1 md:mt-0 cursor-pointer group ${support}`}
-      >
-        <div className="overflow-hidden relative py-2 px-1 h-full text-left rounded-md md:p-2 bg-bg-500">
-          <div className="absolute right-0 bottom-0 z-0 w-4 h-3 transition-all transform scale-0 translate-x-4 translate-y-2 bg-gradient rotate-300 group-hover:scale-1500"></div>
-          <div
-            className={`px-2 inline-flex py-1 rounded-md text-tiny mb-2 text-white ${
-              category !== "tutorials" && "hidden"
-            } ${getBackground(support)}`}
-          >
-            {support}
-          </div>
-          <div className="relative mb-0 font-bold leading-snug text-white">
-            {keyword || keyword || ""}
-          </div>
-          <div className="relative text-white text-tiny">{description}</div>
+    <Link
+      href={`/blog/${url}/`}
+      className="relative rounded-md bg-bg-500 group flex text-white h-full text-left"
+    >
+      <div className="absolute inset-0 scale-x-[1.01] scale-y-[1.02] rounded-md bg-gradient -z-10 opacity-0 group-hover:opacity-100 blur-sm" />
+      {support && (
+        <div
+          className={`rounded-l-md px-[2px] text-tiny flex items-center ${supportBackground}`}
+        >
+          <span className="rotate-180 [text-orientation:mixed] [writing-mode:tb-rl]">
+            {support} support
+          </span>
         </div>
-      </a>
+      )}
+      <div className="p-3 leading-snug">
+        <div className="font-bold">{keyword || title || ""}</div>
+        <div className="text-tiny">{description}</div>
+      </div>
     </Link>
   );
 };
