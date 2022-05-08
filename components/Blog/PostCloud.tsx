@@ -161,16 +161,9 @@ export default function PostCloud() {
       <h5 className="inline-block py-1 px-2 mt-4 mb-0 font-bold rounded-md">
         FAQ
       </h5>
-      <ol>
+      <ol className="flex flex-wrap gap-1 text-teal-400 text-tiny">
         {posts.map((source: any, index: any) => (
-          <li
-            key={index}
-            className={`${
-              source[0].includes("⏩")
-                ? "block mt-3"
-                : "inline-block bg-green-1000"
-            } px-1 mr-1 text-teal-400 rounded-md text-tiny `}
-          >
+          <li key={index} className={`px-1  rounded-md  bg-green-1000`}>
             <Link text={source[0]} href={`/articles/faq/#${source[1]}/`} />
           </li>
         ))}

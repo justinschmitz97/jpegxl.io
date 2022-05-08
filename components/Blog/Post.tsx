@@ -10,9 +10,9 @@ const Post = ({ keyword, description, support, url, title }: any) => {
   return (
     <Link
       href={`/blog/${url}/`}
-      className="relative rounded-md bg-bg-500 group flex text-white h-full text-left"
+      className="flex relative h-full text-left text-white rounded-md bg-bg-500 group"
     >
-      <div className="absolute inset-0 scale-x-[1.01] scale-y-[1.02] rounded-md bg-gradient -z-10 opacity-0 group-hover:opacity-100 blur-sm" />
+      <div className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 scale-x-[1.01] scale-y-[1.02] bg-gradient -z-10 blur-sm" />
       {support && (
         <div
           className={`rounded-l-md px-[2px] text-tiny flex items-center ${supportBackground}`}
