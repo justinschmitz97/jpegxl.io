@@ -11,7 +11,6 @@ interface Props {
 export default function Quote(props: Props) {
   const { href, text, className, children } = props;
   const isInternal = href && (href.startsWith("/") || href.startsWith("#"));
-
   return (
     <NextLink passHref href={isInternal ? href : `https://` + href}>
       <a

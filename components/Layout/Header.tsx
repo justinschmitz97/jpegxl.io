@@ -62,7 +62,7 @@ export default function Header() {
               backgroundImage: `url(/assets/discord.svg)`,
               backgroundSize: 24,
             }}
-            href="discord.com/invite/6w42YpF5hm"
+            href="https://discord.com/invite/6w42YpF5hm"
           />
           <Link href="/">
             <button className="inline-flex items-center py-1 px-2 mr-1 text-base rounded border-0 md:mt-0 focus:outline-none bg-bg-200 hover:bg-bg-300">
