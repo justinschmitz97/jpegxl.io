@@ -9,7 +9,7 @@ const Post = ({ keyword, description, support, url, title }: any) => {
       : "bg-red-1000";
   return (
     <Link
-      href={`/${url}`}
+      href={`/${url}/`}
       className="flex relative h-full text-left text-white rounded-md bg-bg-500 group"
     >
       <div className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 scale-x-[1.01] scale-y-[1.02] bg-gradient -z-10 blur-sm" />
