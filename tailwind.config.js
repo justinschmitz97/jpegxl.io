@@ -15,11 +15,11 @@ module.exports = {
     container: {
       center: true,
       padding: {
-        DEFAULT: "1rem",
-        sm: "1rem",
+        DEFAULT: "0.5rem",
+        sm: "0.5rem",
         md: "1rem",
-        lg: "0rem",
-        xl: "0rem",
+        lg: "1rem",
+        xl: "1rem",
       },
     },
     screens: {

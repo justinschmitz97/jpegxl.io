@@ -221,7 +221,7 @@
   }
 
   nav ol li:before {
-    @apply inline-block w-4 h-4 mr-3 text-blue-600 text-right rounded-md;
+    @apply inline-block w-4 h-4 mr-2 text-blue-600 text-right rounded-md;
     font-size: 80%;
     content: counter(step-counter);
   }
