@@ -1,6 +1,6 @@
 import Link from "@components/Link";
 
-const Post = ({ keyword, description, support, url, title }: any) => {
+const Post = ({ keyword, description, support, url }: any) => {
   const supportBackground =
     support === "full"
       ? "bg-green-1000"
@@ -23,7 +23,7 @@ const Post = ({ keyword, description, support, url, title }: any) => {
         </div>
       )}
       <div className="p-3 leading-snug">
-        <div className="font-bold">{keyword || title || ""}</div>
+        <div className="font-bold">{keyword}</div>
         <div className="text-tiny">{description}</div>
       </div>
     </Link>

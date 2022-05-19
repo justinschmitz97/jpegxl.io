@@ -39,8 +39,12 @@ export default function Blog(props: Props) {
             Related articles
           </h3>
           <div className="grid grid-cols-1 gap-2 mt-2 md:grid-cols-2 lg:grid-cols-3">
+            {console.log(posts)}
             {posts.map((post: any) => (
-              <Post {...post} key={post.slug} />
+              <>
+                {console.log(post)}
+                <Post {...post} key={post.url} />
+              </>
             ))}
           </div>
         </aside>
