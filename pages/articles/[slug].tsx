@@ -14,9 +14,14 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: { params: any }) {
+  const relatedPosts = allArticles.map((item: any) => ({
+    url: item.url,
+    keyword: item.keyword,
+    description: item.description,
+    support: item.support ? item.support : "",
+  }));
   const post = allArticles.find((post) => post.slug === params.slug);
   const headings = await getHeadings(post!.body.raw);
-  const relatedPosts = post!.relatedPosts.map((slug: string) => getPost(slug));
   return { props: { post, headings, relatedPosts } };
 }
 

@@ -1,6 +1,6 @@
 import Link from "@components/Link";
 
-const Post = ({ keyword, description, support, url, title }: any) => {
+const Post = ({ keyword, description, support, url }: any) => {
   const supportBackground =
     support === "full"
       ? "bg-green-1000"
@@ -10,7 +10,7 @@ const Post = ({ keyword, description, support, url, title }: any) => {
   return (
     <Link
       href={`/${url}/`}
-      className="flex relative h-full text-left text-white rounded-md group bg-bg-500"
+      className="flex relative h-full text-left text-white rounded-md group bg-bg-500 hover:bg-bg-400"
     >
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 scale-x-[1.01] scale-y-[1.02] bg-gradient -z-10 blur-sm" />
       {support && (
@@ -23,7 +23,7 @@ const Post = ({ keyword, description, support, url, title }: any) => {
         </div>
       )}
       <div className="p-3 leading-snug">
-        <div className="font-bold">{keyword || title || ""}</div>
+        <div className="font-bold">{keyword}</div>
         <div className="text-tiny">{description}</div>
       </div>
     </Link>

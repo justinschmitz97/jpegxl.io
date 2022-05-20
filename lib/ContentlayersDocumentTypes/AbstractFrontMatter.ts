@@ -27,7 +27,4 @@ export const abstractDocumentFrontMatter: FieldDefs = {
   questions: {
     type: "json",
   },
-  relatedPosts: {
-    type: "json",
-  },
 };
