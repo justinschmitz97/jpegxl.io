@@ -16,24 +16,19 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: { params: any }) {
   const post = allTutorials.find((post) => post.slug === params.slug);
   const headings = await getHeadings(post!.body.raw);
-  const relatedPosts = allTutorials.map((item: any) => ({
-    url: item.url,
-    keyword: item.keyword,
-    description: item.description,
-    support: item.support ? item.support : "",
-    subcategory: item.subcategory ? item.subcategory : "",
-  }));
-
-  const reallyRelated = relatedPosts.map(
-    (item: any) =>
-      post?.subcategory == item.subcategory && {
+  const relatedPosts = allTutorials
+    .filter((b) => {
+      return b.subcategory == post!.subcategory;
+    })
+    .map((item: any) => {
+      return {
         url: item.url,
         keyword: item.keyword,
         description: item.description,
         support: item.support ? item.support : "",
-      }
-  );
-  console.log(newArray);
+        subcategory: item.subcategory ? item.subcategory : "",
+      };
+    });
   return { props: { post, headings, relatedPosts } };
 }
 
