@@ -12,7 +12,6 @@
       "@components/*": ["./components/*"],
       "@images/*": ["./public/images/*"],
       "@utils/*": ["utils/*"],
-      "@styles/*": ["styles/*"],
       "@pages/*": ["pages/*"],
       "@public/*": ["public/*"],
       "@lib/*": ["lib/*"],

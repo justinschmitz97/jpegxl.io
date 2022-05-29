@@ -6,7 +6,7 @@ module.exports = {
   transform: async (config, path) => {
     var date = new Date().toISOString();
     return {
-      loc: path,
+      loc: path + "/",
       changefreq: null,
       priority: null,
       lastmod: date,

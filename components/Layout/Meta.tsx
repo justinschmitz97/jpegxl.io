@@ -70,10 +70,10 @@ export default function Meta(props: Props) {
         {...jsonLdScriptProps<Organization>({
           "@context": "https://schema.org",
           "@type": "Organization",
-          "name": process.env.NEXT_PUBLIC_SITE_NAME,
-          "url": process.env.NEXT_PUBLIC_SITE_URL,
-          "logo": `${process.env.NEXT_PUBLIC_SITE_URL}logo.png`,
-          "sameAs": [
+          name: process.env.NEXT_PUBLIC_SITE_NAME,
+          url: process.env.NEXT_PUBLIC_SITE_URL,
+          logo: `${process.env.NEXT_PUBLIC_SITE_URL}logo.png`,
+          sameAs: [
             "https://github.com/justinschmitz97/jpegxl.io/",
             "https://discord.com/invite/6w42YpF5hm",
           ],
@@ -85,17 +85,17 @@ export default function Meta(props: Props) {
           {...jsonLdScriptProps<BlogPosting>({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
-            "mainEntityOfPage": {
+            mainEntityOfPage: {
               "@type": "WebPage",
               "@id": process.env.NEXT_PUBLIC_SITE_URL + url + "/",
             },
-            "headline": title,
-            "description": description,
-            "image": `${process.env.NEXT_PUBLIC_SITE_URL}logo.png`,
-            "author": {
+            headline: title,
+            description: description,
+            image: `${process.env.NEXT_PUBLIC_SITE_URL}logo.png`,
+            author: {
               "@type": "Person",
-              "name": "Justin Schmitz",
-              "sameAs": [
+              name: "Justin Schmitz",
+              sameAs: [
                 "https://twitter.com/jschmitz97",
                 "https://dribbble.com/justinschmitz",
                 "https://www.fiverr.com/zoayenemies",
@@ -104,26 +104,26 @@ export default function Meta(props: Props) {
                 "https://www.linkedin.com/in/justinschmitz97/",
               ],
             },
-            "publisher": {
+            publisher: {
               "@type": "Organization",
-              "name": process.env.NEXT_PUBLIC_SITE_NAME,
-              "logo": {
+              name: process.env.NEXT_PUBLIC_SITE_NAME,
+              logo: {
                 "@type": "ImageObject",
-                "url": `${process.env.NEXT_PUBLIC_SITE_URL}logo.png`,
+                url: `${process.env.NEXT_PUBLIC_SITE_URL}logo.png`,
               },
-              "brand": process.env.NEXT_PUBLIC_SITE_NAME,
-              "url": process.env.NEXT_PUBLIC_SITE_URL,
-              "knowsAbout": [
+              brand: process.env.NEXT_PUBLIC_SITE_NAME,
+              url: process.env.NEXT_PUBLIC_SITE_URL,
+              knowsAbout: [
                 `${process.env.NEXT_PUBLIC_FORMAT}`,
                 "image performance",
               ],
-              "email": process.env.NEXT_PUBLIC_SITE_MAIL,
+              email: process.env.NEXT_PUBLIC_SITE_MAIL,
             },
-            "datePublished": new Date(datePublished).toISOString(),
-            "dateModified": new Date(dateModified).toISOString(),
-            "isFamilyFriendly": true,
-            "isAccessibleForFree": true,
-            "inLanguage": "en-US",
+            datePublished: new Date(datePublished).toISOString(),
+            dateModified: new Date(dateModified).toISOString(),
+            isFamilyFriendly: true,
+            isAccessibleForFree: true,
+            inLanguage: "en-US",
           })}
         />
       )}
