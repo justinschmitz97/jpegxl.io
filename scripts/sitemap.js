@@ -2,6 +2,7 @@
 module.exports = {
   siteUrl: "https://jpegxl.io",
   changefreq: null,
+  generateIndexSitemap: false,
   priority: null,
   transform: async (config, path) => {
     var date = new Date().toISOString();

@@ -15,12 +15,12 @@ export default function Breadcrumbs() {
           {...jsonLdScriptProps<BreadcrumbList>({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
-            "itemListElement": [
+            itemListElement: [
               {
                 "@type": "ListItem",
-                "position": 1,
-                "name": `#${url[1]}`,
-                "item": crumb1,
+                position: 1,
+                name: `#${url[1]}`,
+                item: crumb1,
               },
             ],
           })}

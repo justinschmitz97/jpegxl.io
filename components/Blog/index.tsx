@@ -34,7 +34,7 @@ export default function Blog(props: Props) {
         </div>
       </main>
       {posts && (
-        <aside className="container my-8 max-w-screen-lg bg-bg-700">
+        <aside className="container my-8 max-w-screen-lg">
           <h3 className="mt-8 mb-2 text-xl font-bold capitalize">
             Related articles
           </h3>

@@ -11,7 +11,7 @@ export interface ContentTableProps {
 
 export default function ContentTable(props: ContentTableProps) {
   return (
-    <nav className="p-2 my-2 rounded-md md:p-4 bg-bg-400">
+    <nav className="p-2 mt-4 mb-2 rounded-md md:p-4 bg-bg-400">
       <h4 className="m-0 bold">Table of Content</h4>
       <ol className="m-0">
         {props.contentTable.map((entry, index: any) => (

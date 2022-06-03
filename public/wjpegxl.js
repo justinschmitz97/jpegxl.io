@@ -1513,11 +1513,11 @@ var JXL = (function () {
         return (mode & 49152) === 49152;
       },
       flagModes: {
-        "r": 0,
+        r: 0,
         "r+": 2,
-        "w": 577,
+        w: 577,
         "w+": 578,
-        "a": 1089,
+        a: 1089,
         "a+": 1090,
       },
       modeStringToFlags: function (str) {
