@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { ContentTableEntry } from "./ContentTable";
 import Ad from "@components/Blog/Ad";
-import { useDetectAdBlock } from "adblock-detect-react";
 
 export interface Props {
   text: string;
@@ -15,8 +14,6 @@ export default function Heading(props: Props) {
   const CustomTag = `h${level}` as keyof JSX.IntrinsicElements;
   const trimmedText = text.replace(/\s/g, "").toLowerCase();
   const router = useRouter();
-
-  const adBlockDetected = useDetectAdBlock();
 
   useEffect(() => {
     callback?.({ text: text, href: `#${trimmedText}` });
@@ -41,7 +38,7 @@ export default function Heading(props: Props) {
       {level === 2 && <Ad />}
       <CustomTag
         id={level === 2 || level === 3 ? trimmedText : undefined}
-        className={`${adBlockDetected ? "" : "md:mt-12"} ${
+        className={`${
           level === 2 ? "mt-6  mb-3 md:text-3xl md:mt-12 md:mb-2 " : ""
         } ${level === 3 ? "mt-6 " : ""} ${
           level === 4 ? "mt-6 mb-3 " : ""

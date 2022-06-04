@@ -87,16 +87,14 @@
   html {
     @apply box-border overflow-x-hidden text-white font-normal cursor-default scroll-p-9 accent-blue-400 focus:outline-0 focus:ring-0;
     font-family: "Poppins", "fallback-font";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-size-adjust: 100%;
   }
 
   :focus-visible:not(input, select) {
     @apply transform outline-2 outline-white translate-y-1 ease-in-out transition-all duration-300;
-  }
-
-  body {
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
   img {
@@ -110,8 +108,6 @@
 
   p,
   li,
-  h1,
-  h2,
   h3,
   h4,
   div,
@@ -119,9 +115,8 @@
   ::before,
   ::after,
   span {
-    line-height: calc(3ex); /* Perfect line height for all text */
+    line-height: 1.5em;
     word-break: break-word; /* Help prevent overflow of long words */
-    text-rendering: optimizeLegibility; /* enables the use of special kerning and optional ligature information */
   }
 
   a {
@@ -136,11 +131,10 @@
   h1 {
     @apply mt-6 mb-3 font-bold text-2xl md:text-3xl leading-snug;
     font-family: "Patua One", serif;
-    letter-spacing: 1px;
   }
 
   h2 {
-    @apply mt-2 mb-4 font-bold text-xl;
+    @apply mt-2 mb-4 font-bold text-xl leading-snug;
   }
 
   h3 {
@@ -313,13 +307,6 @@
       -webkit-transform: scale3D(0, 0, 1);
       transform: scale3D(0, 0, 1);
     }
-  }
-}
-
-@media screen and (min-width: 768px) {
-  article {
-    font-size: 1.1em;
-    line-height: calc(3ex + 2px);
   }
 }
 
